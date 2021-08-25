@@ -1,0 +1,28 @@
+
+@font-face {
+    font-family: 'bahij-helvetica-bold';
+    src: url(./bahij/bahij_helvetica_neue_bold_by_bahijvirtualacademy_dammcmt.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'bahij-helvetica-light';
+    src: url(./bahij/bahij_helvetica_neue_light_by_bahijvirtualacademy_dammcxa.ttf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'bahij-helvetica-roman';
+    src: url(./bahij/bahij_helvetica_neue_roman_by_bahijvirtualacademy_dammd50.ttf);
+    font-weight: normal;
+}
+
+/* @font-face {
+    font-family: 'bahij-helvetica-bold';
+    src: url(./bahij/bahij_helvetica_neue_bold_by_bahijvirtualacademy_dammcmt.ttf);
+}
+
+@font-face {
+    font-family: 'bahij-helvetica-bold';
+    src: url(./bahij/bahij_helvetica_neue_bold_by_bahijvirtualacademy_dammcmt.ttf);
+} */
