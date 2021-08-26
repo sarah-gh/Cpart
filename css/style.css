@@ -194,6 +194,7 @@ main .post-container .card .card-post .post-content .article-link .post-title {
 main .post-container .card .card-post .post-footer {
   width: 100%;
   color: #5a5a5a;
+  margin-top: 20px;
 }
 
 main .post-container .card .card-post .post-footer .flex-footer {
