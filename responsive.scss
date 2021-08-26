@@ -276,7 +276,7 @@
       width: 100%;
     }
     .footer-container{
-      width: 90%;
+      width: 93%;
       flex-direction: row-reverse;
       justify-content: space-between;
       align-items: center;
@@ -497,17 +497,9 @@
     }
   }
 }
-@media only screen and (min-width: 1488px) {
+@media only screen and (min-width: 1400px) {
   .container{
     width: 1140px;
-  }
-  
-  .header{
-    .userLogin{
-      .btn-login{
-        font-size: 18px;
-      }
-    }
   }
   
   main{
@@ -521,7 +513,6 @@
               height: 23px;
               flex-grow: 0;
               padding: 0 6px 1px;
-              border-radius: 6px;
             }
           }
           .post-content{
@@ -549,7 +540,7 @@
   
   .site-footer {
     .footer-container{
-      width: 1471px;
+      width: 97%;
       .footer-text{
         width: 619px;
       }

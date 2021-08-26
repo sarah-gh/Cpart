@@ -1,5 +1,4 @@
 .container {
-  width: 1140px;
   margin: 0 auto;
 }
 
@@ -22,7 +21,6 @@
 }
 
 .header {
-  width: 100%;
   height: 100px;
   height: 65px;
   -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
@@ -36,17 +34,12 @@
 
 .header .userLogin .btn-login {
   text-align: center;
-  width: 165px;
-  height: 40px;
-  padding: 4px 36px 6px;
   border: 0;
-  border-radius: 10px;
   background-color: #30bfb7;
   color: white;
   cursor: pointer;
   -webkit-transition: 0.5s ease all;
   transition: 0.5s ease all;
-  font-size: 18px;
   font-family: 'bahij-helvetica-bold';
 }
 
@@ -71,7 +64,6 @@
 }
 
 .header .logo img {
-  width: 124px;
   height: auto;
 }
 
@@ -83,9 +75,6 @@ main {
 }
 
 main .post-container .card {
-  width: 100%;
-  height: 300px;
-  margin-bottom: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,19 +90,11 @@ main .post-container .card {
           align-items: center;
 }
 
-main .post-container .card .card-img {
-  width: 40%;
-}
-
 main .post-container .card .card-img img {
-  width: 100%;
-  height: 300px;
   border-radius: 5px;
 }
 
 main .post-container .card .card-post {
-  width: 49%;
-  margin-left: 5%;
   direction: rtl;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -165,13 +146,11 @@ main .post-container .card .card-post .post-header .post-author .avatar {
 }
 
 main .post-container .card .card-post .post-header .post-author .author-name {
-  font-size: 15px;
   margin-right: 15px;
   color: #28394f;
 }
 
 main .post-container .card .card-post .post-header button {
-  width: 67.5px;
   height: 23px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -202,7 +181,6 @@ main .post-container .card .card-post .post-header button:hover {
 
 main .post-container .card .card-post .post-content {
   line-height: 2;
-  margin-top: 20px;
 }
 
 main .post-container .card .card-post .post-content .article-link {
@@ -210,19 +188,12 @@ main .post-container .card .card-post .post-content .article-link {
 }
 
 main .post-container .card .card-post .post-content .article-link .post-title {
-  font-size: 20px;
   margin-bottom: 5px;
-}
-
-main .post-container .card .card-post .post-content .article-link .post-text {
-  font-size: 16px;
 }
 
 main .post-container .card .card-post .post-footer {
   width: 100%;
   color: #5a5a5a;
-  font-size: 13px;
-  margin-top: 20px;
 }
 
 main .post-container .card .card-post .post-footer .flex-footer {
@@ -248,9 +219,6 @@ main .post-container .card .card-post .post-footer .flex-footer > span {
 }
 
 main .post-container .card .card-post .post-footer .flex-footer .tag {
-  width: 50px;
-  height: 24px;
-  padding: 2px 11px 3px 12px;
   border-radius: 17px;
   background-color: #eef2f3;
   display: -webkit-box;
@@ -274,14 +242,12 @@ main .post-container .card .card-post .post-footer .flex-footer .circle {
 }
 
 main .post-container .card .card-post .post-footer .flex-footer .save {
-  font-size: 20px;
   color: #139eca;
   cursor: pointer;
 }
 
 .site-footer {
   width: 100%;
-  height: 131px;
   background-color: #232f3d;
   color: white;
   border-radius: 5px 5px 0 0;
@@ -331,14 +297,11 @@ main .post-container .card .card-post .post-footer .flex-footer .save {
 }
 
 .site-footer .footer-container .logo img {
-  width: 124px;
-  height: auto;
   -webkit-filter: grayscale(100%) invert(100%) brightness(5);
           filter: grayscale(100%) invert(100%) brightness(5);
 }
 
 .site-footer .footer-container .footer-text {
-  width: 619px;
   line-height: normal;
   font-family: 'bahij-helvetica-roman';
   text-align: right;
@@ -346,12 +309,7 @@ main .post-container .card .card-post .post-footer .flex-footer .save {
   margin-right: 50px;
 }
 
-.site-footer .footer-container .footer-link {
-  width: 27%;
-}
-
 .site-footer .footer-container .footer-link ul {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

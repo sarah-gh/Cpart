@@ -6,7 +6,6 @@ $dark-grey-blue : #28394f;
 $dark-slate-blue: #264e64;
 
 .container{
-  width: 1140px;
   margin: 0 auto;
   .row{
     width: 100%;
@@ -19,7 +18,6 @@ $dark-slate-blue: #264e64;
 }
 
 .header{
-  width: 100%;
   height: 100px;
   height: 65px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
@@ -29,19 +27,12 @@ $dark-slate-blue: #264e64;
   }
   .userLogin{
     .btn-login{
-      // width: 150px;
-      // padding: 10px auto;
       text-align: center;
-      width: 165px;
-      height: 40px;
-      padding: 4px 36px 6px;
       border : 0;
-      border-radius: 10px;
       background-color: $tealish;
       color: white;
       cursor: pointer;
       transition: 0.5s ease all;
-      font-size: 18px;
       font-family: 'bahij-helvetica-bold';
       &:hover{
         background-color: #25918b;
@@ -54,7 +45,6 @@ $dark-slate-blue: #264e64;
     justify-content: space-between;
     align-items: center;
     img{
-      width: 124px;
       height: auto;
     }
   }
@@ -67,25 +57,16 @@ main{
   font-family: 'bahij-helvetica-roman';
   .post-container{
     .card{
-      width: 100%;
-      height: 300px;
-      margin-bottom: 40px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       .card-img{
-        width: 40%;
         img{
-          width: 100%;
-          height: 300px;
           border-radius:5px;
         }
       }
       .card-post{
-        width: 49%;
-        //height: 240px;
-        margin-left: 5%;
         direction: rtl;
         display: flex;
         flex-direction: column;
@@ -107,13 +88,11 @@ main{
               border-radius: 50%;
             }
             .author-name{
-              font-size: 15px;
               margin-right: 15px;
               color: $dark-grey-blue;
             }
           }
           button{
-            width: 67.5px;
             height: 23px;
             flex-grow: 0;
             padding: 0 6px 1px;
@@ -135,23 +114,16 @@ main{
         }
         .post-content{
           line-height: 2;
-          margin-top: 20px;
           .article-link{
             color: $dark-grey-blue;
             .post-title{
-              font-size: 20px;
               margin-bottom: 5px;
-            }
-            .post-text{
-              font-size: 16px;
             }
           }
         }
         .post-footer{
           width: 100%;
           color: #5a5a5a;
-          font-size: 13px;
-          margin-top: 20px;
           .flex-footer {
             width: 100%;
             display: flex;
@@ -164,9 +136,6 @@ main{
               margin: 0 10px;
             }
             .tag{
-              width: 50px;
-              height: 24px;
-              padding: 2px 11px 3px 12px;
               border-radius: 17px;
               background-color: $pale-grey;
               display: flex;
@@ -182,7 +151,6 @@ main{
               margin: 0 ;
             }
             .save{
-              font-size:20px;
               color:#139eca;
               cursor: pointer;
             }
@@ -195,7 +163,6 @@ main{
 
 .site-footer {
   width: 100%;
-  height: 131px;
   background-color: #232f3d;
   color: white;
   border-radius: 5px 5px 0 0;
@@ -219,13 +186,10 @@ main{
       justify-content: space-between;
       align-items: center;
       img{
-        width: 124px;
-        height: auto;
         filter: grayscale(100%) invert(100%) brightness(5);
       }
     }
     .footer-text{
-      width: 619px;
       line-height: normal;
       font-family: 'bahij-helvetica-roman';
       text-align: right;
@@ -233,9 +197,7 @@ main{
       margin-right: 50px;
     }
     .footer-link{
-      width: 27%;
       ul{
-        width: 100%;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;

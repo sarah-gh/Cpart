@@ -318,7 +318,7 @@
     width: 100%;
   }
   .site-footer .footer-container {
-    width: 90%;
+    width: 93%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
@@ -514,12 +514,9 @@
   }
 }
 
-@media only screen and (min-width: 1488px) {
+@media only screen and (min-width: 1400px) {
   .container {
     width: 1140px;
-  }
-  .header .userLogin .btn-login {
-    font-size: 18px;
   }
   main .post-container .card .card-post .post-header {
     padding: 10px 0 0 0;
@@ -531,7 +528,6 @@
         -ms-flex-positive: 0;
             flex-grow: 0;
     padding: 0 6px 1px;
-    border-radius: 6px;
   }
   main .post-container .card .card-post .post-content {
     line-height: 2;
@@ -550,7 +546,7 @@
     font-size: 20px;
   }
   .site-footer .footer-container {
-    width: 1471px;
+    width: 97%;
   }
   .site-footer .footer-container .footer-text {
     width: 619px;
