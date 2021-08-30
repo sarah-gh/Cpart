@@ -1,0 +1,67 @@
+// just for last size 
+.header{
+    height: 65px;
+}
+
+.header-container{
+    width:1140px;
+    height: 100%;
+}
+.main-container{
+    width:750px;
+}
+
+.site-footer {
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px 5px 0 0;
+    .footer-gradient{
+      border-radius: 5px 5px 0 0;
+      width: 100%;
+    }
+    .footer-container{
+      width: 93%;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      .logo{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        img{
+          width: 90px;
+        }
+      }
+      .footer-text{
+        width: 320px;
+        line-height: normal;
+        margin-right: 50px;
+        font-size: 12px;
+        display: none;
+      }
+      .footer-link{
+        margin: 30px 0;
+        width: 50%;
+        ul{
+          width: 100%;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          font-size: 13px;
+        }
+      }
+    }
+}
+.site-footer {
+    .footer-container{
+      width: 97%;
+      .footer-text{
+        width: 619px;
+      }
+      .footer-link{
+        width: 27%;
+        ul{
+          font-size: 18px;
+        }
+      }
+    }
+  }
