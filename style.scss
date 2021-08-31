@@ -1,9 +1,5 @@
-$tealish : #30bfb7;
-$pale-grey : #eef2f3;
-$white: #fafafa;
-$white-Two : #fcfcfc;
-$dark-grey-blue : #28394f;
-$dark-slate-blue: #264e64;
+@import "./footer";
+@import "./variable";
 
 .container{
   margin: 0 auto;

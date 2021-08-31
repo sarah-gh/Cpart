@@ -142,6 +142,7 @@
 
     .site-footer {
       height: 110px;
+      margin-top: 80px;
       .footer-container{
         .footer-text{
           width: 320px;
@@ -181,7 +182,6 @@
 @media only screen and (min-width: 1200px) {  
     .site-footer {
       border-radius: 5px 5px 0 0;
-      margin-top: 80px;
       .footer-container{
         .logo{
           img{
