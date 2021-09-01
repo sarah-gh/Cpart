@@ -16,6 +16,11 @@
     src: url(./bahij/bahij_helvetica_neue_roman_by_bahijvirtualacademy_dammd50.ttf);
     font-weight: normal;
 }
+@font-face {
+    font-family:'BYekan';
+    src:url('./Yekan-bold/BYekan.ttf');
+    font-style:normal;
+    font-weight:normal;
 
 /* @font-face {
     font-family: 'bahij-helvetica-bold';
