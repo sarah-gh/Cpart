@@ -1,29 +1,27 @@
 
-//axios.defaults.baseURL = 'http://192.168.43.194:5000/api/'
 let data;
 const posts = document.querySelector('#post-content');
 
-axios.get('http://localhost:8000/api/v2/posts')
-  .then(function (response) {    
-    data = response.data;
+fetch('http://localhost:8000/api/v2/posts')
+  .then(response => response.json())
+  .then(data => {
     let postImg; 
     let authorImg;
     data.forEach((value) => {
-        axios.get('http://localhost:8000'+value.postImage)
+        fetch('http://localhost:8000'+value.postImage)
             .then(function (response) {
                 postImg = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             })
-        axios.get('http://localhost:8000'+value.authorImage)
+        fetch('http://localhost:8000'+value.authorImage)
             .then(function (response) {
                 authorImg = response.data;
             })
             .catch(function (error) {
                 console.log(error);
             })
-        console.log(authorImg)
         let article = document.createElement("article");
         article.classList.add("card");
         article.innerHTML = `
@@ -69,26 +67,4 @@ axios.get('http://localhost:8000/api/v2/posts')
         posts.appendChild(article)
     })
   })
-  .catch(function (error) {
-    console.log(error);
-  })
-
-
-function ConvertNumberToPersion() {
-    persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
-    function traverse(el) {
-        if (el.nodeType == 3) {
-            var list = el.data.match(/[0-9]/g);
-            if (list != null && list.length != 0) {
-                for (var i = 0; i < list.length; i++)
-                    el.data = el.data.replace(list[i], persian[list[i]]);
-            }
-        }
-        for (var i = 0; i < el.length; i++) {
-            traverse(el[i]);
-        }
-    }
-    console.log(traverse(245));
-}
-
-ConvertNumberToPersion()
+  .catch(console.error);
