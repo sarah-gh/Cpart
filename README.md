@@ -1,11 +1,24 @@
-# Developer 3 course project
+# app
 
-## in the name of God
+## Project setup
+```
+npm install
+```
 
-### Part Software Group 
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-<br>
+### Compiles and minifies for production
+```
+npm run build
+```
 
-#### Group Name: pioneers
-#### Group Members: Sara Ghotbzadeh - Mohammad Vatani
+### Lints and fixes files
+```
+npm run lint
+```
 
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

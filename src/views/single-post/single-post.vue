@@ -1,0 +1,3 @@
+<template>
+    single post
+</template>
