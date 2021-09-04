@@ -1,0 +1,126 @@
+@import "../../../../assets/sass/_variable";
+
+.header{
+    height: 65px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
+.header-container{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .avatar{
+            border-radius: 50%;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .header-container{
+        width:90%;
+        height: 100%;
+    }
+    .header-container{
+        .logo-img{
+            img{
+                width: 80px;
+            }
+        }
+        .buttons{
+            .nav-top{
+                margin: auto 7px;
+            }
+            .avatar{
+                width: 30px;
+                height: 30px;
+            }
+            .icon{
+                width: 17px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .header-container{
+        width:90%;
+        height: 100%;
+    }
+    .header-container{
+        .logo-img{
+            img{
+                width: 100px;
+            }
+        }
+        .buttons{
+            .nav-top{
+                margin: auto 12.5px;
+            }
+            .avatar{
+                width: 40px;
+                height: 40px;
+            }
+            .icon{
+                width: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 798px) {
+    .header-container{
+      width:90%;
+      height: 100%;
+    }
+    .header-container{
+      .logo-img{
+          img{
+              width: 120px;
+          }
+      }
+      .buttons{
+          .nav-top{
+              margin: auto 12.5px;
+          }
+          .avatar{
+              width: 35px;
+              height: 35px;
+          }
+          .icon{
+              width: 24px;
+          }
+      }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+    .header-container{
+      width:90%;
+      height: 100%;
+    }
+    
+    .header-container{
+      .buttons{
+          .nav-top{
+              margin: auto 12.5px;
+          }
+          .avatar{
+              width: 40px;
+              height: 40px;
+          }
+      }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header-container{
+      width:1140px;
+      height: 100%;
+    }
+}
