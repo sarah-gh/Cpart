@@ -49,11 +49,6 @@ export const routes = [
     ]
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: "/:catchAll(.*)",
     component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
   },
