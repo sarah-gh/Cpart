@@ -1,12 +1,12 @@
 <template>
-    <div class="posts">
-        ppp
-    </div>
+    <main>
+        <section class="post-container container">
+            <article class="card" v-for="(item,index) in posts" :key="index" >
+                <post-summary :post="item"></post-summary>
+            </article>
+        </section>
+    </main>
 </template>
 
-<style lang="scss" scoped>
-.posts{
-    width: 100%;
-    height: 1000px;
-}
-</style>
+<script src="./posts.js"></script>
+<style lang="scss" src="./posts.scss"></style>
