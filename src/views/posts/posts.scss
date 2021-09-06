@@ -13,6 +13,7 @@ main{
       .card-img{
         img{
           border-radius:5px;
+          cursor: pointer;
         }
       }
       .card-post{
@@ -62,13 +63,22 @@ main{
           }
         }
         .post-content{
-          line-height: 2;
-          .article-link{
-            color: $dark-grey-blue;
+            cursor: pointer;
+            line-height: 2;
+            .article-link{
+                color: $dark-grey-blue;
+            
             .post-title{
-              margin-bottom: 5px;
+                margin-bottom: 5px;
             }
-          }
+            }
+            &:hover {
+                .article-link .post-title{
+                    color: #30bfb7;
+                }
+                
+            }
+
         }
         .post-footer{
           width: 100%;

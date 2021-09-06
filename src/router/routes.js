@@ -21,7 +21,7 @@ export const routes = [
         component: () => import(/* webpackChunkName: "profile" */ '../views/profile/profile.vue')
       },
       {
-        path: '/single-post',
+        path: '/single-post/:id',
         name: 'single-post',
         component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
       },

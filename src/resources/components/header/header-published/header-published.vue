@@ -6,9 +6,9 @@
                     <button class="btn btn-login"> ورود / ثبت نام</button>
                 </div>
                 <div class="logo">
-                    <a href="#" class="logo-img">
+                    <router-link to="/" href="#" class="logo-img">
                         <img src="../../../../assets/img/Group249.svg" alt="logo" /> 
-                    </a>
+                    </router-link>
                 </div>
             </section>
         </div>
