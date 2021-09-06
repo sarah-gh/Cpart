@@ -2,10 +2,6 @@
   
 </template>
 
-<script>
-export default {
-
-}
-</script>
+<script src="./profile.js"></script>
 
 <style> </style>

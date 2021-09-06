@@ -14,5 +14,4 @@
 </template>
 
 <script src="./bookmark.js"></script>
-
-<style src="./bookmark.scss" lang="scss" ></style>
+<style src="./bookmark.scss" lang="scss"></style>
