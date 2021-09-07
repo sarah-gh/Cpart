@@ -13,21 +13,21 @@ export default {
         }
     },
     beforeMount(){
-        this.text = this.post.text;
-        if (this.post.text.length > 187) {
-            this.text = this.text.substring(0, 184) + "...";
+        this.text = this.post.artcletext;
+        if (this.post.artcletext.length > 180) {
+            this.text = this.text.substring(0, 175) + "...";
         }
         
     },
     mounted() {
-
+        //console.log(this.post)
     },
     methods: {
         routeQuery(item) {
-            this.$router.push({ path: `/single-post/${item.id}`})
+            this.$router.push({ path: `/single-post/${item.articleid}`})
         },
         routeQueryName(item){
-            this.$router.push({ path: `/profile/${item.id}`}) /// الان ای دی پست رو میفرسته و باید عوض بشه
+            this.$router.push({ path: `/profile/${item.articleid}`}) /// الان ای دی پست رو میفرسته و باید عوض بشه
         }
       }
 }

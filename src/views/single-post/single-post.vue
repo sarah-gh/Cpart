@@ -1,7 +1,7 @@
 <template>
     <main class="main">
         <div class="main-container">
-            <post-full-content></post-full-content>
+            <post-full-content :post="post"></post-full-content>
             
             <div class='this-author'>
                 <span>از همین نویسنده</span>

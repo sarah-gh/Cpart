@@ -29,7 +29,7 @@ export default {
                     text: `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،`,
                 }
             ],
-            post: [],
+            post: {},
             otherPosts: [
                 {
                     img: 'Capture1.png',
@@ -52,6 +52,24 @@ export default {
         postThisAuthor
     },
     beforeMount() {
-        console.log(this.$route.params.id);
+        console.log("id :" + this.$route.params.id);
     },
+    created() {
+        this.getPosts();
+    },
+    methods: {
+        async getPosts() {
+            try {
+              const response = await this.$http.get(
+                `http://localhost:8000/api/v2/posts/${this.$route.params.id}`
+              );
+              this.post = response.data;
+              this.post = this.post["0"];
+              console.log(this.post);
+            } catch (error) {
+              console.log(error);
+            }
+        },
+    }
+
 }
