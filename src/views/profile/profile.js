@@ -15,5 +15,8 @@ export default {
         onClickNav(data){
             console.log(data);
         }
-    }
+    },
+    beforeMount() {
+        console.log(this.$route.params.id);
+    },
 }

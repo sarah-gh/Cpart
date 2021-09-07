@@ -52,7 +52,6 @@ export default {
         postThisAuthor
     },
     beforeMount() {
-        //console.log(this.$route.params.id);
-        
+        console.log(this.$route.params.id);
     },
 }

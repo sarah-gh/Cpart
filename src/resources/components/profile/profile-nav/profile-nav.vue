@@ -1,24 +1,9 @@
 <template>
     <div class="router-nav">
         <div class="link">
-            <a :class="[ navigator[0][1] ? 'active' : '']" @click="navActive(x)">
+            <a v-for="(item, x) in navigator" :key="x" :class="[ item[1] ? 'active' : '']" @click="navActive(x)">
                 <p>
-                    {{ navigator[0][0] }}
-                </p>
-            </a>
-            <a :class="[ navigator[1][1] ? 'active' : '']" @click="navActive(x)">
-                <p>
-                    {{ navigator[1][0] }}
-                </p>
-            </a>
-            <a :class="[ navigator[2][1] ? 'active' : '']" @click="navActive(x)">
-                <p>
-                    {{ navigator[2][0] }}
-                </p>
-            </a>
-            <a :class="[ navigator[3][1] ? 'active' : '']" @click="navActive(x)">
-                <p>
-                    {{ navigator[3][0] }}
+                    {{ item[0] }}
                 </p>
             </a>
         </div>

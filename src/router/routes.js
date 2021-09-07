@@ -16,7 +16,7 @@ export const routes = [
         component: () => import(/* webpackChunkName: "bookmark" */ '../views/bookmark/bookmark.vue')
       }, 
       {
-        path: '/profile',
+        path: '/profile/:id',
         name: 'profile',
         component: () => import(/* webpackChunkName: "profile" */ '../views/profile/profile.vue')
       },

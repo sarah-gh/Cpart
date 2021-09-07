@@ -32,6 +32,9 @@ main{
             display: flex;
             flex-direction: row;
             align-items: center;
+            a{
+              cursor: pointer;
+            }
             .avatar{
               width: 30px;
               height: 30px;

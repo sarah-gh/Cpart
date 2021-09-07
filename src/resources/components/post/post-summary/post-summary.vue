@@ -5,10 +5,10 @@
     <div class="card-post">
         <header class="post-header">
             <div class="post-author">
-                <a href="#">
+                <a @click="routeQueryName(post)">
                     <img class="avatar" src="../../../../assets/img/6893547.png" alt="avatar" />
                 </a>
-                <a href="#" class="author-name">{{ post.authorName }}</a>
+                <a @click="routeQueryName(post)" class="author-name">{{ post.authorName }}</a>
             </div>
             <button>دنبال کردن</button>
         </header>

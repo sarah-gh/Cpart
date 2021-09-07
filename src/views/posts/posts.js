@@ -68,9 +68,6 @@ export default {
             this.isPublic = false;
         }
     },
-    mounted() {
-        console.log(window.location.href);
-    },
     methods: {
         onClickNav(data){
             this.summary = !this.summary;
