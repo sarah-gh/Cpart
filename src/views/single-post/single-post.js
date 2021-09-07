@@ -1,9 +1,12 @@
 import postFullContent from '../../resources/components/post/post-full-content/post-full-content.vue'
 import postComment from '../../resources/components/post/post-comment/post-comment.vue'
+import postThisAuthor from '../../resources/components/post/post-this-author/post-this-author.vue'
+
 export default {
     name: 'posts-summary',
     data(){
         return {
+            items: [1,2,3],
             comments : [
                 {
                     name: "سروش صفایی زاده",
@@ -25,11 +28,30 @@ export default {
                     time: "۷ دقیقه مطالعه",
                     text: `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،`,
                 }
+            ],
+            post: [],
+            otherPosts: [
+                {
+                    img: 'Capture1.png',
+                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
+                },
+                {
+                    img: 'Capture2.png',
+                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
+                },
+                {
+                    img: 'Capture3.png',
+                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
+                }
             ]
         }
     },
     components: {
         postFullContent,
-        postComment
-    }
+        postComment,
+        postThisAuthor
+    },
+    beforeMount() {
+        console.log(this.$route.params.id);
+    },
 }

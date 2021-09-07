@@ -1,5 +1,4 @@
 <template>
-
     <main>
         <div class="saved-message container">
             <img src="@/assets/img/svg-post/saved-messages.svg" alt="">

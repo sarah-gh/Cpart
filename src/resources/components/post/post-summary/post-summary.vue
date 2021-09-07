@@ -1,24 +1,24 @@
 <template>
     <div class="card-img">
-        <img :src="require(`@/assets/img/${post.imgPost}`)" alt="img post" @mouseover="hoverPost = true" />
+        <img @click="routeQuery(post)" :src="require(`@/assets/img/${post.imgPost}`)" alt="img post" />
     </div>
     <div class="card-post">
         <header class="post-header">
             <div class="post-author">
-                <a href="#">
+                <a @click="routeQueryName(post)">
                     <img class="avatar" src="../../../../assets/img/6893547.png" alt="avatar" />
                 </a>
-                <a href="#" class="author-name">{{ post.authorName }}</a>
+                <a @click="routeQueryName(post)" class="author-name">{{ post.authorName }}</a>
             </div>
             <button>دنبال کردن</button>
         </header>
         <div class="post-content">
-            <a href="./post.html" class="article-link">
-                <h2 class="post-title"> 
+            <a class="article-link" @click="routeQuery(post)">
+                <h2 class="post-title"  > 
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
-                    {{ post.text }}
+                    {{ text }}
                 </div>
             </a>
         </div>
@@ -38,3 +38,9 @@
 </template>
 
 <script type="text/javascript" src="./post-summary.js"></script>
+
+<style scoped>
+.h2hover{
+    color: #139eca;
+}
+</style>

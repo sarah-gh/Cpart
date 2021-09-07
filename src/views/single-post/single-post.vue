@@ -3,7 +3,18 @@
         <div class="main-container">
             <post-full-content></post-full-content>
             
-            
+            <div class='this-author'>
+                <span>از همین نویسنده</span>
+            </div>
+            <div class="headerLine">
+                <div class="boldLine"></div>
+                <div class="line"></div>
+            </div>
+            <div class="other-articles">
+                <article class="article" v-for="(item, index) in otherPosts" :key="index">
+                    <post-this-author :post="item"></post-this-author>
+                </article>
+            </div>
 
             <div class='comments-title'>
                 <p>نظرات</p>
@@ -44,5 +55,4 @@
 </template>
 
 <script src="./single-post.js"></script>
-
 <style lang="scss" src="./single-post.scss"></style>
