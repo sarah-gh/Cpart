@@ -46,7 +46,9 @@
                     <img src="../../../../assets/img/notification.svg" class='notification nav-top icon' alt="notification">
                 </div>
                 <div>
-                    <img src="../../../../assets/img/save-2.svg" class='save-post nav-top icon' alt="save">
+                    <router-link to="/bookmark">
+                        <img src="../../../../assets/img/save-2.svg" class='save-post nav-top icon' alt="save">
+                    </router-link>
                 </div>                
                 <div class="search-container">
                     <img src="../../../../assets/img/search-normal.svg" class='search nav-top icon' @click="clickIsVisibleSearch()" alt="search">

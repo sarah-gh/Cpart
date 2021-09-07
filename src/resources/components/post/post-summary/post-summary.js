@@ -13,7 +13,7 @@ export default {
         }
     },
     beforeMount(){
-        console.log(this.post.text.length);
+        //console.log(this.post.text.length);
         this.text = this.post.text;
         if (this.post.text.length > 187) {
             this.text = this.text.substring(0, 184) + "...";

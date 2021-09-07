@@ -41,7 +41,12 @@ export const routes = [
         path: '/public/posts',
         name: 'public-posts',
         component: () => import(/* webpackChunkName: "public posts" */ '../views/posts/posts.vue')
-      }, 
+      },
+      {
+        path: '/public/single-post/:id',
+        name: 'public-single-post',
+        component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
+      },
       {
         path: "/:catchAll(.*)",
         component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
@@ -52,6 +57,5 @@ export const routes = [
     path: "/:catchAll(.*)",
     component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
   },
-  //not found?
-  //* path
+ 
 ]

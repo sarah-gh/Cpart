@@ -1,10 +1,13 @@
 import postSummary from '../../resources/components/post/post-summary/post-summary.vue'
+import headerNav from '../../resources/components/header/header-nav/header-nav.vue'
 
 export default {
     name: 'posts-summary',
     data(){
         return {
             myQuery: 1234,
+            summary: true,
+            isPublic: false,
             posts: [
                 {
                     id: 10001,
@@ -50,6 +53,28 @@ export default {
         }
     },
     components: {
-        postSummary
+        postSummary,
+        headerNav
+    },
+    computed: {
+        
+    },
+    beforeMount() {
+        let url = window.location.href;
+        if(url.indexOf('public') !== -1) {
+            this.isPublic = true;
+        }
+        else{
+            this.isPublic = false;
+        }
+    },
+    mounted() {
+        console.log(window.location.href);
+    },
+    methods: {
+        onClickNav(data){
+            this.summary = !this.summary;
+            console.log(data);
+        }
     }
 }
