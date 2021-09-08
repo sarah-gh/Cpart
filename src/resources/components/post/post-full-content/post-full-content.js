@@ -9,10 +9,6 @@ export default {
     data(){
         return {
             title_route: '',
-            text : ''
         }
-    },
-    mounted() {
-        console.log(this.post)
     },
 }

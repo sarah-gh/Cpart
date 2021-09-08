@@ -31,6 +31,10 @@ export default {
         comment : {
             type: Object,
             required: false
+        },
+        ccc: {
+            type: Object,
+            required: false
         }
     },
     data() {
@@ -38,6 +42,11 @@ export default {
             commentsReply: [1]
         }
     },
+    // beforeMount(){
+    //     setTimeout(function(){
+    //         console.log(this.ccc)
+    //     }, 1000);
+    // },
     components : {
         postCommentReply
     }
