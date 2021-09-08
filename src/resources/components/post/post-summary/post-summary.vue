@@ -8,7 +8,7 @@
                 <a href="#">
                     <img class="avatar" :src="post.userphoto" alt="avatar" />
                 </a>
-                <a href="#" class="author-name">{{ post.fname }} {{ post.lname }}</a>
+                <a href="#" @click="routeQueryName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</a>
             </div>
             <div class="follow">
             <button>دنبال کردن</button>
