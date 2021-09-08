@@ -23,6 +23,8 @@
                     {{ i }}
                 </span>
                 <span class="save"><img src="../../../../assets/img/archive-add_3.svg"></span>
+                <span class="like"><img src="../../../../assets/img/svg-profile/like.svg"></span>
+                <span class="comments"><img src="../../../../assets/img/svg-profile/message-question.svg"></span>
             </div>
         </footer>
     </div>
