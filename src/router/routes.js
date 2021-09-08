@@ -16,12 +16,12 @@ export const routes = [
         component: () => import(/* webpackChunkName: "bookmark" */ '../views/bookmark/bookmark.vue')
       }, 
       {
-        path: '/profile',
+        path: '/profile/:id',
         name: 'profile',
         component: () => import(/* webpackChunkName: "profile" */ '../views/profile/profile.vue')
       },
       {
-        path: '/single-post',
+        path: '/single-post/:id',
         name: 'single-post',
         component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
       },
@@ -41,7 +41,12 @@ export const routes = [
         path: '/public/posts',
         name: 'public-posts',
         component: () => import(/* webpackChunkName: "public posts" */ '../views/posts/posts.vue')
-      }, 
+      },
+      {
+        path: '/public/single-post/:id',
+        name: 'public-single-post',
+        component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
+      },
       {
         path: "/:catchAll(.*)",
         component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
@@ -49,14 +54,8 @@ export const routes = [
     ]
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: "/:catchAll(.*)",
     component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
   },
-  //not found?
-  //* path
+ 
 ]
