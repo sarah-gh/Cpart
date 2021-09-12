@@ -2,6 +2,7 @@ import postFullContent from '../../resources/components/post/post-full-content/p
 import postComment from '../../resources/components/post/post-comment/post-comment.vue';
 import postThisAuthor from '../../resources/components/post/post-this-author/post-this-author.vue';
 import postNewComment from '../../resources/components/post/post-new-comment/post-new-comment.vue';
+import axios from 'axios'
 
 export default {
     name: 'posts-summary',
@@ -31,7 +32,7 @@ export default {
                 }
             ],
             comment: [],
-            post: [],
+            post: {},
             otherPosts: [
                 {
                     img: 'Capture1.png',
@@ -61,11 +62,16 @@ export default {
     methods: {
         async getPosts() {
             try {
-                const response = await this.$http.get(
+                const response = await axios.get(
                     `http://localhost:8000/api/v2/posts/${this.$route.params.id}`
-                );
-                this.post = response.data;
-                this.post = this.post["0"];
+                ).then((res) => {
+                    return res.data;
+                }).catch((err) => {
+                    console.error(err);
+                });
+
+                let post = response;
+                this.post = Object.assign(post["0"]);
             } catch (error) {
                 console.log(error);
             }

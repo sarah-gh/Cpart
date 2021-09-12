@@ -26,7 +26,7 @@ main{
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          font-family: 'bahij-helvetica-bold';
+          font-family: $font-bold;
           padding: 10px 0 0 0 ;
           .post-author{
             display: flex;
@@ -70,10 +70,11 @@ main{
             line-height: 2;
             .article-link{
                 color: $dark-grey-blue;
-            
-            .post-title{
-                margin-bottom: 5px;
-            }
+                transition: 0.5s ease-out all;
+                .post-title{
+                  margin-bottom: 5px;
+                  transition: 0.5s ease-out all;
+                }
             }
             &:hover {
                 .article-link .post-title{

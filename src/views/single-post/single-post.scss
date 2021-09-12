@@ -27,7 +27,7 @@
                     align-items: center;
                 }
                 .author-name{
-                    font-family: 'bahij-helvetica-bold';
+                    font-family: $font-bold;
                     text-decoration: none;
                     color: $dark-grey-blue;
                 }
@@ -242,7 +242,7 @@
         color: white;
         cursor: pointer;
         transition: 0.5s ease all;
-        font-family: 'bahij-helvetica-bold';
+        font-family: $font-bold;
         border-radius: 10px;
         display: flex;
         justify-content: center;

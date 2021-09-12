@@ -3,7 +3,7 @@
         <header class=post-header>
             <div class="post-author">
                 <a href="#">
-                    <img class="avatar" src="../../../../assets/img/6893547.png" alt="avatar" />
+                    <img class="avatar" :src="post.userphoto" alt="avatar" />
                 </a>  
                 <a href="#" class="author-name">{{ post.fname }} {{ post.lname }}</a>
                 <button class="follow-button">دنبال کردن</button>

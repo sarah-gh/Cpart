@@ -57,7 +57,7 @@
         color: white;
         cursor: pointer;
         transition: 0.5s ease all;
-        font-family: 'bahij-helvetica-bold';
+        font-family: $font-bold;
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
@@ -97,7 +97,7 @@
             flex-wrap: nowrap;
             align-items: center;
             .name{
-                font-family: 'bahij-helvetica-bold';
+                font-family: $font-bold;
                 font-size: 16px;
             }
             .circle{
