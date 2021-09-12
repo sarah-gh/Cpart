@@ -25,7 +25,7 @@
                 <div class="line"></div>
             </div>
 
-            <div class='comments' v-for="(com, i) in comments" :key="i">
+            <div class='comments' v-for="(com, index) in comments" :key="index">
                 <post-comment :comment="com"></post-comment>
                 <div class="commentLine"></div>
             </div>

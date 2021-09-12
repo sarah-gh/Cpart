@@ -58,7 +58,7 @@
             a.active{
                 color: $water-blue;
                 font-weight: bold;
-                font-family: 'bahij-helvetica-bold';
+                font-family: $font-bold;
                 border-bottom:1px solid $water-blue;
                 transition: .5s all ease-out;
             }

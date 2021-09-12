@@ -6,6 +6,7 @@ export default {
     name: "profile",
     data(){
         return {
+            navigate: [false, true, false],
             posts: [
                 {
                     id: 10001,
@@ -51,7 +52,13 @@ export default {
     },
     methods: {
         onClickNav(data){
-            console.log(data);
+            this.navigate.forEach((value,index) => {
+                if(index == data) {
+                    this.navigate[index] = true;
+                } else {
+                    this.navigate[index] = false;
+                }
+            })
         }
     },
     beforeMount() {

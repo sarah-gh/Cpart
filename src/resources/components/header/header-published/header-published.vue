@@ -34,7 +34,7 @@
       color: white;
       cursor: pointer;
       transition: 0.5s ease all;
-      font-family: 'bahij-helvetica-bold';
+      font-family: $font-bold;
       &:hover{
         background-color: #25918b;
       }
