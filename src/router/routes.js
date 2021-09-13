@@ -6,7 +6,7 @@ export const routes = [
     redirect: { name : 'posts'},
     children: [
       {
-        path: '/posts',
+        path: '/home',
         name: 'posts',
         component: () => import(/* webpackChunkName: "posts" */ '../views/posts/posts.vue')
       }, 
@@ -38,7 +38,7 @@ export const routes = [
     redirect: { name: 'public-posts' },
     children: [
       {
-        path: '/public/posts',
+        path: '/public/home',
         name: 'public-posts',
         component: () => import(/* webpackChunkName: "public posts" */ '../views/posts/posts.vue')
       },

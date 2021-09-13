@@ -85,6 +85,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 10px;
+        cursor: pointer;
     }
     input{
         height: 35px;

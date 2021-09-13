@@ -1,5 +1,25 @@
 @import "../../assets/sass/_variable";
+@import "../../assets/sass/_button";
 
+.follow-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: space-between;
+  align-items: center;
+  .followers{
+    width: 40%;
+    margin-bottom: 40px;
+  }
+}
+
+.about{
+  direction: rtl;
+  line-height: 2;
+  margin-bottom: 150px;
+}
 
 main{
   width: 100%;
@@ -21,6 +41,15 @@ main{
     }
   }
   .post-container{
+    .follow-container{
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
     .card{
       display: flex;
       flex-direction: row;

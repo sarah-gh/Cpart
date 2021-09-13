@@ -9,6 +9,7 @@ export default {
     data(){
         return {
             items: [1,2,3],
+            load : false,
             comments : [
                 {
                     name: "سروش صفایی زاده",
@@ -72,6 +73,7 @@ export default {
 
                 let post = response;
                 this.post = Object.assign(post["0"]);
+                this.load = true;
             } catch (error) {
                 console.log(error);
             }
