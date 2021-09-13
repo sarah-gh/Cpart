@@ -11,7 +11,7 @@
                 <a @click="routeQueryName(post)" class="author-name">{{ post.authorName }}</a>
             </div>
             <div class="follow">
-            <button>دنبال کردن</button>
+            <button class="follow">دنبال کردن</button>
                 <span class="save"><img src="../../../../assets/img/svg-post/archive-add.svg"></span>
             </div>
         </header>

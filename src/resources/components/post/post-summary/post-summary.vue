@@ -11,7 +11,7 @@
                 <a href="#" @click="routeQueryName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</a>
             </div>
             <div class="follow">
-            <button>دنبال کردن</button>
+            <button class="follow">دنبال کردن</button>
             
             </div>
 

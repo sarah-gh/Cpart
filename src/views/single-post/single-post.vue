@@ -1,6 +1,20 @@
 <template>
     <main class="main">
-        <div class="main-container">
+        <section class="load" v-if="!load">
+            <!-- <img src="@/assets/img/1494.gif" /> -->
+            <!-- <div class="load-wrapp">
+                <div class="load-3">
+                    <p>Loading 3</p>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div> -->
+            <div class="load2">
+                <hr/><hr/><hr/><hr/>
+            </div>
+        </section>
+        <div class="main-container"  v-if="load">
             <post-full-content :post="post"></post-full-content>
             
             <div class='this-author'>

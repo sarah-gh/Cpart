@@ -9,6 +9,8 @@ export default {
             myQuery: 1234,
             summary: true,
             isPublic: false,
+            load: false,
+            connection: true,
             posts: [],
         }
     },
@@ -41,7 +43,11 @@ export default {
                     return res.data;
                 });
                 this.posts = response;
+                this.connection = true;
+                this.load = true;
             } catch (error) {
+                this.connection = false;
+                this.load = true;
                 console.log(error);
             }
         },

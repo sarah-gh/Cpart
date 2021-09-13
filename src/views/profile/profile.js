@@ -1,6 +1,8 @@
 import profileHeader from '@/resources/components/profile/profile-header/profile-header.vue'
 import profileNav from '@/resources/components/profile/profile-nav/profile-nav.vue'
 import profilePost from '@/resources/components/profile/profile-post/profile-post.vue'
+import profileFollower from '@/resources/components/profile/profile-follower/profile-follower.vue'
+import profileAbout from '@/resources/components/profile/profile-about/profile-about.vue'
 
 export default {
     name: "profile",
@@ -48,7 +50,9 @@ export default {
     components:{
         profileHeader,
         profileNav,
-        profilePost
+        profilePost,
+        profileFollower,
+        profileAbout
     },
     methods: {
         onClickNav(data){

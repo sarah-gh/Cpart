@@ -5,8 +5,8 @@
     </section>
     <main>
         <section class="post-container container" v-if="navigate[0]">
-            <article class="card" v-for="(item,index) in posts" :key="index">
-              
+            <article class="about" >
+                <profile-about></profile-about>
             </article>
         </section>
         <section class="post-container container" v-if="navigate[1]">
@@ -14,9 +14,9 @@
               <profile-post :post="item"></profile-post>
             </article>
         </section>
-        <section class="post-container container" v-if="navigate[2]">
-            <article class="card" v-for="(item,index) in posts" :key="index">
-              
+        <section class="follow-container container" v-if="navigate[2]">
+            <article class="followers" v-for="(item,index) in 20" :key="index">
+                <profile-follower></profile-follower>
             </article>
         </section>
     </main>
