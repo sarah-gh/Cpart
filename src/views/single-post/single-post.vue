@@ -39,7 +39,7 @@
                 <div class="line"></div>
             </div>
 
-            <div class='comments' v-for="(com, index) in comments" :key="index">
+            <div class='comments' v-for="(com, index) in comment" :key="index">
                 <post-comment :comment="com"></post-comment>
                 <div class="commentLine"></div>
             </div>

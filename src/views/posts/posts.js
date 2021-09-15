@@ -38,10 +38,11 @@ export default {
         async getPosts() {
             try {
                 const response = await this.axios.get(
-                    "http://localhost:8000/api/v2/posts"
+                    "http://localhost:8000/api/posts"
                 ).then((res) => {
                     return res.data;
                 });
+                console.log(response);
                 this.posts = response;
                 this.connection = true;
                 this.load = true;

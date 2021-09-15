@@ -1,6 +1,6 @@
 <template>
     <div class="card-img">
-        <img :src="post.articleheaderphoto" alt="img post" @mouseover="hoverPost = true" @click="routeQuery(post)" />
+        <img :src="post.headerphoto" alt="img post" @mouseover="hoverPost = true" @click="routeQuery(post)" />
     </div>
     <div class="card-post">
         <header class="post-header">
@@ -19,7 +19,7 @@
         <div class="post-content">
             <a class="article-link" @click="routeQuery(post)">
                 <h2 class="post-title"> 
-                    {{ post.articletitle }}
+                    {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
                     {{ text }}
@@ -28,12 +28,12 @@
         </div>
         <footer class="post-footer">
             <div class="flex-footer">
-                <p class="date">{{ post.articledate }}</p>
+                <p class="date">{{ post.date }}</p>
                 <span class="circle"></span> 
                 <span class="time">{{ post.readtime }} دقیقه </span>
                 <span class="circle"></span> 
                 <span class="tag">
-                    {{ post.articletag }}
+                    {{ post.tag }}
                 </span>
                 <span class="save"><img src="../../../../assets/img/archive-add_3.svg"></span>
             </div>

@@ -10,26 +10,26 @@
             </div>
             <div class="post-title">
                 <h1 class="title"> 
-                    {{ post.articletitle }}
+                    {{ post.title }}
                 </h1>
             </div>
             <div class="post-details">
                 <div class="flex-footer">
-                    <p class="date">{{ post.articledate }}</p>
+                    <p class="date">{{ post.date }}</p>
                     <span class="circle"></span> 
                     <span class="time">{{ post.readtime }} دقیقه </span>
                     <span class="circle"></span> 
                     <span class="tag">
-                        {{ post.articletag }}
+                        {{ post.tag }}
                     </span>
                     <span class="save"><img src="../../../../assets/img/svg-post/archive-add.svg"></span>
                 </div>
             </div>
         </header>
         <div class='post-content'>
-            <img :src="post.articleheaderphoto" class="post-photo" alt="post-photo">
+            <img :src="post.headerphoto" class="post-photo" alt="post-photo">
             <p> {{ post.artcletext}} </p>
-            <img :src="post.articlefooterphoto" class="post-photo" alt="post-photo">
+            <img :src="post.footerphoto" class="post-photo" alt="post-photo">
         </div>
     </div>
 </template>
