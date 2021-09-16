@@ -1,6 +1,8 @@
 import { Form, Field, ErrorMessage } from 'vee-validate';
 // import * as yup from 'yup';
-// import  TextInput from "@/resources/components/custom/textInput/textInput.vue"
+let emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+// let phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
+
 const BORDER_SIZE = 10;
 const BORDER_COLOR = '#000000';
 
@@ -12,46 +14,69 @@ export default {
         ErrorMessage,
     },
     data(){
-        // const schema = yup.object({
-        //     email: yup.string().required().email(),
-        //     password: yup.string().required().min(8),
-        //     fname: yup.string().required().min(3),
-        //     lname: yup.string().required().min(3),
-        //     username: yup.string().required().min(8),
-        //     shortdescreption: yup.string().required().max(50),
-        //     description: yup.string().required().max(160),
-        //   });
-        let validdd = [true, true, true];
+        let valid = [true, true, true];
         const schema = {
             fname(value){
                 if(value.length < 3){
-                    validdd[0] = false;
+                    valid[0] = false;
                     return "not valid fname"
                 }
-                validdd[0] = true;
+                valid[0] = true;
                 return true
             },
             lname(value){
                 if(value.length < 3){
-                    validdd[1] = false;
+                    valid[1] = false;
                     return "not valid lname"
                 }
-                validdd[1] = true;
+                valid[1] = true;
                 return true
             },
             shortdescreption(value){
+                // if(value.length < 3){
+                //     valid[2] = false;
+                //     return "not valid shortdescreption"
+                // }
+                valid[2] = true;
+                return true
+            }
+        };
+        const links = {
+            email(value){
                 if(value.length < 3){
-                    validdd[2] = false;
-                    return "not valid shortdescreption"
+                    valid[0] = false;
+                    return "not valid fname"
                 }
-                validdd[2] = true;
+                if(!emailRegExp.test(value)){
+                    valid[0] = false;
+                    return "not valid"
+                }
+                valid[0] = true;
+                return true
+            },
+            whatsapp(value){
+                // if(value.length < 3){
+                //     valid[1] = false;
+                //     return "not valid"
+                // }
+                valid[1] = true;
+                return true
+            },
+            instagram(value){
+                // if(value.length < 3){
+                //     valid[2] = false;
+                //     return "not valid"
+                // }
+                valid[2] = true;
                 return true
             }
         };
         return {
             schema,
-            validdd,
+            links,
+            valid,
             show: true,
+            security: false,
             edit: [false, false, false],
             fname: "امیر حسین",
             lname: "مطلب زاده",
@@ -87,13 +112,22 @@ export default {
     methods: {
         onSubmit(values) {
             this.edit.forEach((value, index) => {
-                if(value == 0){
+                if(value === true) {
                     this.user.fname = values.fname;
                     this.user.lname = values.lname;
                     this.user.shortdescreption = values.shortdescreption;
                 }
-                if(value == 1){
-
+                if(value){
+                    this.subField(index);
+                }
+            });
+        },
+        onSubmitLink(values) {
+            this.edit.forEach((value, index) => {
+                if(value === true){
+                    this.user.email = values.email;
+                    this.user.whatsapp = values.whatsapp;
+                    this.user.instagram = values.instagram;
                 }
                 if(value){
                     this.subField(index);
@@ -102,7 +136,7 @@ export default {
         },
         subField(num){
             let err = false;
-            this.validdd.forEach((value) => {
+            this.valid.map((value) => {
                 if(value != true){
                     console.log('error')
                     return err = true;
@@ -131,6 +165,7 @@ export default {
                 }
             })
         },
+        /////// upload img
         validateImageFile(fileList = {}) {
             if(!fileList.length) {
               this.error = 'Invalid File';
