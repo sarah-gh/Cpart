@@ -15,7 +15,9 @@
                 <div class="footer-link">
                     <ul>
                         <li>
-                            <a>بنویسید</a>
+                            <router-link to="/new-post">
+                            بنویسید
+                            </router-link>
                         </li>
                         <li>
                             <a>راهنما</a>
