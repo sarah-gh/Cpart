@@ -50,7 +50,7 @@
                         name="fname"
                         type="text"
                         :value="user.fname"
-                        placeholder="Your Name"
+                        placeholder="Your first Name"
                         />
                         <ErrorMessage name="fname"><span class="span_error">باید حداقل ۳ حرف باشد </span></ErrorMessage>
                     </div>
@@ -60,7 +60,7 @@
                         name="lname"
                         type="text"
                         :value="user.lname"
-                        placeholder="Your Name"
+                        placeholder="Your last Name"
                         />
                         <ErrorMessage name="lname"><span class="span_error"> باید حداقل ۳ حرف باشد </span></ErrorMessage>
                     </div>
@@ -70,13 +70,13 @@
                         name="shortdescreption"
                         type="text"
                         :value="user.shortdescreption"
-                        placeholder="Your email address"
+                        placeholder="short description"
                         />
                         <ErrorMessage name="shortdescreption"><span class="span_error"> باید حداقل ۳ و حداکثر ۵۰ کاراکتر باشد </span></ErrorMessage>
                     </div>
                 </div>
                 <button class="edit" type="submit" >
-                    <img src="@/assets/img/svg-profile-setting/linear/edit_3.svg"/>
+                    <img src="@/assets/img/svg-profile-setting/tick.svg"/>
                 </button>
             </Form>
             <div class="headerLine">
@@ -108,45 +108,96 @@
                     </div>
                 </div>
                 <button class="edit" type="submit" @click.prevent="subField(1)" >
-                    <img src="@/assets/img/svg-profile-setting/linear/edit_3.svg"/>
+                    <img src="@/assets/img/svg-profile-setting/tick.svg"/>
                 </button>
             </form>
             <div class="headerLine">
                 <div class="line"></div>
             </div>
-            <div class="part part_links">
-                    <div class="links">
-                        <p class="lable">نام کاربری و لینک</p>
-                        <ul class="text">
-                            <li class="link">
-                                <a>{{ user.username }}@</a>
-                            </li>
-                            <li class="link">
-                                <a>http://helium.ir/@{{ user.username }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="links">
-                        <p class="lable">لینک های شما</p>
-                        <ul class="text">
-                            <li class="link">
-                                <img src="@/assets/img/svg-profile-setting/outline/sms.svg"/>
-                                <a>{{ user.email }}</a>
-                            </li>
-                            <li class="link">
-                                <img src="@/assets/img/svg-profile-setting/outline/whatsapp_2.svg"/>
-                                <a>whatsapp.com/{{ user.whatsapp }}</a>
-                            </li>
-                            <li class="link">
-                                <img src="@/assets/img/svg-profile-setting/outline/instagram.svg"/>
-                                <a>instagram.com/{{ user.instagram }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                <button class="edit" :class="{ notShow: !show }">
+            <div class="part part_links" v-if="!edit[2]">
+                <div class="links">
+                    <p class="lable">نام کاربری و لینک</p>
+                    <ul class="text">
+                        <li class="link">
+                            <a>{{ user.username }}@</a>
+                        </li>
+                        <li class="link">
+                            <a>http://helium.ir/@{{ user.username }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <p class="lable">لینک های شما</p>
+                    <ul class="text">
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/sms.svg"/>
+                            <a>{{ user.email }}</a>
+                        </li>
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/whatsapp_2.svg"/>
+                            <a>whatsapp.com/{{ user.whatsapp }}</a>
+                        </li>
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/instagram.svg"/>
+                            <a>instagram.com/{{ user.instagram }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="edit" :class="{ notShow: !show }"  @click="editField(2)">
                     <img src="@/assets/img/svg-profile-setting/linear/edit_3.svg"/>
                 </button>
             </div>
+            <Form @submit="onSubmitLink" :validation-schema="links" class="part part_links" v-if="edit[2]" >
+                <div class="links">
+                    <p class="lable">نام کاربری و لینک</p>
+                    <ul class="text">
+                        <li class="link">
+                            <a>{{ user.username }}@</a>
+                        </li>
+                        <li class="link">
+                            <a>http://helium.ir/@{{ user.username }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <p class="lable">لینک های شما</p>
+                    <ul class="text">
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/sms.svg"/>
+                            <Field
+                            name="email"
+                            type="text"
+                            :value="user.email"
+                            placeholder="Your email"
+                            />
+                            <ErrorMessage name="email"><span class="span_error"> (username)@(mail-server).(domain) </span></ErrorMessage>
+                        </li>
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/whatsapp_2.svg"/>
+                            <Field
+                            name="whatsapp"
+                            type="text"
+                            :value="user.whatsapp"
+                            placeholder="whatsapp"
+                            />
+                            <ErrorMessage name="whatsapp"><span class="span_error">باید حداقل ۳ حرف باشد </span></ErrorMessage>
+                        </li>
+                        <li class="link">
+                            <img src="@/assets/img/svg-profile-setting/outline/instagram.svg"/>
+                            <Field
+                            name="instagram"
+                            type="text"
+                            :value="user.instagram"
+                            placeholder="instagram"
+                            />
+                            <ErrorMessage name="instagram"><span class="span_error">باید حداقل ۳ حرف باشد </span></ErrorMessage>
+                        </li>
+                    </ul>
+                </div>
+                <button class="edit" type="submit">
+                    <img src="@/assets/img/svg-profile-setting/tick.svg"/>
+                </button>
+            </Form>
             <div class='about'>
                     <span>دنبال کنندگان</span>
             </div>
@@ -158,17 +209,16 @@
                         <p class="lable">حریم شخصی</p>
                         <div class="text">
                             <p>افراد برای دنبال کردن شما نیاز به تایید شما دارند</p>
-                            <div>
-                                <img />
+                            <div class="tick" @click="security = !security">
+                                <img v-if="security" src="@/assets/img/svg-profile-setting/linear/tick-square.svg"/>
                             </div>
                         </div>
                     </div>
-               
                     <div class="security">
                         <p class="lable">استخراج دنبال کنندگان</p>
                         <div class="text">
                             <p>از افراد دنبال کننده خود یک لیست تهیه کنید</p>
-                            <img />
+                            <img src="@/assets/img/svg-profile-setting/linear/clipboard-export.svg"/>
                         </div>
                     </div>
             </div>
@@ -179,49 +229,47 @@
                 <div class="line"></div>
             </div>
             <div class="part">
-                    <div class="security">
+                    <div class="font">
                         <p class="lable">فونت</p>
                         <div class="text">
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
+                            <ul class="family">
+                                <li>
+                                    IRANSans
+                                </li>
+                                <li class="active">
+                                    Bahij Helvetica
+                                </li>
+                                <li>
+                                    Kalameh
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="security">
+                    <div class="font">
                         <p class="lable">رنگ فونت</p>
                         <div class="text">
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
+                            <ul class="color">
+                                <li class="color-1 active"></li>
+                                <li class="color-2"></li>
+                                <li class="color-3"></li>
+                                <li class="color-4"></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="security">
+                    <div class="font">
                         <p class="lable">سایز فونت</p>
                         <div class="text">
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
-                            <div>
-                                <img />
-                            </div>
+                            <ul class="size">
+                                <li class="size-1">
+                                    Sm
+                                </li>
+                                <li class="size-2 active">
+                                    Md
+                                </li>
+                                <li class="size-3">
+                                    Lg
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

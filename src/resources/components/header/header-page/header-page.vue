@@ -27,10 +27,10 @@
                                         <img src="../../../../assets/img/svg-header/document-download.svg" />
                                     </a>
                                     <div class="vector-3"></div>
-                                    <a href="#" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                    <router-link to="/setting" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         تنظیمات حساب کاربری
                                         <img src="../../../../assets/img/svg-header/candle-2.svg" />
-                                    </a>
+                                    </router-link>
                                     <div class="vector-3"></div>
                                     <a href="#" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         خروج از حساب کاربری
