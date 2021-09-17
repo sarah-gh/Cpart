@@ -1,8 +1,9 @@
 <template>
   <div class="register">
-    <div class="head">شما هنوز در هلیوم ثبت نام نگرده اید.</div>
+    <div class="head">شما هنوز در هلیوم ثبت نام نکرده اید.</div>
     <div class="fill-form">لطفا اطلاعات زیر را برای ثبت نام تکمیل کنید.</div>
     <Form class="form" @submit="onSubmit" :validation-schema="signUp">
+      <div>
       <div class="label">شماره تلفن همراه شما</div>
       <Field
         class="input-box"
@@ -11,40 +12,41 @@
         placeholder="your phone number"
         value="09151232321"
       />
-      <div class="label">*لطفا نام خود را وارد کنید</div>
+      <div class="label">لطفا نام خود را وارد کنید*</div>
       <Field
         class="input-box"
         name="fname"
         type="text"
         placeholder="your first name"
       />
-      <ErrorMessage name="fname">این فیلد ضروری است</ErrorMessage>
-      <div class="label">*لطفا نام خانوادگی خود را وارد کنید</div>
+      <ErrorMessage name="fname"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+      <div class="label">لطفا نام خانوادگی خود را وارد کنید*</div>
       <Field
         class="input-box"
         name="lname"
         type="text"
         placeholder="your last name"
       />
-      <ErrorMessage name="lname">این فیلد ضروری است</ErrorMessage>
-      <div class="label">*لطفا ایمیل خود را وارد کنید</div>
+      <ErrorMessage name="lname"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+      <div class="label">لطفا ایمیل خود را وارد کنید*</div>
       <Field
         class="input-box"
         name="email"
         type="email"
         placeholder="your email"
       />
-      <ErrorMessage name="email">ایمیل وارد شده نا معتبر است.</ErrorMessage>
-      <div class="label">*لطفا نام کاربری دلخواه خود را وارد کنید.</div>
+      <ErrorMessage name="email"><span class="span_error">ایمیل وارد شده نا معتبر است.</span></ErrorMessage>
+      <div class="label">لطفا نام کاربری دلخواه خود را وارد کنید*.</div>
       <Field
         class="input-box"
         name="username"
         type="text"
         placeholder="your username"
       />
-      <ErrorMessage name="username">این نام کاربری قبلا انتخاب شده است</ErrorMessage>
+      <ErrorMessage name="username"><span class="span_error">این نام کاربری قبلا انتخاب شده است</span></ErrorMessage>
+      </div>
+      <button class="button" type="submit">تایید</button>
     </Form>
-    <button class="button" type="submit">تایید</button>
   </div>
 </template>
 
@@ -81,8 +83,11 @@ export default {
         }
       },
       username(value){
-        // check if username exists or not
-        return true
+        if (value.length === 0) {
+          return "this field can not be empty";
+        } else {
+          return true;
+        }
       }
     };
     return {
@@ -98,5 +103,5 @@ export default {
 
 </script>
 
-<style scoped lang="scss" src="./register.scss">
+<style scoped lang="scss" src="./signup.scss">
 </style>

@@ -6,7 +6,7 @@
         </div>
         <section class="post-container container">
             <article class="card" v-for="(item,index) in posts" :key="index" >
-                <post-summary :post="item"></post-summary>
+                <post-summary-bookmark :post="item"></post-summary-bookmark>
             </article>
         </section>
     </main> 

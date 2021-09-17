@@ -12,6 +12,10 @@ export default {};
 
 <style scoped lang="scss">
 @import "@/assets/sass/_variable";
+.span_error{
+  padding: 10px 0;
+  text-align: center;
+}
 .register {
   margin-top: 185px;
   display: flex;

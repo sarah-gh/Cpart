@@ -1,4 +1,8 @@
 @import "../../../assets/sass/_variable";
+.span_error{
+  padding: 10px 0;
+  text-align: center;
+}
 .register {
   display: flex;
   flex-direction: column;

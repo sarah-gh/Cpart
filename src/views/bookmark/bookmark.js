@@ -1,4 +1,4 @@
-import postSummary from '../../resources/components/post/post-summary-bookmark/post-summary.vue'
+import postSummaryBookmark from '../../resources/components/post/post-summary-bookmark/post-summary-bookmark.vue'
 
 export default {
     name: 'posts-summary',
@@ -14,7 +14,7 @@ export default {
         async getPosts() {
             try {
                 const response = await this.axios.get(
-                    `http://localhost:8000/api/users/savedMessages/${this.$route.params.id}`
+                    `http://localhost:8000/api/users/savedMessages/1`
                 ).then((res) => {
                     return res.data;
                 });
@@ -26,6 +26,6 @@ export default {
         }
     },
     components: {
-        postSummary
+        postSummaryBookmark
     }
 }
