@@ -23,12 +23,11 @@ export default {
         console.log(this.post)
     },
     methods: {
-        routeQuery(item) {
-            this.$router.push({ path: `/single-post/${item.articleid}`})
+        routeName(item){
+            return `/profile/${item.userid}`
         },
-        routeQueryName(item){
-            //console.log(item);
-            this.$router.push({ path: `/profile/${item.userid}`})
+        routeTitle(item){
+            return `/single-post/${item.articleid}`
         }
       }
 }
