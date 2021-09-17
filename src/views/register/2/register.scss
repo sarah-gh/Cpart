@@ -25,6 +25,15 @@
   }
   .register-code {
     margin-top: 70px;
+    .register-guide{
+      direction: rtl;
+      margin-right: 7.5px;
+    }
+      .digit{
+        margin: 10px 7.5px 0px 7.5px;
+        text-align: center;
+        font-size: 18px;
+      }
   }
   .button {
     background-color: $tealish;

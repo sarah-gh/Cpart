@@ -34,6 +34,7 @@ export default {};
     color: white;
     font-size: 18px;
     font-weight: bold;
+    font-family: $font-roman;
   }
 }
 </style>
