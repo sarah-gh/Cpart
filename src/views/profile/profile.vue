@@ -1,16 +1,16 @@
 <template>
     <section class="container">
-        <profile-header></profile-header>
+        <profile-header :user="userProfile"></profile-header>
         <profile-nav @clicked="onClickNav"></profile-nav>
     </section>
     <main>
         <section class="post-container container" v-if="navigate[0]">
             <article class="about" >
-                <profile-about></profile-about>
+                <profile-about :about="about"></profile-about>
             </article>
         </section>
         <section class="post-container container" v-if="navigate[1]">
-            <article class="card" v-for="(item,index) in posts" :key="index">
+            <article class="card" v-for="(item,index) in userposts" :key="index">
               <profile-post :post="item"></profile-post>
             </article>
         </section>
