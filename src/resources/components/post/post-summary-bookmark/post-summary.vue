@@ -1,14 +1,14 @@
 <template>
     <div class="card-img">
-        <img @click="routeQuery(post)" :src="require(`@/assets/img/${post.imgPost}`)" alt="img post" />
+        <img @click="routeQuery(post)" :src="post.headerphoto" alt="img post" />
     </div>
     <div class="card-post">
         <header class="post-header">
             <div class="post-author">
                 <a @click="routeQueryName(post)">
-                    <img class="avatar" src="../../../../assets/img/6893547.png" alt="avatar" />
+                    <img class="avatar" :src="post.userphoto" alt="avatar" />
                 </a>
-                <a @click="routeQueryName(post)" class="author-name">{{ post.authorName }}</a>
+                <a @click="routeQueryName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</a>
             </div>
             <div class="follow">
             <button class="follow">دنبال کردن</button>
@@ -21,7 +21,7 @@
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
-                    {{ post.text }}
+                    {{ text }}
                 </div>
             </a>
         </div>
@@ -29,11 +29,9 @@
             <div class="flex-footer">
                 <p class="date">{{ post.date }}</p>
                 <span class="circle"></span> 
-                <span class="time">{{ post.time }} </span>
+                <span class="time">{{ post.readtime }} دقیقه </span>
                 <span class="circle"></span> 
-                <span class="tag" v-for="(i , x) in post.tags" :key="x">
-                    {{ i }}
-                </span>
+                <span class="tag">{{ post.tag }}</span>
                 
             </div>
         </footer>

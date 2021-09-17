@@ -6,7 +6,7 @@ export const routes = [
     component: () => import(/* webpackChunkName: "posts" */ '../views/posts/posts.vue')
   }, 
   {
-    path: '/bookmark',
+    path: '/bookmark/:id',
     name: 'bookmark',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/bookmark/bookmark.vue')
   },
