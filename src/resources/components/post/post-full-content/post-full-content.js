@@ -11,4 +11,9 @@ export default {
             title_route: '',
         }
     },
+    mounted() {
+        setTimeout(() => {
+            console.log(this.post);
+        }, 3000);
+    },
 }

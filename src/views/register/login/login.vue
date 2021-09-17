@@ -4,7 +4,7 @@
     <Form class="form" @submit="userNumber" :validation-schema="phoneNumber">
       <p class="guide-text">لطفا شماره تلفن همراه خود را وارد کنید</p>
       <Field name="number" type="tel" class="phone-number" />
-      <ErrorMessage name="number" class="message-error">لطفا شماره خود را درست وارد کنید.</ErrorMessage>
+      <ErrorMessage name="number" class="message-error"><span class="span_error">لطفا شماره خود را درست وارد کنید.</span></ErrorMessage>
       <button type="submit" class="button">ادامه</button>
     </Form>
   </div>
@@ -41,5 +41,5 @@ export default {
 };
 </script>
 
-<style src="./register.scss" scoped lang="scss">
+<style src="./login.scss" scoped lang="scss">
 </style>

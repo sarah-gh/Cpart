@@ -38,7 +38,7 @@
     </div>
 </template>
 
-<script type="text/javascript" src="./post-summary.js"></script>
+<script type="text/javascript" src="./post-summary-bookmark.js"></script>
 
 <style scoped>
 .h2hover{

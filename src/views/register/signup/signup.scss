@@ -1,4 +1,9 @@
 @import "../../../assets/sass/_variable";
+.span_error{
+  padding: 10px 0;
+  text-align: center;
+  direction: rtl;
+}
 .register {
   margin-top: 65px;
   display: flex;
@@ -22,11 +27,11 @@
   }
   .input-box {
     margin-top: 10px;
-    width: 360px;
-    height: 50px;
+    width: 330px;
+    height: 30px;
     border-radius: 10px;
-    border: solid 1px $water-blue;
-    padding: 10px 16px 10px;
+    border: solid 1px $water-blue-30;
+    padding: 10px 15px;
   }
   .label {
     font-size: 18px;

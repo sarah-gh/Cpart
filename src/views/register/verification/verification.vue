@@ -44,5 +44,5 @@ export default {
 };
 </script>
 
-<style scoped lang="scss" src="./register.scss">
+<style scoped lang="scss" src="./verification.scss">
 </style>
