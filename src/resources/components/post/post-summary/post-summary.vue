@@ -5,10 +5,11 @@
     <div class="card-post">
         <header class="post-header">
             <div class="post-author">
-                <a href="#">
+                
+                <router-link :to="routeName(post)">
                     <img class="avatar" :src="post.userphoto" alt="avatar" />
-                </a>
-                <a href="#" @click="routeQueryName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</a>
+                </router-link>
+                <router-link :to="routeName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</router-link>
             </div>
             <div class="follow">
             <button class="follow">دنبال کردن</button>
@@ -17,14 +18,14 @@
 
         </header>
         <div class="post-content">
-            <a class="article-link" @click="routeQuery(post)">
+            <router-link class="article-link" :to="routeTitle(post)">
                 <h2 class="post-title"> 
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
                     {{ text }}
                 </div>
-            </a>
+            </router-link>
         </div>
         <footer class="post-footer">
             <div class="flex-footer">
