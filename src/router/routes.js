@@ -21,6 +21,11 @@ export const routes = [
     component: () => import(/* webpackChunkName: "new-post" */ '../views/new-post/new-post.vue')
   },
   {
+    path: '/search',
+    name: 'search',
+    component: () => import(/* webpackChunkName: "new-post" */ '../views/search/search.vue')
+  },
+  {
     path: '/profile/:id',
     name: 'profile',
     component: () => import(/* webpackChunkName: "profile" */ '../views/profile/profile.vue')

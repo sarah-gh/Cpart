@@ -19,11 +19,11 @@ export default {
             navigator: [
                 {
                     text: 'مقالات',
-                    active: false
+                    active: true,
                 },
                 {
                     text: 'افراد',
-                    active: true
+                    active: false
                 },
                 {
                     text: 'موضوعات',
