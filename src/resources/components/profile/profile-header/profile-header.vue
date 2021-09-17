@@ -3,14 +3,14 @@
         <img class="profile-header_img" src="@/assets/img/profile-background.png" alt="background">
         <div class="user-profile">
             <div class="user-info">
-                <img class="user-profile_img" src="@/assets/img/svg-profile/Rectangle21.png" alt="user-photo">
+                <img class="user-profile_img" :src="user.userphoto" alt="user-photo">
                 <div class="user-info-text">
                     <div class="user-name">
-                        <h2 class="name">مجتبی محمدی پناه</h2>
+                        <h2 class="name">{{ user.name }}</h2>
                         <span class="circle"></span>
-                        <p>۲/۵ هزار دنبال کننده</p>
+                        <p>{{ user.followers }} دنبال کننده</p>
                     </div>
-                    <p class="user-skill">طراح اپلیکیشن و مدرس برنامه نویسی کامپیوتر</p>
+                    <p class="user-skill">{{ user.shortdescription }}</p>
                 </div>
             </div>
             <div class="buttons">
@@ -117,6 +117,8 @@
 .user-profile_img{
     width: 165px;
     margin-top: -82px;
+    height: 165px;
+    border-radius: 30px;
 }
 
 </style>

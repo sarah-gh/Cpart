@@ -1,25 +1,24 @@
 <template>
     <h2>
-        مجتبی محمدی پناه
+        {{ about.fname }} {{ about.lname }}
     </h2>
-    <p>
-        کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.
-    </p>
+    <p> {{ about.description }} </p>
     <ul class="">
         <li>
             <img src="@/assets/img/svg-profile/sms.svg" />
-            <a>a.h.motaleb@gmail.com</a>
+            <a> {{ about.email }} </a>
         </li>
         <li>
             <img src="@/assets/img/svg-profile/whatsapp.svg" />
-            <a>whatsapp.com/a.h.motalleb</a>
+            <a> {{ about.whatsapp }} </a>
         </li>
         <li>
             <img src="@/assets/img/svg-profile/instagram.svg" />
-            <a>instagram.com/a.h.motalleb</a>
+            <a> {{ about.instagram }} </a>
         </li>
     </ul>
 </template>
+<script src="./profile-about.js"></script>
 
 <style lang="scss" scoped>
 @import "@/assets/sass/_variable";

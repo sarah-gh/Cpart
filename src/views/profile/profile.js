@@ -44,7 +44,11 @@ export default {
                     time: '۷ دقیقه مطالعه',
                     tags: ['تکنولوژی']
                 }
-            ]
+            ],
+            profile: {},
+            about: {},
+            userposts: [],
+            userProfile: {}
         }
     },
     components:{
@@ -53,6 +57,9 @@ export default {
         profilePost,
         profileFollower,
         profileAbout
+    },
+    created() {
+        this.getProfile();
     },
     methods: {
         onClickNav(data){
@@ -63,6 +70,29 @@ export default {
                     this.navigate[index] = false;
                 }
             })
+        },
+        async getProfile() {
+            try {
+                const response = await this.axios.get(
+                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`
+                ).then((res) => {
+                    return res.data; 
+                }).catch((err) => {
+                    console.error(err);
+                });
+                this.profile = response;
+                this.about = this.profile.about["0"]
+                this.userposts = this.profile.posts;
+                console.log(this.profile);
+                this.userProfile = {
+                    userphoto: this.about.userphoto,
+                    shortdescription: this.about.shortdescription,
+                    name : this.about.fname + " " + this.about.lname,
+                    followers: this.about.followers
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     beforeMount() {

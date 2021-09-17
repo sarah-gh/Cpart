@@ -2,7 +2,6 @@ import postFullContent from '../../resources/components/post/post-full-content/p
 import postComment from '../../resources/components/post/post-comment/post-comment.vue';
 import postThisAuthor from '../../resources/components/post/post-this-author/post-this-author.vue';
 import postNewComment from '../../resources/components/post/post-new-comment/post-new-comment.vue';
-import axios from 'axios'
 
 export default {
     name: 'posts-summary',
@@ -63,21 +62,21 @@ export default {
     methods: {
         async getPosts() {
             try {
-                const response = await axios.get(
+                const response = await this.axios.get(
                     `http://localhost:8000/api/posts/${this.$route.params.id}`
                 ).then((res) => {
                     return res.data; 
                 }).catch((err) => {
                     console.error(err);
                 });
-                const other = await axios.get(
+                const other = await this.axios.get(
                         `http://localhost:8000/api/posts?userid=${response["0"].userid}&limit=3`
                 ).then((res) => {
                     return res.data;
                 }).catch((err) => {
                     console.error(err);
                 });
-                const comm = await axios.get(
+                const comm = await this.axios.get(
                     `http://localhost:8000/api/comments/${this.$route.params.id}`
                 ).then((res) => {
                     return res.data; 
