@@ -1,10 +1,10 @@
 <template>
-        <div class="name">{{ comment.name }}</div>
+        <div class="name">{{ comment.fname }} {{ comment.lname }}</div>
         <div class="details">
             <div class="date-time">
-                <p class="date">{{ comment.date }}</p>
+                <p class="date">{{ comment.commentdate }}</p>
                 <span class="circle"></span> 
-                <span class="time">{{ comment.time }}</span>
+                <!-- <span class="time">{{ comment.time }}</span> -->
             </div>
             <div class="like-forward">
                 <img src="../../../../assets/img/forward-square.svg" class="forward">
@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="text-comment">
-            <p>{{ comment.text }}</p> 
+            <p>{{ comment.commenttext }}</p> 
         </div>
-            <div class="comment-reply" v-for="(commentReply , i) in comment.commentsReply" :key="i"> 
+            <div class="comment-reply" v-for="(commentReply , i) in comment.replyComment" :key="i"> 
                 <post-comment-reply :commentR="commentReply"></post-comment-reply>
             </div>
 

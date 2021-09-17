@@ -1,0 +1,54 @@
+@import "../../../assets/sass/_variable";
+.span_error{
+  padding: 10px 0;
+  text-align: center;
+  direction: rtl;
+}
+.register {
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $dark-grey-blue;
+  .head {
+    font-size: 20px;
+    font-weight: bold;
+    direction: rtl;
+    margin-bottom: 10px;
+  }
+  .fill-form {
+    font-size: 20px;
+    direction: rtl;
+  }
+
+  .form {
+    margin-top: 35px;
+    align-items: center;
+  }
+  .input-box {
+    margin-top: 10px;
+    width: 330px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px $water-blue-30;
+    padding: 10px 15px;
+  }
+  .label {
+    font-size: 18px;
+    margin-top: 25px;
+    direction: rtl;
+  }
+  .button {
+    background-color: $tealish;
+    border-radius: 10px;
+    border-width: 0;
+    margin: 35px auto 0 auto;
+    width: 165px;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: $font-roman;
+
+  }
+}

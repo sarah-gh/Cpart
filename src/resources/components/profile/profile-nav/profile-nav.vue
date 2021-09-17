@@ -1,9 +1,9 @@
 <template>
     <div class="router-nav">
         <div class="link">
-            <a v-for="(item, x) in navigator" :key="x" :class="[ item[1] ? 'active' : '']" @click="navActive(x)">
+            <a v-for="(item, index) in navigator" :key="index" :class="[ item.active ? 'active' : '']" @click="navActive(index)">
                 <p>
-                    {{ item[0] }}
+                    {{ item.text }}
                 </p>
             </a>
         </div>
@@ -17,38 +17,35 @@ export default {
     data() {
         return {
             navigator: [
-                [
-                    'درباره',
-                    false,
-                ],
-                [
-                    'مقالات',
-                    true,
-                ],
-                [
-                    'دنبال کننده ها',
-                    false
-                ],
-                [
-                    'شبکه های اجتماعی',
-                    false
-                ]
+                {
+                    text: 'درباره',
+                    active: false
+                },
+                {
+                    text: 'مقالات',
+                    active: true
+                },
+                {
+                    text: 'دنبال کننده ها',
+                    active: false
+                }
             ]
         }
     },
     methods: {
         navActive(x){
             console.log(x);
-            for(let i = 0; i < this.navigator.length; i++){
-                if(i === x){
-                    this.navigator[x][1] = true;
+            this.navigator.forEach((value, index) => {
+                if(index === x){
+                    value.active = true;
                 }
                 else {
-                    this.navigator[x][1] = false;
+                    value.active = false;
                 }
-                console.log(this.navigator[x][1]);
-            }
-            this.$emit('clicked', this.navigator[x][0])
+                //console.log(value.active);
+            })
+            //console.log(this.navigator);
+            this.$emit('clicked', x);
         },
     }
 }
@@ -72,7 +69,7 @@ export default {
             a.active{
                 color: $water-blue;
                 font-weight: bold;
-                font-family: 'bahij-helvetica-bold';
+                font-family: $font-bold;
                 border-bottom:1px solid $water-blue;
                 transition: .5s all ease-out;
             }

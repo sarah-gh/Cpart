@@ -12,9 +12,11 @@
             @keyup.esc='close'
         >
         <div class='input-group-append' v-if='addBtn'>
-            <button class='btn btn-primary' @click='addItem'>
-                <img src="../../../../assets/img/svg-header/arrow-right.svg" />
-            </button>
+            <router-link :to="{ path: 'search', query: { search: searchQuery }}">
+                <button class='btn btn-primary' @click='addItem'>
+                    <img src="../../../../assets/img/svg-header/arrow-right.svg" />
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -160,6 +162,7 @@ export default {
         border-radius: 10px;
         padding: 0rem 0.75rem;
         font-size: 14px;
+        direction: rtl;
     }
 }
 

@@ -20,14 +20,14 @@ export default {
         
     },
     mounted() {
-        //console.log(this.post)
+        console.log(this.post)
     },
     methods: {
-        routeQuery(item) {
-            this.$router.push({ path: `/single-post/${item.articleid}`})
+        routeName(item){
+            return `/profile/${item.userid}`
         },
-        routeQueryName(item){
-            this.$router.push({ path: `/profile/${item.articleid}`}) /// الان ای دی پست رو میفرسته و باید عوض بشه
+        routeTitle(item){
+            return `/single-post/${item.articleid}`
         }
       }
 }

@@ -1,6 +1,6 @@
 import postSummary from '../../resources/components/post/post-summary/post-summary.vue'
 import headerNav from '../../resources/components/header/header-nav/header-nav.vue'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
     name: 'posts-summary',
@@ -9,7 +9,9 @@ export default {
             myQuery: 1234,
             summary: true,
             isPublic: false,
-            posts: Array
+            load: false,
+            connection: true,
+            posts: [],
         }
     },
     components: {
@@ -35,12 +37,19 @@ export default {
     methods: {
         async getPosts() {
             try {
-              const response = await this.$http.get(
-                "http://localhost:8000/api/v2/posts"
-              );
-              this.posts = response.data;
+                const response = await this.axios.get(
+                    "http://localhost:8000/api/posts"
+                ).then((res) => {
+                    return res.data;
+                });
+                console.log(response);
+                this.posts = response;
+                this.connection = true;
+                this.load = true;
             } catch (error) {
-              console.log(error);
+                this.connection = false;
+                this.load = true;
+                console.log(error);
             }
         },
         onClickNav(data){

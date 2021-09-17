@@ -1,11 +1,14 @@
 import profileHeader from '@/resources/components/profile/profile-header/profile-header.vue'
 import profileNav from '@/resources/components/profile/profile-nav/profile-nav.vue'
 import profilePost from '@/resources/components/profile/profile-post/profile-post.vue'
+import profileFollower from '@/resources/components/profile/profile-follower/profile-follower.vue'
+import profileAbout from '@/resources/components/profile/profile-about/profile-about.vue'
 
 export default {
     name: "profile",
     data(){
         return {
+            navigate: [false, true, false],
             posts: [
                 {
                     id: 10001,
@@ -41,17 +44,62 @@ export default {
                     time: '۷ دقیقه مطالعه',
                     tags: ['تکنولوژی']
                 }
-            ]
+            ],
+            profile: {},
+            about: {},
+            userposts: [],
+            userProfile: {},
+            follows : [],
+            load: false,
+            connection: true,
         }
     },
     components:{
         profileHeader,
         profileNav,
-        profilePost
+        profilePost,
+        profileFollower,
+        profileAbout
+    },
+    created() {
+        this.getProfile();
     },
     methods: {
         onClickNav(data){
-            console.log(data);
+            this.navigate.forEach((value,index) => {
+                if(index == data) {
+                    this.navigate[index] = true;
+                } else {
+                    this.navigate[index] = false;
+                }
+            })
+        },
+        async getProfile() {
+            try {
+                const response = await this.axios.get(
+                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`
+                ).then((res) => {
+                    return res.data; 
+                }).catch((err) => {
+                    console.error(err);
+                });
+                this.profile = response;
+                this.about = this.profile.about["0"];
+                this.follows = [...this.profile.follows];
+                this.userposts = this.profile.posts;
+                this.userProfile = {
+                    userphoto: this.about.userphoto,
+                    shortdescription: this.about.shortdescription,
+                    name : this.about.fname + " " + this.about.lname,
+                    followers: this.about.followers
+                }
+                this.load = true;
+                this.connection = true;
+            } catch (error) {
+                console.log(error);
+                this.connection = false;
+                this.load = true;
+            }
         }
     },
     beforeMount() {

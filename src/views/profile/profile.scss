@@ -1,5 +1,39 @@
 @import "../../assets/sass/_variable";
+@import "../../assets/sass/_button";
+@import "../../assets/sass/_load";
 
+.load{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  img{
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+  }
+}
+
+.follow-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  min-height: 30vh;
+  margin-bottom: 40px;
+  justify-content: space-between;
+  //align-items: center;
+  .followers{
+    width: 40%;
+    margin-bottom: 40px;
+  }
+}
+
+.about{
+  direction: rtl;
+  line-height: 2;
+  margin-bottom: 150px;
+}
 
 main{
   width: 100%;
@@ -21,6 +55,16 @@ main{
     }
   }
   .post-container{
+    min-height: 30vh;
+    .follow-container{
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
     .card{
       display: flex;
       flex-direction: row;
@@ -41,7 +85,7 @@ main{
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          font-family: 'bahij-helvetica-bold';
+          font-family: $font-bold;
           padding: 10px 0 0 0 ;
           .post-author{
             display: flex;

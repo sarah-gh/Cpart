@@ -1,17 +1,16 @@
 export default {
-    name: 'posts-summary',
+    name: 'profile-about',
     props: {
-        post: {
+        about: {
             type: Object,
-            required: true
+            required: false
         }
     },
     data(){
         return {
-            hoverPost: false,
         }
     },
     mounted() {
-        
+
     },
 }
