@@ -4,15 +4,6 @@
     </section>
     <main>
         <section class="load" v-if="!load">
-            <!-- <img src="@/assets/img/1494.gif" /> -->
-            <!-- <div class="load-wrapp">
-                <div class="load-3">
-                    <p>Loading 3</p>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </div> -->
             <div class="load2">
                 <hr/><hr/><hr/><hr/>
             </div>

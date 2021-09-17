@@ -4,14 +4,14 @@
     </div>
     <div class="card-post">
         <div class="post-content">
-            <a class="article-link" @click="routeQuery(post)">
-                <h2 class="post-title"  > 
+            <router-link :to="'/single-post/' + post.articleid" class="article-link" @click="routeQuery(post)">
+                <h2 class="post-title"> 
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
                     {{ text }}
                 </div>
-            </a>
+            </router-link>
         </div>
         <footer class="post-footer">
             <div class="flex-footer">

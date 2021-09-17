@@ -48,7 +48,10 @@ export default {
             profile: {},
             about: {},
             userposts: [],
-            userProfile: {}
+            userProfile: {},
+            follows : [],
+            load: false,
+            connection: true,
         }
     },
     components:{
@@ -81,17 +84,21 @@ export default {
                     console.error(err);
                 });
                 this.profile = response;
-                this.about = this.profile.about["0"]
+                this.about = this.profile.about["0"];
+                this.follows = [...this.profile.follows];
                 this.userposts = this.profile.posts;
-                console.log(this.profile);
                 this.userProfile = {
                     userphoto: this.about.userphoto,
                     shortdescription: this.about.shortdescription,
                     name : this.about.fname + " " + this.about.lname,
                     followers: this.about.followers
                 }
+                this.load = true;
+                this.connection = true;
             } catch (error) {
                 console.log(error);
+                this.connection = false;
+                this.load = true;
             }
         }
     },
