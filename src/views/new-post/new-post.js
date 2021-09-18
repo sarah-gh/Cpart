@@ -1,3 +1,4 @@
+import modal from '../../resources/components/custom/modal-new-post/modal-new-post.vue';
 export default {
     name: 'new-post',
     data(){ 
@@ -15,7 +16,11 @@ export default {
             tag: '',
             isActive: true,
             allowe: false,
+            showModal: false,
         }
+    },
+    components: {
+        modal
     },
     // mounted() {
     //     let textarea = document.querySelector(".resize-ta");

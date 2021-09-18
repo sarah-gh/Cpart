@@ -10,7 +10,7 @@
                 <div>
                     <div class="relative inline-block" @mouseover="isVisible = true" @mouseleave="isVisible = false" @keydown.enter="isVisible = !isVisible">
                         <button type="button" class="inline-flex items-center justify-between py-1 font-medium text-gray-700 transition-all duration-500 rounded-md focus:outline-none focus:text-brand-900 sm:focus:shadow-outline">
-                            <img src="../../../../assets/img/6893547.png" class='flex-shrink-0 avatar nav-top' alt="user-photo">
+                            <img src="../../../../assets/img/svg-profile-setting/340558.jpeg" class='flex-shrink-0 avatar nav-top' alt="user-photo">
                         </button>
                         <transition  name="fade" >
                         <div v-show="isVisible" class="absolute pt-2 dropdown">
