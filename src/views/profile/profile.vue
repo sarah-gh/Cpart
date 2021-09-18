@@ -36,4 +36,4 @@
 
 <script src="./profile.js"></script>
 
-<style src="./profile.scss" lang="scss"></style>
+<style src="./profile.scss" scoped lang="scss"></style>

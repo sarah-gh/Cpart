@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header-page></header-page>
-    <router-view/>
+    <header-page :showheader="showheader"></header-page>
+    <router-view />
     <footer-page></footer-page>
   </div>
 </template>
@@ -16,6 +16,28 @@ export default {
   components: {
     footerPage,
     headerPage
+  },
+  data() {
+    return {
+      showheader: true,
+    }
+  },
+  watch:{
+    $route (to, from){
+        this.update();
+    }
+  },
+  methods: {
+    update(){
+      let url = window.location.href;
+      console.log(url);
+      if(url.indexOf('register') !== -1){
+        this.showheader = false;
+      }
+      else{
+        this.showheader = true;
+      }
+    }
   }
 }
 </script>

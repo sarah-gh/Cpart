@@ -15,6 +15,17 @@ export default {
   components: {
     footerPage,
     headerPage
+  },
+  mounted() {
+    let url = window.location.href;
+    console.log(url);
+    console.log("home");
+  },
+  methods: {
+    update(){
+      let url = window.location.href;
+      console.log(url);
+    }
   }
 }
 </script>

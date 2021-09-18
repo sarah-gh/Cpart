@@ -42,7 +42,6 @@ export default {
                 ).then((res) => {
                     return res.data;
                 });
-                console.log(response);
                 this.posts = response;
                 this.connection = true;
                 this.load = true;
@@ -54,7 +53,7 @@ export default {
         },
         onClickNav(data){
             this.summary = !this.summary;
-            console.log(data);
+            //console.log(data);
         }
-    }
+    },
 }

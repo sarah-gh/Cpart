@@ -36,22 +36,22 @@ export const routes = [
     component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
   },
   {
-    path: '/login',
+    path: '/register/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/login/login.vue')
   },
   {
-    path: '/signup',
+    path: '/register/signup',
     name: 'signup',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/signup/signup.vue')
   },
   {
-    path: '/signup-status',
+    path: '/register/signup-status',
     name: 'signup-status',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/signup-status/signup-status.vue')
   },
   {
-    path: '/verification',
+    path: '/register/verification',
     name: 'verification',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/verification/verification.vue')
   },
