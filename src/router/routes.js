@@ -6,12 +6,12 @@ export const routes = [
     component: () => import(/* webpackChunkName: "posts" */ '../views/posts/posts.vue')
   }, 
   {
-    path: '/bookmark/',
+    path: '/panel/bookmark/',
     name: 'bookmark',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/bookmark/bookmark.vue')
   },
   {
-    path: '/setting',
+    path: '/panel/setting',
     name: 'setting',
     component: () => import(/* webpackChunkName: "setting" */ '../views/profile-setting/profile-setting.vue')
   }, 
@@ -26,32 +26,32 @@ export const routes = [
     component: () => import(/* webpackChunkName: "new-post" */ '../views/search/search.vue')
   },
   {
-    path: '/profile/:id',
+    path: '/panel/profile/:id',
     name: 'profile',
     component: () => import(/* webpackChunkName: "profile" */ '../views/profile/profile.vue')
   },
   {
-    path: '/single-post/:id',
+    path: '/post/:id',
     name: 'single-post',
     component: () => import(/* webpackChunkName: "single-post" */ '../views/single-post/single-post.vue')
   },
   {
-    path: '/login',
+    path: '/authentication/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/login/login.vue')
   },
   {
-    path: '/signup',
+    path: '/authentication/signup',
     name: 'signup',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/signup/signup.vue')
   },
   {
-    path: '/signup-status',
+    path: '/authentication/signup-status',
     name: 'signup-status',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/signup-status/signup-status.vue')
   },
   {
-    path: '/verification',
+    path: '/authentication/verification',
     name: 'verification',
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/verification/verification.vue')
   },

@@ -83,8 +83,8 @@ export default {
                 }).catch((err) => {
                     console.error(err);
                 });
-                console.log(other);
-                console.log(comm);
+                // console.log(other);
+                // console.log(comm);
                 let post = response;
                 this.post = Object.assign(post["0"]);
                 this.comment = comm;

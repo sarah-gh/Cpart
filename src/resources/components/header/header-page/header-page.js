@@ -16,6 +16,12 @@ import headerSearch from '../header-search/header-search.vue'
 
 export default {
     name: 'header-page',
+    props: {
+        showheader: {
+            type: Boolean,
+            default: true,
+        }
+    },
     data(){
         return {
             isVisible : false,
@@ -37,6 +43,6 @@ export default {
     },
     components:{
         headerSearch
-    }
+    },
 }
 

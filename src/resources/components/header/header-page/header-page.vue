@@ -6,11 +6,11 @@
                     <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
                 </router-link>
             </div>
-            <div class="buttons">
+            <div class="buttons" v-if="showheader">
                 <div>
                     <div class="relative inline-block" @mouseover="isVisible = true" @mouseleave="isVisible = false" @keydown.enter="isVisible = !isVisible">
                         <button type="button" class="inline-flex items-center justify-between py-1 font-medium text-gray-700 transition-all duration-500 rounded-md focus:outline-none focus:text-brand-900 sm:focus:shadow-outline">
-                            <img src="../../../../assets/img/6893547.png" class='flex-shrink-0 avatar nav-top' alt="user-photo">
+                            <img src="../../../../assets/img/svg-profile-setting/340558.jpeg" class='flex-shrink-0 avatar nav-top' alt="user-photo">
                         </button>
                         <transition  name="fade" >
                         <div v-show="isVisible" class="absolute pt-2 dropdown">
@@ -27,7 +27,7 @@
                                         <img src="../../../../assets/img/svg-header/document-download.svg" />
                                     </router-link>
                                     <div class="vector-3"></div>
-                                    <router-link to="/setting" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                    <router-link to="/panel/setting" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         تنظیمات حساب کاربری
                                         <img src="../../../../assets/img/svg-header/candle-2.svg" />
                                     </router-link>
@@ -46,7 +46,7 @@
                     <img src="../../../../assets/img/notification.svg" class='notification nav-top icon' alt="notification">
                 </div>
                 <div>
-                    <router-link to="/bookmark">
+                    <router-link to="/panel/bookmark">
                         <img src="../../../../assets/img/save-2.svg" class='save-post nav-top icon' alt="save">
                     </router-link>
                 </div>                

@@ -20,14 +20,14 @@ export default {
         
     },
     mounted() {
-        console.log(this.post)
+        //console.log(this.post)
     },
     methods: {
         routeName(item){
-            return `/profile/${item.userid}`
+            return `/panel/profile/${item.userid}`
         },
         routeTitle(item){
-            return `/single-post/${item.articleid}`
+            return `/post/${item.articleid}`
         }
       }
 }
