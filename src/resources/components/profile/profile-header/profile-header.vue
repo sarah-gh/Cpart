@@ -119,6 +119,7 @@
     margin-top: -82px;
     height: 165px;
     border-radius: 30px;
+    margin-right: 28px;
 }
 
 </style>

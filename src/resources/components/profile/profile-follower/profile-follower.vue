@@ -1,6 +1,6 @@
 <template>
     <div class="follower">
-        <router-link :to="'/profile/' + follow.userid" class="follower">
+        <router-link :to="'/profile/' + follow.followedby" class="follower">
             <img :src="follow.userphoto" />
             <div class="content">
                 <h3>{{ follow.fname }} {{ follow.lname }}</h3>
@@ -33,7 +33,7 @@ export default {
 
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/sass/_variable";
 @import "@/assets/sass/_button";
 

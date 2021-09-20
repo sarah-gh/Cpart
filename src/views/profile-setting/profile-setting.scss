@@ -117,7 +117,7 @@ input{
             flex-wrap: wrap;
             align-items: stretch;
             flex-grow: 1;
-            
+            justify-content: flex-start;
             .texts{
                 display: flex;
                 flex-direction: column;

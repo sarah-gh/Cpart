@@ -19,25 +19,21 @@ export default {
   },
   data() {
     return {
-      showheader: true,
+      showheader: false,
     }
   },
   watch:{
     $route (to, from){
-        this.update();
-    }
-  },
-  methods: {
-    update(){
-      let url = window.location.href;
-      console.log(url);
-      if(url.indexOf('register') !== -1){
+      if(to.path.indexOf('register') !== -1){
         this.showheader = false;
       }
       else{
         this.showheader = true;
       }
     }
+  },
+  methods: {
+    
   }
 }
 </script>

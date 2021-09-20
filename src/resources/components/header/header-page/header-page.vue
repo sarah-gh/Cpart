@@ -27,7 +27,7 @@
                                         <img src="../../../../assets/img/svg-header/document-download.svg" />
                                     </router-link>
                                     <div class="vector-3"></div>
-                                    <router-link to="/setting" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                    <router-link to="/panel/setting" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         تنظیمات حساب کاربری
                                         <img src="../../../../assets/img/svg-header/candle-2.svg" />
                                     </router-link>
@@ -46,7 +46,7 @@
                     <img src="../../../../assets/img/notification.svg" class='notification nav-top icon' alt="notification">
                 </div>
                 <div>
-                    <router-link to="/bookmark">
+                    <router-link to="/panel/bookmark">
                         <img src="../../../../assets/img/save-2.svg" class='save-post nav-top icon' alt="save">
                     </router-link>
                 </div>                
