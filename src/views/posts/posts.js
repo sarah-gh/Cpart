@@ -40,15 +40,19 @@ export default {
         // console.log(this.$store.dispatch('actions_posts'))
         // let ppp = this.$store.getters.getPosts
         // console.log(ppp);
-        const store = useStore();
-        let test = store.dispatch('article/requestArticle', { test: 'test' });
-        let test2 = store.state.article.article;
-        console.log('test')
-        console.log(test);
-        console.log(test2);
+        
+        this.testtt()
 
     },
     methods: {
+        async testtt(){
+            const store = useStore();
+            let test = await store.dispatch('article/requestArticle', { test: 'test' });
+            let test2 = store.state.article.article;
+            console.log('test')
+            console.log(test);
+            console.log(test2);
+        },
         async getPosts() {
             try {
                 const response = await this.axios.get(
