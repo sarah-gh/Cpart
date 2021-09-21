@@ -40,7 +40,7 @@
       }
     }
   }
-  .logo{
+  .flexContainer .logo{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;

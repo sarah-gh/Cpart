@@ -31,8 +31,9 @@
                 <span class="circle"></span> 
                 <span class="time">{{ post.readtime }} دقیقه </span>
                 <span class="circle"></span> 
-                <span class="tag">{{ post.tag }}</span>
-                
+                <span class="tag" v-for="(item, index) in post.tag" :key="index">
+                    {{ item }}
+                </span>
             </div>
         </footer>
     </div>

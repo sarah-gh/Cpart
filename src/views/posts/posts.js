@@ -1,7 +1,8 @@
 import postSummary from '../../resources/components/post/post-summary/post-summary.vue'
 import headerNav from '../../resources/components/header/header-nav/header-nav.vue'
-import mapGetters from 'vuex'
+// import mapGetters from 'vuex'
 // import axios from 'axios'
+import { useStore } from 'vuex';
 
 export default {
     name: 'posts-summary',
@@ -29,16 +30,23 @@ export default {
     //     ...mapGetters(['get_posts'])
     // },
     beforeMount() {
-        let url = window.location.href;
-        if(url.indexOf('public') !== -1) {
-            this.isPublic = true;
-        }
-        else{
-            this.isPublic = false;
-        }
-        console.log(this.$store.dispatch('actions_posts'))
-        let ppp = this.$store.getters.getPosts
-        console.log(ppp);
+        // let url = window.location.href;
+        // if(url.indexOf('public') !== -1) {
+        //     this.isPublic = true;
+        // }
+        // else{
+        //     this.isPublic = false;
+        // }
+        // console.log(this.$store.dispatch('actions_posts'))
+        // let ppp = this.$store.getters.getPosts
+        // console.log(ppp);
+        const store = useStore();
+        let test = store.dispatch('article/requestArticle', { test: 'test' });
+        let test2 = store.state.article.article;
+        console.log('test')
+        console.log(test);
+        console.log(test2);
+
     },
     methods: {
         async getPosts() {

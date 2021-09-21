@@ -77,7 +77,7 @@ export default {
         async getProfile() {
             try {
                 const response = await this.axios.get(
-                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`
+                    `http://localhost:8000/api/users/profile/${this.$route.params.id}?userid=${localStorage.id}/`
                 ).then((res) => {
                     return res.data; 
                 }).catch((err) => {

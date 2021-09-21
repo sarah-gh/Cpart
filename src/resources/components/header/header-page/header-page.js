@@ -20,6 +20,13 @@ export default {
         showheader: {
             type: Boolean,
             default: true,
+        },
+        login: {
+            type: Boolean,
+            default: false,
+        },
+        photo: {
+            type: String,
         }
     },
     data(){
@@ -31,7 +38,12 @@ export default {
             thirdExample: 0,
             fourthExample: 0,
             isVisibleSearch : false,
+            local_login: false,
         }
+    },
+    beforeMount(){
+        this.local_login = this.login;
+        console.log(this.local_login);
     },
     methods: {
         thirdExampleSelected() {
@@ -39,6 +51,12 @@ export default {
         },
         clickIsVisibleSearch(){
             this.isVisibleSearch = !this.isVisibleSearch;
+        },
+        log_in(){
+            this.local_login = true;
+            console.log('local_login');
+            console.log(this.$emit)
+            this.$emit('loginprofile');
         }
     },
     components:{
