@@ -34,7 +34,7 @@ export default {
       this.login = true;
       try {
           const response = await this.axios.get(
-              `http://localhost:8000/api/users/profile/4`
+              `http://localhost:8000/api/users/profile/4?userid=4`
           ).then((res) => {
               return res.data; 
           }).catch((err) => {
@@ -43,6 +43,7 @@ export default {
           this.profile = response;
           this.photo = this.profile.about["0"].userphoto;
           console.log(this.profile.about["0"].userphoto);
+          console.log('localStorage')
           localStorage.id = 4;
       } catch (error) {
           console.log(error);
