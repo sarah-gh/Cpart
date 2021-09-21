@@ -33,8 +33,8 @@
                 <span class="circle"></span> 
                 <span class="time">{{ post.readtime }} دقیقه </span>
                 <span class="circle"></span> 
-                <span class="tag">
-                    {{ post.tag }}
+                <span class="tag" v-for="(item, index) in post.tag" :key="index">
+                    {{ item }}
                 </span>
                 <span class="save"><img src="../../../../assets/img/archive-add_3.svg"></span>
             </div>
