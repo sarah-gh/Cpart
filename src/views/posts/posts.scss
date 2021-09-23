@@ -20,6 +20,8 @@ main{
   margin: 50px auto;
   font-family: 'bahij-helvetica-roman';
   .post-container{
+    // justify-content: flex-start;
+    // align-items: center;
     .card{
       display: flex;
       flex-direction: row;
@@ -181,6 +183,9 @@ main{
                 font-size: 15px;
                 margin-right: 15px;
               }
+            }
+            .follow {
+              justify-content: flex-end;
             }
             
           }

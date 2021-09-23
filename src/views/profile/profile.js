@@ -77,7 +77,7 @@ export default {
         async getProfile() {
             try {
                 const response = await this.axios.get(
-                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`
+                    `http://localhost:8000/api/users/profile/${this.$route.params.id}?userid=${localStorage.id}/`
                 ).then((res) => {
                     return res.data; 
                 }).catch((err) => {
@@ -93,6 +93,7 @@ export default {
                     name : this.about.fname + " " + this.about.lname,
                     followers: this.about.followers
                 }
+                console.log(this.follows)
                 this.load = true;
                 this.connection = true;
             } catch (error) {

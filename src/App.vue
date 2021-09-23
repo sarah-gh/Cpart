@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-page :showheader="showheader"></header-page>
+    <header-page :showheader="showheader" :login="login" :photo="photo" @loginprofile="onclickLogin"></header-page>
     <router-view />
     <footer-page></footer-page>
   </div>
@@ -19,25 +19,49 @@ export default {
   },
   data() {
     return {
-      showheader: true,
+      showheader: false,
+      login: false,
+      profile: [],
+      photo: ''
+    }
+  },
+  emits: ["loginprofile"],
+  methods: {
+    onclickLogin(){
+      this.login_profile()
+    },
+    async login_profile(){
+      this.login = true;
+      try {
+          const response = await this.axios.get(
+              `http://localhost:8000/api/users/profile/4?userid=4`
+          ).then((res) => {
+              return res.data; 
+          }).catch((err) => {
+              console.error(err);
+          });
+          this.profile = response;
+          this.photo = this.profile.about["0"].userphoto;
+          console.log(this.profile.about["0"].userphoto);
+          console.log('localStorage')
+          localStorage.id = 4;
+      } catch (error) {
+          console.log(error);
+      }
     }
   },
   watch:{
     $route (to, from){
-        this.update();
-    }
-  },
-  methods: {
-    update(){
-      let url = window.location.href;
-      console.log(url);
-      if(url.indexOf('register') !== -1){
+      if(to.path.indexOf('register') !== -1){
         this.showheader = false;
       }
       else{
         this.showheader = true;
       }
     }
+  },
+  beforeMount(){
+    
   }
 }
 </script>
