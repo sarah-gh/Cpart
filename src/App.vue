@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
+    <!-- <header-page-login v-else :showheader="showheader" :login="login" :photo="photo"></header-page-login> -->
+
     <router-view />
     <footer-page></footer-page>
   </div>
@@ -10,13 +12,16 @@
 <script>
 import footerPage from '@/resources/components/footer/footer-page/footer-page.vue'
 import headerPage from '@/resources/components/header/header-page/header-page.vue'
+import headerPageLogin from '@/resources/components/header/header-page-login/header-page-login.vue'
+
 import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
   name: 'app',
   components: {
     footerPage,
-    headerPage
+    headerPage,
+    headerPageLogin
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '@/store'
+// import store from '@/store'
 
 const http = 'http://localhost:8000/api';
 import { getCookieByName, writeCookie } from '@/resources/utilities.js';

@@ -41,6 +41,7 @@ export default {
             local_login: false,
             show_header: false,
             userLogin: {},
+            ppp: '',
         }
     },
     beforeMount(){
@@ -48,6 +49,9 @@ export default {
         console.log('local_login');
         console.log(this.local_login);
     },
+    mounted () {
+    
+      },
     methods: {
         thirdExampleSelected() {
             alert('Result: ' + this.thirdExample)
@@ -60,6 +64,11 @@ export default {
             console.log('local_login');
             console.log(this.$emit)
             this.$emit('loginprofile');
+        },
+        profileuser(){
+            // this.$router.replace('panel/profile/0')
+            this.$router.replace({ path: '/panel/profile/0' });
+            this.$router.replace({ path: '/panel/profile/0' });
         }
     },
     computed: {
