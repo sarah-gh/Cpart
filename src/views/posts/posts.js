@@ -24,42 +24,22 @@ export default {
         
     },
     created() {
-        this.getPosts();
-    },
-    // computed: {
-    //     ...mapGetters(['get_posts'])
-    // },
-    beforeMount() {
-        // let url = window.location.href;
-        // if(url.indexOf('public') !== -1) {
-        //     this.isPublic = true;
-        // }
-        // else{
-        //     this.isPublic = false;
-        // }
-        // console.log(this.$store.dispatch('actions_posts'))
-        // let ppp = this.$store.getters.getPosts
-        // console.log(ppp);
-        
+        //this.getPosts();
         this.testtt()
-
+    },
+    beforeMount() {
+        
     },
     methods: {
         async testtt(){
-            const store = useStore();
-            let test = await store.dispatch('article/requestArticle', { test: 'test' });
-            let test2 = store.state.article.article;
-            console.log('test')
-            console.log(test);
-            console.log(test2);
-        },
-        async getPosts() {
             try {
-                const response = await this.axios.get(
-                    "http://localhost:8000/api/posts"
-                ).then((res) => {
-                    return res.data;
-                });
+                // if(this.$store.state.article.article.length > 0){ ////// ??
+                    await this.$store.dispatch('article/requestArticle');
+                    // console.log(test);
+                // }
+                let response = this.$store.state.article.article;
+                console.log('test')
+                console.log(response);
                 this.posts = response;
                 this.connection = true;
                 this.load = true;
@@ -68,6 +48,23 @@ export default {
                 this.load = true;
                 console.log(error);
             }
+            
+        },
+        async getPosts() {
+            // try {
+            //     const response = await this.axios.get(
+            //         "http://localhost:8000/api/posts"
+            //     ).then((res) => {
+            //         return res.data;
+            //     });
+            //     this.posts = response;
+            //     this.connection = true;
+            //     this.load = true;
+            // } catch (error) {
+            //     this.connection = false;
+            //     this.load = true;
+            //     console.log(error);
+            // }
         },
         onClickNav(data){
             this.summary = !this.summary;

@@ -12,7 +12,8 @@ export default {
                 header_img: '',
                 footer_img: '', 
                 tags: [],
-                date : ''
+                date : '',
+                readTime: ''
             },
             text: '',
             tags: [],
@@ -63,18 +64,39 @@ export default {
     },
     emits: ["addImage","on_enter",'Modalfalse'],
     methods: {
-      PublishContent(){
-          let now = new Date().toLocaleDateString('fa-IR');
-          now = now.split('/');
-          let month;
-          this.number.forEach((value, index) => {
-            if(value == now[1]){
-              month = index - 1;
+        PublishContent(){
+            let now = new Date().toLocaleDateString('fa-IR');
+            now = now.split('/');
+            let month;
+            this.number.forEach((value, index) => {
+                if(value == now[1]){
+                month = index - 1;
+                }
+            })
+            let date = `${now[2]}<span>${this.month[month]}</span>${now[0]}`
+            this.article.date = date;
+            this.article.readTime = this.readTime(this.article.text);
+            const data = {
+                operation: "newArticle", /////
+                userId : '', /////
+                headerPhoto: this.article.header_img,
+                title: this.article,
+                articleText: this.article.text,
+                footerPhoto: this.article.footer_img,
+                date: this.article.date,
+                tag: this.article.tags,
+                readTime: `${this.article.readTime}`,
             }
-          })
-          let data = `${now[2]}<span>${this.month[month]}</span>${now[0]}`
-          this.article.date = data;
-      },
+            /// JSON.stringify(data)
+        },
+        async testtt(data){
+            try {
+                let test = await this.$store.dispatch('article/requestArticle', data);
+                console.log(test);
+            } catch (error) {
+                console.log(error);
+            }
+        },
       checkSpan(){
           this.article.text = document.getElementById('span_id').innerHTML;
           if(this.article.text.length > 0 && this.article.header.length > 0){
@@ -89,6 +111,15 @@ export default {
       },
       addTag(){
           this.add_tag = !this.add_tag;
+      },
+      readTime(text){
+            const wordsPerMinute = 150; // Average case.
+            let result = 1;
+            let textLength = text.split(" ").length; // Split by words
+            if(textLength > 0){
+                result = Math.ceil(textLength / wordsPerMinute);
+            }
+            return result;
       },
       onEnterModal(value){
           if(this.tags.length == 3){

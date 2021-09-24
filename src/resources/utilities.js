@@ -11,7 +11,8 @@ export const getCookieByName = (name) => {
     const sanitizedCookie = stringCookie.trim();
     return sanitizedCookie.split('=')[0] === name;
   });
-
+  console.log('cookie');
+  console.log(cookie);
   return cookie?.split('=')[1];
 };
 

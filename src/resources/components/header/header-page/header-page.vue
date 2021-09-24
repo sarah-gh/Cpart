@@ -1,10 +1,11 @@
 <template>
     <header class="header">
         <div class="header-container">
+            <!-- دکمه ورود -->
             <section class="flexContainer row" v-show="!local_login">
-                <div class="userLogin">
-                    <button class="btn btn-login" @click="log_in()"> ورود / ثبت نام</button>
-                </div>
+                <router-link to="/authentication/login" class="userLogin">
+                    <button class="btn btn-login"> ورود / ثبت نام</button>
+                </router-link>
                 <div class="logo">
                     <router-link to="/" href="#" class="logo-img">
                         <img src="../../../../assets/img/Group249.svg" alt="logo" /> 
@@ -16,7 +17,8 @@
                     <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
                 </router-link>
             </div>
-            <div class="buttons" v-if="showheader" v-show="local_login">
+            <!-- لاگین شده -->
+            <div class="buttons" v-if="showheader && local_login">
                 <div>
                     <div class="relative inline-block" @mouseover="isVisible = true" @mouseleave="isVisible = false" @keydown.enter="isVisible = !isVisible">
                         <button type="button" class="inline-flex items-center justify-between py-1 font-medium text-gray-700 transition-all duration-500 rounded-md focus:outline-none focus:text-brand-900 sm:focus:shadow-outline">
