@@ -17,6 +17,7 @@
                     <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
                 </router-link>
             </div>
+            {{ $store.state.user.profileUser }}
             <!-- لاگین شده -->
             <div class="buttons" v-if="showheader && local_login">
                 <div>
