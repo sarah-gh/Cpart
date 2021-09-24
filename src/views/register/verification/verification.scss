@@ -49,6 +49,8 @@
     color: white;
     font-size: 18px;
     font-weight: bold;
+    font-family: $font-bold;
+    cursor: pointer;
   }
   .remained-time {
     margin-top: 15px;
@@ -63,4 +65,5 @@
 }
 .green {
   color: $tealish;
+  cursor: pointer;
 }
