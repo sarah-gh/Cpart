@@ -39,7 +39,8 @@ export default {
             fourthExample: 0,
             isVisibleSearch : false,
             local_login: false,
-            show_header: false
+            show_header: false,
+            userLogin: {},
         }
     },
     beforeMount(){
@@ -60,6 +61,9 @@ export default {
             console.log(this.$emit)
             this.$emit('loginprofile');
         }
+    },
+    computed: {
+        
     },
     components:{
         headerSearch

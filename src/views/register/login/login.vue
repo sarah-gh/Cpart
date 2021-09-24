@@ -93,8 +93,8 @@ export default {
         console.log(JSON.stringify(value));
         await this.requestLogin(JSON.stringify(value));
         console.log('Success ');
+        await this.$store.dispatch('user/requestProfileUser');
         this.emitter.emit("onclickLogin");
-        
         this.$router.replace({ path: '/' });
       } catch {
         console.log(error);

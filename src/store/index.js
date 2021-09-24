@@ -2,6 +2,8 @@ import Vuex from 'vuex';
 
 // modules
 import article from '@/store/modules/article';
+import user from '@/store/modules/user';
+
 
 export default new Vuex.Store({
   state: () => ({
@@ -10,5 +12,6 @@ export default new Vuex.Store({
   }),
   modules: {
     article,
+    user
   },
 });

@@ -18,7 +18,7 @@ export const getBookmark = async () => {
 
 export const getProfileUser = async () => {
     const access_token = getCookieByName('token');
-    const response = await axios.get(`${http}/users/savedMessages`, {
+    const response = await axios.get(`${http}/users/profile`, {
         headers:{
             'token': `${access_token}`
         }

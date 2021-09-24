@@ -60,11 +60,6 @@ export default {
       }
       console.log('token-log')
       console.log(token);
-      this.emitter.on("onclickLogin", isOpen => {
-        console.log('token')
-        this.login = true;
-        this.showheader = true;
-      });
       if(token){
         console.log('token')
         this.login = true;
