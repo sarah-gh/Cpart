@@ -9,28 +9,7 @@ export default {
         return {
             items: [1,2,3],
             load : false,
-            // comments : [
-            //     {
-            //         name: "سروش صفایی زاده",
-            //         date: "۲۸ تیر ۱۴۰۰",
-            //         time: "۷ دقیقه مطالعه",
-            //         text: `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،`,
-            //         commentsReply: [
-            //             {
-            //                 name: "سروش صفایی زاده",
-            //                 date: "۲۸ تیر ۱۴۰۰",
-            //                 time: "۷ دقیقه مطالعه",
-            //                 text: `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،`,
-            //             }
-            //         ]
-            //     },
-            //     {
-            //         name: "سروش صفایی زاده",
-            //         date: "۲۸ تیر ۱۴۰۰",
-            //         time: "۷ دقیقه مطالعه",
-            //         text: `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،`,
-            //     }
-            // ],
+            
             comment: [],
             post: {},
             otherPosts: [
@@ -57,9 +36,27 @@ export default {
     },
     created() {
         this.getPosts();
+        this.testtt();
         //this.getComments();
     },
     methods: {
+        async testtt(){
+            try {
+                let test = await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
+                let response = this.$store.state.article.singleArticle;
+                console.log('test')
+                console.log(test);
+                console.log(response);
+                // this.posts = response;
+                // this.connection = true;
+                // this.load = true;
+            } catch (error) {
+                // this.connection = false;
+                // this.load = true;
+                console.log(error);
+            }
+            
+        },
         async getPosts() {
             try {
                 const response = await this.axios.get(

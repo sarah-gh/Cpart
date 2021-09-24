@@ -11,6 +11,22 @@ export default {
         this.getPosts();
     },
     methods: {
+        async testtt(){
+            try {
+                let test = await this.$store.dispatch('user/requestbookmark');
+                let response = this.$store.state.user.bookmark;
+                console.log('test')
+                console.log(test);
+                console.log(response);
+                this.posts = response;
+                this.connection = true;
+                this.load = true;
+            } catch (error) {
+                this.connection = false;
+                this.load = true;
+                console.log(error);
+            }
+        },
         async getPosts() {
             try {
                 const response = await this.axios.get(

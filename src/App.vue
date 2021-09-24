@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-page :showheader="showheader" :login="login" :photo="photo" @loginprofile="onclickLogin"></header-page>
+    <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
     <router-view />
     <footer-page></footer-page>
   </div>
@@ -10,6 +10,7 @@
 <script>
 import footerPage from '@/resources/components/footer/footer-page/footer-page.vue'
 import headerPage from '@/resources/components/header/header-page/header-page.vue'
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
   name: 'app',
@@ -19,7 +20,7 @@ export default {
   },
   data() {
     return {
-      showheader: false,
+      showheader: true,
       login: false,
       profile: [],
       photo: ''
@@ -30,11 +31,12 @@ export default {
     onclickLogin(){
       this.login_profile()
     },
+    
     async login_profile(){
       this.login = true;
       try {
           const response = await this.axios.get(
-              `http://localhost:8000/api/users/profile/4?userid=4`
+              `http://localhost:8000/api/users/profile/4`
           ).then((res) => {
               return res.data; 
           }).catch((err) => {
@@ -43,8 +45,6 @@ export default {
           this.profile = response;
           this.photo = this.profile.about["0"].userphoto;
           console.log(this.profile.about["0"].userphoto);
-          console.log('localStorage')
-          localStorage.id = 4;
       } catch (error) {
           console.log(error);
       }
@@ -52,11 +52,31 @@ export default {
   },
   watch:{
     $route (to, from){
-      if(to.path.indexOf('register') !== -1){
+      console.log(to.path);
+      let token = getCookieByName('token')
+      if(to.path.indexOf('authentication') !== -1){
+        this.login = true;
         this.showheader = false;
       }
-      else{
+      console.log('token-log')
+      console.log(token);
+      this.emitter.on("onclickLogin", isOpen => {
+        console.log('token')
+        this.login = true;
         this.showheader = true;
+      });
+      if(token){
+        console.log('token')
+        this.login = true;
+        this.showheader = true;
+      } else{
+        if(to.path.indexOf('authentication') !== -1){
+          this.login = true;
+        } else {
+          console.log('not token')
+          this.login = false;
+          this.showheader = false;
+        }
       }
     }
   },
