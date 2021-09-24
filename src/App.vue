@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header-page v-if="!login" :showheader="showheader" :login="login" :photo="photo"></header-page>
-    <header-page-login v-else :showheader="showheader" :login="login" :photo="photo"></header-page-login>
+    <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
+    <!-- <header-page-login v-else :showheader="showheader" :login="login" :photo="photo"></header-page-login> -->
 
     <router-view />
     <footer-page></footer-page>

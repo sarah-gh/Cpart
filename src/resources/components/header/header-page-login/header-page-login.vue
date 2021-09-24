@@ -108,18 +108,10 @@ export default {
     },
     beforeMount(){
         this.local_login = this.login;
-        console.log('local_login');
-        console.log(this.local_login);
-        // if(this.ppp = this.$store.state.user.profileUser){
-        //     this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
-        // }
+        this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
     },
     mounted () {
-        // if(this.ppp = this.$store.state.user.profileUser.length > 0){
-            this.eventBus.on('onclickLogin', () => {
-                this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
-            })
-        // }
+        this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
       },
     methods: {
         thirdExampleSelected() {
@@ -130,8 +122,8 @@ export default {
         },
         log_in(){
             this.local_login = true;
-            console.log('local_login');
-            console.log(this.$emit)
+            // console.log('local_login');
+            // console.log(this.$emit)
             this.$emit('loginprofile');
         }
     },
@@ -144,11 +136,11 @@ export default {
     watch: { 
         login: function(newVal, oldVal) { // watch it
             this.local_login = newVal;
-            console.log('Prop login changed: ', newVal, ' | was: ', oldVal)
+            // console.log('Prop login changed: ', newVal, ' | was: ', oldVal)
         },
         showheader: function(newVal, oldVal) { // watch it
             this.show_header = newVal;
-            console.log('Prop showheader changed: ', newVal, ' | was: ', oldVal)
+            // console.log('Prop showheader changed: ', newVal, ' | was: ', oldVal)
         },
     }
 }

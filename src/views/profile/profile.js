@@ -3,6 +3,7 @@ import profileNav from '@/resources/components/profile/profile-nav/profile-nav.v
 import profilePost from '@/resources/components/profile/profile-post/profile-post.vue'
 import profileFollower from '@/resources/components/profile/profile-follower/profile-follower.vue'
 import profileAbout from '@/resources/components/profile/profile-about/profile-about.vue'
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
     name: "profile",
@@ -62,7 +63,12 @@ export default {
         profileAbout
     },
     created() {
-        this.getProfile();
+        console.log(this.$route.params.id);
+        if(this.$route.params.id != 0 ){
+            this.getProfile();
+        } else {
+            this.getUserProfile()
+        }
     },
     methods: {
         onClickNav(data){
@@ -74,10 +80,44 @@ export default {
                 }
             })
         },
+        async getUserProfile() {
+                try {
+                    const access_token = getCookieByName('token');
+                    const response = await this.axios.get(
+                        `http://localhost:8000/api/users/profile` , {
+                            headers:{
+                                'token': `${access_token}`
+                            }
+                        }
+                    ).then((res) => {
+                        return res.data; 
+                    }).catch((err) => {
+                        console.error(err);
+                    });
+                    this.profile = response;
+                    this.about = this.profile.about["0"];
+                    this.follows = [...this.profile.follows];
+                    this.userposts = this.profile.posts;
+                    this.userProfile = {
+                        userphoto: this.about.userphoto,
+                        shortdescription: this.about.shortdescription,
+                        name : this.about.fname + " " + this.about.lname,
+                        followers: this.about.followers
+                    }
+                    console.log(this.follows)
+                    this.load = true;
+                    this.connection = true;
+                } catch (error) {
+                    console.log(error);
+                    this.connection = false;
+                    this.load = true;
+                }
+            
+        },
         async getProfile() {
             try {
                 const response = await this.axios.get(
-                    `http://localhost:8000/api/users/profile/${this.$route.params.id}?userid=${localStorage.id}/`
+                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`
                 ).then((res) => {
                     return res.data; 
                 }).catch((err) => {

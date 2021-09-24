@@ -48,16 +48,9 @@ export default {
         this.local_login = this.login;
         console.log('local_login');
         console.log(this.local_login);
-        // if(this.ppp = this.$store.state.user.profileUser){
-        //     this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
-        // }
     },
     mounted () {
-        // if(this.ppp = this.$store.state.user.profileUser.length > 0){
-            this.eventBus.on('onclickLogin', () => {
-                this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
-            })
-        // }
+    
       },
     methods: {
         thirdExampleSelected() {
@@ -71,6 +64,11 @@ export default {
             console.log('local_login');
             console.log(this.$emit)
             this.$emit('loginprofile');
+        },
+        profileuser(){
+            // this.$router.replace('panel/profile/0')
+            this.$router.replace({ path: '/panel/profile/0' });
+            this.$router.replace({ path: '/panel/profile/0' });
         }
     },
     computed: {
