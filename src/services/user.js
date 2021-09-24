@@ -16,6 +16,17 @@ export const getBookmark = async () => {
     return response.data;
   };
 
+export const getProfileUser = async () => {
+    const access_token = getCookieByName('token');
+    const response = await axios.get(`${http}/users/savedMessages`, {
+        headers:{
+            'token': `${access_token}`
+        }
+    });
+    console.log('getting Bookmark');
+    console.log(response);
+    return response.data;
+};
 
 export const login = async (data) => {
     const token = await axios.post(`${http}/login`, data)
