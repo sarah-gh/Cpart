@@ -18,11 +18,10 @@ export const getBookmark = async () => {
 
 
 export const login = async (data) => {
-    const token = axios.post(`${http}/login`, data)
+    const token = await axios.post(`${http}/login`, data)
     .then((res) => {
         console.log(res.data);
         writeCookie('token', res.data.token);
-        
     })
     .catch((error) => {
       console.error(error);

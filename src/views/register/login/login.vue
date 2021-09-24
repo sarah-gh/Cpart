@@ -94,8 +94,9 @@ export default {
         await this.requestLogin(JSON.stringify(value));
         console.log('Success ');
         this.emitter.emit("onclickLogin");
-        // await 
-        this.$router.replace({ path: '/' });
+        setTimeout(() => {
+          this.$router.replace({ path: '/' });
+        }, 1500);
       } catch {
         console.log(error);
       }
