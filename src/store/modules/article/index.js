@@ -17,10 +17,11 @@ const article = {
       const singleArticleData = await getSingleArticle(data);
       commit('setSingleArticles', singleArticleData);
     },
-    async requestPostArticle( _, data) {
+    async requestPostArticle({ commit }, data) {
       console.log('requesting article...', data);
+      console.log(data)
       const postData = await postArticle(data);
-      console.log(postData);
+      console.log(postData, commit);
       // commit('setSingleArticles', postData);
     },
   },

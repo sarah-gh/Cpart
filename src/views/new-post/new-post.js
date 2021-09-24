@@ -73,25 +73,27 @@ export default {
                 month = index - 1;
                 }
             })
-            let date = `${now[2]}<span>${this.month[month]}</span>${now[0]}`
+            let date = `${now[2]}
+            ${this.month[month]}
+            ${now[0]}`
             this.article.date = date;
             this.article.readTime = this.readTime(this.article.text);
             const data = {
-                operation: "newArticle", /////
-                userId : '', /////
+                operation: "newArticle",
                 headerPhoto: this.article.header_img,
-                title: this.article,
+                title: this.article.header,
                 articleText: this.article.text,
                 footerPhoto: this.article.footer_img,
                 date: this.article.date,
                 tag: this.article.tags,
                 readTime: `${this.article.readTime}`,
             }
+            this.testtt(JSON.stringify(data))
             /// JSON.stringify(data)
         },
         async testtt(data){
             try {
-                let test = await this.$store.dispatch('article/requestArticle', data);
+                let test = await this.$store.dispatch('article/requestPostArticle', data);
                 console.log(test);
             } catch (error) {
                 console.log(error);

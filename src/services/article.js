@@ -53,7 +53,7 @@ export const getSingleArticle = async (id) => {
 
 export const postArticle = async (data) => {
   const access_token = getCookieByName('token');
-  const token = axios.post(`${http}/newPosts`, data , {
+  const token = await axios.post(`${http}/users/operation`, data , {
     headers:{
       'token': `${access_token}`
     }
