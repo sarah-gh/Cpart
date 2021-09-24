@@ -41,13 +41,24 @@ export default {
             local_login: false,
             show_header: false,
             userLogin: {},
+            ppp: '',
         }
     },
     beforeMount(){
         this.local_login = this.login;
         console.log('local_login');
         console.log(this.local_login);
+        // if(this.ppp = this.$store.state.user.profileUser){
+        //     this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
+        // }
     },
+    mounted () {
+        // if(this.ppp = this.$store.state.user.profileUser.length > 0){
+            this.eventBus.on('onclickLogin', () => {
+                this.ppp = this.$store.state.user.profileUser.about["0"].userphoto
+            })
+        // }
+      },
     methods: {
         thirdExampleSelected() {
             alert('Result: ' + this.thirdExample)

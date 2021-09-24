@@ -95,6 +95,8 @@ export default {
         console.log('Success ');
         await this.$store.dispatch('user/requestProfileUser');
         this.emitter.emit("onclickLogin");
+        console.log('//////////////////////////////////');
+        console.log(this.$store.state.user.profileUser.about["0"])
         this.$router.replace({ path: '/' });
       } catch {
         console.log(error);
