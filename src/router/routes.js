@@ -16,7 +16,7 @@ export const routes = [
     component: () => import(/* webpackChunkName: "setting" */ '../views/profile-setting/profile-setting.vue')
   }, 
   {
-    path: '/new-post',
+    path: '/panel/new-post',
     name: 'new-post',
     component: () => import(/* webpackChunkName: "new-post" */ '../views/new-post/new-post.vue')
   },

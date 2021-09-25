@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
 
-
-export const authGuard = (to, from, next) => {
-  next()
-}
+import { getCookieByName } from '@/resources/utilities.js';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,5 +12,24 @@ const router = createRouter({
   }
 })
 
+
+router.beforeEach((to, from, next) => {
+  const token = getCookieByName('token');
+  // console.log(to.fullPath == ('/'));
+
+  if (to.fullPath.startsWith('/panel') && !token)
+    return next({ name: 'login' });
+
+  if (to.fullPath.startsWith('/panel') && token)
+    return next();
+
+  if (to.fullPath.startsWith('/authentication') && token)
+    return next({ name: 'posts' });
+
+  // if (from.fullPath.startsWith('/authentication') && token)
+  //   return next({ name: 'posts' });
+
+  next();
+});
 
 export default router

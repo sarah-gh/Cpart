@@ -1,14 +1,14 @@
 import postSummaryBookmark from '../../resources/components/post/post-summary-bookmark/post-summary-bookmark.vue'
 
 export default {
-    name: 'posts-summary',
+    name: 'posts-summary-bookmark',
     data() {
         return {
             posts: []
         }
     },
     created() {
-        this.getPosts();
+        this.testtt();
     },
     methods: {
         async testtt(){
