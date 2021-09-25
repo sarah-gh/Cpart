@@ -36,7 +36,9 @@
                 <span class="tag" v-for="(item, index) in post.tag" :key="index">
                     {{ item }}
                 </span>
-                <span class="save"><img src="../../../../assets/img/archive-add_3.svg"></span>
+                <span class="save" @click="saveItem" v-if="!save"><img src="../../../../assets/img/archive-add_3.svg"></span>
+                <span class="save" @click="saveItem" v-else><img src="../../../../assets/img/svg-post/archive-add.svg"></span>
+
             </div>
         </footer>
     </div>

@@ -38,7 +38,7 @@
                                         <p class="user_name">@amir.h.motalebzadeh</p>
                                     </div>
                                     <div class="vector-3"></div>
-                                    <router-link to="/new-post" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                    <router-link to="/panel/new-post" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         ایجاد مقاله
                                         <img src="../../../../assets/img/svg-header/document-download.svg" />
                                     </router-link>

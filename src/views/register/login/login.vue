@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div class="register-page register">
     <div class="entry-register">ورود / ثبت نام</div>
     <!-- <Form class="form" @submit="userNumber" :validation-schema="phoneNumber">
       <p class="guide-text">لطفا شماره تلفن همراه خود را وارد کنید</p>

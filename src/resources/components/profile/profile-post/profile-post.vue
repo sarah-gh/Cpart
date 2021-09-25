@@ -9,7 +9,7 @@
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
-                    {{ text }}
+                    {{text}}
                 </div>
             </router-link>
         </div>
@@ -50,6 +50,22 @@ export default {
         if (this.post.artcletext.length > 180) {
             this.text = this.text.substring(0, 175) + "...";
         }
+        this.text = this.removeTags(this.text)
+    },
+    methods: {
+        removeTags(str) {
+            if ((str===null) || (str===''))
+                return false;
+            else
+                str = str.toString();
+
+            return str.replace( /(<([^>]+)>)/ig, '');
+        },
+        stringToHTML(str) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(str, 'text/html');
+            return doc.body;
+        },
     },
     mounted() {
         

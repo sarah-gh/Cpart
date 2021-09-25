@@ -78,6 +78,7 @@ export default {
             ${now[0]}`
             this.article.date = date;
             this.article.readTime = this.readTime(this.article.text);
+            this.article.text = this.removeTags(this.article.text);
             const data = {
                 operation: "newArticle",
                 headerPhoto: this.article.header_img,
@@ -98,6 +99,14 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        removeTags(str) {
+            if ((str===null) || (str===''))
+                return false;
+            else
+                str = str.toString();
+
+            return str.replace( /(<([^>]+)>)/ig, '');
         },
       checkSpan(){
           this.article.text = document.getElementById('span_id').innerHTML;
