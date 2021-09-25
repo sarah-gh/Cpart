@@ -2,24 +2,13 @@ import axios from 'axios';
 import { getCookieByName, delete_cookie } from '@/resources/utilities.js';
 const http = 'http://localhost:8000/api';
 
-// export const login = async () => {
-//   await simulateRequest(2000);
-//   // this is what server gives us
-//   const token = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
-//   writeCookie('token', token);
-//   return { token };
-// };
-
-// export const getProfile = async () => {
-//   console.log('getting profile');
-//   const response = await axios.get('/api/profile');
-//   console.log(response);
-
-//   return response.data;
-// };
-
 export const getArticles = async () => {
-    const response = await axios.get(`${http}/posts`);
+    console.log('Getting')
+    console.log(`${http}/posts`)
+    const response = await axios.get(`${http}/posts`)
+    .catch((err) => {
+      console.error(1,err);
+    })
     console.log('getting articles');
     console.log(response);
   

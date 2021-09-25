@@ -4,7 +4,9 @@ export default {
     name: 'posts-summary-bookmark',
     data() {
         return {
-            posts: []
+            posts: [],
+            load: false,
+            connection: true,
         }
     },
     created() {
