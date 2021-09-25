@@ -11,7 +11,6 @@
             name="phoneNumber"
             type="text"
             placeholder="your phone number"
-            value="09151232321"
           />
           <ErrorMessage name="phoneNumber"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
         </div>

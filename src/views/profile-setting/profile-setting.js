@@ -114,7 +114,7 @@ export default {
     },
     mounted() {
         let img = 'http://localhost:8080/img/340558.eb35fb35.jpeg';
-        console.log(img);
+        // console.log(img);
         var xhr = new XMLHttpRequest();       
         xhr.open("GET", img, true); 
         xhr.responseType = "blob";
@@ -126,7 +126,7 @@ export default {
             reader.onload = function(event) {
             var res = event.target.result;
             res_img = res;
-            console.log(res_img);
+            // console.log(res_img);
             }
             var file = this.response;
             reader.readAsDataURL(file)
@@ -137,6 +137,9 @@ export default {
             this.imageData = res_img;
         }, 300);
         
+    },
+    created() {
+        this.getDataSettings()
     },
     methods: {
         emitImg(img){
@@ -153,6 +156,16 @@ export default {
                     this.subField(index);
                 }
             });
+        },
+        async getDataSettings(){
+            try{
+                await this.$store.dispatch('user/requestsettingUser');
+                console.log('//////////////////');
+                let user = this.$store.state.user.setting;
+                console.log(user);
+            } catch {
+                console.log('error');
+            }
         },
         onSubmitLink(values) {
             this.edit.forEach((value, index) => {

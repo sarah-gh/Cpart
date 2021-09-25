@@ -19,3 +19,8 @@ export const getCookieByName = (name) => {
 export const writeCookie = (name, value) => {
   document.cookie = `${name}=${value}`;
 };
+
+
+export const delete_cookie = ( name ) => {
+  document.cookie = name + '=; Max-Age=0'
+}
