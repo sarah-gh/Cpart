@@ -15,6 +15,23 @@ export const getArticles = async () => {
     return response.data;
   };
 
+export const getArticlesUser = async () => {
+    console.log('Getting')
+    console.log(`${http}/posts`)
+    const response = await axios.get(`${http}/posts`, {
+      headers:{
+        'token': `${access_token}`
+      }
+    })
+    .catch((err) => {
+      console.error(1,err);
+    })
+    console.log('getting articles');
+    console.log(response);
+  
+    return response.data;
+};
+
 export const getSingleArticle = async (id) => {
   const response = await axios.get(
       `${http}/posts/${id}`

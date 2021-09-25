@@ -2,7 +2,8 @@ import postSummary from '../../resources/components/post/post-summary/post-summa
 import headerNav from '../../resources/components/header/header-nav/header-nav.vue'
 // import mapGetters from 'vuex'
 // import axios from 'axios'
-import { useStore } from 'vuex';
+// import { useStore } from 'vuex';
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
     name: 'posts-summary',
@@ -33,11 +34,16 @@ export default {
     methods: {
         async testtt(){
             try {
-                // if(this.$store.state.article.article.length > 0){ ////// ??
+                let cookie = getCookieByName('token');
+                let response
+                if(cookie.token){ ////// ??
+                    await this.$store.dispatch('article/requestArticleUser');
+                    response = this.$store.state.article.articleUser;
+                } else {
                     await this.$store.dispatch('article/requestArticle');
-                    // console.log(test);
-                // }
-                let response = this.$store.state.article.article;
+                    response = this.$store.state.article.article;
+                }
+                
                 console.log('test')
                 console.log(response);
                 this.posts = response;

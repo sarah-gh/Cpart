@@ -38,7 +38,7 @@
                 </span>
                 <span class="save" @click="saveItem" v-if="!save"><img src="../../../../assets/img/archive-add_3.svg"></span>
                 <span class="save" @click="saveItem" v-else><img src="../../../../assets/img/svg-post/archive-add.svg"></span>
-
+                <!-- <span class="">{{ post.issaved }}</span> -->
             </div>
         </footer>
     </div>

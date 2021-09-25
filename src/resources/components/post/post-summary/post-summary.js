@@ -18,6 +18,13 @@ export default {
         if (this.post.artcletext.length > 180) {
             this.text = this.text.substring(0, 175) + "...";
         }
+        console.log(this.post.issaved)
+        if(this.post.issaved == 0){
+            this.save = false;
+        } else {
+            this.save = true;
+        }
+         
     },
     mounted() {
         //console.log(this.post)
