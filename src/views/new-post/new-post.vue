@@ -6,7 +6,7 @@
                 <h2>ایجاد مطلب جدید</h2>
             </div>
             <section class="new-post-container">
-                <post-upload @addImage="add_image" :location="'header'"></post-upload>
+                <post-upload @addImage="add_image" v-if="publish" :location="'header'"></post-upload>
                 <div class="post-content">
 
                     <textarea 
