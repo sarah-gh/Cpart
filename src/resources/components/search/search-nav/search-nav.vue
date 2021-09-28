@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         navActive(x){
-            console.log(x);
+            // console.log(x);
             this.navigator.forEach((value, index) => {
                 if(index === x){
                     value.active = true;

@@ -138,7 +138,7 @@ export default {
   },
   methods:{
     onSubmit(value){
-      console.log(value);
+      // console.log(value);
       // code
     }
   }

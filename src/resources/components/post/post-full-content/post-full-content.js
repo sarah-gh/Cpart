@@ -1,3 +1,4 @@
+
 export default {
     name: 'post-full',
     props: {
@@ -13,7 +14,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            console.log(this.post);
+            // console.log(this.post);
         }, 3000);
     },
 }

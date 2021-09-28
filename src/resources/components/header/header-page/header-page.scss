@@ -2,6 +2,9 @@
 
 @import '../../../../assets/sass/_dropdown';
 
+.avatar_img {
+    cursor: pointer;
+}
 
 .fade-leave-active {
     transition: opacity .3s ease-in !important;

@@ -96,7 +96,7 @@ export default {
             try {
                 let test = await this.$store.dispatch('article/requestPostArticle', data);
                 this.$router.replace({ path: '/panel/profile/0' })
-                console.log(test);
+                // console.log(test);
             } catch (error) {
                 console.log(error);
             }

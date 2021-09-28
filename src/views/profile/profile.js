@@ -104,7 +104,7 @@ export default {
                         name : this.about.fname + " " + this.about.lname,
                         followers: this.about.followers
                     }
-                    console.log(this.follows)
+                    // console.log(this.follows)
                     this.load = true;
                     this.connection = true;
                 } catch (error) {
@@ -133,7 +133,7 @@ export default {
                     name : this.about.fname + " " + this.about.lname,
                     followers: this.about.followers
                 }
-                console.log(this.follows)
+                // console.log(this.follows)
                 this.load = true;
                 this.connection = true;
             } catch (error) {

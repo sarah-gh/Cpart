@@ -2,6 +2,7 @@ import postFullContent from '../../resources/components/post/post-full-content/p
 import postComment from '../../resources/components/post/post-comment/post-comment.vue';
 import postThisAuthor from '../../resources/components/post/post-this-author/post-this-author.vue';
 import postNewComment from '../../resources/components/post/post-new-comment/post-new-comment.vue';
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
     name: 'posts-summary',
@@ -38,15 +39,25 @@ export default {
         this.getPosts();
         this.testtt();
         //this.getComments();
+        const token = getCookieByName('token');
+        if(token) {
+
+        }
+        else {
+            
+        }
     },
+    // beforeMount() {
+        
+    // },
     methods: {
         async testtt(){
             try {
                 let test = await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
                 let response = this.$store.state.article.singleArticle;
-                console.log('test')
-                console.log(test);
-                console.log(response);
+                // console.log('test')
+                // console.log(test);
+                // console.log(response);
                 // this.posts = response;
                 // this.connection = true;
                 // this.load = true;

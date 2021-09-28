@@ -15,8 +15,8 @@ export const getBookmark = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
   };
 
@@ -45,8 +45,8 @@ export const getProfileUser = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
 };
 
@@ -61,15 +61,15 @@ export const getSetting = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
 };
 
 export const login = async (data) => {
     const token = await axios.post(`${http}/login`, data)
     .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         writeCookie('token', res.data.token);
     })
     .catch((error) => {
