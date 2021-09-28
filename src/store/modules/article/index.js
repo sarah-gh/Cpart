@@ -1,9 +1,10 @@
-import { getArticles, getSingleArticle, postArticle, getArticlesUser } from '@/services/article.js';
+import { getArticles, getSingleArticle, postArticle , getArticlesUser} from '@/services/article.js';
 
 const article = {
   namespaced: true,
   state: () => ({
     article: {},
+    articleUser: {},
     singleArticle: [],
   }),
   actions: {
@@ -13,7 +14,7 @@ const article = {
       commit('setArticles', articleData);
     },
     async requestArticleUser({ commit }) {
-      // console.log('requesting article...');
+      console.log('requesting article...');
       const articleData = await getArticlesUser();
       commit('setArticles', articleData);
     },
@@ -34,9 +35,13 @@ const article = {
     setArticles(state, articleData) {
       state.article = articleData;
     },
+    setArticlesuser(state, articleData) {
+      state.articleUser = articleData;
+    },
     setSingleArticles(state, singleArticleData) {
       state.singleArticle = singleArticleData;
     },
+    
   },
   getters: {},
 };
