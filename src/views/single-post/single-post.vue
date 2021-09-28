@@ -40,11 +40,11 @@
             </div>
 
             <div class='comments' v-for="(com, index) in comment" :key="index">
-                <post-comment :comment="com"></post-comment>
+                <post-comment @replyComment="reply" :comment="com"></post-comment>
                 <div class="commentLine"></div>
             </div>
 
-            <post-new-comment></post-new-comment>            
+            <post-new-comment :replyto="replyto" @cancel="cancel" :postid="post.articleid"></post-new-comment>            
             
         </div>
     </main>

@@ -1,17 +1,4 @@
-const ppl = [
-    {
-        id: 1,
-        name: 'John Doe'
-    },
-    {
-        id: 2,
-        name: 'John Cena'
-    },
-    {
-        id: 3,
-        name: 'Sylvester Stallone'
-    }
-]
+
 import headerSearch from '../header-search/header-search.vue'
 import { getCookieByName } from '@/resources/utilities.js';
 
@@ -36,7 +23,6 @@ export default {
     data(){
         return {
             isVisible : false,
-            ppl: ppl,
             firstExample: 0,
             secondExample: 0,
             thirdExample: 0,
@@ -45,7 +31,7 @@ export default {
             local_login: false,
             show_header: false,
             userLogin: {
-                userphoto: '',
+                userphoto: 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg',
                 fname: '',
                 lname: '',
                 username : ''
@@ -66,10 +52,10 @@ export default {
     computed: {
         isLogin(){
             if(this.$store.state.login){
-                // this.testtt();
-                return 'true';
+                this.testtt();
+                return '';
             }
-            return 'false';
+            return '';
         }
     },
     methods: {
@@ -78,13 +64,14 @@ export default {
         },
         profileuser(){
             // this.$router.replace('panel/profile/0')
-            this.$router.replace({ path: '/panel/profile/0' });
+            // this.$router.replace({ path: '/panel/profile/0' });
             this.$router.replace({ path: '/panel/profile/0' });
         },
         async testtt(){
             try{
                 await this.$store.dispatch('user/requestProfileUser');
-                this.userLogin = this.$store.state.user.profileUser.about["0"]
+                this.userLogin = this.$store.state.user.profileUser.about["0"];
+                // console.log(this.userLogin);
             } catch {
                 console.log(error);
             }

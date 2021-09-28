@@ -34,9 +34,9 @@ export default {
         routeTitle(item){
             const token = getCookieByName('token');
             if(token){
-                return `/panel/post/${item.articleid}`
+                return `/post/${item.articleid}`
             }
-            return `/public/post/${item.articleid}`
+            return `/post/${item.articleid}`
         },
         saveItem(){
             this.save = !this.save;

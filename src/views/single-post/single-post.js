@@ -26,7 +26,8 @@ export default {
                     img: 'Capture3.png',
                     header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
                 }
-            ]
+            ],
+            replyto : null
         }
     },
     components: {
@@ -77,13 +78,13 @@ export default {
                 }).catch((err) => {
                     console.error(err);
                 });
-                const other = await this.axios.get(
-                        `http://localhost:8000/api/posts?userid=${response["0"].userid}&limit=3`
-                ).then((res) => {
-                    return res.data;
-                }).catch((err) => {
-                    console.error(err);
-                });
+                // const other = await this.axios.get(
+                //         `http://localhost:8000/api/posts?userid=${response["0"].userid}&limit=3`
+                // ).then((res) => {
+                //     return res.data;
+                // }).catch((err) => {
+                //     console.error(err);
+                // });
                 const comm = await this.axios.get(
                     `http://localhost:8000/api/comments/${this.$route.params.id}`
                 ).then((res) => {
@@ -91,16 +92,21 @@ export default {
                 }).catch((err) => {
                     console.error(err);
                 });
-                // console.log(other);
-                // console.log(comm);
                 let post = response;
                 this.post = Object.assign(post["0"]);
+                console.log(this.post)
                 this.comment = comm;
                 this.load = true;
             } catch (error) {
                 console.log(error);
             }
         },
+        reply(data){
+            this.replyto = data;
+        },
+        cancel(){
+            this.replyto = null
+        }
         // async getComments() {
         //     try {
         //         const response = await this.$http.get(

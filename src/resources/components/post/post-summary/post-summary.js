@@ -13,12 +13,14 @@ export default {
             title_route: '',
             text : '',
             save : false,
+            follow: false,
         }
     },
     created() {
-        this.save = this.post.issaved == '1' ? true : false;
+        this.save = this.post.issaved == '0' ? false : true;
+        this.follow = this.post.arefollowing == '1' ? true : false;
         // console.log(this.save)
-        // console.log(this.post.issaved)
+        // console.log(this.post.arefollowing)
         // console.log("///////")
     },
     beforeMount(){
@@ -43,6 +45,13 @@ export default {
                 console.log(error);
             }
         },
+        async testtt2(data){
+            try{
+                await this.$store.dispatch('user/requestfollow', data);
+            } catch {
+                console.log('error');
+            }
+        },
         saveItem(){
             this.save = !this.save;
             let status_save = this.save ? 1 : 0;
@@ -55,18 +64,28 @@ export default {
             this.testtt(JSON.stringify(data))
             //this.$emit('save_item', 'donbalkonande')
         },
+        followUser() {
+            this.follow = !this.follow;
+            let status_follow = this.follow ? 1 : 0;
+            const data = {
+                operation: "follow",
+                followingId: this.post.userid,
+                status: status_follow
+            }
+            // JSON.stringify(data)
+            this.testtt2(JSON.stringify(data))
+        },
         routeName(item){
             return `/panel/profile/${item.userid}`
         },
         routeTitle(item){
             const token = getCookieByName('token');
             if(token){
-                return `/panel/post/${item.articleid}`
+                return `/post/${item.articleid}`
             }
             else {
-                return `/public/post/${item.articleid}`
+                return `/post/${item.articleid}`
             }
-            
         }
       }
 }

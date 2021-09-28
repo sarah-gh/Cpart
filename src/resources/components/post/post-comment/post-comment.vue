@@ -7,7 +7,7 @@
                 <!-- <span class="time">{{ comment.time }}</span> -->
             </div>
             <div class="like-forward">
-                <img src="../../../../assets/img/forward-square.svg" class="forward">
+                <img src="../../../../assets/img/forward-square.svg" class="forward" @click="reply_comment">
                 <div class="like">
                     <img src="../../../../assets/img/like.svg">
                 </div>
@@ -39,7 +39,7 @@ export default {
     },
     data() {
         return {
-            commentsReply: [1]
+            commentsReply: [1],
         }
     },
     // beforeMount(){
@@ -47,8 +47,15 @@ export default {
     //         console.log(this.ccc)
     //     }, 1000);
     // },
+    
     components : {
         postCommentReply
+    },
+    methods: {
+        reply_comment(){
+            console.log(this.comment)
+            this.$emit('replyComment' , this.comment)
+        }
     }
 }
 </script>

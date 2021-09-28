@@ -1,4 +1,4 @@
-import { getBookmark , getProfileUser, postBookmark , getSetting} from '@/services/user.js';
+import { getBookmark , getProfileUser, postBookmark , getSetting, userOperation} from '@/services/user.js';
 
 const user = {
   namespaced: true,
@@ -13,6 +13,11 @@ const user = {
       // console.log('requesting article...', data);
       const bookmarkData = await getBookmark(data);
       commit('setBookmark', bookmarkData);
+    },
+    async requestfollow({ commit }, data) {
+      console.log(data);
+      const bookmarkData = await userOperation(data);
+      // commit('setBookmark', bookmarkData);
     },
     async requestProfileUser({ commit }) {
       const profile = await getProfileUser();

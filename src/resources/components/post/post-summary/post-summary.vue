@@ -12,8 +12,9 @@
                 <router-link :to="routeName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</router-link>
             </div>
             <div class="follow">
-            <button class="follow">دنبال کردن</button>
-            
+            <!-- <button class="follow">دنبال کردن</button> -->
+            <button class="follow" v-if="!follow" @click="followUser">دنبال کردن</button>
+            <button class="follow followed" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
 
         </header>
@@ -44,3 +45,15 @@
 </template>
 
 <script type="text/javascript" src="./post-summary.js"></script>
+
+<style lang="scss" scoped>
+.followed{
+    background-color: #139eca !important;
+    color: white !important;
+    border: 0px !important;
+}
+.follow{
+    flex-grow: 0;
+    margin-right: 20px;
+}
+</style>

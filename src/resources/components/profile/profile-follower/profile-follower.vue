@@ -33,7 +33,7 @@ export default {
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/sass/_variable";
 @import "@/assets/sass/_button";
 
@@ -69,7 +69,8 @@ export default {
     border: 0px !important;
 }
 .follow{
-    flex-grow: 1;
+    width: 80px !important;
+    flex-grow: 1 !important;
     margin-right: 20px;
 }
 </style>

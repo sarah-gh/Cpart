@@ -9,7 +9,7 @@
 				accept="image/*"
 				class="input-file"
 			/>
-			<label for="photo-upload-button">Carregue sua foto</label>
+			<label for="photo-upload-button">upload avatar</label>
 		</div>
 		<div
 			class="image-preview"
@@ -41,7 +41,7 @@ export default {
 		setTimeout(() => {
             // console.log('xhr')
             this.imageData = this.imgData;
-        }, 400);
+        }, 700);
 	},
 	methods: {
 		previewThumbnail: function getPreview(event) {

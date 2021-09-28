@@ -13,10 +13,10 @@
                     </router-link>
                 </div>
             </section>
-            <div> {{ isLogin }} </div>
+            <div style="display : none"> {{ isLogin }} </div>
             <!-- لاگین شده -->
             <div class="logo" v-show="$store.state.login">
-                <router-link to="../posts" class="logo-img">
+                <router-link to="/" class="logo-img">
                     <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
                 </router-link>
             </div>
