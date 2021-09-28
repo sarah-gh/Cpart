@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <!-- <header-published></header-published> -->
+    <header-published></header-published>
     <router-view></router-view>
-    <!-- <footer-page></footer-page> -->
+    <footer-page></footer-page>
   </div>
 </template>
 

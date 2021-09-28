@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
-    <!-- <header-page-login v-else :showheader="showheader" :login="login" :photo="photo"></header-page-login> -->
-
+    <!-- <header-page :showheader="showheader" :login="login" :photo="photo"></header-page> -->
     <router-view />
-    <footer-page></footer-page>
+    <!-- <footer-page></footer-page> -->
   </div>
 </template>
 
@@ -31,29 +29,8 @@ export default {
       photo: ''
     }
   },
-  emits: ["loginprofile"],
   methods: {
-    onclickLogin(){
-      this.login_profile()
-    },
-    
-    async login_profile(){
-      this.login = true;
-      try {
-          const response = await this.axios.get(
-              `http://localhost:8000/api/users/profile/4`
-          ).then((res) => {
-              return res.data; 
-          }).catch((err) => {
-              console.error(err);
-          });
-          this.profile = response;
-          this.photo = this.profile.about["0"].userphoto;
-          console.log(this.profile.about["0"].userphoto);
-      } catch (error) {
-          console.log(error);
-      }
-    }
+
   },
   watch:{
     $route (to, from){

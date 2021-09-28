@@ -160,9 +160,9 @@ export default {
         async getDataSettings(){
             try{
                 await this.$store.dispatch('user/requestsettingUser');
-                console.log('//////////////////');
+                // console.log('//////////////////');
                 let user = this.$store.state.user.setting;
-                console.log(user);
+                // console.log(user);
             } catch {
                 console.log('error');
             }

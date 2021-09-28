@@ -27,7 +27,7 @@ export default {
     },
     mounted(){
         setTimeout(() => {
-            console.log(this.follow);
+            // console.log(this.follow);
         }, 3000);
     }
 

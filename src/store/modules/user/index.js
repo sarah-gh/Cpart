@@ -10,7 +10,7 @@ const user = {
   }),
   actions: {
     async requestbookmark({ commit }, data) {
-      console.log('requesting article...', data);
+      // console.log('requesting article...', data);
       const bookmarkData = await getBookmark(data);
       commit('setBookmark', bookmarkData);
     },
@@ -23,10 +23,10 @@ const user = {
       commit('setSettingUser', setting);
     },
     async requestPostBookmark({ commit }, data) {
-      console.log('requesting article...', data);
-      console.log(data)
+      // console.log('requesting article...', data);
+      // console.log(data)
       const bookmarkData = await postBookmark(data);
-      console.log(bookmarkData, commit);
+      // console.log(bookmarkData, commit);
     },
   },
   mutations: {

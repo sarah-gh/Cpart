@@ -17,9 +17,9 @@ export default {
             try {
                 let test = await this.$store.dispatch('user/requestbookmark');
                 let response = this.$store.state.user.bookmark;
-                console.log('test')
-                console.log(test);
-                console.log(response);
+                // console.log('test')
+                // console.log(test);
+                // console.log(response);
                 this.posts = response;
                 this.connection = true;
                 this.load = true;
@@ -36,7 +36,7 @@ export default {
                 ).then((res) => {
                     return res.data;
                 });
-                console.log(response);
+                // console.log(response);
                 this.posts = response;
             } catch (error) {
                 console.log(error);

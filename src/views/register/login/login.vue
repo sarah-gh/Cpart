@@ -89,15 +89,14 @@ export default {
     },
     async onSubmit(value){
       try{
-        console.log('onSubmit')
-        console.log(JSON.stringify(value));
+        // console.log('onSubmit')
+        // console.log(JSON.stringify(value));
         await this.requestLogin(JSON.stringify(value));
-        console.log('Success ');
+        // console.log('Success ');
         await this.$store.dispatch('user/requestProfileUser');
-        this.emitter.emit("onclickLogin");
-        console.log('//////////////////////////////////');
-        console.log(this.$store.state.user.profileUser.about["0"])
-        this.$router.replace({ path: '/' });
+        // console.log('//////////////////////////////////');
+        // console.log(this.$store.state.user.profileUser.about["0"])
+        this.$router.replace({ path: '/panel/posts' });
       } catch {
         console.log(error);
       }
@@ -105,7 +104,7 @@ export default {
    
     async requestLogin(data) {
         try{
-          console.log('requesting login...');
+          // console.log('requesting login...');
           const loginResponse = await login(data);
         } catch {
           console.log(error);

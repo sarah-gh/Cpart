@@ -6,6 +6,7 @@ export default {
     name: 'new-post',
     data(){ 
         return {
+            publish : true,
             article : {
                 header: '',
                 text: '',
@@ -74,8 +75,8 @@ export default {
                 }
             })
             let date = `${now[2]}
-            ${this.month[month]}
-            ${now[0]}`
+                        ${this.month[month]}
+                        ${now[0]}`;
             this.article.date = date;
             this.article.readTime = this.readTime(this.article.text);
             this.article.text = this.removeTags(this.article.text);
@@ -90,12 +91,12 @@ export default {
                 readTime: `${this.article.readTime}`,
             }
             this.testtt(JSON.stringify(data))
-            /// JSON.stringify(data)
         },
         async testtt(data){
             try {
                 let test = await this.$store.dispatch('article/requestPostArticle', data);
-                console.log(test);
+                this.$router.replace({ path: '/panel/profile/0' })
+                // console.log(test);
             } catch (error) {
                 console.log(error);
             }

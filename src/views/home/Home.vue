@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <!-- <header-page></header-page> -->
+    <header-page :user="user"></header-page>
     <router-view></router-view>
-    <!-- <footer-page></footer-page> -->
+    <footer-page></footer-page>
   </div>
 </template>
 
@@ -16,16 +16,26 @@ export default {
     footerPage,
     headerPage
   },
+  data() {
+    return {
+      user: {}
+    }
+  },
+  created() {
+      this.user = this.$store.state.user.profileUser.about["0"]
+      //this.testtt()
+  },
   mounted() {
     let url = window.location.href;
-    console.log(url);
-    console.log("home");
+    // console.log(url);
+    // console.log("home");
   },
   methods: {
     update(){
       let url = window.location.href;
-      console.log(url);
-    }
+      // console.log(url);
+    },
+    
   }
 }
 </script>

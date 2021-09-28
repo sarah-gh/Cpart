@@ -103,6 +103,10 @@ export default {
     props: {
         location: {
             type: String,
+        },
+        publish: {
+            type: Boolean,
+            required: false,
         }
     },
     data() {
