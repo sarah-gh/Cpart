@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <!-- <header-page :showheader="showheader" :login="login" :photo="photo"></header-page> -->
+    <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
     <router-view />
-    <!-- <footer-page></footer-page> -->
+    <footer-page></footer-page>
   </div>
 </template>
 
@@ -31,6 +31,15 @@ export default {
   },
   methods: {
 
+  },
+  mounted(){
+    const c = getCookieByName('token');
+    if(c){
+      this.$store.state.login = true;
+    }
+    else {
+      this.$store.state.login = false;
+    }
   },
   watch:{
     $route (to, from){

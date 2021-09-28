@@ -96,7 +96,8 @@ export default {
         await this.$store.dispatch('user/requestProfileUser');
         // console.log('//////////////////////////////////');
         // console.log(this.$store.state.user.profileUser.about["0"])
-        this.$router.replace({ path: '/panel/posts' });
+        this.$router.replace({ name: 'posts' });
+        this.$store.state.login = true;
       } catch {
         console.log(error);
       }

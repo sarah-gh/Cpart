@@ -13,21 +13,22 @@ const ppl = [
     }
 ]
 import headerSearch from '../header-search/header-search.vue'
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
     name: 'header-page',
     props: {
-        // showheader: {
-        //     type: Boolean,
-        //     default: false,
-        // },
-        // login: {
-        //     type: Boolean,
-        //     default: false,
-        // },
-        // photo: {
-        //     type: String,
-        // },
+        showheader: {
+            type: Boolean,
+            default: false,
+        },
+        login: {
+            type: Boolean,
+            default: false,
+        },
+        photo: {
+            type: String,
+        },
         user: {
             type: Object
         }
@@ -43,18 +44,33 @@ export default {
             isVisibleSearch : false,
             local_login: false,
             show_header: false,
-            userLogin: {},
+            userLogin: {
+                userphoto: '',
+                fname: '',
+                lname: '',
+                username : ''
+            },
             ppp: '',
+            
         }
     },
-    beforeMount(){
-        this.local_login = this.login;
-        // console.log('local_login');
-        // console.log(this.local_login);
-    },
-    mounted () {
-        console.log('this.user')
-        console.log(this.user)
+    // beforeMount(){
+    //     this.local_login = this.login;
+    //     // console.log('local_login');
+    //     // console.log(this.local_login);
+    // },
+    // mounted () {
+    //     console.log('this.user')
+    //     console.log(this.user)
+    // },
+    computed: {
+        isLogin(){
+            if(this.$store.state.login){
+                // this.testtt();
+                return 'true';
+            }
+            return 'false';
+        }
     },
     methods: {
         clickIsVisibleSearch(){
@@ -73,9 +89,6 @@ export default {
                 console.log(error);
             }
           }
-    },
-    computed: {
-        
     },
     components:{
         headerSearch
