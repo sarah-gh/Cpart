@@ -2,31 +2,32 @@
     <header class="header">
         <div class="header-container">
             <!-- دکمه ورود -->
-            <!-- <section class="flexContainer row" v-show="!local_login">
+            <section class="flexContainer row" v-show="!$store.state.login">
                 <router-link to="/authentication/login" class="userLogin">
                     <button class="btn btn-login"> ورود / ثبت نام</button>
                 </router-link>
                 <div class="logo">
+                    
                     <router-link to="/" href="#" class="logo-img">
                         <img src="../../../../assets/img/Group249.svg" alt="logo" /> 
                     </router-link>
                 </div>
-            </section> -->
-            <div class="logo">
-                <router-link to="../posts" class="logo-img">
+            </section>
+            <div style="display : none"> {{ isLogin }} </div>
+            <!-- لاگین شده -->
+            <div class="logo" v-show="$store.state.login">
+                <router-link to="/" class="logo-img">
                     <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
                 </router-link>
             </div>
 
-            <!-- لاگین شده -->
-
-            <div class="buttons">
+            <div class="buttons" v-show="$store.state.login">
                 <div>
                     <div class="relative inline-block" @mouseover="isVisible = true" @mouseleave="isVisible = false" @keydown.enter="isVisible = !isVisible">
                         <!-- <router-link :to="'panel/profile/0'" class="profile_user"> -->
                         <div class="avatar_img">
                           <div @click="profileuser()" type="button" class=" inline-flex items-center justify-between py-1 font-medium text-gray-700 transition-all duration-500 rounded-md focus:outline-none focus:text-brand-900 sm:focus:shadow-outline">
-                              <img :src="user.userphoto" class='flex-shrink-0 avatar nav-top' alt="user-photo">
+                              <img :src="userLogin.userphoto" class='flex-shrink-0 avatar nav-top' alt="user-photo">
                           </div>
                         </div>
                         <!-- </router-link> -->
@@ -36,8 +37,8 @@
                                 <div class="absolute top-0 w-4 h-4 origin-center transform rotate-45 translate-x-5 -translate-y-2 bg-white border-t border-l border-gray-200 rounded-sm pointer-events-none"></div>
                                 <div class="relative">
                                     <div class="dropdown_name">
-                                        <p class="full_name">{{ user.fname }} {{ user.lname }}</p>
-                                        <p class="user_name">@{{ user.username }}</p>
+                                        <p class="full_name">{{ userLogin.fname }} {{ userLogin.lname }}</p>
+                                        <p class="user_name">@{{ userLogin.username }}</p>
                                     </div>
                                     <div class="vector-3"></div>
                                     <router-link to="/panel/new-post" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">

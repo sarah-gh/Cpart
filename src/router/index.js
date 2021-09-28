@@ -25,20 +25,20 @@ router.beforeEach((to, from, next) => {
   if (to.fullPath.startsWith('/panel') && token)
     return next();
 
-  if (to.fullPath.startsWith('/posts') && token)
-    return next({ name: 'posts-user' });
+  // if (to.fullPath.startsWith('/posts') && token)
+  //   return next({ name: 'posts-user' });
 
-  if (to.fullPath.startsWith('/home') && !token)
-    return next({ name: 'home-public' });
+  // if (to.fullPath.startsWith('/home') && !token)
+  //   return next({ name: 'home-public' });
 
-  if (to.fullPath.startsWith('/home') && token)
-    return next();
+  // if (to.fullPath.startsWith('/home') && token)
+  //   return next();
 
-  if (to.fullPath.startsWith('/home-public') && token)
-    return next({ name: 'home' });
+  // if (to.fullPath.startsWith('/home-public') && token)
+  //   return next({ name: 'home' });
 
   if (to.fullPath.startsWith('/authentication') && token)
-    return next({ name: 'home' });
+    return next({ name: 'posts' });
 
   // if (from.fullPath.startsWith('/authentication') && token)
   //   return next({ name: 'posts' });

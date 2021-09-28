@@ -34,6 +34,19 @@ export const postBookmark = async (data) => {
       return false;
     })  
 }
+export const userOperation = async (data) => {
+    const access_token = getCookieByName('token');
+    const token = await axios.post(`${http}/users/operation`, data , {
+      headers:{
+        'token': `${access_token}`
+      }
+    }) 
+    .catch((error) => {
+      delete_cookie('token');
+      console.error(error);
+      return false;
+    })  
+}
 export const getProfileUser = async () => {
     const access_token = getCookieByName('token');
     const response = await axios.get(`${http}/users/profile`, {
@@ -78,4 +91,4 @@ export const login = async (data) => {
 };
 
 
-export default { getBookmark, login, getSetting, postBookmark };
+export default { getBookmark, login, getSetting, postBookmark, userOperation };
