@@ -2,9 +2,9 @@
     <header class="header">
         <div class="container header-container">
             <section class="flexContainer row">
-                <div class="userLogin">
+                <router-link to="/authentication/login" class="userLogin">
                     <button class="btn btn-login"> ورود / ثبت نام</button>
-                </div>
+                </router-link>
                 <div class="logo">
                     <router-link to="/" href="#" class="logo-img">
                         <img src="../../../../assets/img/Group249.svg" alt="logo" /> 

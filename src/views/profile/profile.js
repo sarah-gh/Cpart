@@ -70,6 +70,15 @@ export default {
             this.getUserProfile()
         }
     },
+    // computed: {
+    //     changedRoute() {
+    //         if(this.$route.params.id != 0 ){
+    //             this.getProfile();
+    //         } else {
+    //             this.getUserProfile()
+    //         }
+    //     }
+    // },
     methods: {
         onClickNav(data){
             this.navigate.forEach((value,index) => {
@@ -102,9 +111,10 @@ export default {
                         userphoto: this.about.userphoto,
                         shortdescription: this.about.shortdescription,
                         name : this.about.fname + " " + this.about.lname,
-                        followers: this.about.followers
+                        followers: this.about.followers,
+                        username : this.about.username,
                     }
-                    console.log(this.follows)
+                    // console.log(this.follows)
                     this.load = true;
                     this.connection = true;
                 } catch (error) {
@@ -131,9 +141,11 @@ export default {
                     userphoto: this.about.userphoto,
                     shortdescription: this.about.shortdescription,
                     name : this.about.fname + " " + this.about.lname,
-                    followers: this.about.followers
+                    followers: this.about.followers,
+                    username : this.about.username,
+                    userid : this.about.userid,
                 }
-                console.log(this.follows)
+                // console.log(this.follows)
                 this.load = true;
                 this.connection = true;
             } catch (error) {

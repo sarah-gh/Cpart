@@ -1,16 +1,18 @@
 <template>
-    <img :src="require(`@/assets/img/${post.img}`)" alt="capture1">
+    <img :src="require(`@/assets/img/${post.headerphoto}`)" alt="capture1">
     <div class="other-post">
         <h3> 
-            {{post.header}}
+            {{post.title}}
         </h3>
         <footer class="post-footer">
             <div class="flex-footer">
-                <p class="date">۲۸ تیر ۱۴۰۰</p>
+                <p class="date">{{ post.date }}</p>
                 <span class="circle"></span> 
-                <span class="time">۷ دقیقه مطالعه</span>
+                <span class="time">{{ post.readtime }} دقیقه</span>
                 <span class="circle"></span> 
-                <span class="tag">تکنولوژی</span>
+                <span class="tag" v-for="(item, index) in post.tag" :key="index">
+                    {{ item }}
+                </span>
                 <span class="save"><img src="../../../../assets/img/archive-add_2.svg"></span>
             </div>
         </footer>

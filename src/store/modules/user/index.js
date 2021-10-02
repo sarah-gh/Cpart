@@ -1,4 +1,4 @@
-import { getBookmark , getProfileUser, postBookmark , getSetting} from '@/services/user.js';
+import { getBookmark , getProfileUser, postBookmark , getSetting, userOperation} from '@/services/user.js';
 
 const user = {
   namespaced: true,
@@ -10,9 +10,23 @@ const user = {
   }),
   actions: {
     async requestbookmark({ commit }, data) {
-      console.log('requesting article...', data);
       const bookmarkData = await getBookmark(data);
       commit('setBookmark', bookmarkData);
+    },
+    async requestfollow({ commit }, data) {
+      const followData = await userOperation(data);
+    },
+    async requestLikeArticle({ commit }, data) {
+      console.log(data);
+      const likeArticleData = await userOperation(data);
+    },
+    async requestLikeComment({ commit }, data) {
+      console.log(data);
+      const likeCommentData = await userOperation(data);
+    },
+    async requestPostComment({ commit }, data) {
+      console.log(data);
+      const commentData = await userOperation(data);
     },
     async requestProfileUser({ commit }) {
       const profile = await getProfileUser();
@@ -23,10 +37,7 @@ const user = {
       commit('setSettingUser', setting);
     },
     async requestPostBookmark({ commit }, data) {
-      console.log('requesting article...', data);
-      console.log(data)
       const bookmarkData = await postBookmark(data);
-      console.log(bookmarkData, commit);
     },
   },
   mutations: {

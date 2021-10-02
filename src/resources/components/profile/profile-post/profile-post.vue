@@ -4,7 +4,7 @@
     </div>
     <div class="card-post">
         <div class="post-content">
-            <router-link :to="'/post/' + post.articleid" class="article-link" @click="routeQuery(post)">
+            <router-link :to="'/post/' + post.articleid" class="article-link">
                 <h2 class="post-title"> 
                     {{ post.title }}
                 </h2>
@@ -22,9 +22,11 @@
                 <span class="tag" v-for="(i , x) in post.tag" :key="x">
                     {{ i }}
                 </span>
-                <span class="save"><img src="../../../../assets/img/archive-add_3.svg"></span>
-                <span class="like"><img src="../../../../assets/img/svg-profile/like.svg"></span>
-                <span class="comments"><img src="../../../../assets/img/svg-profile/message-question.svg"></span>
+                <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ></span>
+                <!-- <span class="number">12</span> -->
+                <span class="icon save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
+                <!-- <span class="number">12</span> -->
+                <span class="icon save comment"><font-awesome-icon :icon="['far', 'comment-alt']" /></span>
             </div>
         </footer>
     </div>
@@ -43,17 +45,20 @@ export default {
         return {
             hoverPost: false,
             text: '',
+            save : false,
+            like_icon: ['far', 'thumbs-up'],
         }
     },
     beforeMount(){
+        this.save = this.post.issaved == '0' ? false : true;
         this.text = this.post.artcletext;
         if (this.post.artcletext.length > 180) {
             this.text = this.text.substring(0, 175) + "...";
         }
-        this.text = this.removeTags(this.text)
+        this.text = this.removeTagshtml(this.text)
     },
     methods: {
-        removeTags(str) {
+        removeTagshtml(str) {
             if ((str===null) || (str===''))
                 return false;
             else
@@ -61,10 +66,37 @@ export default {
 
             return str.replace( /(<([^>]+)>)/ig, '');
         },
+        clickLike(){
+            if(this.like_icon[0] == 'fas'){
+                this.like_icon[0] = 'far';
+            } else {
+                this.like_icon[0] = 'fas';
+            }
+        },
         stringToHTML(str) {
             let parser = new DOMParser();
             let doc = parser.parseFromString(str, 'text/html');
             return doc.body;
+        },
+        saveItem(){
+            this.save = !this.save;
+            let status_save = this.save ? 1 : 0;
+            const data = {
+                operation: "save" ,
+                articleId: this.post.articleid,
+                status: status_save
+            }
+            // JSON.stringify(data)
+            this.testtt(JSON.stringify(data))
+            //this.$emit('save_item', 'donbalkonande')
+        },
+        async testtt(data){
+            try {
+                let test = await this.$store.dispatch('user/requestPostBookmark', data);
+                // console.log(test);
+            } catch (error) {
+                console.log(error);
+            }
         },
     },
     mounted() {
@@ -75,5 +107,22 @@ export default {
 <style scoped>
 .h2hover{
     color: #139eca;
+}
+
+.number{
+    color: #139eca;
+    font-size: 17px;
+    margin-left: 0px !important;
+}
+
+.icon{
+    font-size: 23px;
+    margin-right: 5px !important;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.comment{
+    cursor: default !important;
 }
 </style>

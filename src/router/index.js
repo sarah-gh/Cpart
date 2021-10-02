@@ -15,13 +15,32 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = getCookieByName('token');
-  // console.log(to.fullPath == ('/'));
+  console.log(token);
+  console.log('to.fullPath');
+  console.log(to.fullPath == ('/'));
 
   if (to.fullPath.startsWith('/panel') && !token)
     return next({ name: 'login' });
 
   if (to.fullPath.startsWith('/panel') && token)
     return next();
+
+    // if (to.fullPath.startsWith('/panel/profile') && token){
+    //   location.reload();
+    //   return next();
+    // }
+    
+  // if (to.fullPath.startsWith('/posts') && token)
+  //   return next({ name: 'posts-user' });
+
+  // if (to.fullPath.startsWith('/home') && !token)
+  //   return next({ name: 'home-public' });
+
+  // if (to.fullPath.startsWith('/home') && token)
+  //   return next();
+
+  // if (to.fullPath.startsWith('/home-public') && token)
+  //   return next({ name: 'home' });
 
   if (to.fullPath.startsWith('/authentication') && token)
     return next({ name: 'posts' });

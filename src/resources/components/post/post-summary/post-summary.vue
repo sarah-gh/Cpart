@@ -11,9 +11,9 @@
                 </router-link>
                 <router-link :to="routeName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</router-link>
             </div>
-            <div class="follow">
-            <button class="follow">دنبال کردن</button>
-            
+            <div class="follow" v-show="not_user">
+                <button class="follow" v-if="!follow" @click="followUser">دنبال کردن</button>
+                <button class="follow followed" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
 
         </header>
@@ -36,8 +36,7 @@
                 <span class="tag" v-for="(item, index) in post.tag" :key="index">
                     {{ item }}
                 </span>
-                <span class="save" @click="saveItem" v-if="!save"><img src="../../../../assets/img/archive-add_3.svg"></span>
-                <span class="save" @click="saveItem" v-else><img src="../../../../assets/img/svg-post/archive-add.svg"></span>
+                <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ></span>
 
             </div>
         </footer>
@@ -45,3 +44,15 @@
 </template>
 
 <script type="text/javascript" src="./post-summary.js"></script>
+
+<style lang="scss" scoped>
+.followed{
+    background-color: #139eca !important;
+    color: white !important;
+    border: 0px !important;
+}
+.follow{
+    flex-grow: 0;
+    margin-right: 20px;
+}
+</style>

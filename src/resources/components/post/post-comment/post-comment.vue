@@ -7,10 +7,8 @@
                 <!-- <span class="time">{{ comment.time }}</span> -->
             </div>
             <div class="like-forward">
-                <img src="../../../../assets/img/forward-square.svg" class="forward">
-                <div class="like">
-                    <img src="../../../../assets/img/like.svg">
-                </div>
+                <img src="../../../../assets/img/forward-square.svg" class="forward" @click="reply_comment">
+                <span class="like save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
             </div>
         </div>
         <div class="text-comment">
@@ -21,7 +19,15 @@
             </div>
 
 </template>
-
+<style lang="scss" scoped>
+.like {
+    display: flex;
+    align-items: center;
+    color: #139eca;
+    cursor: pointer;
+    font-size: 23px;
+}
+</style>
 <script>
 import postCommentReply from '../post-comment-reply/post-comment-reply.vue'
 
@@ -39,7 +45,8 @@ export default {
     },
     data() {
         return {
-            commentsReply: [1]
+            commentsReply: [1],
+            like_icon: ['far', 'thumbs-up'],
         }
     },
     // beforeMount(){
@@ -47,8 +54,22 @@ export default {
     //         console.log(this.ccc)
     //     }, 1000);
     // },
+    
     components : {
         postCommentReply
+    },
+    methods: {
+        clickLike(){
+            if(this.like_icon[0] == 'fas'){
+                this.like_icon[0] = 'far';
+            } else {
+                this.like_icon[0] = 'fas';
+            }
+        },
+        reply_comment(){
+            console.log(this.comment)
+            this.$emit('replyComment' , this.comment)
+        }
     }
 }
 </script>

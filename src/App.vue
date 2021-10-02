@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <header-page :showheader="showheader" :login="login" :photo="photo"></header-page>
-    <!-- <header-page-login v-else :showheader="showheader" :login="login" :photo="photo"></header-page-login> -->
-
     <router-view />
     <footer-page></footer-page>
   </div>
@@ -31,55 +29,43 @@ export default {
       photo: ''
     }
   },
-  emits: ["loginprofile"],
   methods: {
-    onclickLogin(){
-      this.login_profile()
-    },
-    
-    async login_profile(){
-      this.login = true;
-      try {
-          const response = await this.axios.get(
-              `http://localhost:8000/api/users/profile/4`
-          ).then((res) => {
-              return res.data; 
-          }).catch((err) => {
-              console.error(err);
-          });
-          this.profile = response;
-          this.photo = this.profile.about["0"].userphoto;
-          console.log(this.profile.about["0"].userphoto);
-      } catch (error) {
-          console.log(error);
-      }
+
+  },
+  mounted(){
+    const c = getCookieByName('token');
+    if(c){
+      this.$store.state.login = true;
+    }
+    else {
+      this.$store.state.login = false;
     }
   },
-  watch:{
-    $route (to, from){
-      console.log(to.path);
-      let token = getCookieByName('token')
-      if(to.path.indexOf('authentication') !== -1){
-        this.login = true;
-        this.showheader = false;
-      }
-      console.log('token-log')
-      console.log(token);
-      if(token){
-        console.log('token')
-        this.login = true;
-        this.showheader = true;
-      } else{
-        if(to.path.indexOf('authentication') !== -1){
-          this.login = true;
-        } else {
-          console.log('not token')
-          this.login = false;
-          this.showheader = false;
-        }
-      }
-    }
-  },
+  // watch:{
+  //   $route (to, from){
+  //     console.log(to.path);
+  //     let token = getCookieByName('token')
+  //     if(to.path.indexOf('authentication') !== -1){
+  //       this.login = true;
+  //       this.showheader = false;
+  //     }
+  //     console.log('token-log')
+  //     console.log(token);
+  //     if(token){
+  //       console.log('token')
+  //       this.login = true;
+  //       this.showheader = true;
+  //     } else{
+  //       if(to.path.indexOf('authentication') !== -1){
+  //         this.login = true;
+  //       } else {
+  //         console.log('not token')
+  //         this.login = false;
+  //         this.showheader = false;
+  //       }
+  //     }
+  //   }
+  // },
   beforeMount(){
     
   }

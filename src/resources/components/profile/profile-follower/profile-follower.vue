@@ -1,14 +1,17 @@
 <template>
     <div class="follower">
-        <router-link :to="'/profile/' + follow.followedby" class="follower">
+        <router-link :to="'/panel/profile/' + follow.followerid" class="follower" @click="reload()">
+        <!-- <a class="follower" @click="reload()"> -->
             <img :src="follow.userphoto" />
             <div class="content">
                 <h3>{{ follow.fname }} {{ follow.lname }}</h3>
                 <p>{{ follow.shortdescription }}</p>
             </div>
         </router-link>
-        <button class="follow" v-if="follow.arewefollowing == 0">دنبال کردن</button>
-        <button class="follow followed" v-if="follow.arewefollowing == 1">دنبال شده</button>
+        <!-- </a> -->
+        <button class="follow" v-if="!isfollow" @click="followUser">دنبال کردن</button>
+        <button class="follow followed" v-if="isfollow" @click="followUser">دنبال شده</button>
+        {{ is_follow }}
     </div>
 </template>
 <script>
@@ -17,23 +20,60 @@ export default {
     props: {
         follow: {
             type: Object,
-            required: true
+            required: true,
         }
     },
     data() {
         return{
-
+            isfollow: false
+        }
+    },
+    created() {
+        this.isfollow = this.follow.isfollowing == '1' ? true : false;
+    },
+    computed: {
+        is_follow() {
+            this.isfollow = this.follow.isfollowing == '1' ? true : false;
+            return "";
         }
     },
     mounted(){
         setTimeout(() => {
             console.log(this.follow);
         }, 3000);
+    },
+    methods : {
+        reload(){
+            console.log("reload page");
+            
+            // this.$router.go(`/panel/profile/${this.follow.followerid}`)
+            // this.$router.replace({ path: `/profile/${this.follow.followerid}` });
+            // this.$router.replace({ path: `/panel/profile/${this.follow.followerid}` });
+            // this.$router.go(this.$router.currentRoute)
+            // location.reload();
+        },
+        async testtt2(data){
+            try{
+                await this.$store.dispatch('user/requestfollow', data);
+            } catch {
+                console.log('error');
+            }
+        },
+        followUser() {
+            this.isfollow = !this.isfollow;
+            let status_follow = this.isfollow ? 1 : 0;
+            const data = {
+                operation: "follow",
+                followingId: this.follow.followerid,
+                status: status_follow
+            }
+            this.testtt2(JSON.stringify(data))
+        },
     }
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/sass/_variable";
 @import "@/assets/sass/_button";
 
@@ -69,7 +109,8 @@ export default {
     border: 0px !important;
 }
 .follow{
-    flex-grow: 1;
+    width: 80px !important;
+    flex-grow: 1 !important;
     margin-right: 20px;
 }
 </style>

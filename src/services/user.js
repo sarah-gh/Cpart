@@ -15,8 +15,8 @@ export const getBookmark = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
   };
 
@@ -34,6 +34,20 @@ export const postBookmark = async (data) => {
       return false;
     })  
 }
+export const userOperation = async (data) => {
+    const access_token = getCookieByName('token');
+    console.log(data);
+    const token = await axios.post(`${http}/users/operation`, data , {
+      headers:{
+        'token': `${access_token}`
+      }
+    }) 
+    .catch((error) => {
+      delete_cookie('token');
+      console.error(error);
+      return false;
+    })  
+}
 export const getProfileUser = async () => {
     const access_token = getCookieByName('token');
     const response = await axios.get(`${http}/users/profile`, {
@@ -45,8 +59,8 @@ export const getProfileUser = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
 };
 
@@ -61,15 +75,15 @@ export const getSetting = async () => {
         console.error(error);
         return false;
     });
-    console.log('getting Bookmark');
-    console.log(response);
+    // console.log('getting Bookmark');
+    // console.log(response);
     return response.data;
 };
 
 export const login = async (data) => {
     const token = await axios.post(`${http}/login`, data)
     .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         writeCookie('token', res.data.token);
     })
     .catch((error) => {
@@ -78,4 +92,4 @@ export const login = async (data) => {
 };
 
 
-export default { getBookmark, login, getSetting, postBookmark };
+export default { getBookmark, login, getSetting, postBookmark, userOperation };

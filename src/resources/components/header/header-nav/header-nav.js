@@ -8,7 +8,20 @@ export default {
             tags: [],
             add_tag : true,
             tag: '',
-            isActive: true
+            isActive: true,
+            show: false
+        }
+    },
+    computed: {
+        isLogin(){
+            if(this.$store.state.login){
+                this.show = true;
+                return '';
+            }
+            else{
+                this.show = false;
+            }
+            return '';
         }
     },
     methods: {
