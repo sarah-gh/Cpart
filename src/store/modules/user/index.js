@@ -16,7 +16,17 @@ const user = {
     },
     async requestfollow({ commit }, data) {
       console.log(data);
-      const bookmarkData = await userOperation(data);
+      const followData = await userOperation(data);
+      // commit('setBookmark', bookmarkData);
+    },
+    async requestLikeArticle({ commit }, data) {
+      console.log(data);
+      const likeArticleData = await userOperation(data);
+      // commit('setBookmark', bookmarkData);
+    },
+    async requestLikeComment({ commit }, data) {
+      console.log(data);
+      const likeCommentData = await userOperation(data);
       // commit('setBookmark', bookmarkData);
     },
     async requestProfileUser({ commit }) {

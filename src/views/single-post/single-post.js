@@ -13,20 +13,7 @@ export default {
             
             comment: [],
             post: {},
-            otherPosts: [
-                {
-                    img: 'Capture1.png',
-                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
-                },
-                {
-                    img: 'Capture2.png',
-                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
-                },
-                {
-                    img: 'Capture3.png',
-                    header: 'کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.',
-                }
-            ],
+            otherPosts: [],
             replyto : null
         }
     },
@@ -38,8 +25,6 @@ export default {
     },
     created() {
         this.getPosts();
-        this.testtt();
-        //this.getComments();
         const token = getCookieByName('token');
         if(token) {
 
@@ -52,55 +37,32 @@ export default {
         
     // },
     methods: {
-        async testtt(){
+        async getPosts(){
             try {
                 let test = await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
                 let response = this.$store.state.article.singleArticle;
                 // console.log('test')
                 // console.log(test);
-                // console.log(response);
+                let post = response[0];
+                this.post = Object.assign(post["0"]);
+                this.comment = response[2];
+                console.log(this.comment);
+                // this.comment = Object.assign(comment["0"]);
+                // this.comment = Object.assign(response[2]["0"]);
+                this.otherPosts = response[1]
+                console.log(this.otherPosts)
+                // this.otherPosts = Object.assign(other["0"]);
                 // this.posts = response;
                 // this.connection = true;
-                // this.load = true;
+                this.load = true;
             } catch (error) {
                 // this.connection = false;
-                // this.load = true;
+                this.load = true;
                 console.log(error);
             }
             
         },
-        async getPosts() {
-            try {
-                const response = await this.axios.get(
-                    `http://localhost:8000/api/posts/${this.$route.params.id}`
-                ).then((res) => {
-                    return res.data; 
-                }).catch((err) => {
-                    console.error(err);
-                });
-                // const other = await this.axios.get(
-                //         `http://localhost:8000/api/posts?userid=${response["0"].userid}&limit=3`
-                // ).then((res) => {
-                //     return res.data;
-                // }).catch((err) => {
-                //     console.error(err);
-                // });
-                const comm = await this.axios.get(
-                    `http://localhost:8000/api/comments/${this.$route.params.id}`
-                ).then((res) => {
-                    return res.data; 
-                }).catch((err) => {
-                    console.error(err);
-                });
-                let post = response;
-                this.post = Object.assign(post["0"]);
-                console.log(this.post)
-                this.comment = comm;
-                this.load = true;
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        
         reply(data){
             this.replyto = data;
         },
