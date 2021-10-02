@@ -28,7 +28,7 @@
             <textarea class="input" id="user-comment" v-model="comment.text"  name='user-comment'></textarea>
         </div>
         <!-- <div>{{ replyto }}</div> -->
-        <div class="submit">
+        <div class="submit" @click.prevent="newComment()">
             <p>ثبت نظر</p>
         </div>
     </form>
@@ -56,7 +56,7 @@ export default {
                 userId: '',
                 text: "",
                 articleId: this.postid,
-                replyto: this.replyto?.commentid || null,
+                replyto: null,
                 date: '',
             },
             month : [
@@ -106,15 +106,6 @@ export default {
     },
     methods: {
         newComment() {
-            data = {
-                operation: "newComment",
-                userId: '',
-                text: "comment text",
-                articleId: "article id",
-                replyto: '',
-                date: '',
-                status: 1
-            };
             let now = new Date().toLocaleDateString('fa-IR');
             now = now.split('/');
             let month;
@@ -126,12 +117,28 @@ export default {
             let date = `${now[2]}
                         ${this.month[month]}
                         ${now[0]}`;
+            const data = {
+                operation: "newComment",
+                text: this.comment.text,
+                articleId: this.postid,
+                replyto: this.replyto?.commentid || null,
+                date: '',
+                status: 1
+            };
             data.date = date;
+            this.testtt(JSON.stringify(data))
         },
         cancel(){
             this.$emit('cancel');
             // this.replyto = null
-        } 
+        },
+        async testtt(data){
+            try {
+                let test = await this.$store.dispatch('user/requestPostComment', data);
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
 }
 </script>

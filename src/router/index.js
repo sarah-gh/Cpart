@@ -25,6 +25,11 @@ router.beforeEach((to, from, next) => {
   if (to.fullPath.startsWith('/panel') && token)
     return next();
 
+    // if (to.fullPath.startsWith('/panel/profile') && token){
+    //   location.reload();
+    //   return next();
+    // }
+    
   // if (to.fullPath.startsWith('/posts') && token)
   //   return next({ name: 'posts-user' });
 

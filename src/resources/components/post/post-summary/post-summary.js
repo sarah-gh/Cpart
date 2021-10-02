@@ -14,24 +14,24 @@ export default {
             text : '',
             save : false,
             follow: false,
+            not_user: true,
         }
     },
     created() {
         this.save = this.post.issaved == '0' ? false : true;
         this.follow = this.post.arefollowing == '1' ? true : false;
-        // console.log(this.save)
-        // console.log(this.post.arefollowing)
-        // console.log("///////")
     },
     beforeMount(){
         this.text = this.post.artcletext;
         if (this.post.artcletext.length > 180) {
             this.text = this.text.substring(0, 175) + "...";
         }
-        // this.save = this.post.issaved == '1' ? "true" : "false";
-        // console.log(this.save)
-        // console.log(this.post.issaved)
-        // console.log("///////")
+
+        if(this.$store.state.user.profileUser.about["0"].userid == this.post.userid ){
+            this.not_user = false;
+        } else {
+            this.not_user = true;
+        }
     },
     mounted() {
         // console.log(this.post)

@@ -1,12 +1,14 @@
 <template>
     <div class="follower">
-        <router-link :to="'/profile/' + follow.followedby" class="follower">
+        <router-link :to="'/panel/profile/' + follow.followerid" class="follower" @click="reload()">
+        <!-- <a class="follower" @click="reload()"> -->
             <img :src="follow.userphoto" />
             <div class="content">
                 <h3>{{ follow.fname }} {{ follow.lname }}</h3>
                 <p>{{ follow.shortdescription }}</p>
             </div>
         </router-link>
+        <!-- </a> -->
         <button class="follow" v-if="!isfollow" @click="followUser">دنبال کردن</button>
         <button class="follow followed" v-if="isfollow" @click="followUser">دنبال شده</button>
         {{ is_follow }}
@@ -27,11 +29,11 @@ export default {
         }
     },
     created() {
-        this.isfollow = this.follow.arewefollowing == '1' ? true : false;
+        this.isfollow = this.follow.isfollowing == '1' ? true : false;
     },
     computed: {
         is_follow() {
-            this.isfollow = this.follow.arewefollowing == '1' ? true : false;
+            this.isfollow = this.follow.isfollowing == '1' ? true : false;
             return "";
         }
     },
@@ -41,6 +43,15 @@ export default {
         }, 3000);
     },
     methods : {
+        reload(){
+            console.log("reload page");
+            
+            // this.$router.go(`/panel/profile/${this.follow.followerid}`)
+            // this.$router.replace({ path: `/profile/${this.follow.followerid}` });
+            // this.$router.replace({ path: `/panel/profile/${this.follow.followerid}` });
+            // this.$router.go(this.$router.currentRoute)
+            // location.reload();
+        },
         async testtt2(data){
             try{
                 await this.$store.dispatch('user/requestfollow', data);
@@ -50,10 +61,10 @@ export default {
         },
         followUser() {
             this.isfollow = !this.isfollow;
-            let status_follow = this.follow ? 1 : 0;
+            let status_follow = this.isfollow ? 1 : 0;
             const data = {
                 operation: "follow",
-                followingId: this.follow.followedby,
+                followingId: this.follow.followerid,
                 status: status_follow
             }
             this.testtt2(JSON.stringify(data))

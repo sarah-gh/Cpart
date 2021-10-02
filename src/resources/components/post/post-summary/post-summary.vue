@@ -11,10 +11,9 @@
                 </router-link>
                 <router-link :to="routeName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</router-link>
             </div>
-            <div class="follow">
-            <!-- <button class="follow">دنبال کردن</button> -->
-            <button class="follow" v-if="!follow" @click="followUser">دنبال کردن</button>
-            <button class="follow followed" v-if="follow" @click="followUser">دنبال شده</button>
+            <div class="follow" v-show="not_user">
+                <button class="follow" v-if="!follow" @click="followUser">دنبال کردن</button>
+                <button class="follow followed" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
 
         </header>
