@@ -30,7 +30,7 @@ export const getArticlesUser = async () => {
     // console.log(response);
   
     return response.data;
-  };
+};
 
 
 export const getSingleArticle = async (id) => {
