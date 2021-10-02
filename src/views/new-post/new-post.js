@@ -138,10 +138,11 @@ export default {
         onEnterModal(value){
             if(this.tags.length == 3){
                 this.error_tag = true;
+            } else {
+                this.tags.push([value[0], false]);
+                this.showModal = value[1];
+                this.add_tag = false;
             }
-            this.tags.push([value[0], false]);
-            this.showModal = value[1];
-            this.add_tag = false;
         },
         mouseover(index){
             this.tags[index][1] = true;

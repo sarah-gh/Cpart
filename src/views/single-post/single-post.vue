@@ -17,7 +17,7 @@
         <div class="main-container"  v-if="load">
             <post-full-content :post="post"></post-full-content>
             
-            <div class='this-author'>
+            <div class='this-author' v-if="otherPosts.length > 0">
                 <span>از همین نویسنده</span>
             </div>
             <div class="headerLine">
