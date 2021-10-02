@@ -7,8 +7,9 @@
                 <p>{{ follow.shortdescription }}</p>
             </div>
         </router-link>
-        <button class="follow" v-if="follow.arewefollowing == 0">دنبال کردن</button>
-        <button class="follow followed" v-if="follow.arewefollowing == 1">دنبال شده</button>
+        <button class="follow" v-if="!isfollow" @click="followUser">دنبال کردن</button>
+        <button class="follow followed" v-if="isfollow" @click="followUser">دنبال شده</button>
+        {{ is_follow }}
     </div>
 </template>
 <script>
@@ -17,18 +18,46 @@ export default {
     props: {
         follow: {
             type: Object,
-            required: true
+            required: true,
         }
     },
     data() {
         return{
-
+            isfollow: false
+        }
+    },
+    created() {
+        this.isfollow = this.follow.arewefollowing == '1' ? true : false;
+    },
+    computed: {
+        is_follow() {
+            this.isfollow = this.follow.arewefollowing == '1' ? true : false;
+            return "";
         }
     },
     mounted(){
         setTimeout(() => {
-            // console.log(this.follow);
+            console.log(this.follow);
         }, 3000);
+    },
+    methods : {
+        async testtt2(data){
+            try{
+                await this.$store.dispatch('user/requestfollow', data);
+            } catch {
+                console.log('error');
+            }
+        },
+        followUser() {
+            this.isfollow = !this.isfollow;
+            let status_follow = this.follow ? 1 : 0;
+            const data = {
+                operation: "follow",
+                followingId: this.follow.followedby,
+                status: status_follow
+            }
+            this.testtt2(JSON.stringify(data))
+        },
     }
 
 }

@@ -41,31 +41,31 @@ export default {
       this.$store.state.login = false;
     }
   },
-  watch:{
-    $route (to, from){
-      console.log(to.path);
-      let token = getCookieByName('token')
-      if(to.path.indexOf('authentication') !== -1){
-        this.login = true;
-        this.showheader = false;
-      }
-      console.log('token-log')
-      console.log(token);
-      if(token){
-        console.log('token')
-        this.login = true;
-        this.showheader = true;
-      } else{
-        if(to.path.indexOf('authentication') !== -1){
-          this.login = true;
-        } else {
-          console.log('not token')
-          this.login = false;
-          this.showheader = false;
-        }
-      }
-    }
-  },
+  // watch:{
+  //   $route (to, from){
+  //     console.log(to.path);
+  //     let token = getCookieByName('token')
+  //     if(to.path.indexOf('authentication') !== -1){
+  //       this.login = true;
+  //       this.showheader = false;
+  //     }
+  //     console.log('token-log')
+  //     console.log(token);
+  //     if(token){
+  //       console.log('token')
+  //       this.login = true;
+  //       this.showheader = true;
+  //     } else{
+  //       if(to.path.indexOf('authentication') !== -1){
+  //         this.login = true;
+  //       } else {
+  //         console.log('not token')
+  //         this.login = false;
+  //         this.showheader = false;
+  //       }
+  //     }
+  //   }
+  // },
   beforeMount(){
     
   }
