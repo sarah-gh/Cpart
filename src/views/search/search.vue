@@ -9,17 +9,17 @@
     </div>
     <section class="post-container container" v-if="navigate[0]">
       <article class="cards" v-for="(item, index) in userposts" :key="index">
-        <post-summery :post="item" />
+        <!-- <post-summery :post="item" /> -->
       </article>
     </section>
     <section class="follow-container container" v-if="navigate[1]">
       <article class="people" v-for="(item, index) in people" :key="index">
-        <search-people :user="item" />
+        <!-- <search-people :user="item" /> -->
       </article>
     </section>
     <section class="tag-container container" v-if="navigate[2]">
       <article class="tags" v-for="(item, index) in 20" :key="index">
-          <search-tag :tag-name="item" />
+          <!-- <search-tag :tagName="item" /> -->
       </article>
     </section>
   </main>
@@ -27,9 +27,9 @@
 
 <script>
 import searchNav from "../../resources/components/search/search-nav/search-nav.vue";
-import searchPeople from "../../resources/components/search/results/people.vue";
-import postSummery from "../../resources/components/post/post-summary/post-summary.vue";
-import seachTag from "../../resources/components/search/results/tags.vue";
+// import searchPeople from "../../resources/components/search/results/people.vue";
+// import postSummery from "../../resources/components/post/post-summary/post-summary.vue";
+// import seachTag from "../../resources/components/search/results/tags.vue";
 export default {
   name: "search",
   data() {
@@ -40,9 +40,9 @@ export default {
   },
   components: {
     searchNav,
-    searchPeople,
-    postSummery,
-    seachTag
+    // searchPeople,
+    // postSummery,
+    // seachTag
   },
   beforeMount() {
     console.log(this.$route.query.search),

@@ -68,6 +68,20 @@ export default {
         },
         cancel(){
             this.replyto = null
+        },
+        async addComment(){
+            const access_token = getCookieByName('token');
+            if(access_token) {
+                const response = await axios.get(`${http}/comments/${this.post.postid}`, {
+                    headers:{
+                        'token': `${access_token}`
+                    }
+                })
+                    .catch((err) => {
+                    console.error(1,err);
+                })
+            }
+            return response.data;
         }
         // async getComments() {
         //     try {

@@ -127,6 +127,7 @@ export default {
             };
             data.date = date;
             this.testtt(JSON.stringify(data))
+
         },
         cancel(){
             this.$emit('cancel');
@@ -135,6 +136,7 @@ export default {
         async testtt(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostComment', data);
+                this.$emit('add_comment');
             } catch (error) {
                 console.log(error);
             }
