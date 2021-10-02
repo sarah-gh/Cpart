@@ -32,10 +32,6 @@ export default {
             return `/panel/profile/${item.userid}`
         },
         routeTitle(item){
-            const token = getCookieByName('token');
-            if(token){
-                return `/post/${item.articleid}`
-            }
             return `/post/${item.articleid}`
         },
         saveItem(){

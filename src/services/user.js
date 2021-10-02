@@ -36,6 +36,7 @@ export const postBookmark = async (data) => {
 }
 export const userOperation = async (data) => {
     const access_token = getCookieByName('token');
+    console.log(data);
     const token = await axios.post(`${http}/users/operation`, data , {
       headers:{
         'token': `${access_token}`

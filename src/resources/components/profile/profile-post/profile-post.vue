@@ -4,7 +4,7 @@
     </div>
     <div class="card-post">
         <div class="post-content">
-            <router-link :to="'/post/' + post.articleid" class="article-link" @click="routeQuery(post)">
+            <router-link :to="'/post/' + post.articleid" class="article-link">
                 <h2 class="post-title"> 
                     {{ post.title }}
                 </h2>

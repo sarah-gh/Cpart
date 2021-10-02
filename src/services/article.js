@@ -42,7 +42,7 @@ export const getSingleArticle = async (id) => {
       console.error(err);
   });
   const other = await axios.get(
-          `${http}/posts?userid=${response["0"].userid}&limit=3`
+          `${http}/posts?profileid=${response["0"].userid}&limit=3`
   ).then((res) => {
       return res.data;
   }).catch((err) => {
