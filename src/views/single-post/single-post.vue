@@ -25,11 +25,11 @@
                 <div class="line"></div>
             </div>
             
-            <!-- <div class="other-articles">
+            <div class="other-articles">
                 <article class="article" v-for="(item, index) in otherPosts" :key="index">
                     <post-this-author :post="item"></post-this-author>
                 </article>
-            </div> -->
+            </div>
 
             <div class='comments-title'>
                 <p>نظرات</p>

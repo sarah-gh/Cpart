@@ -1,5 +1,6 @@
 <template>
     <div class="card-post">
+        <div style="display : none"> {{ is_save }} </div>
         <header class=post-header>
             <div class="post-author">
                 <router-link :to="'/panel/profile/' + post.userid">

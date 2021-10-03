@@ -64,6 +64,7 @@ export default {
             let status_follow = this.isfollow ? 1 : 0;
             const data = {
                 operation: "follow",
+                csrfToken: this.$store.state.user.csrfToken,
                 followingId: this.follow.followerid,
                 status: status_follow
             }

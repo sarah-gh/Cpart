@@ -10,7 +10,6 @@ export default {
         return {
             items: [1,2,3],
             load : false,
-            
             comment: [],
             post: {},
             otherPosts: [],
@@ -39,24 +38,23 @@ export default {
     methods: {
         async getPosts(){
             try {
-                let test = await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
+                const token = getCookieByName('token');
+                if(token){
+                    console.log()
+                    await this.$store.dispatch('article/requestSingleArticleUser' , `${this.$route.params.id}`);
+                } else {
+                    await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
+                }
+                // let test = await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
                 let response = this.$store.state.article.singleArticle;
-                // console.log('test')
-                // console.log(test);
                 let post = response[0];
                 this.post = Object.assign(post["0"]);
-                this.comment = response[2];
+                this.comment = this.$store.state.article.comment;
                 console.log(this.comment);
-                // this.comment = Object.assign(comment["0"]);
-                // this.comment = Object.assign(response[2]["0"]);
-                this.otherPosts = response[1]
+                this.otherPosts = this.$store.state.article.otherPosts;
                 console.log(this.otherPosts)
-                // this.otherPosts = Object.assign(other["0"]);
-                // this.posts = response;
-                // this.connection = true;
                 this.load = true;
             } catch (error) {
-                // this.connection = false;
                 this.load = true;
                 console.log(error);
             }
@@ -70,18 +68,19 @@ export default {
             this.replyto = null
         },
         async addComment(){
-            const access_token = getCookieByName('token');
-            if(access_token) {
-                const response = await axios.get(`${http}/comments/${this.post.postid}`, {
-                    headers:{
-                        'token': `${access_token}`
-                    }
-                })
-                    .catch((err) => {
-                    console.error(1,err);
-                })
-            }
-            return response.data;
+            this.getPosts()
+            // const access_token = getCookieByName('token');
+            // if(access_token) {
+            //     const response = await axios.get(`${http}/comments/${this.post.postid}`, {
+            //         headers:{
+            //             'token': `${access_token}`
+            //         }
+            //     })
+            //         .catch((err) => {
+            //         console.error(1,err);
+            //     })
+            // }
+            // return response.data;
         }
         // async getComments() {
         //     try {

@@ -10,7 +10,6 @@
 <script>
 import footerPage from '@/resources/components/footer/footer-page/footer-page.vue'
 import headerPage from '@/resources/components/header/header-page/header-page.vue'
-import headerPageLogin from '@/resources/components/header/header-page-login/header-page-login.vue'
 
 import { getCookieByName } from '@/resources/utilities.js';
 
@@ -19,7 +18,6 @@ export default {
   components: {
     footerPage,
     headerPage,
-    headerPageLogin
   },
   data() {
     return {
@@ -30,12 +28,23 @@ export default {
     }
   },
   methods: {
+    getCsrfToken: async function (){
+      const access_token = getCookieByName('token')
+      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
+        headers:{
+          token: access_token
+        }
+      }).catch(err => console.log(err))
+
+      this.$store.state.user.csrfToken = response.data.csrfToken;
+    }
 
   },
-  mounted(){
+  mounted: async function(){
     const c = getCookieByName('token');
     if(c){
       this.$store.state.login = true;
+      await this.getCsrfToken()
     }
     else {
       this.$store.state.login = false;

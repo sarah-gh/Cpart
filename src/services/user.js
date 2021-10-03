@@ -91,5 +91,16 @@ export const login = async (data) => {
     })
 };
 
+export const signup = async (data) => {
+  const token = await axios.post(`${http}/register`, data)
+  .then((res) => {
+      console.log(res.data);
+      writeCookie('token', res.data.token);
+  })
+  .catch((error) => {
+    console.error(error);
+  })
+};
 
-export default { getBookmark, login, getSetting, postBookmark, userOperation };
+
+export default { getBookmark, login, getSetting, postBookmark, userOperation , signup };

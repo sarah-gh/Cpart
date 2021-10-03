@@ -56,6 +56,16 @@
             <!-- این نام کاربری قبلا انتخاب شده است  -->
             (حداقل ۳ حرف)</span></ErrorMessage>
         </div>
+        <div class="form-group">
+          <label class="label" for="password">رمز عبور*</label>
+          <Field
+            class="input-box dir_rtl"
+            name="password"
+            type="password"
+            placeholder="your first name"
+          />
+          <ErrorMessage name="password"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+        </div>
       </div>
       <button class="button" type="submit">تایید</button>
     </Form>
@@ -67,6 +77,8 @@ const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))
 const phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
 
 import { Form, Field, ErrorMessage } from "vee-validate";
+import { signup } from '@/services/user.js'
+
 export default {
   name: "signup",
   components: {
@@ -79,55 +91,66 @@ export default {
       phoneNumber(value){
         if(value){
           if(phoneNumberRegExp.test(value)){
-            return "not valid fname";
+            return "not valid";
           }
         }
         if(!value){
-          return "not valid fname";
+          return "not valid";
         }
         return true;
       },
       fname(value) {
         if(value){
           if(value.length < 3){
-            return "not valid fname";
+            return "not valid";
           }
         }
         if(!value){
-          return "not valid fname";
+          return "not valid";
         }
         return true;
       },
       lname(value) {
         if(value){
           if(value.length < 3){
-            return "not valid fname";
+            return "not valid";
           }
         }
         if(!value){
-          return "not valid fname";
+          return "not valid";
         }
         return true;
       },
       email(value) {
         if(value){
           if(!emailRegExp.test(value)){
-            return "not valid fname";
+            return "not valid";
           }
         }
         if(!value){
-          return "not valid fname";
+          return "not valid";
         }
         return true;
       },
       username(value){
         if(value){
           if(value.length < 3){
-            return "not valid fname";
+            return "not valid";
           }
         }
         if(!value){
-          return "not valid fname";
+          return "not valid";
+        }
+        return true;
+      },
+      password(value){
+        if(value){
+          if(value.length < 6){
+            return "not valid";
+          }
+        }
+        if(!value){
+          return "not valid";
         }
         return true;
       }
@@ -138,8 +161,22 @@ export default {
   },
   methods:{
     onSubmit(value){
-      // console.log(value);
-      // code
+      console.log(value);
+      const data = {
+        phoneNumber : '',
+        fname : '',
+        lname: '',
+        email: '',
+        username: '',
+        password: ''
+      }
+    },
+    async requestLogin(data) {
+        try{
+          const loginResponse = await signup(data);
+        } catch {
+          console.log(error);
+        }
     }
   }
 };
