@@ -1,6 +1,11 @@
 <template>
   <div class="register">
-    <div class="head">شما هنوز در هلیوم ثبت نام نکرده اید.</div>
+    <div class="entry-register">
+
+      <router-link to="/authentication/login"> ورود </router-link>
+      /
+      <router-link to="/authentication/signup"> ثبت نام </router-link>
+    </div>
     <div class="fill-form">لطفا اطلاعات زیر را برای ثبت نام تکمیل کنید.</div>
     <Form  @submit="onSubmit" :validation-schema="sign_up">
       <div class="form">
@@ -9,10 +14,10 @@
           <Field
             class="input-box"
             name="phoneNumber"
-            type="text"
+            type="phone"
             placeholder="your phone number"
           />
-          <ErrorMessage name="phoneNumber"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+          <!-- <ErrorMessage name="phoneNumber"><span class="span_error">این فیلد ضروری است</span></ErrorMessage> -->
         </div>
         <div class="form-group">
           <p class="label">لطفا نام خود را وارد کنید*</p>
@@ -67,17 +72,22 @@
           <ErrorMessage name="password"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
         </div>
       </div>
-      <button class="button" type="submit">تایید</button>
+      <div>
+        <button class="button button_sub" type="submit">تایید</button>
+        <span class="span_error_btn">{{ error_msg }}</span>
+      </div>
     </Form>
   </div>
 </template>
 
 <script>
 const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
+const phoneNumberRegExp = /^(0)?09\d{9}$/g; ///^\+?(09)\)?[-. ]?([0-9]{9})$/;
+// const mobileReg = /(0|\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}/ig,
 
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { signup } from '@/services/user.js'
+import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
   name: "signup",
@@ -157,27 +167,53 @@ export default {
     }
     return {
       sign_up,
+      error_msg : ''
     }
   },
   methods:{
-    onSubmit(value){
+    async onSubmit(value){
       console.log(value);
-      const data = {
-        phoneNumber : '',
-        fname : '',
-        lname: '',
-        email: '',
-        username: '',
-        password: ''
+      try{
+        const data = {
+          phoneNumber : value.phoneNumber,
+          fname : value.fname,
+          lname: value.lname,
+          email: value.email,
+          username: value.username,
+          password: value.password
+        }
+        let res = await this.requestSignup(JSON.stringify(data));        
+        console.log("requestSignup error 1")
+        console.log(res);
+        if(res == 409) {
+          this.error_msg = 'نام کاربری تکراری است'
+          return
+        }
+        if(res == 400) {
+          this.error_msg = 'ورودی نامعتبر'
+          return
+        }
+        await this.getCsrfToken();
+        await this.$store.dispatch('user/requestProfileUser');
+        this.$router.replace({ name: 'posts' });
+        this.$store.state.login = true;
+      } catch(error) {
+        console.log(error);
       }
     },
-    async requestLogin(data) {
-        try{
-          const loginResponse = await signup(data);
-        } catch {
-          console.log(error);
+    async requestSignup(data) {
+        let res = await signup(data);
+        return res;
+    },
+    getCsrfToken: async function (){
+      const access_token = getCookieByName('token')
+      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
+        headers:{
+          token: access_token
         }
-    }
+      }).catch(err => console.log(err))
+      this.$store.state.user.csrfToken = response.data.csrfToken;
+    },
   }
 };
 

@@ -2,7 +2,7 @@
   <div class="component">
     <img
       class="user-photo"
-      :src="user.photo"
+      :src="user.userphoto"
       alt=""
     />
     <div class="introduction">

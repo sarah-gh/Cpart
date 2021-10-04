@@ -8,45 +8,50 @@
       <search-nav @clicked="onClickNav"></search-nav>
     </div>
     <section class="post-container container" v-if="navigate[0]">
-      <article class="cards" v-for="(item, index) in userposts" :key="index">
-        <!-- <post-summery :post="item" /> -->
+      <article class="card" v-for="(item, index) in posts" :key="index">
+        <post-summery :post="item"></post-summery>
       </article>
     </section>
     <section class="follow-container container" v-if="navigate[1]">
-      <article class="people" v-for="(item, index) in people" :key="index">
-        <!-- <search-people :user="item" /> -->
+      <article class="people" v-for="(item, index) in users" :key="index">
+        <search-people :user="item" />
       </article>
     </section>
     <section class="tag-container container" v-if="navigate[2]">
-      <article class="tags" v-for="(item, index) in 20" :key="index">
-          <!-- <search-tag :tagName="item" /> -->
+      <article class="tags" v-for="(item, index) in tags" :key="index">
+          <search-tag :tag="item" />
       </article>
     </section>
   </main>
 </template>
 
+
 <script>
 import searchNav from "../../resources/components/search/search-nav/search-nav.vue";
-// import searchPeople from "../../resources/components/search/results/people.vue";
-// import postSummery from "../../resources/components/post/post-summary/post-summary.vue";
-// import seachTag from "../../resources/components/search/results/tags.vue";
+import searchPeople from "../../resources/components/search/results/people.vue";
+import postSummery from "../../resources/components/post/post-summary/post-summary.vue";
+import searchTag from "../../resources/components/search/results/tags.vue";
 export default {
   name: "search",
   data() {
     return {
       navigate: [true, false, false],
       textSearch: "",
+      posts: [],
+      users: [],
+      tags: []
     };
   },
   components: {
     searchNav,
-    // searchPeople,
-    // postSummery,
-    // seachTag
+    searchPeople,
+    postSummery,
+    searchTag
   },
   beforeMount() {
-    console.log(this.$route.query.search),
-      (this.textSearch = this.$route.query.search);
+    console.log(this.$route.query.search);
+    this.textSearch = this.$route.query.search;
+    this.testtt(this.textSearch)
   },
   methods: {
     clickedSearch() {},
@@ -59,6 +64,21 @@ export default {
         }
       });
     },
+    async testtt(data){
+      try{
+          let res = await this.$store.dispatch('user/requestSearch', data);
+          // console.log("res")
+          // console.log(res);
+          res = this.$store.state.user.searchItems;
+          this.posts = res.posts;
+          this.users = res.users;
+          this.tags = res.tags;
+          console.log("res")
+          console.log(res);
+      } catch(error) {
+          console.log(error);
+      }
+    }
   },
 };
 </script>
@@ -90,3 +110,4 @@ export default {
   min-height: 80vh;
 }
 </style>
+<style lang="scss" src="./search.scss"></style>

@@ -1,4 +1,4 @@
-import { getBookmark , getProfileUser, postBookmark , getSetting, userOperation} from '@/services/user.js';
+import { getBookmark , getProfileUser, postBookmark , getSetting, userOperation , search} from '@/services/user.js';
 
 const user = {
   namespaced: true,
@@ -7,7 +7,8 @@ const user = {
     bookmark: [],
     profileUser: {},
     setting: {},
-    csrfToken:""
+    csrfToken:"",
+    searchItems : {}
   }),
   actions: {
     async requestbookmark({ commit }, data) {
@@ -30,6 +31,10 @@ const user = {
       const profile = await getProfileUser();
       commit('setProfileUser', profile);
     },
+    async requestSearch({ commit }, data) {
+      const searchitem = await search(data);
+      commit('setSearch', searchitem);
+    },
     async requestsettingUser({ commit }) {
       const setting = await getSetting();
       commit('setSettingUser', setting);
@@ -48,7 +53,9 @@ const user = {
     setSettingUser(state, setting) {
       state.setting = setting;
     },
-    
+    setSearch(state, search){
+      state.searchItems = search;
+    }
   },
   getters: {},
 };

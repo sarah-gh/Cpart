@@ -92,15 +92,28 @@ export const login = async (data) => {
 };
 
 export const signup = async (data) => {
-  const token = await axios.post(`${http}/register`, data)
+  const res = await axios.post(`${http}/register`, data)
   .then((res) => {
       console.log(res.data);
       writeCookie('token', res.data.token);
   })
   .catch((error) => {
-    console.error(error);
+    return error.response.status
   })
+  return res;
 };
 
+export const search = async (data) => {
+  const res = await axios.get(`${http}/search?query=${data}`)
+  .then((res) => {
+      console.log(res.data);
+      return res.data;
+  })
+  .catch((error) => {
+    return error.response.status
+  })
+  return res;
+}
 
-export default { getBookmark, login, getSetting, postBookmark, userOperation , signup };
+
+export default { getBookmark, login, getSetting, postBookmark, userOperation , signup, search };

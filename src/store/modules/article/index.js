@@ -1,4 +1,4 @@
-import { getArticles, getSingleArticle, getSingleArticleUser, postArticle , getArticlesUser} from '@/services/article.js';
+import { getArticles, getSingleArticle, getSingleArticleUser, postArticle , getArticlesUser, getArticlesUserfollow} from '@/services/article.js';
 import { userOperation } from '@/services/user.js';
 
 const article = {
@@ -19,6 +19,11 @@ const article = {
     async requestArticleUser({ commit }) {
       console.log('requesting article...');
       const articleData = await getArticlesUser();
+      commit('setArticles', articleData);
+    },
+    async requestArticleUserfollow({ commit }) {
+      console.log('requesting article...');
+      const articleData = await getArticlesUserfollow();
       commit('setArticles', articleData);
     },
     async requestSingleArticle({ commit }, data) {

@@ -3,7 +3,7 @@
         <img class="profile-header_img" src="@/assets/img/profile-background.png" alt="background">
         <div class="user-profile">
             <div class="user-info">
-                <img class="user-profile_img" :src="user.userphoto" alt="user-photo">
+                <img class="user-profile_img" :src="userphoto" alt="user-photo">
                 <div class="user-info-text">
                     <div class="user-name">
                         <h2 class="name">{{ user.name }}</h2>
