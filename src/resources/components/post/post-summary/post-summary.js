@@ -19,18 +19,19 @@ export default {
     },
     created() {
         this.save = this.post.issaved == '0' ? false : true;
-        this.follow = this.post.arefollowing == '1' ? true : false;
+        this.follow = this.post.isfollowing == '1' ? true : false;
     },
     beforeMount(){
         this.text = this.post.artcletext;
         if (this.post.artcletext.length > 180) {
             this.text = this.text.substring(0, 175) + "...";
         }
-
-        if(this.$store.state.user.profileUser.about["0"].userid == this.post.userid ){
-            this.not_user = false;
-        } else {
-            this.not_user = true;
+        if(this.$store.state.login){
+            if(this.$store.state.user.profileUser.about["0"].userid == this.post.userid ){
+                this.not_user = false;
+            } else {
+                this.not_user = true;
+            }
         }
     },
     mounted() {
@@ -57,9 +58,11 @@ export default {
             let status_save = this.save ? 1 : 0;
             const data = {
                 operation: "save" ,
+                csrfToken: this.$store.state.user.csrfToken,
                 articleId: this.post.articleid,
                 status: status_save
             }
+            console.log(data);
             // JSON.stringify(data)
             this.testtt(JSON.stringify(data))
             //this.$emit('save_item', 'donbalkonande')
@@ -69,6 +72,7 @@ export default {
             let status_follow = this.follow ? 1 : 0;
             const data = {
                 operation: "follow",
+                csrfToken: this.$store.state.user.csrfToken,
                 followingId: this.post.userid,
                 status: status_follow
             }

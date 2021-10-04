@@ -119,6 +119,7 @@ export default {
                         ${now[0]}`;
             const data = {
                 operation: "newComment",
+                csrfToken: this.$store.state.user.csrfToken,
                 text: this.comment.text,
                 articleId: this.postid,
                 replyto: this.replyto?.commentid || null,
@@ -135,8 +136,8 @@ export default {
         },
         async testtt(data){
             try {
-                let test = await this.$store.dispatch('user/requestPostComment', data);
-                this.$emit('add_comment');
+                let test = await this.$store.dispatch('article/requestPostComment', data);
+                this.$emit('add_comment', data);
             } catch (error) {
                 console.log(error);
             }

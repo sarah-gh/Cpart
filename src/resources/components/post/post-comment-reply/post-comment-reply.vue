@@ -31,6 +31,9 @@
     cursor: pointer;
     font-size: 23px;
 }
+.comments{
+    width: 100% !important;
+}
 </style>
 <script>
 export default {

@@ -21,8 +21,15 @@ export default {
         }, 3000);
     },
     created() {
+        console.log(this.post)
         this.save = this.post.issaved == '0' ? false : true;
-        this.follow = this.post.arefollowing == '1' ? true : false;
+        this.follow = this.post.isfollowing == '0' ? false : true;
+    },
+    computed: {
+        is_save(){
+            this.save = this.post.issaved == '0' ? false : true;
+            this.follow = this.post.isfollowing == '0' ? false : true;
+        }
     },
     methods: {
         saveItem(){
@@ -30,6 +37,7 @@ export default {
             let status_save = this.save ? 1 : 0;
             const data = {
                 operation: "save" ,
+                csrfToken: this.$store.state.user.csrfToken,
                 articleId: this.post.articleid,
                 status: status_save
             }
@@ -54,6 +62,7 @@ export default {
             let status_follow = this.follow ? 1 : 0;
             const data = {
                 operation: "follow",
+                csrfToken: this.$store.state.user.csrfToken,
                 followingId: this.post.userid,
                 status: status_follow
             }
