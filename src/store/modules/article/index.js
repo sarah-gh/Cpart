@@ -1,4 +1,5 @@
-import { getArticles, getSingleArticle, postArticle , getArticlesUser} from '@/services/article.js';
+import { getArticles, getSingleArticle, getSingleArticleUser, postArticle , getArticlesUser} from '@/services/article.js';
+import { userOperation } from '@/services/user.js';
 
 const article = {
   namespaced: true,
@@ -6,10 +7,12 @@ const article = {
     article: {},
     articleUser: {},
     singleArticle: [],
+    comment: [],
+    post: {},
+    otherPosts: [],
   }),
   actions: {
     async requestArticle({ commit }) {
-      // console.log('requesting article...');
       const articleData = await getArticles();
       commit('setArticles', articleData);
     },
@@ -19,16 +22,20 @@ const article = {
       commit('setArticles', articleData);
     },
     async requestSingleArticle({ commit }, data) {
-      // console.log('requesting article...', data);
       const singleArticleData = await getSingleArticle(data);
       commit('setSingleArticles', singleArticleData);
     },
+    async requestPostComment({ commit }, data) {
+      console.log(data);
+      const commentData = await userOperation(data);
+      // commit('setPostComment', data);
+    },
+    async requestSingleArticleUser({ commit }, data) {
+      const singleArticleData = await getSingleArticleUser(data);
+      commit('setSingleArticles', singleArticleData);
+    },
     async requestPostArticle({ commit }, data) {
-      // console.log('requesting article...', data);
-      // console.log(data)
       const postData = await postArticle(data);
-      // console.log(postData, commit);
-      // commit('setSingleArticles', postData);
     },
   },
   mutations: {
@@ -38,7 +45,17 @@ const article = {
     setArticlesuser(state, articleData) {
       state.articleUser = articleData;
     },
+    // setPostComment(state, data){
+    //   state.comment = data
+    // },
     setSingleArticles(state, singleArticleData) {
+      console.log('setSingleArticles')
+      console.log(singleArticleData);
+      state.post = Object.assign(singleArticleData["0"]);
+      state.comment = singleArticleData[2];
+      console.log(singleArticleData[2]);
+      state.otherPosts = singleArticleData[1]
+      console.log(singleArticleData[1])
       state.singleArticle = singleArticleData;
     },
     

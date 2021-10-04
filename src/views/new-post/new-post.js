@@ -84,6 +84,7 @@ export default {
             this.article.text = this.removeTags(this.article.text);
             const data = {
                 operation: "newArticle",
+                csrfToken: this.$store.state.user.csrfToken,
                 headerPhoto: this.article.header_img,
                 title: this.article.header,
                 articleText: this.article.text,

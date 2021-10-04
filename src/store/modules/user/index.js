@@ -6,7 +6,8 @@ const user = {
     user: {},
     bookmark: [],
     profileUser: {},
-    setting: {}
+    setting: {},
+    csrfToken:""
   }),
   actions: {
     async requestbookmark({ commit }, data) {
@@ -24,10 +25,7 @@ const user = {
       console.log(data);
       const likeCommentData = await userOperation(data);
     },
-    async requestPostComment({ commit }, data) {
-      console.log(data);
-      const commentData = await userOperation(data);
-    },
+    
     async requestProfileUser({ commit }) {
       const profile = await getProfileUser();
       commit('setProfileUser', profile);
@@ -49,7 +47,8 @@ const user = {
     },
     setSettingUser(state, setting) {
       state.setting = setting;
-    }
+    },
+    
   },
   getters: {},
 };

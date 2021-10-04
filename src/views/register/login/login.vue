@@ -1,6 +1,10 @@
 <template>
   <div class="register-page register">
-    <div class="entry-register">ورود / ثبت نام</div>
+    <div class="entry-register">
+      <router-link to="/authentication/login"> ورود </router-link>
+      /
+      <router-link to="/authentication/signup"> ثبت نام </router-link>
+      </div>
     <!-- <Form class="form" @submit="userNumber" :validation-schema="phoneNumber">
       <p class="guide-text">لطفا شماره تلفن همراه خود را وارد کنید</p>
       <Field name="number" type="tel" class="phone-number" />
@@ -37,6 +41,8 @@
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
 import {login} from '@/services/user.js'
+import { getCookieByName } from '@/resources/utilities.js';
+
 export default {
   components: {
     Field,
@@ -89,30 +95,32 @@ export default {
     },
     async onSubmit(value){
       try{
-        // console.log('onSubmit')
-        // console.log(JSON.stringify(value));
         await this.requestLogin(JSON.stringify(value));
-        // console.log('Success ');
         await this.$store.dispatch('user/requestProfileUser');
-        // console.log('//////////////////////////////////');
-        // console.log(this.$store.state.user.profileUser.about["0"])
+        this.getCsrfToken();
         this.$router.replace({ name: 'posts' });
         this.$store.state.login = true;
+        
       } catch {
         console.log(error);
       }
     },
+    getCsrfToken: async function (){
+      const access_token = getCookieByName('token')
+      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
+        headers:{
+          token: access_token
+        }
+      }).catch(err => console.log(err))
+      this.$store.state.user.csrfToken = response.data.csrfToken;
+    },
    
     async requestLogin(data) {
         try{
-          // console.log('requesting login...');
           const loginResponse = await login(data);
         } catch {
           console.log(error);
         }
-        
-        // this.$router.push('/')
-
     }
   },
 };

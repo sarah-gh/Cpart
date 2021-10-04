@@ -1,5 +1,5 @@
 <template>
-    <img :src="require(`@/assets/img/${post.headerphoto}`)" alt="capture1">
+    <img :src="post.headerphoto" alt="capture1">
     <div class="other-post">
         <h3> 
             {{post.title}}
@@ -13,7 +13,7 @@
                 <span class="tag" v-for="(item, index) in post.tag" :key="index">
                     {{ item }}
                 </span>
-                <span class="save"><img src="../../../../assets/img/archive-add_2.svg"></span>
+                <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ></span>
             </div>
         </footer>
     </div>
