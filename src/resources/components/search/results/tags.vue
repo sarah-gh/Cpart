@@ -1,12 +1,14 @@
 <template>
-  <div class="tag">{{ tagName }}</div>
+  <div class="tag">{{ tag }}</div>
 </template>
 
 <script>
 export default {
     name: "search-tag",
     props:{
-        tagName
+        tag : {
+          type : String
+        }
     }
 };
 </script>

@@ -1,3 +1,4 @@
+import user from "../../../../services/user";
 
 export default {
     name: 'profile-header',
@@ -11,6 +12,7 @@ export default {
         return {
             not_user : true,
             follow: false,
+            userphoto : ''
         }
     },
     beforeMount(){
@@ -19,6 +21,11 @@ export default {
             this.not_user = false;
         } else {
             this.not_user = true;
+        }
+        if(this.user.userphoto == null){
+            this.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg';
+        } else {
+            this.userphoto = this.user.userphoto
         }
     },
     mounted() {

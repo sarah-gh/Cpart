@@ -71,7 +71,9 @@ export default {
             try{
                 await this.$store.dispatch('user/requestProfileUser');
                 this.userLogin = this.$store.state.user.profileUser.about["0"];
-                // console.log(this.userLogin);
+                if(this.userLogin.userphoto == null){
+                    this.userLogin.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg';
+                }
             } catch {
                 console.log(error);
             }
@@ -83,11 +85,9 @@ export default {
     watch: { 
         login: function(newVal, oldVal) { // watch it
             this.local_login = newVal;
-            // console.log('Prop login changed: ', newVal, ' | was: ', oldVal)
         },
         showheader: function(newVal, oldVal) { // watch it
             this.show_header = newVal;
-            // console.log('Prop showheader changed: ', newVal, ' | was: ', oldVal)
         },
     }
 }

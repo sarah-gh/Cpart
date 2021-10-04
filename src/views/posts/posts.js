@@ -16,6 +16,7 @@ export default {
             load: false,
             connection: true,
             posts: [],
+            msg: ''
         }
     },
     components: {
@@ -26,14 +27,14 @@ export default {
         
     },
     created() {
-        //this.getPosts();
-        this.testtt()
+        // this.getPostsFollowing();
+        this.getPostsProposed()
     },
     beforeMount() {
         
     },
     methods: {
-        async testtt(){
+        async getPostsProposed(){
             try {
                 const token = getCookieByName('token');
                 if(token){
@@ -41,13 +42,21 @@ export default {
                 } else {
                     await this.$store.dispatch('article/requestArticle');
                 }
-                // if(this.$store.state.article.article.length > 0){ ////// ??
-                    // await this.$store.dispatch('article/requestArticle');
-                    // console.log(test);
-                // } requestArticleUser
                 let response = this.$store.state.article.article;
-                // console.log('test')
-                // console.log(response);
+                this.posts = response;
+                this.connection = true;
+                this.load = true;
+            } catch (error) {
+                this.connection = false;
+                this.load = true;
+                console.log(error);
+            }  
+        },
+        async getPostsFollowing(){
+            try {
+                const token = getCookieByName('token');
+                await this.$store.dispatch('article/requestArticleUserfollow');
+                let response = this.$store.state.article.article;
                 this.posts = response;
                 this.connection = true;
                 this.load = true;
@@ -56,27 +65,22 @@ export default {
                 this.load = true;
                 console.log(error);
             }
-            
         },
-        async getPosts() {
-            // try {
-            //     const response = await this.axios.get(
-            //         "http://localhost:8000/api/posts"
-            //     ).then((res) => {
-            //         return res.data;
-            //     });
-            //     this.posts = response;
-            //     this.connection = true;
-            //     this.load = true;
-            // } catch (error) {
-            //     this.connection = false;
-            //     this.load = true;
-            //     console.log(error);
-            // }
-        },
-        onClickNav(data){
+        async onClickNav(data){
             this.summary = !this.summary;
-            //console.log(data);
+            console.log(data);
+            if(this.summary){
+                await this.getPostsProposed();
+                if(this.posts.length === 0){
+                    this.msg = 'شما کسی را دنبال نکرده اید';
+                } else this.msg = '';
+            }
+            else {
+                await this.getPostsFollowing();
+                if(this.posts.length === 0 ){
+                    this.msg = 'شما کسی را دنبال نکرده اید';
+                } else this.msg = '';
+            }
         }
     },
 }

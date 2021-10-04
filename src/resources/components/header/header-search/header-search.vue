@@ -12,7 +12,7 @@
             @keyup.esc='close'
         >
         <div class='input-group-append' v-if='addBtn'>
-            <router-link :to="{ path: 'search', query: { search: searchQuery }}">
+            <router-link :to="{ name: 'search', query: { search: searchQuery }}">
                 <button class='btn btn-primary' @click='addItem'>
                     <img src="../../../../assets/img/svg-header/arrow-right.svg" />
                 </button>

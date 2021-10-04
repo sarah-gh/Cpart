@@ -12,7 +12,6 @@ export const getArticles = async () => {
     return response.data;
   };
 export const getArticlesUser = async () => {
-    console.log('Getting 2')
     const access_token = getCookieByName('token');
     const response = await axios.get(`${http}/posts`, {
       headers:{
@@ -22,11 +21,20 @@ export const getArticlesUser = async () => {
     .catch((err) => {
       console.error(1,err);
     })
-    // console.log('getting articles');
-    // console.log(response);
-  
     return response.data;
 };
+export const getArticlesUserfollow = async () => {
+    const access_token = getCookieByName('token');
+    const response = await axios.get(`${http}/followingPosts`, {
+      headers:{
+        'token': `${access_token}`
+      }
+    })
+    .catch((err) => {
+      console.error(1,err);
+    })
+    return response.data;
+}
 
 
 export const getSingleArticle = async (id) => {
@@ -108,4 +116,4 @@ export const postArticle = async (data) => {
 }
 
 
-export default { getSingleArticle, getArticles, getArticlesUser, getSingleArticleUser };
+export default { getSingleArticle, getArticles, getArticlesUser, getSingleArticleUser, getArticlesUserfollow };
