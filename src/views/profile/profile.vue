@@ -13,7 +13,7 @@
         </p>
     </section>
     <section class="container" v-if="load && connection">
-        <profile-header :user="userProfile"></profile-header>
+        <profile-header :user="userProfile" ></profile-header>
         <profile-nav @clicked="onClickNav"></profile-nav>
     </section>
     <main v-if="load && connection">
@@ -29,7 +29,7 @@
         </section>
         <section class="follow-container container" v-if="navigate[2]">
             <article class="followers" v-for="(item,index) in follows" :key="index">
-                <profile-follower :follow="item"></profile-follower>
+                <profile-follower :follow="item" @click_profile="clickProfile"></profile-follower>
             </article>
         </section>
     </main>

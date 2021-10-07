@@ -46,11 +46,6 @@ export default {
         reload(){
             console.log("reload page");
             
-            // this.$router.go(`/panel/profile/${this.follow.followerid}`)
-            // this.$router.replace({ path: `/profile/${this.follow.followerid}` });
-            // this.$router.replace({ path: `/panel/profile/${this.follow.followerid}` });
-            // this.$router.go(this.$router.currentRoute)
-            // location.reload();
         },
         async testtt2(data){
             try{
@@ -70,7 +65,15 @@ export default {
             }
             this.testtt2(JSON.stringify(data))
         },
-    }
+    },
+    watch:{
+      $route (to, from){
+        console.log(to.path);
+        console.log(from.path);
+        this.$emit('click_profile')
+        //location.reload();
+      }
+    },
 
 }
 </script>

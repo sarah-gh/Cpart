@@ -88,6 +88,10 @@ export default {
                 }
             
         },
+        clickProfile(){
+            console.log('emit');
+            this.$forceUpdate();
+        },
         async getProfile() {
             try {
                 const access_token = getCookieByName('token');
@@ -128,7 +132,7 @@ export default {
       $route (to, from){
         console.log(to.path);
         console.log(from.path);
-        location.reload();
+        //location.reload();
       }
     },
 }
