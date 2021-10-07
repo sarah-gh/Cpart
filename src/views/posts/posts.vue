@@ -17,13 +17,12 @@
             <article class="card" v-for="(item,index) in posts" :key="index">
               <post-summary :post="item"></post-summary>
             </article>
-            <!-- <div class="msg" v-if="!posts"> {{ msg }} </div> -->
         </section>
         <section class="post-container container" v-if="!summary && load && connection">
             <article class="card" v-for="(item,index) in posts" :key="index">
               <post-summary :post="item"></post-summary>
             </article>
-            <div class="msg" v-if="!msg"> {{ msg }} </div>
+            <div class="msg" v-if="msg.length > 0"> {{ msg }} </div>
         </section>
     </main>
 </template>

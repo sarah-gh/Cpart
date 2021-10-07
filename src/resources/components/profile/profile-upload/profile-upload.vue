@@ -39,7 +39,6 @@ export default {
 	},
 	mounted(){
 		setTimeout(() => {
-            // console.log('xhr')
             this.imageData = this.imgData;
         }, 700);
 	},

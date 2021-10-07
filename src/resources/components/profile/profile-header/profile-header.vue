@@ -18,10 +18,6 @@
                     <p>مشاهده وبسایت</p>
                     <img src="@/assets/img/export.svg" alt="">    
                 </button>
-                <!-- <button class="follow-user" v-show="not_user">
-                    دنبال کردن 
-                    <img src="@/assets/img/svg-profile/add.svg" alt=""> 
-                </button> -->
                 <button class="follow-user" v-show="not_user" v-if="!follow" @click="followUser">
                     دنبال کردن
                     <img src="@/assets/img/svg-profile/add.svg" alt=""> 
@@ -30,6 +26,7 @@
             </div>
         </div>
   </div>
+  {{ getImg }}
 </template>
 
 <script src="./profile-header.js"></script>

@@ -26,13 +26,11 @@ export const postBookmark = async (data) => {
     }) 
     .catch((error) => {
       console.error(error);
-  
       return false;
     })  
 }
 export const userOperation = async (data) => {
     const access_token = getCookieByName('token');
-    console.log(data);
     const token = await axios.post(`${http}/users/operation`, data , {
       headers:{
         'token': `${access_token}`
@@ -53,8 +51,6 @@ export const getProfileUser = async () => {
         console.error(error);
         return false;
     });
-    // console.log('getting Bookmark');
-    // console.log(response);
     return response.data;
 };
 
@@ -74,18 +70,17 @@ export const getSetting = async () => {
 export const login = async (data) => {
     const token = await axios.post(`${http}/login`, data)
     .then((res) => {
-        // console.log(res.data);
         writeCookie('token', res.data.token);
     })
     .catch((error) => {
-      console.error(error);
+        return error.response.status
     })
+    return token
 };
 
 export const signup = async (data) => {
   const res = await axios.post(`${http}/register`, data)
   .then((res) => {
-      console.log(res.data);
       writeCookie('token', res.data.token);
   })
   .catch((error) => {
@@ -97,7 +92,6 @@ export const signup = async (data) => {
 export const search = async (data) => {
   const res = await axios.get(`${http}/search?query=${data}`)
   .then((res) => {
-      console.log(res.data);
       return res.data;
   })
   .catch((error) => {

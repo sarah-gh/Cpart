@@ -69,6 +69,7 @@ export default {
     emits: ["addImage","on_enter",'Modalfalse'],
     methods: {
         PublishContent(){
+            this.published = true;
             let now = new Date().toLocaleDateString('fa-IR');
             now = now.split('/');
             let month;
@@ -80,7 +81,6 @@ export default {
             let date = `${now[2]}
                         ${this.month[month]}
                         ${now[0]}`;
-            console.log(date);
             this.article.date = date;
             this.article.readTime = this.readTime(this.article.text);
             this.article.text = this.removeTags(this.article.text);
@@ -95,11 +95,11 @@ export default {
                 tag: this.article.tags,
                 readTime: `${this.article.readTime}`,
             }
-            this.testtt(JSON.stringify(data))
+            this.getData(JSON.stringify(data))
         },
-        async testtt(data){
+        async getData(data){
             try {
-                this.published = true;
+                
                 let test = await this.$store.dispatch('article/requestPostArticle', data);
                 this.$router.replace({ path: '/panel/profile/0' })
             } catch (error) {

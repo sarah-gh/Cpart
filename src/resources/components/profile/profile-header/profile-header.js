@@ -16,7 +16,7 @@ export default {
         }
     },
     beforeMount(){
-        console.log(this.user)
+        this.follow = this.user.isfollowing == '1' ? true : false;
         if(this.$store.state.user.profileUser.about["0"].username == this.user.username ){
             this.not_user = false;
         } else {
@@ -31,6 +31,12 @@ export default {
     mounted() {
 
     },
+    computed: {
+        getImg(){
+            this.userphoto = this.user.userphoto;
+            return ""
+        }
+    },
     methods: {
         followUser() {
             this.follow = !this.follow;
@@ -42,9 +48,9 @@ export default {
                 status: status_follow
             }
             // JSON.stringify(data)
-            this.testtt2(JSON.stringify(data))
+            this.getData2(JSON.stringify(data))
         },
-        async testtt2(data){
+        async getData2(data){
             try{
                 await this.$store.dispatch('user/requestfollow', data);
             } catch {

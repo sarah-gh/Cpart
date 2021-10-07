@@ -1,7 +1,3 @@
-// export const writeCookie = (name, value) => {
-//     document.cookie = `${name}=${value}`;
-// }
-
 export const simulateRequest = async (ms) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -11,12 +7,11 @@ export const getCookieByName = (name) => {
     const sanitizedCookie = stringCookie.trim();
     return sanitizedCookie.split('=')[0] === name;
   });
-  // console.log('cookie');
-  // console.log(cookie);
   return cookie?.split('=')[1];
 };
 
 export const writeCookie = (name, value) => {
+  //Vue.$cookies.set(name, value, 60 * 60 * 24);
   document.cookie = `${name}=${value}`;
 };
 

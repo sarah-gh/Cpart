@@ -29,7 +29,6 @@ export default {
             try {
                 const token = getCookieByName('token');
                 if(token){
-                    console.log()
                     await this.$store.dispatch('article/requestSingleArticleUser' , `${this.$route.params.id}`);
                 } else {
                     await this.$store.dispatch('article/requestSingleArticle', `${this.$route.params.id}`);
@@ -38,9 +37,7 @@ export default {
                 let post = response[0];
                 this.post = Object.assign(post["0"]);
                 this.comment = this.$store.state.article.comment;
-                console.log(this.comment);
                 this.otherPosts = this.$store.state.article.otherPosts;
-                console.log(this.otherPosts)
                 this.load = true;
             } catch (error) {
                 this.load = true;

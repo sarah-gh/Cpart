@@ -1,4 +1,6 @@
 @import "../../../assets/sass/_variable";
+@import "@/assets/sass/_loadBtn";
+
 .span_error{
   padding: 10px 0;
   text-align: center;
@@ -9,6 +11,10 @@
 }
 .button_sub{
   margin-right: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
 }
 .span_error_btn{
   padding: 10px 0;
@@ -72,7 +78,7 @@
     background-color: $tealish;
     border-radius: 10px;
     border-width: 0;
-    margin: 35px auto 0 auto;
+    // margin: 35px auto 0 auto;
     width: 165px;
     height: 50px;
     color: white;

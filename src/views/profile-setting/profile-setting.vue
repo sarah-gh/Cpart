@@ -6,7 +6,7 @@
         </div>
         
         <section class="container">
-            <div class='about'>
+            <div class='about_setting'>
                     <span>درباره شما</span>
             </div>
             <div class="headerLine">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="short-description texts">
                         <p class="lable">شرح کوتاه</p>
-                        <p class="text">{{ user.shortdescreption }}</p>
+                        <p class="text">{{ user.shortdescription }}</p>
                     </div>
                 </div>
                 <button class="edit" @click="editField(0)" :class="{ notShow: !show }" >
@@ -201,7 +201,7 @@
                     <img src="@/assets/img/svg-profile-setting/tick.svg"/>
                 </button>
             </Form>
-            <div class='about'>
+            <div class='about_setting'>
                     <span>دنبال کنندگان</span>
             </div>
             <div class="headerLine">
@@ -225,7 +225,7 @@
                         </div>
                     </div>
             </div>
-            <div class='about'>
+            <div class='about_setting'>
                     <span>شخصی سازی</span>
             </div>
             <div class="headerLine">

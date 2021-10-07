@@ -27,22 +27,12 @@ export default {
         profileAbout
     },
     created() {
-        console.log(this.$route.params.id);
         if(this.$route.params.id != 0 ){
             this.getProfile();
         } else {
             this.getUserProfile()
         }
     },
-    // computed: {
-    //     changedRoute() {
-    //         if(this.$route.params.id != 0 ){
-    //             this.getProfile();
-    //         } else {
-    //             this.getUserProfile()
-    //         }
-    //     }
-    // },
     methods: {
         onClickNav(data){
             this.navigate.forEach((value,index) => {
@@ -54,43 +44,46 @@ export default {
             })
         },
         async getUserProfile() {
-                try {
-                    const access_token = getCookieByName('token');
-                    const response = await this.axios.get(
-                        `http://localhost:8000/api/users/profile` , {
-                            headers:{
-                                'token': `${access_token}`
-                            }
+            try {
+                const access_token = getCookieByName('token');
+                const response = await this.axios.get(
+                    `http://localhost:8000/api/users/profile` , {
+                        headers:{
+                            'token': `${access_token}`
                         }
-                    ).then((res) => {
-                        return res.data; 
-                    }).catch((err) => {
-                        console.error(err);
-                    });
-                    this.profile = response;
-                    this.about = this.profile.about["0"];
-                    this.follows = [...this.profile.follows];
-                    this.userposts = this.profile.posts;
-                    this.userProfile = {
-                        userphoto: this.about.userphoto,
-                        shortdescription: this.about.shortdescription,
-                        name : this.about.fname + " " + this.about.lname,
-                        followers: this.about.followers,
-                        username : this.about.username,
                     }
-                    // console.log(this.follows)
-                    this.load = true;
-                    this.connection = true;
-                } catch (error) {
-                    console.log(error);
-                    this.connection = false;
-                    this.load = true;
+                ).then((res) => {
+                    return res.data; 
+                }).catch((err) => {
+                    console.error(err);
+                });
+                this.profile = response;
+                this.about = this.profile.about["0"];
+                this.follows = [...this.profile.follows];
+                this.userposts = this.profile.posts;
+                this.userProfile = {
+                    userphoto: this.about.userphoto,
+                    shortdescription: this.about.shortdescription,
+                    name : this.about.fname + " " + this.about.lname,
+                    followers: this.about.followers,
+                    username : this.about.username,
+                    isfollowing : this.about.isFollowing,
                 }
+                this.load = true;
+                this.connection = true;
+            } catch (error) {
+                console.log(error);
+                this.connection = false;
+                this.load = true;
+            }
             
         },
         clickProfile(){
-            console.log('emit');
-            this.$forceUpdate();
+            if(this.$route.params.id != 0 ){
+                this.getProfile();
+            } else {
+                this.getUserProfile()
+            }
         },
         async getProfile() {
             try {
@@ -117,8 +110,8 @@ export default {
                     followers: this.about.followers,
                     username : this.about.username,
                     userid : this.about.userid,
+                    isfollowing : this.about.isFollowing,
                 }
-                // console.log(this.follows)
                 this.load = true;
                 this.connection = true;
             } catch (error) {
@@ -127,12 +120,5 @@ export default {
                 this.load = true;
             }
         }
-    },
-    watch:{
-      $route (to, from){
-        console.log(to.path);
-        console.log(from.path);
-        //location.reload();
-      }
     },
 }

@@ -73,8 +73,14 @@
         </div>
       </div>
       <div>
-        <button class="button button_sub" type="submit">تایید</button>
-        <span class="span_error_btn">{{ error_msg }}</span>
+        <button class="button button_sub" type="submit">
+          <span v-show="!validity">
+             تایید
+          </span>
+          <div class="load_btn" v-show="validity"></div>
+        </button>
+        
+        <p class="span_error_btn">{{ error_msg }}</p>
       </div>
     </Form>
   </div>
@@ -167,13 +173,14 @@ export default {
     }
     return {
       sign_up,
-      error_msg : ''
+      error_msg : '',
+      validity: false
     }
   },
   methods:{
     async onSubmit(value){
-      console.log(value);
       this.error_msg = '';
+      this.validity = true;
       try{
         const data = {
           phoneNumber : value.phoneNumber,
@@ -183,15 +190,15 @@ export default {
           username: value.username,
           password: value.password
         }
-        let res = await this.requestSignup(JSON.stringify(data));        
-        console.log("requestSignup error 1")
-        console.log(res);
+        let res = await this.requestSignup(JSON.stringify(data));  
         if(res == 409) {
-          this.error_msg = 'نام کاربری تکراری است'
+          this.error_msg = 'نام کاربری تکراری است';
+          this.validity = false
           return
         }
         if(res == 400 || res == 401) {
-          this.error_msg = 'ورودی نامعتبر'
+          this.error_msg = 'ورودی نامعتبر';
+          this.validity = false
           return
         }
         await this.getCsrfToken();
@@ -199,6 +206,7 @@ export default {
         this.$router.replace({ name: 'posts' });
         this.$store.state.login = true;
       } catch(error) {
+        this.validity = false
         console.log(error);
       }
     },

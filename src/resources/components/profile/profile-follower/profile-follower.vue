@@ -37,17 +37,11 @@ export default {
             return "";
         }
     },
-    mounted(){
-        setTimeout(() => {
-            console.log(this.follow);
-        }, 3000);
-    },
     methods : {
         reload(){
-            console.log("reload page");
-            
+            //console.log("reload page"); 
         },
-        async testtt2(data){
+        async getData2(data){
             try{
                 await this.$store.dispatch('user/requestfollow', data);
             } catch {
@@ -63,15 +57,16 @@ export default {
                 followingId: this.follow.followerid,
                 status: status_follow
             }
-            this.testtt2(JSON.stringify(data))
+            this.getData2(JSON.stringify(data))
         },
     },
     watch:{
       $route (to, from){
-        console.log(to.path);
-        console.log(from.path);
-        this.$emit('click_profile')
-        //location.reload();
+
+        if (to.fullPath.startsWith('/panel/profile')){
+            this.$emit('click_profile')
+        }
+
       }
     },
 

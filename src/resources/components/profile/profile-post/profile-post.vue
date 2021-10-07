@@ -23,9 +23,9 @@
                     {{ i }}
                 </span>
                 <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ></span>
-                <!-- <span class="number">12</span> -->
+                <span class="number">{{ post.likecount }}</span>
                 <span class="icon save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
-                <!-- <span class="number">12</span> -->
+                <span class="number">{{ post.commentcount }}</span>
                 <span class="icon save comment"><font-awesome-icon :icon="['far', 'comment-alt']" /></span>
             </div>
         </footer>
@@ -87,14 +87,11 @@ export default {
                 articleId: this.post.articleid,
                 status: status_save
             }
-            // JSON.stringify(data)
-            this.testtt(JSON.stringify(data))
-            //this.$emit('save_item', 'donbalkonande')
+            this.getData2(JSON.stringify(data))
         },
-        async testtt(data){
+        async getData2(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostBookmark', data);
-                // console.log(test);
             } catch (error) {
                 console.log(error);
             }

@@ -291,112 +291,15 @@ main{
     }
     
 } 
-.about{
+.about_setting{
     font-weight: bold;
     color:$dark-grey-blue;
     direction: rtl;
     font-size: 20px;
-    //margin-top: 70px;
-    //padding-bottom: 10.5px;
     > span{
         padding-bottom: 4px;  
         border-bottom: 2px solid $water-blue;    
     }
 }
 
-
-// @media only screen and (max-width: 500px) {
-// .headerLine{
-//         > div{
-//             margin-bottom: 20px;
-//         }
-//         .boldLine{
-//             width: 16.5%;
-//         }
-//         .line{
-//             width: 83.5%;
-//         }
-        
-//     } 
-//     .about{
-//         font-size: 17px;
-//         margin-top: 70px;
-//         padding-bottom: 10.5px;
-//         > span{
-//             padding-bottom: 10.5px;      
-//         }
-//     }
-// }
-// @media only screen and (min-width: 500px) {
-//     .headerLine{
-//         > div{
-//             margin-bottom: 20px;
-//         }
-//         .boldLine{
-//             width: 16.5%;
-//         }
-//         .line{
-//             width: 83.5%;
-//         }
-        
-//     } 
-//     .about{
-//         font-size: 17px;
-//         margin-top: 70px;
-//         padding-bottom: 10.5px;
-//         > span{
-//             padding-bottom: 10.5px;      
-//         }
-//     }
-// }
-// @media only screen and (min-width: 798px) {
-//     .headerLine{
-//     > div{
-//         margin-bottom: 20px;
-//     }
-//     .boldLine{
-//         width: 16.5%;
-//     }
-//     .line{
-//         width: 83.5%;
-//     }
-    
-// } 
-// .about{
-//     font-size: 18px;
-//     margin-top: 70px;
-//     padding-bottom: 10.5px;
-//     > span{
-//         padding-bottom: 10.5px;      
-//     }
-// }
-// }
-// @media only screen and (min-width: 992px) {
-//     .headerLine{
-//     > div{
-//         margin-bottom: 20px;
-//     }
-//     .boldLine{
-//         width: 16.5%;
-//     }
-//     .line{
-//         width: 83.5%;
-//     }
-    
-// } 
-// .about{
-//     font-size: 20px;
-//     margin-top: 70px;
-//     padding-bottom: 10.5px;
-//     > span{
-//         padding-bottom: 10.5px;      
-//     }
-// }
-// }
-// @media only screen and (min-width: 1200px) {  
-    
-// }
-// @media only screen and (min-width: 1400px) {
-    
-// }
 

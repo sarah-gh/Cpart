@@ -34,7 +34,6 @@ export default {
     },
     methods: {
         navActive(x){
-            // console.log(x);
             this.navigator.forEach((value, index) => {
                 if(index === x){
                     value.active = true;
@@ -42,9 +41,7 @@ export default {
                 else {
                     value.active = false;
                 }
-                //console.log(value.active);
             })
-            //console.log(this.navigator);
             this.$emit('clicked', x);
         },
     }

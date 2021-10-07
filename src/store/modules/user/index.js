@@ -19,11 +19,9 @@ const user = {
       const followData = await userOperation(data);
     },
     async requestLikeArticle({ commit }, data) {
-      console.log(data);
       const likeArticleData = await userOperation(data);
     },
     async requestLikeComment({ commit }, data) {
-      console.log(data);
       const likeCommentData = await userOperation(data);
     },
     

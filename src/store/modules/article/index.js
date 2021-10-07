@@ -17,12 +17,10 @@ const article = {
       commit('setArticles', articleData);
     },
     async requestArticleUser({ commit }) {
-      console.log('requesting article...');
       const articleData = await getArticlesUser();
       commit('setArticles', articleData);
     },
     async requestArticleUserfollow({ commit }) {
-      console.log('requesting article...');
       const articleData = await getArticlesUserfollow();
       commit('setArticles', articleData);
     },
@@ -31,7 +29,6 @@ const article = {
       commit('setSingleArticles', singleArticleData);
     },
     async requestPostComment({ commit }, data) {
-      console.log(data);
       const commentData = await userOperation(data);
       // commit('setPostComment', data);
     },
@@ -54,13 +51,9 @@ const article = {
     //   state.comment = data
     // },
     setSingleArticles(state, singleArticleData) {
-      console.log('setSingleArticles')
-      console.log(singleArticleData);
       state.post = Object.assign(singleArticleData["0"]);
       state.comment = singleArticleData[2];
-      console.log(singleArticleData[2]);
       state.otherPosts = singleArticleData[1]
-      console.log(singleArticleData[1])
       state.singleArticle = singleArticleData;
     },
     

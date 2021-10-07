@@ -49,10 +49,8 @@ export default {
     searchTag
   },
   beforeMount() {
-    console.log('this.$route.query.search');
-    console.log(this.$route.query.search);
     this.textSearch = this.$route.query.search;
-    this.testtt(this.textSearch)
+    this.getData(this.textSearch)
   },
   methods: {
     clickedSearch() {},
@@ -66,19 +64,16 @@ export default {
       });
     },
     addItem() {
-        console.log("addItem")
         this.$router.replace({ name: "search", query: { search: this.textSearch } })
-        this.testtt(this.textSearch)
+        this.getData(this.textSearch)
     },
-    async testtt(data){
+    async getData(data){
       try{
           let res = await this.$store.dispatch('user/requestSearch', data);
           res = this.$store.state.user.searchItems;
           this.posts = res.posts;
           this.users = res.users;
           this.tags = res.tags;
-          console.log("res")
-          console.log(res);
       } catch(error) {
           console.log(error);
       }

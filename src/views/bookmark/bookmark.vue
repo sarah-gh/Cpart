@@ -18,6 +18,7 @@
             <article class="card" v-for="(item,index) in posts" :key="index">
                 <post-summary-bookmark :post="item"></post-summary-bookmark>
             </article>
+            <div class="msg" v-if="posts.length < 1"> شما هنوز مقاله ای ذخیره نکرده اید </div>
         </section>
     </main> 
 </template>

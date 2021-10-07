@@ -43,12 +43,11 @@ export default {
                 articleId: this.post.articleid,
                 status: status_save
             }
-            this.testtt(JSON.stringify(data))
+            this.getData(JSON.stringify(data))
         },
-        async testtt(data){
+        async getData(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostBookmark', data);
-                // console.log(test);
             } catch (error) {
                 console.log(error);
             }

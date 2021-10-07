@@ -15,15 +15,10 @@ export default {
             follow: false,
         }
     },
-    mounted() {
-        setTimeout(() => {
-            // console.log(this.post);
-        }, 3000);
-    },
     created() {
-        console.log(this.post)
         this.save = this.post.issaved == '0' ? false : true;
         this.follow = this.post.isfollowing == '0' ? false : true;
+        this.like_icon = this.post.isliked == '0' ? ['far', 'thumbs-up'] : ['fas', 'thumbs-up'];
     },
     computed: {
         is_save(){
@@ -41,18 +36,25 @@ export default {
                 articleId: this.post.articleid,
                 status: status_save
             }
-            this.testtt(JSON.stringify(data))
+            this.getData(JSON.stringify(data))
         },
-        async testtt(data){
+        async getData(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostBookmark', data);
             } catch (error) {
                 console.log(error);
             }
         },
-        async testtt2(data){
+        async getData2(data){
             try{
                 await this.$store.dispatch('user/requestfollow', data);
+            } catch {
+                console.log('error');
+            }
+        },
+        async getData3(data){
+            try{
+                await this.$store.dispatch('user/requestLikeArticle', data);
             } catch {
                 console.log('error');
             }
@@ -67,14 +69,24 @@ export default {
                 status: status_follow
             }
             // JSON.stringify(data)
-            this.testtt2(JSON.stringify(data))
+            this.getData2(JSON.stringify(data))
         },
         clickLike(){
+            const data = {
+                operation: "like_article",
+                csrfToken: this.$store.state.user.csrfToken,
+                articleId: this.post.articleid,
+                status: 0
+            };
             if(this.like_icon[0] == 'fas'){
                 this.like_icon[0] = 'far';
+                data.status = 0
+                
             } else {
                 this.like_icon[0] = 'fas';
+                data.status = 1
             }
+            this.getData3(JSON.stringify(data))
         }
     },
 }

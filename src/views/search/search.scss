@@ -13,6 +13,15 @@
     margin: 20px auto;
   }
 }
+
+.tags{
+  direction: rtl;
+}
+
+.search-nav{
+  margin-bottom: 40px;
+}
+
 .msg{
   width: 100%;
   text-align: center;
@@ -66,25 +75,6 @@ main{
               color: $dark-grey-blue;
             }
           }
-          // button{
-          //   height: 23px;
-          //   flex-grow: 0;
-          //   padding: 0 6px 1px;
-          //   border-radius: 6px;
-          //   background-color: $white;
-          //   border: 2px solid #139eca;
-          //   color: #139eca;
-          //   cursor: pointer;
-          //   transition: 0.5s ease all;
-          //   font-family: 'bahij-helvetica-roman';
-          //   display: flex;
-          //   align-items: center;
-          //   &:hover{
-          //     background-color: #139eca;
-          //     color: #fff;
-          //     transition: 0.5s ease all;
-          //   }
-          // }
         }
         .post-content{
             cursor: pointer;

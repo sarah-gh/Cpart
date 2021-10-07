@@ -1,8 +1,33 @@
 @import "../../../assets/sass/_variable";
+@import "@/assets/sass/_loadBtn";
+
 .span_error{
   padding: 15px 0;
   text-align: center;
   direction: rtl;
+}
+.span_error{
+  padding: 10px 0;
+  text-align: center;
+  direction: rtl;
+  width: 100%;
+  height: 20px;
+  color: rgb(184, 46, 46);
+}
+
+.button_sub{
+  margin-right: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.span_error_btn{
+  padding: 10px 0;
+  text-align: center;
+  direction: rtl;
+  height: 20px;
+  width: 100% !important;
+  color: rgb(184, 46, 46);
 }
 .register-page {
   display: flex;

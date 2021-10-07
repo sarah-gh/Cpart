@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    getCsrfToken: async function (){
+    async getCsrfToken() {
       const access_token = getCookieByName('token')
       const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
         headers:{
@@ -40,40 +40,15 @@ export default {
     }
 
   },
-  mounted: async function(){
+  mounted(){
     const c = getCookieByName('token');
     if(c){
       this.$store.state.login = true;
-      await this.getCsrfToken()
+      this.getCsrfToken()
     }
     else {
       this.$store.state.login = false;
     }
   },
-  // watch:{
-  //   $route (to, from){
-  //     console.log(to.path);
-  //     let token = getCookieByName('token')
-  //     if(to.path.indexOf('authentication') !== -1){
-  //       this.login = true;
-  //       this.showheader = false;
-  //     }
-  //     console.log('token-log')
-  //     console.log(token);
-  //     if(token){
-  //       console.log('token')
-  //       this.login = true;
-  //       this.showheader = true;
-  //     } else{
-  //       if(to.path.indexOf('authentication') !== -1){
-  //         this.login = true;
-  //       } else {
-  //         console.log('not token')
-  //         this.login = false;
-  //         this.showheader = false;
-  //       }
-  //     }
-  //   }
-  // },
 }
 </script>

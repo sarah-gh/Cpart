@@ -1,0 +1,36 @@
+.load_btn {
+    display: flex;
+    width: 1.7em;
+    height: 1.7em;
+    border: 2px solid transparent;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+  
+.load_btn:before {
+    content: '';
+    display: block;
+    margin: auto;
+    width: 0.4em;
+    height: 0.4em;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: pulse 1s alternate ease-in-out infinite;
+}
+  
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+  
+@keyframes pulse {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+}

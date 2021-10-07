@@ -3,7 +3,6 @@ import { getCookieByName } from '@/resources/utilities.js';
 const http = 'http://localhost:8000/api';
 
 export const getArticles = async () => {
-    console.log('Getting')
     const response = await axios.get(`${http}/posts`)
     .catch((err) => {
       console.error(1,err);

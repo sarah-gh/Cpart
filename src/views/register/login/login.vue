@@ -32,7 +32,15 @@
           />
           <ErrorMessage name="password"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
         </div>
-              <button type="submit" class="button">ادامه</button>
+        <div>
+          <button class="button button_sub" type="submit">
+            <span v-show="!validity">
+              ادامه
+            </span>
+            <div class="load_btn" v-show="validity"></div>
+          </button>
+          <p class="span_error_btn">{{ error_msg }}</p>
+        </div>
       </div>
     </Form>
   </div>
@@ -40,7 +48,7 @@
 
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
-import {login} from '@/services/user.js'
+import { login } from '@/services/user.js'
 import { getCookieByName } from '@/resources/utilities.js';
 
 export default {
@@ -85,7 +93,9 @@ export default {
     }
     return {
       phoneNumber,
-      login
+      login,
+      error_msg: '',
+      validity: false
     }
   },
 
@@ -94,15 +104,22 @@ export default {
       // code
     },
     async onSubmit(value){
+      this.error_msg = '';
+      this.validity = true
       try{
-        await this.requestLogin(JSON.stringify(value));
+        let res = await this.requestLogin(JSON.stringify(value));
+        if(res == 400 || res == 401) {
+          this.error_msg = 'ورودی نامعتبر';
+          this.validity = false;
+          return
+        }
         await this.$store.dispatch('user/requestProfileUser');
         this.getCsrfToken();
         this.$router.replace({ name: 'posts' });
         this.$store.state.login = true;
-        
-      } catch {
+      } catch(error) {
         console.log(error);
+        this.validity = false;
       }
     },
     getCsrfToken: async function (){
@@ -118,6 +135,7 @@ export default {
     async requestLogin(data) {
         try{
           const loginResponse = await login(data);
+          return loginResponse
         } catch {
           console.log(error);
         }

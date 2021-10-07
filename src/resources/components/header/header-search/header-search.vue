@@ -50,8 +50,6 @@ export default {
     },
     methods: {
         addItem() {
-            console.log('this.addedItem');
-            console.log(this.addedItem);
             this.$router.replace({ name: "search", query: { search: this.searchQuery } })
         },
     }

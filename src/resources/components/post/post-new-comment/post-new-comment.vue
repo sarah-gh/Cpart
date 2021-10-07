@@ -101,9 +101,6 @@ export default {
             return '';
         }
     },
-    mounted(){
-        console.log(this.postid)
-    },
     methods: {
         newComment() {
             let now = new Date().toLocaleDateString('fa-IR');
@@ -127,14 +124,13 @@ export default {
                 status: 1
             };
             data.date = date;
-            this.testtt(JSON.stringify(data))
+            this.getData(JSON.stringify(data))
 
         },
         cancel(){
             this.$emit('cancel');
-            // this.replyto = null
         },
-        async testtt(data){
+        async getData(data){
             try {
                 let test = await this.$store.dispatch('article/requestPostComment', data);
                 this.$emit('add_comment', data);
@@ -152,7 +148,6 @@ export default {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px 20px;
-    // height: fit-content;
     p{
         margin: 0;
         padding: 0;

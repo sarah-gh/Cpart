@@ -37,14 +37,14 @@ export default {
     mounted() {
     },
     methods: {
-        async testtt(data){
+        async getData(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostBookmark', data);
             } catch (error) {
                 console.log(error);
             }
         },
-        async testtt2(data){
+        async getData2(data){
             try{
                 await this.$store.dispatch('user/requestfollow', data);
             } catch {
@@ -60,8 +60,7 @@ export default {
                 articleId: this.post.articleid,
                 status: status_save
             }
-            console.log(data);
-            this.testtt(JSON.stringify(data))
+            this.getData(JSON.stringify(data))
         },
         followUser() {
             this.follow = !this.follow;
@@ -72,7 +71,7 @@ export default {
                 followingId: this.post.userid,
                 status: status_follow
             }
-            this.testtt2(JSON.stringify(data))
+            this.getData2(JSON.stringify(data))
         },
         routeName(item){
             return `/panel/profile/${item.userid}`

@@ -49,11 +49,6 @@ export default {
             like_icon: ['far', 'thumbs-up'],
         }
     },
-    // beforeMount(){
-    //     setTimeout(function(){
-    //         console.log(this.ccc)
-    //     }, 1000);
-    // },
     
     components : {
         postCommentReply
@@ -67,7 +62,6 @@ export default {
             }
         },
         reply_comment(){
-            console.log(this.comment)
             this.$emit('replyComment' , this.comment)
         }
     }

@@ -1,5 +1,4 @@
 <template>
-    <!-- <div style="display : none"> {{ changedRoute }} </div> -->
     <section class="container" v-if="!load">
         <section class="load">
             <div class="load2">

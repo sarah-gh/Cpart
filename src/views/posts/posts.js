@@ -64,13 +64,13 @@ export default {
             if(this.summary){
                 await this.getPostsProposed();
                 if(this.posts.length === 0){
-                    this.msg = 'شما کسی را دنبال نکرده اید';
+                    this.msg = 'پستی وجود ندارد';
                 } else this.msg = '';
             }
             else {
                 await this.getPostsFollowing();
                 if(this.posts.length === 0 ){
-                    this.msg = 'شما کسی را دنبال نکرده اید';
+                    this.msg = 'پستی وجود ندارد';
                 } else this.msg = '';
             }
         }

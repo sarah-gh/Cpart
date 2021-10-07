@@ -1,7 +1,5 @@
 import { Form, Field, ErrorMessage } from 'vee-validate';
-// import * as yup from 'yup';
 const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-// let phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
 import profileUpload from '@/resources/components/profile/profile-upload/profile-upload.vue';
 
 const BORDER_SIZE = 10;
@@ -35,10 +33,6 @@ export default {
                 return true
             },
             shortdescreption(value){
-                // if(value.length < 3){
-                //     valid[2] = false;
-                //     return "not valid shortdescreption"
-                // }
                 valid[2] = true;
                 return true
             }
@@ -57,18 +51,10 @@ export default {
                 return true
             },
             whatsapp(value){
-                // if(value.length < 3){
-                //     valid[1] = false;
-                //     return "not valid"
-                // }
                 valid[1] = true;
                 return true
             },
             instagram(value){
-                // if(value.length < 3){
-                //     valid[2] = false;
-                //     return "not valid"
-                // }
                 valid[2] = true;
                 return true
             }
@@ -80,70 +66,45 @@ export default {
             show: true,
             security: false,
             edit: [false, false, false],
-            fname: "امیر حسین",
-            lname: "مطلب زاده",
-            user: {
-                fname: "امیر حسین",
-                lname: "مطلب زاده",
-                username: "amir.h.motalebzadeh",
-                shortdescreption: "کارشناسی ارشد برنامه نویسی و علاقه مند به کوهنوردی",
-                description: " کنترل کننده زیردریایی طراحی شده توسط دانشجویان دانشگاه صنعتی شریف برای ارتش جمهوری اسلامی ایران در بین ۱۰ زیردریایی برتر جهان قرار گرفت.  ",
-                privacy: "", 
-                userPhoto : "",
-                email : "a.h.motaleb@gmail.com",
-                whatsapp : "a.h.motalleb",
-                instagram : "a.h.motalleb",
-                phoneNumber : "",
-                fontFalmily : "",
-                fontSize : "",
-                fontColor : ""
-            },
+            user: {},
             imageUrl: '',
             imageStyle: {},
             border: BORDER_SIZE,
             borderColor: BORDER_COLOR,
             pickedColor: BORDER_COLOR,
             colors: [
-            '#4286f4',
-            '#23d160',
-            '#FF8600',
-            '#ff3860'
+                '#4286f4',
+                '#23d160',
+                '#FF8600',
+                '#ff3860'
             ],
-            imageData: ''
+            imageData: '',
         }
     },
-    mounted() {
-        let img = 'http://localhost:8080/img/340558.eb35fb35.jpeg';
-        // console.log(img);
-        var xhr = new XMLHttpRequest();       
-        xhr.open("GET", img, true); 
-        xhr.responseType = "blob";
-        let res_img;
-        xhr.onload = function (e) {
-            // console.log('response')
-            // console.log(this.response);
-            var reader = new FileReader();
-            reader.onload = function(event) {
-            var res = event.target.result;
-            res_img = res;
-            // console.log(res_img);
-            }
-            var file = this.response;
-            reader.readAsDataURL(file)
-        };
-        xhr.send()
-        setTimeout(() => {
-            // console.log('xhr')
-            this.imageData = res_img;
-        }, 300);
-        
-    },
+    
     created() {
         this.getDataSettings()
     },
     methods: {
         emitImg(img){
             this.imageData = img;
+        },
+        imgUpload(){
+            let img = this.user.userphoto;
+            var xhr = new XMLHttpRequest();       
+            xhr.open("GET", img, true); 
+            xhr.responseType = "blob";
+            let res_img;
+            xhr.onload = function (e) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                var res = event.target.result;
+                res_img = res;
+                }
+                var file = this.response;
+                reader.readAsDataURL(file)
+            };
+            xhr.send();
         },
         onSubmit(values) {
             this.edit.forEach((value, index) => {
@@ -160,9 +121,13 @@ export default {
         async getDataSettings(){
             try{
                 await this.$store.dispatch('user/requestsettingUser');
-                // console.log('//////////////////');
                 let user = this.$store.state.user.setting;
-                // console.log(user);
+                this.user = user['0'];
+                this.imgUpload();
+                this.imageData = this.user.userphoto;
+                if(!this.imageData){
+                    this.imageData = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
+                }
             } catch {
                 console.log('error');
             }

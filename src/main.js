@@ -23,10 +23,10 @@ const app = createApp(App);
 app.use(store).use(router).use(VueAxios, axios).component("font-awesome-icon", FontAwesomeIcon).use(VueCookies).mount('#app')
 
 // Or to set default config:
-app.use(VueCookies, {
-    expireTimes: "1d",
-    path: "/",
-    domain: "localhost",
-    secure: true,
-    sameSite: "None"
-});
+// app.use(VueCookies, {
+//     expireTimes: "1d",
+//     path: "/",
+//     domain: "localhost",
+//     secure: true,
+//     sameSite: "None"
+// });
