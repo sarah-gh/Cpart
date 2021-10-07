@@ -49,6 +49,7 @@ export default {
     searchTag
   },
   beforeMount() {
+    console.log('this.$route.query.search');
     console.log(this.$route.query.search);
     this.textSearch = this.$route.query.search;
     this.testtt(this.textSearch)
@@ -65,13 +66,13 @@ export default {
       });
     },
     addItem() {
-        this.$router.replace({ name: "search", query: { search: this.searchQuery } })
+        console.log("addItem")
+        this.$router.replace({ name: "search", query: { search: this.textSearch } })
+        this.testtt(this.textSearch)
     },
     async testtt(data){
       try{
           let res = await this.$store.dispatch('user/requestSearch', data);
-          // console.log("res")
-          // console.log(res);
           res = this.$store.state.user.searchItems;
           this.posts = res.posts;
           this.users = res.users;
@@ -82,7 +83,7 @@ export default {
           console.log(error);
       }
     }
-  },
+  }
 };
 </script>
 

@@ -75,8 +75,5 @@ export default {
   //     }
   //   }
   // },
-  beforeMount(){
-    
-  }
 }
 </script>

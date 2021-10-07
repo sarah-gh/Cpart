@@ -1,6 +1,7 @@
 
 import headerSearch from '../header-search/header-search.vue'
-import { getCookieByName } from '@/resources/utilities.js';
+import { delete_cookie } from '@/resources/utilities.js';
+import { locale } from 'core-js';
 
 export default {
     name: 'header-page',
@@ -77,7 +78,11 @@ export default {
             } catch {
                 console.log(error);
             }
-          }
+        },
+        async exit(){
+            await this.$cookies.remove("token");
+            location.reload();
+        }
     },
     components:{
         headerSearch
