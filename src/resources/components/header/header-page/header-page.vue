@@ -51,7 +51,7 @@
                                         <img src="../../../../assets/img/svg-header/candle-2.svg" />
                                     </router-link>
                                     <div class="vector-3"></div>
-                                    <a href="#" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
+                                    <a href="#" @click="exit" class="block w-full px-4 py-2 font-medium text-gray-700 whitespace-no-wrap hover:bg-gray-100 focus:outline-none hover:text-gray-900 focus:text-gray-900 focus:shadow-outline transition duration-300 ease-in-out">
                                         خروج از حساب کاربری
                                         <img src="../../../../assets/img/svg-header/logout.svg" />
                                     </a>
@@ -74,7 +74,7 @@
                     <transition name="fade">
                         <header-search v-if="isVisibleSearch" v-model='thirdExample' :items='ppp' :shows='"name"' :add-btn='true' @selected='thirdExampleSelected'></header-search>
                     </transition>
-                </div>   
+                </div>
             </div>
         </div>
     </header>

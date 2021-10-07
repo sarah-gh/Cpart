@@ -2,7 +2,7 @@ import axios from 'axios';
 // import store from '@/store'
 
 const http = 'http://localhost:8000/api';
-import { getCookieByName, writeCookie, delete_cookie } from '@/resources/utilities.js';
+import { getCookieByName, writeCookie } from '@/resources/utilities.js';
 
 export const getBookmark = async () => {
     const access_token = getCookieByName('token');
@@ -11,12 +11,9 @@ export const getBookmark = async () => {
             'token': `${access_token}`
         }
     }).catch((error) => {
-        delete_cookie('token');
         console.error(error);
         return false;
     });
-    // console.log('getting Bookmark');
-    // console.log(response);
     return response.data;
   };
 
@@ -28,7 +25,6 @@ export const postBookmark = async (data) => {
       }
     }) 
     .catch((error) => {
-      delete_cookie('token');
       console.error(error);
   
       return false;
@@ -43,7 +39,6 @@ export const userOperation = async (data) => {
       }
     }) 
     .catch((error) => {
-      delete_cookie('token');
       console.error(error);
       return false;
     })  
@@ -55,7 +50,6 @@ export const getProfileUser = async () => {
             'token': `${access_token}`
         }
     }).catch((error) => {
-        delete_cookie('token');
         console.error(error);
         return false;
     });
@@ -71,12 +65,9 @@ export const getSetting = async () => {
             'token': `${access_token}`
         }
     }).catch((error) => {
-        delete_cookie('token');
         console.error(error);
         return false;
     });
-    // console.log('getting Bookmark');
-    // console.log(response);
     return response.data;
 };
 

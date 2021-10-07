@@ -9,6 +9,7 @@ export default {
     data(){ 
         return {
             publish : true,
+            published : false,
             article : {
                 header: '',
                 text: '',
@@ -73,12 +74,13 @@ export default {
             let month;
             this.number.forEach((value, index) => {
                 if(value == now[1]){
-                month = index - 1;
+                    month = index ;
                 }
             })
             let date = `${now[2]}
                         ${this.month[month]}
                         ${now[0]}`;
+            console.log(date);
             this.article.date = date;
             this.article.readTime = this.readTime(this.article.text);
             this.article.text = this.removeTags(this.article.text);
@@ -97,11 +99,12 @@ export default {
         },
         async testtt(data){
             try {
+                this.published = true;
                 let test = await this.$store.dispatch('article/requestPostArticle', data);
                 this.$router.replace({ path: '/panel/profile/0' })
-                // console.log(test);
             } catch (error) {
                 console.log(error);
+                this.published = false;
             }
         },
         removeTags(str) {
@@ -109,9 +112,11 @@ export default {
                 return false;
             else
                 str = str.toString();
-
-            return str.replace( /(<([^>]+)>)/ig, '');
-        },
+            
+            str = str.replace( /(<([^>]+)>)/ig, '');
+            str = str.replaceAll(/&nbsp;/ig, ' ');
+            return str
+        }, 
         checkSpan(){
             this.article.text = document.getElementById('span_id').innerHTML;
             if(this.article.text.length > 0 && this.article.header.length > 0){

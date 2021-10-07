@@ -21,6 +21,28 @@
 <script>
 export default {
     name: 'my-template',
+    props: {
+        returns: {
+            type: String,
+            default: 'id'
+        },
+        firstLabel: {
+            type: String,
+            default: 'Please select'
+        },
+        firstDisabled: {
+            type: Boolean,
+            default: true
+        },
+        search: {
+            type: String,
+            default: ''
+        },
+        addBtn: {
+            type: Boolean,
+            default: false
+        }
+    },
     data() {
         return {
             searchQuery: '',
@@ -28,6 +50,8 @@ export default {
     },
     methods: {
         addItem() {
+            console.log('this.addedItem');
+            console.log(this.addedItem);
             this.$router.replace({ name: "search", query: { search: this.searchQuery } })
         },
     }

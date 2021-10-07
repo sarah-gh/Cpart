@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookieByName, delete_cookie } from '@/resources/utilities.js';
+import { getCookieByName } from '@/resources/utilities.js';
 const http = 'http://localhost:8000/api';
 
 export const getArticles = async () => {
@@ -108,7 +108,6 @@ export const postArticle = async (data) => {
     }
   }) 
   .catch((error) => {
-    delete_cookie('token');
     console.error(error);
 
     return false;

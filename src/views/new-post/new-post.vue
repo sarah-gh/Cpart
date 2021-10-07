@@ -51,7 +51,12 @@
                     <!-- -------footer img-------- -->
                     <post-upload v-if="imgfooter" @addImage="add_image" :location="'footer'"></post-upload>
                 </div>
-                <button class="add allowed" :class="{notallowed : !allowe}" @click="PublishContent()">انتشار مطلب</button>
+                <button class="add allowed" :class="{notallowed : !allowe}" @click="PublishContent()">
+                    <span v-show="!published">
+                        انتشار مطلب
+                    </span>
+                    <div class="load_btn" v-show="published"></div>
+                </button>
             </section>
             <div class="overlay" v-if="showModal" @click="showModal = false"></div>
             <!-- modal -->

@@ -22,5 +22,5 @@ export const writeCookie = (name, value) => {
 
 
 export const delete_cookie = ( name ) => {
-  //document.cookie = name + '=; Max-Age=0'
+  document.cookie = name + '=; Max-Age=0'
 }

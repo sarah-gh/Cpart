@@ -99,11 +99,11 @@ export default {
   data() {
     const sign_up = {
       phoneNumber(value){
-        if(value){
-          if(phoneNumberRegExp.test(value)){
-            return "not valid";
-          }
-        }
+        // if(value){
+        //   if(phoneNumberRegExp.test(value)){
+        //     return "not valid";
+        //   }
+        // }
         if(!value){
           return "not valid";
         }
@@ -173,6 +173,7 @@ export default {
   methods:{
     async onSubmit(value){
       console.log(value);
+      this.error_msg = '';
       try{
         const data = {
           phoneNumber : value.phoneNumber,
@@ -189,7 +190,7 @@ export default {
           this.error_msg = 'نام کاربری تکراری است'
           return
         }
-        if(res == 400) {
+        if(res == 400 || res == 401) {
           this.error_msg = 'ورودی نامعتبر'
           return
         }
