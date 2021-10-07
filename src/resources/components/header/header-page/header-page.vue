@@ -72,7 +72,7 @@
                 <div class="search-container">
                     <img src="../../../../assets/img/search-normal.svg" class='search nav-top icon' @click="clickIsVisibleSearch()" alt="search">
                     <transition name="fade">
-                        <header-search v-if="isVisibleSearch" v-model='thirdExample' :items='ppl' :shows='"name"' :add-btn='true' @selected='thirdExampleSelected'></header-search>
+                        <header-search v-if="isVisibleSearch" v-model='thirdExample' :items='ppp' :shows='"name"' :add-btn='true' @selected='thirdExampleSelected'></header-search>
                     </transition>
                 </div>   
             </div>
