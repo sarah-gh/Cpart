@@ -2,10 +2,6 @@ import postSummary from '../../resources/components/post/post-summary/post-summa
 import headerNav from '../../resources/components/header/header-nav/header-nav.vue'
 import { getCookieByName } from '@/resources/utilities.js';
 
-// import mapGetters from 'vuex'
-// import axios from 'axios'
-// import { useStore } from 'vuex';
-
 export default {
     name: 'posts-summary',
     data(){
@@ -27,11 +23,7 @@ export default {
         
     },
     created() {
-        // this.getPostsFollowing();
         this.getPostsProposed()
-    },
-    beforeMount() {
-        
     },
     methods: {
         async getPostsProposed(){

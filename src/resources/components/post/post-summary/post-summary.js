@@ -35,13 +35,11 @@ export default {
         }
     },
     mounted() {
-        // console.log(this.post)
     },
     methods: {
         async testtt(data){
             try {
                 let test = await this.$store.dispatch('user/requestPostBookmark', data);
-                // console.log(test);
             } catch (error) {
                 console.log(error);
             }
@@ -63,9 +61,7 @@ export default {
                 status: status_save
             }
             console.log(data);
-            // JSON.stringify(data)
             this.testtt(JSON.stringify(data))
-            //this.$emit('save_item', 'donbalkonande')
         },
         followUser() {
             this.follow = !this.follow;
@@ -76,7 +72,6 @@ export default {
                 followingId: this.post.userid,
                 status: status_follow
             }
-            // JSON.stringify(data)
             this.testtt2(JSON.stringify(data))
         },
         routeName(item){

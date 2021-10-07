@@ -2,7 +2,7 @@
   <main class="search">
     <div class="search-header container">
       <p>نتایج برای</p>
-      <input type="text" v-model="textSearch" class="input" />
+      <input type="text" v-model="textSearch" class="input" v-on:keyup.enter="addItem" />
     </div>
     <div class="search-nav container">
       <search-nav @clicked="onClickNav"></search-nav>
@@ -63,6 +63,9 @@ export default {
           this.navigate[index] = false;
         }
       });
+    },
+    addItem() {
+        this.$router.replace({ name: "search", query: { search: this.searchQuery } })
     },
     async testtt(data){
       try{
