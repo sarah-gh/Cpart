@@ -16,15 +16,15 @@
             <div class="buttons">
                 <button class="visit-wbesite">
                     <p>مشاهده وبسایت</p>
-                    <img src="@/assets/img/export.svg" alt="">    
+                    <img src="@/assets/img/export.svg" alt="">
                 </button>
                 <!-- <button class="follow-user" v-show="not_user">
-                    دنبال کردن 
-                    <img src="@/assets/img/svg-profile/add.svg" alt=""> 
+                    دنبال کردن
+                    <img src="@/assets/img/svg-profile/add.svg" alt="">
                 </button> -->
                 <button class="follow-user" v-show="not_user" v-if="!follow" @click="followUser">
                     دنبال کردن
-                    <img src="@/assets/img/svg-profile/add.svg" alt=""> 
+                    <img src="@/assets/img/svg-profile/add.svg" alt="">
                 </button>
                 <button class="follow-user followed" v-show="not_user" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
@@ -72,7 +72,7 @@
         &:hover{
             background-color: #25918b;
         }
-        
+
     }
     .visit-wbesite{
         background-color: #fff;

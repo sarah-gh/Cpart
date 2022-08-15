@@ -16,7 +16,7 @@
         </section>
         <div class="main-container"  v-if="load">
             <post-full-content :post="post"></post-full-content>
-            
+
             <div class='this-author' v-if="otherPosts.length > 0">
                 <span>از همین نویسنده</span>
             </div>
@@ -24,7 +24,7 @@
                 <div class="boldLine"></div>
                 <div class="line"></div>
             </div>
-            
+
             <div class="other-articles">
                 <article class="article" v-for="(item, index) in otherPosts" :key="index">
                     <post-this-author :post="item"></post-this-author>
@@ -44,8 +44,8 @@
                 <div class="commentLine"></div>
             </div>
 
-            <post-new-comment :replyto="replyto" @add_comment="addComment" @cancel="cancel" :postid="post.articleid"></post-new-comment>            
-            
+            <post-new-comment :replyto="replyto" @add_comment="addComment" @cancel="cancel" :postid="post.articleid"></post-new-comment>
+
         </div>
     </main>
 </template>

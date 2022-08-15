@@ -39,49 +39,49 @@
 </template>
 
 <script>
-import { Field, Form, ErrorMessage } from "vee-validate";
-import {login} from '@/services/user.js'
-import { getCookieByName } from '@/resources/utilities.js';
+import { Field, Form, ErrorMessage } from 'vee-validate'
+import { login } from '@/services/user.js'
+import { getCookieByName } from '@/resources/utilities.js'
 
 export default {
   components: {
     Field,
     Form,
-    ErrorMessage,
+    ErrorMessage
   },
-  data() {
+  data () {
     const phoneNumber = {
-      number(value) {
-        const regexPattern = /^09\d{9}$/;
+      number (value) {
+        const regexPattern = /^09\d{9}$/
         if (regexPattern.test(value)) {
-          return true;
+          return true
         }
-        return "not valid";
-      },
-    };
+        return 'not valid'
+      }
+    }
     const login = {
-      username(value){
-        if(value){
-          if(value.length < 3){
-            return "not valid username";
+      username (value) {
+        if (value) {
+          if (value.length < 3) {
+            return 'not valid username'
           }
         }
-        if(!value){
-          return "not valid username";
+        if (!value) {
+          return 'not valid username'
         }
-        return true;
+        return true
       },
-      password(value) {
-        if(value){
-          if(value.length < 3){
-            return "not valid password";
+      password (value) {
+        if (value) {
+          if (value.length < 3) {
+            return 'not valid password'
           }
         }
-        if(!value){
-          return "not valid password";
+        if (!value) {
+          return 'not valid password'
         }
-        return true;
-      },
+        return true
+      }
     }
     return {
       phoneNumber,
@@ -90,40 +90,39 @@ export default {
   },
 
   methods: {
-    userNumber(value){
+    userNumber (value) {
       // code
     },
-    async onSubmit(value){
-      try{
-        await this.requestLogin(JSON.stringify(value));
-        await this.$store.dispatch('user/requestProfileUser');
-        this.getCsrfToken();
-        this.$router.replace({ name: 'posts' });
-        this.$store.state.login = true;
-        
-      } catch {
-        console.log(error);
+    async onSubmit (value) {
+      try {
+        await this.requestLogin(JSON.stringify(value))
+        await this.$store.dispatch('user/requestProfileUser')
+        // this.getCsrfToken()
+        this.$router.replace({ name: 'posts' })
+        this.$store.state.login = true
+      } catch (error) {
+        console.log(error)
       }
     },
-    getCsrfToken: async function (){
-      const access_token = getCookieByName('token')
+    getCsrfToken: async function () {
+      const accessToken = getCookieByName('token')
       const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
-        headers:{
-          token: access_token
+        headers: {
+          token: accessToken
         }
       }).catch(err => console.log(err))
-      this.$store.state.user.csrfToken = response.data.csrfToken;
+      this.$store.state.user.csrfToken = response.data.csrfToken
     },
-   
-    async requestLogin(data) {
-        try{
-          const loginResponse = await login(data);
-        } catch {
-          console.log(error);
-        }
+
+    async requestLogin (data) {
+      try {
+        await login(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
-  },
-};
+  }
+}
 </script>
 
 <style src="./login.scss" scoped lang="scss">

@@ -6,20 +6,19 @@
   </div>
 </template>
 
-
 <script>
 import footerPage from '@/resources/components/footer/footer-page/footer-page.vue'
 import headerPage from '@/resources/components/header/header-page/header-page.vue'
 
-import { getCookieByName } from '@/resources/utilities.js';
+import { getCookieByName } from '@/resources/utilities.js'
 
 export default {
   name: 'app',
   components: {
     footerPage,
-    headerPage,
+    headerPage
   },
-  data() {
+  data () {
     return {
       showheader: true,
       login: false,
@@ -28,28 +27,27 @@ export default {
     }
   },
   methods: {
-    getCsrfToken: async function (){
-      const access_token = getCookieByName('token')
+    getCsrfToken: async function () {
+      const accessToken = getCookieByName('token')
       const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
-        headers:{
-          token: access_token
+        headers: {
+          token: accessToken
         }
       }).catch(err => console.log(err))
 
-      this.$store.state.user.csrfToken = response.data.csrfToken;
+      this.$store.state.user.csrfToken = response.data.csrfToken
     }
 
   },
-  mounted: async function(){
-    const c = getCookieByName('token');
-    if(c){
-      this.$store.state.login = true;
-      await this.getCsrfToken()
+  mounted: async function () {
+    const c = getCookieByName('token')
+    if (c) {
+      this.$store.state.login = true
+      // await this.getCsrfToken()
+    } else {
+      this.$store.state.login = false
     }
-    else {
-      this.$store.state.login = false;
-    }
-  },
+  }
   // watch:{
   //   $route (to, from){
   //     console.log(to.path);

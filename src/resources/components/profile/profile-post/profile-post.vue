@@ -5,7 +5,7 @@
     <div class="card-post">
         <div class="post-content">
             <router-link :to="'/post/' + post.articleid" class="article-link">
-                <h2 class="post-title"> 
+                <h2 class="post-title">
                     {{ post.title }}
                 </h2>
                 <div class="post-text Text-Style">
@@ -16,9 +16,9 @@
         <footer class="post-footer">
             <div class="flex-footer">
                 <p class="date">{{ post.date }}</p>
-                <span class="circle"></span> 
+                <span class="circle"></span>
                 <span class="time">{{ post.readtime }} دقیقه</span>
-                <span class="circle"></span> 
+                <span class="circle"></span>
                 <span class="tag" v-for="(i , x) in post.tag" :key="x">
                     {{ i }}
                 </span>
@@ -34,75 +34,72 @@
 
 <script>
 export default {
-    name: 'posts-profile',
-    props: {
-        post: {
-            type: Object,
-            required: true
-        }
-    },
-    data(){
-        return {
-            hoverPost: false,
-            text: '',
-            save : false,
-            like_icon: ['far', 'thumbs-up'],
-        }
-    },
-    beforeMount(){
-        this.save = this.post.issaved == '0' ? false : true;
-        this.text = this.post.artcletext;
-        if (this.post.artcletext.length > 180) {
-            this.text = this.text.substring(0, 175) + "...";
-        }
-        this.text = this.removeTagshtml(this.text)
-    },
-    methods: {
-        removeTagshtml(str) {
-            if ((str===null) || (str===''))
-                return false;
-            else
-                str = str.toString();
+  name: 'posts-profile',
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      hoverPost: false,
+      text: '',
+      save: false,
+      like_icon: ['far', 'thumbs-up']
+    }
+  },
+  beforeMount () {
+    this.save = this.post.issaved != '0'
+    this.text = this.post.articletext
+    if (this.post.articletext.length > 180) {
+      this.text = this.text.substring(0, 175) + '...'
+    }
+    this.text = this.removeTagshtml(this.text)
+  },
+  methods: {
+    removeTagshtml (str) {
+      if ((str === null) || (str === '')) { return false } else { str = str.toString() }
 
-            return str.replace( /(<([^>]+)>)/ig, '');
-        },
-        clickLike(){
-            if(this.like_icon[0] == 'fas'){
-                this.like_icon[0] = 'far';
-            } else {
-                this.like_icon[0] = 'fas';
-            }
-        },
-        stringToHTML(str) {
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(str, 'text/html');
-            return doc.body;
-        },
-        saveItem(){
-            this.save = !this.save;
-            let status_save = this.save ? 1 : 0;
-            const data = {
-                operation: "save" ,
-                csrfToken: this.$store.state.user.csrfToken,
-                articleId: this.post.articleid,
-                status: status_save
-            }
-            // JSON.stringify(data)
-            this.testtt(JSON.stringify(data))
-            //this.$emit('save_item', 'donbalkonande')
-        },
-        async testtt(data){
-            try {
-                let test = await this.$store.dispatch('user/requestPostBookmark', data);
-                // console.log(test);
-            } catch (error) {
-                console.log(error);
-            }
-        },
+      return str.replace(/(<([^>]+)>)/ig, '')
     },
-    mounted() {
-        
+    clickLike () {
+      if (this.like_icon[0] == 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
     },
+    stringToHTML (str) {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(str, 'text/html')
+      return doc.body
+    },
+    saveItem () {
+      this.save = !this.save
+      const status_save = this.save ? 1 : 0
+      const data = {
+        operation: 'save',
+        csrfToken: this.$store.state.user.csrfToken,
+        articleId: this.post.articleid,
+        status: status_save
+      }
+      // JSON.stringify(data)
+      this.testtt(JSON.stringify(data))
+      // this.$emit('save_item', 'donbalkonande')
+    },
+    async testtt (data) {
+      try {
+        const test = await this.$store.dispatch('user/requestPostBookmark', data)
+        // console.log(test);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted () {
+
+  }
 }
 </script>
 <style scoped>

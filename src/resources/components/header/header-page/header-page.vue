@@ -7,9 +7,9 @@
                     <button class="btn btn-login"> ورود / ثبت نام</button>
                 </router-link>
                 <div class="logo">
-                    
+
                     <router-link to="/" href="#" class="logo-img">
-                        <img src="../../../../assets/img/Group249.svg" alt="logo" /> 
+                        <img src="../../../../assets/img/Group249.svg" alt="logo" />
                     </router-link>
                 </div>
             </section>
@@ -17,7 +17,7 @@
             <!-- لاگین شده -->
             <div class="logo" v-show="$store.state.login">
                 <router-link to="/" class="logo-img">
-                    <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" /> 
+                    <img src="../../../../assets/img/Group249.svg" class='logo'  alt="logo" />
                 </router-link>
             </div>
 
@@ -68,7 +68,7 @@
                     <router-link to="/panel/bookmark">
                         <img src="../../../../assets/img/save-2.svg" class='save-post nav-top icon' alt="save">
                     </router-link>
-                </div>                
+                </div>
                 <div class="search-container">
                     <img src="../../../../assets/img/search-normal.svg" class='search nav-top icon' @click="clickIsVisibleSearch()" alt="search">
                     <transition name="fade">
@@ -79,7 +79,6 @@
         </div>
     </header>
 </template>
-
 
 <script src="./header-page.js"></script>
 <style src="./header-page.scss" lang="scss" scoped></style>
@@ -120,7 +119,6 @@
     }
 }
 
-
 @media only screen and (max-width: 500px) {
     .userLogin{
       .btn-login{
@@ -143,7 +141,7 @@
   }
 
 @media only screen and (min-width: 500px) {
-  
+
     .userLogin{
       .btn-login{
         text-align: center;
@@ -165,7 +163,7 @@
   }
 
 @media only screen and (min-width: 798px) {
- 
+
     .userLogin{
       .btn-login{
         width: 150px;
@@ -181,9 +179,8 @@
     }
   }
 
-  
 @media only screen and (min-width: 1200px) {
-   
+
         .userLogin{
             .btn-login{
                 width: 165px;
@@ -192,7 +189,5 @@
             }
         }
     }
-
-
 
 </style>
