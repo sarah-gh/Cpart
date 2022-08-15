@@ -50,7 +50,7 @@ export default {
     }
   },
   beforeMount () {
-    this.save = this.post.issaved != '0'
+    this.save = this.post.issaved !== '0'
     this.text = this.post.articletext
     if (this.post.articletext.length > 180) {
       this.text = this.text.substring(0, 175) + '...'
@@ -64,7 +64,7 @@ export default {
       return str.replace(/(<([^>]+)>)/ig, '')
     },
     clickLike () {
-      if (this.like_icon[0] == 'fas') {
+      if (this.like_icon[0] === 'fas') {
         this.like_icon[0] = 'far'
       } else {
         this.like_icon[0] = 'fas'
@@ -77,12 +77,12 @@ export default {
     },
     saveItem () {
       this.save = !this.save
-      const status_save = this.save ? 1 : 0
+      const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
         csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
-        status: status_save
+        status: statusSave
       }
       // JSON.stringify(data)
       this.testtt(JSON.stringify(data))
@@ -90,7 +90,7 @@ export default {
     },
     async testtt (data) {
       try {
-        const test = await this.$store.dispatch('user/requestPostBookmark', data)
+        await this.$store.dispatch('user/requestPostBookmark', data)
         // console.log(test);
       } catch (error) {
         console.log(error)

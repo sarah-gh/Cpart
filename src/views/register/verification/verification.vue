@@ -20,28 +20,28 @@
 </template>
 
 <script>
-import numInput from "../../../resources/components/register/codeButton/button.vue";
+import numInput from '../../../resources/components/register/codeButton/button.vue'
 export default {
   components: {
-    numInput,
+    numInput
   },
-  created: function timer() {
+  created: function timer () {
     const timerInterval = setInterval(() => {
-      this.leftTime -= 1;
+      this.leftTime -= 1
       if (this.leftTime === 0) {
-        clearInterval(timerInterval);
+        clearInterval(timerInterval)
       }
-    }, 1000);
+    }, 1000)
   },
 
-  data() {
+  data () {
     return {
       leftTime: 120,
-      phoneNumber: "۰۹۱۲۱۲۳۴۳۲۰",
-      numbers : [1,2,3,4]
-    };
-  },
-};
+      phoneNumber: '۰۹۱۲۱۲۳۴۳۲۰',
+      numbers: [1, 2, 3, 4]
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss" src="./verification.scss">

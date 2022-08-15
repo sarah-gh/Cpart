@@ -16,64 +16,64 @@
 </template>
 <script>
 export default {
-    name: "",
-    props: {
-        follow: {
-            type: Object,
-            required: true,
-        }
+  name: '',
+  props: {
+    follow: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      isfollow: false
+    }
+  },
+  created () {
+    this.isfollow = this.follow.isfollowing === '1'
+  },
+  computed: {
+    is_follow () {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.isfollow = this.follow.isfollowing === '1'
+      return ''
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      console.log(this.follow)
+    }, 3000)
+  },
+  methods: {
+    reload () {
+      console.log('reload page')
     },
-    data() {
-        return{
-            isfollow: false
-        }
-    },
-    created() {
-        this.isfollow = this.follow.isfollowing == '1' ? true : false;
-    },
-    computed: {
-        is_follow() {
-            this.isfollow = this.follow.isfollowing == '1' ? true : false;
-            return "";
-        }
-    },
-    mounted(){
-        setTimeout(() => {
-            console.log(this.follow);
-        }, 3000);
-    },
-    methods : {
-        reload(){
-            console.log("reload page");
-            
-        },
-        async testtt2(data){
-            try{
-                await this.$store.dispatch('user/requestfollow', data);
-            } catch {
-                console.log('error');
-            }
-        },
-        followUser() {
-            this.isfollow = !this.isfollow;
-            let status_follow = this.isfollow ? 1 : 0;
-            const data = {
-                operation: "follow",
-                csrfToken: this.$store.state.user.csrfToken,
-                followingId: this.follow.followerid,
-                status: status_follow
-            }
-            this.testtt2(JSON.stringify(data))
-        },
-    },
-    watch:{
-      $route (to, from){
-        console.log(to.path);
-        console.log(from.path);
-        this.$emit('click_profile')
-        //location.reload();
+    async testtt2 (data) {
+      try {
+        await this.$store.dispatch('user/requestfollow', data)
+      } catch {
+        console.log('error')
       }
     },
+    followUser () {
+      this.isfollow = !this.isfollow
+      const statusFollow = this.isfollow ? 1 : 0
+      const data = {
+        operation: 'follow',
+        csrfToken: this.$store.state.user.csrfToken,
+        followingId: this.follow.followerid,
+        status: statusFollow
+      }
+      this.testtt2(JSON.stringify(data))
+    }
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to.path)
+      console.log(from.path)
+      this.$emit('click_profile')
+      // location.reload();
+    }
+  }
 
 }
 </script>

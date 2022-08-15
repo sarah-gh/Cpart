@@ -14,7 +14,6 @@
 //     }
 // }
 
-
 // export const authGuard = (to, from, next) => {
 //     if (store.getters['user/isAuthenticated']) {
 //       next()
@@ -22,5 +21,3 @@
 //       next('/home')
 //     }
 //   }
-
-  

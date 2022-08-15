@@ -21,55 +21,55 @@
 </template>
 
 <script>
-import { useField } from "vee-validate";
+import { useField } from 'vee-validate'
 
 export default {
   props: {
     type: {
       type: String,
-      default: "text",
+      default: 'text'
     },
     value: {
       type: String,
-      default: "",
+      default: ''
     },
     name: {
       type: String,
-      required: true,
+      required: true
     },
     label: {
       type: String,
-      required: true,
+      required: true
     },
     successMessage: {
       type: String,
-      default: "",
+      default: ''
     },
     placeholder: {
       type: String,
-      default: "",
-    },
+      default: ''
+    }
   },
-  setup(props) {
+  setup (props) {
     const {
       value: inputValue,
       errorMessage,
       handleBlur,
       handleChange,
-      meta,
+      meta
     } = useField(props.name, undefined, {
-      initialValue: props.value,
-    });
+      initialValue: props.value
+    })
 
     return {
       handleChange,
       handleBlur,
       errorMessage,
       inputValue,
-      meta,
-    };
-  },
-};
+      meta
+    }
+  }
+}
 </script>
 
 <style  scoped>

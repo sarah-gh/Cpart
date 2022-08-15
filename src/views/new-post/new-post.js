@@ -73,7 +73,7 @@ export default {
       now = now.split('/')
       let month
       this.number.forEach((value, index) => {
-        if (value == now[1]) {
+        if (value === now[1]) {
           month = index
         }
       })
@@ -100,7 +100,7 @@ export default {
     async testtt (data) {
       try {
         this.published = true
-        const test = await this.$store.dispatch('article/requestPostArticle', data)
+        await this.$store.dispatch('article/requestPostArticle', data)
         this.$router.replace({ path: '/panel/profile/0' })
       } catch (error) {
         console.log(error)
@@ -138,7 +138,7 @@ export default {
       return result
     },
     onEnterModal (value) {
-      if (this.tags.length == 3) {
+      if (this.tags.length === 3) {
         this.error_tag = true
       } else {
         this.tags.push([value[0], false])
@@ -160,7 +160,7 @@ export default {
       }
     },
     add_image (value) {
-      if (value[0] == 'header') {
+      if (value[0] === 'header') {
         this.article.header_img = value[1]
       } else {
         this.article.footer_img = value[1]

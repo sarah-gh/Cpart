@@ -1,6 +1,6 @@
 
 import headerSearch from '../header-search/header-search.vue'
-// import { delete_cookie } from '@/resources/utilities.js'
+// import { deleteCookie } from '@/resources/utilities.js'
 // import { locale } from 'core-js'
 
 export default {

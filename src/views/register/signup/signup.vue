@@ -194,7 +194,7 @@ export default {
           this.error_msg = 'ورودی نامعتبر'
           return
         }
-        // await this.getCsrfToken();
+        // await this.getCsrfToken(); /////
         await this.$store.dispatch('user/requestProfileUser')
         this.$router.replace({ name: 'posts' })
         this.$store.state.login = true

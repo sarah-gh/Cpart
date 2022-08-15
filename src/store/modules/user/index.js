@@ -16,15 +16,15 @@ const user = {
       commit('setBookmark', bookmarkData)
     },
     async requestfollow ({ commit }, data) {
-      const followData = await userOperation(data)
+      await userOperation(data)
     },
     async requestLikeArticle ({ commit }, data) {
       console.log(data)
-      const likeArticleData = await userOperation(data)
+      await userOperation(data)
     },
     async requestLikeComment ({ commit }, data) {
       console.log(data)
-      const likeCommentData = await userOperation(data)
+      await userOperation(data)
     },
 
     async requestProfileUser ({ commit }) {
@@ -40,7 +40,7 @@ const user = {
       commit('setSettingUser', setting)
     },
     async requestPostBookmark ({ commit }, data) {
-      const bookmarkData = await postBookmark(data)
+      await postBookmark(data)
     }
   },
   mutations: {

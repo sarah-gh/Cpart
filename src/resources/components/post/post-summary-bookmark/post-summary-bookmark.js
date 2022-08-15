@@ -1,4 +1,4 @@
-import { getCookieByName } from '@/resources/utilities.js'
+// import { getCookieByName } from '@/resources/utilities.js'
 
 export default {
   name: 'posts-summary',
@@ -35,18 +35,18 @@ export default {
     },
     saveItem () {
       this.save = !this.save
-      const status_save = this.save ? 1 : 0
+      const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
         csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
-        status: status_save
+        status: statusSave
       }
       this.testtt(JSON.stringify(data))
     },
     async testtt (data) {
       try {
-        const test = await this.$store.dispatch('user/requestPostBookmark', data)
+        await this.$store.dispatch('user/requestPostBookmark', data)
         // console.log(test);
       } catch (error) {
         console.log(error)

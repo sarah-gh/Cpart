@@ -37,4 +37,3 @@
 
 <script src="./footer-page.js"></script>
 <style src="./footer-page.scss" lang="scss" scoped></style>
-

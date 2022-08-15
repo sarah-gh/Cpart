@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
 
-import { getCookieByName } from '@/resources/utilities.js';
+import { getCookieByName } from '@/resources/utilities.js'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,24 +12,21 @@ const router = createRouter({
   }
 })
 
-
 router.beforeEach((to, from, next) => {
-  const token = getCookieByName('token');
-  console.log(token);
-  console.log('to.fullPath');
-  console.log(to.fullPath == ('/'));
+  const token = getCookieByName('token')
+  console.log(token)
+  console.log('to.fullPath')
+  console.log(to.fullPath === ('/'))
 
-  if (to.fullPath.startsWith('/panel') && !token)
-    return next({ name: 'login' });
+  if (to.fullPath.startsWith('/panel') && !token) { return next({ name: 'login' }) }
 
-  if (to.fullPath.startsWith('/panel') && token)
-    return next();
+  if (to.fullPath.startsWith('/panel') && token) { return next() }
 
-    // if (to.fullPath.startsWith('/panel/profile') && token){
-    //   location.reload();
-    //   return next();
-    // }
-    
+  // if (to.fullPath.startsWith('/panel/profile') && token){
+  //   location.reload();
+  //   return next();
+  // }
+
   // if (to.fullPath.startsWith('/posts') && token)
   //   return next({ name: 'posts-user' });
 
@@ -42,13 +39,12 @@ router.beforeEach((to, from, next) => {
   // if (to.fullPath.startsWith('/home-public') && token)
   //   return next({ name: 'home' });
 
-  if (to.fullPath.startsWith('/authentication') && token)
-    return next({ name: 'posts' });
+  if (to.fullPath.startsWith('/authentication') && token) { return next({ name: 'posts' }) }
 
   // if (from.fullPath.startsWith('/authentication') && token)
   //   return next({ name: 'posts' });
 
-  next();
-});
+  next()
+})
 
 export default router

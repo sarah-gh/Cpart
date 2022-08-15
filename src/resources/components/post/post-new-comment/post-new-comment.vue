@@ -7,7 +7,7 @@
         </div>
         <div class="name">{{ replyto?.fname }} {{ replyto?.lname }}</div>
         <div class="text-comment">
-            <p>{{ replyto?.commenttext }}</p> 
+            <p>{{ replyto?.commenttext }}</p>
         </div>
     </div>
     <form action="" class="form-comment">
@@ -35,114 +35,115 @@
 </template>
 
 <script>
-export default {
-    name: '',
-    props: {
-        postid: {
-            type: Number,
-        },
-        replyto: {
-            type: Object,
-            default: null
-        }
-    },
-    data() {
-        return {
-            show: true,
-            comment: {
-                fname: '',
-                lname: '',
-                email: '',
-                userId: '',
-                text: "",
-                articleId: this.postid,
-                replyto: null,
-                date: '',
-            },
-            month : [
-              'فروردین',
-              'اردیبهشت',
-              'خرداد',
-              'تیر',
-              'مرداد',
-              'شهریور',
-              'مهر',
-              'آبان',
-              'آذر',
-              'دی',
-              'بهمن',
-              'اسفند',
-            ],
-            number: [
-              '۱',
-              '۲',
-              '۳',
-              '۴',
-              '۵',
-              '۶',
-              '۷',
-              '۸',
-              '۹',
-              '۱۰',
-              '۱۱',
-              '۱۲',
-            ]
-        }
-    },
-    computed: {
-        isLogin(){
-            if(this.$store.state.login){
-                this.show = false;
-                return '';
-            }
-            else{
-                this.show = true;
-            }
-            return '';
-        }
-    },
-    mounted(){
-        console.log(this.postid)
-    },
-    methods: {
-        newComment() {
-            let now = new Date().toLocaleDateString('fa-IR');
-            now = now.split('/');
-            let month;
-            this.number.forEach((value, index) => {
-                if(value == now[1]){
-                month = index - 1;
-                }
-            })
-            let date = `${now[2]}
-                        ${this.month[month]}
-                        ${now[0]}`;
-            const data = {
-                operation: "newComment",
-                csrfToken: this.$store.state.user.csrfToken,
-                text: this.comment.text,
-                articleId: this.postid,
-                replyto: this.replyto?.commentid || null,
-                date: '',
-                status: 1
-            };
-            data.date = date;
-            this.testtt(JSON.stringify(data))
 
-        },
-        cancel(){
-            this.$emit('cancel');
-            // this.replyto = null
-        },
-        async testtt(data){
-            try {
-                let test = await this.$store.dispatch('article/requestPostComment', data);
-                this.$emit('add_comment', data);
-            } catch (error) {
-                console.log(error);
-            }
-        },
+export default {
+  name: '',
+  props: {
+    postid: {
+      type: Number
     },
+    replyto: {
+      type: Object,
+      default: null
+    }
+  },
+  data () {
+    return {
+      show: true,
+      comment: {
+        fname: '',
+        lname: '',
+        email: '',
+        userId: '',
+        text: '',
+        articleId: this.postid,
+        replyto: null,
+        date: ''
+      },
+      month: [
+        'فروردین',
+        'اردیبهشت',
+        'خرداد',
+        'تیر',
+        'مرداد',
+        'شهریور',
+        'مهر',
+        'آبان',
+        'آذر',
+        'دی',
+        'بهمن',
+        'اسفند'
+      ],
+      number: [
+        '۱',
+        '۲',
+        '۳',
+        '۴',
+        '۵',
+        '۶',
+        '۷',
+        '۸',
+        '۹',
+        '۱۰',
+        '۱۱',
+        '۱۲'
+      ]
+    }
+  },
+  computed: {
+    isLogin () {
+      if (this.$store.state.login) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.show = false
+        return ''
+      } else {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.show = true
+      }
+      return ''
+    }
+  },
+  mounted () {
+    console.log(this.postid)
+  },
+  methods: {
+    newComment () {
+      let now = new Date().toLocaleDateString('fa-IR')
+      now = now.split('/')
+      let month
+      this.number.forEach((value, index) => {
+        if (value === now[1]) {
+          month = index - 1
+        }
+      })
+      const date = `${now[2]}
+                        ${this.month[month]}
+                        ${now[0]}`
+      const data = {
+        operation: 'newComment',
+        csrfToken: this.$store.state.user.csrfToken,
+        text: this.comment.text,
+        articleId: this.postid,
+        replyto: this.replyto?.commentid || null,
+        date: '',
+        status: 1
+      }
+      data.date = date
+      this.testtt(JSON.stringify(data))
+    },
+    cancel () {
+      this.$emit('cancel')
+      // this.replyto = null
+    },
+    async testtt (data) {
+      try {
+        await this.$store.dispatch('article/requestPostComment', data)
+        this.$emit('add_comment', data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
 
@@ -165,5 +166,5 @@ export default {
             cursor: pointer;
         }
     }
-} 
+}
 </style>

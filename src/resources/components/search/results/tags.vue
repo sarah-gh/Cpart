@@ -4,17 +4,17 @@
 
 <script>
 export default {
-    name: "search-tag",
-    props:{
-        tag : {
-          type : String
-        }
+  name: 'search-tag',
+  props: {
+    tag: {
+      type: String
     }
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable"; 
+@import "../../../../assets/sass/_variable";
 .tag {
   margin: 0 7px;
   border-radius: 17px;

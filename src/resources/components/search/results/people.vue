@@ -17,14 +17,14 @@
 
 <script>
 export default {
-    name: "search-people",
-    props: {
-        user:{
-            type: Object,
-            required: true
-        }
+  name: 'search-people',
+  props: {
+    user: {
+      type: Object,
+      required: true
     }
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>

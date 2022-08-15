@@ -3,7 +3,7 @@ export const routes = [
     path: '/',
     name: 'posts',
     component: () => import(/* webpackChunkName: "posts" */ '../views/posts/posts.vue')
-  }, 
+  },
   {
     path: '/panel/bookmark/',
     name: 'bookmark',
@@ -13,7 +13,7 @@ export const routes = [
     path: '/panel/setting',
     name: 'setting',
     component: () => import(/* webpackChunkName: "setting" */ '../views/profile-setting/profile-setting.vue')
-  }, 
+  },
   {
     path: '/panel/new-post',
     name: 'new-post',
@@ -55,8 +55,8 @@ export const routes = [
     component: () => import(/* webpackChunkName: "bookmark" */ '../views/register/verification/verification.vue')
   },
   {
-    path: "/:catchAll(.*)",
+    path: '/:catchAll(.*)',
     component: () => import(/* webpackChunkName: "not-found" */ '../views/not-found/not-found.vue')
-  },
- 
+  }
+
 ]

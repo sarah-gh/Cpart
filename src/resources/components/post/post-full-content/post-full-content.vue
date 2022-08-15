@@ -11,16 +11,16 @@
                 <button class="follow-button followed" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
             <div class="post-title">
-                <h1 class="title"> 
+                <h1 class="title">
                     {{ post.title }}
                 </h1>
             </div>
             <div class="post-details">
                 <div class="flex-footer">
                     <p class="date">{{ post.date }}</p>
-                    <span class="circle"></span> 
+                    <span class="circle"></span>
                     <span class="time">{{ post.readtime }} دقیقه </span>
-                    <span class="circle"></span> 
+                    <span class="circle"></span>
                    <span class="tag" v-for="(i , x) in post.tag" :key="x">
                         {{ i }}
                     </span>

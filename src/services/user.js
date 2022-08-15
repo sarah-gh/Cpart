@@ -90,15 +90,31 @@ export const login = async (data) => {
 }
 
 export const signup = async (data) => {
-  const res = await axios.post(`${http}/register`, data)
-    .then((res) => {
-      console.log(res.data)
-      writeCookie('token', res.data.token)
-    })
-    .catch((error) => {
-      return error.response.status
-    })
-  return res
+  try {
+    const config = {
+      method: 'post',
+      url: `${http}/register`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+    const res = await axios(config)
+    writeCookie('token', res.data)
+    return res
+  } catch (error) {
+    console.log('\n\n\n\n\nerror:')
+    console.error(error)
+  }
+  // const res = await axios.post(`${http}/register`, data)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //     writeCookie('token', res.data.token)
+  //   })
+  //   .catch((error) => {
+  //     return error.response.status
+  //   })
+  // return res
 }
 
 export const search = async (data) => {

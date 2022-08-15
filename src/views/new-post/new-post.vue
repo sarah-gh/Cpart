@@ -9,12 +9,12 @@
                 <post-upload @addImage="add_image" v-if="publish" :location="'header'"></post-upload>
                 <div class="post-content">
 
-                    <textarea 
-                        class="form-control" 
-                        name="textarea" 
-                        id="textarea" 
-                        required="" 
-                        v-model="article.header" 
+                    <textarea
+                        class="form-control"
+                        name="textarea"
+                        id="textarea"
+                        required=""
+                        v-model="article.header"
                         :maxlength="140"
                         placeholder="عنوان مطلب خود را وارد کنید">
                     </textarea>
@@ -29,18 +29,18 @@
                             </span>
                         </transition>
                         <div class="tag plus">
-                            <img src="@/assets/img/svg-new-post/vuesax/linear/tag-2.svg/" 
+                            <img src="@/assets/img/svg-new-post/vuesax/linear/tag-2.svg/"
                             @click="showModal = true" >
                         </div>
                         <span v-show="error_tag">بیشتر از ۳ تگ نمیتوانید اضافه کنید</span>
-                        
+
                     </div>
 
-                    <span 
-                        class="textarea" 
-                        role="textbox" 
+                    <span
+                        class="textarea"
+                        role="textbox"
                         id="span_id"
-                        @blur="checkSpan" 
+                        @blur="checkSpan"
                         @keydown="checkSpan"
                         contenteditable>
                     </span>
@@ -64,15 +64,14 @@
                 <modal-new-post @Modalfalse="showModal = false" @on_enter="onEnterModal" :showModal="showModal"></modal-new-post>
             </div>
         </div>
-    </main> 
-    
+    </main>
+
 </template>
 
 <script src="./new-post.js"></script>
 <style src="./new-post.scss" lang="scss" scope></style>
 
 <style>
-
 
 </style>
 <!--///////////////////////////////////////////////////////////// -->
@@ -162,7 +161,6 @@
     }
 }
 
-
 .modal-vue .close{
     background-color:transparent;
     border: 0px;
@@ -171,11 +169,9 @@
     cursor: pointer;
 }
 
-
 input[type="file"] {
   display: none;
 }
-
 
 .content {
   display: flex;

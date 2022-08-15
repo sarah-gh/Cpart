@@ -17,5 +17,4 @@ export default {
     border: solid 1px $water-blue;
 }
 
-
 </style>

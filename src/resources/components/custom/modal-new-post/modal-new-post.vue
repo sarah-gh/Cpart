@@ -13,46 +13,48 @@
             <option >Nice!</option> -->
         </select>
     </div>
-    <button class="confirmation" @click="onEnter(), showModal = false">تایید</button>
+    <button class="confirmation" @click="onEnter()">تایید</button>
 </template>
 
 <script>
 export default {
-    name: 'modal-new-post',
-    props: {
-        showModal: {
-            type: Boolean,
-        }
-    },
-    data() {
-        return {
-            tag: '',
-            availableTags: [
-              'تکنولوژی',
-              'کامپیوتر',
-              'ادبیات',
-              'تاریخی',
-              'سیاست',
-              'سرگرمی',
-              'داستان',
-              'برنمه نویسی',
-              'هنر',
-              'بازاریابی',
-              'اقتصاد',
-              'روانشناسی',
-              'فلسفه',
-            ],
-        }
-    },
-    methods:{
-        onEnter(){
-            this.$emit('on_enter', [this.tag, false]);
-            this.tag = '';
-        },
-        showModalfalse(){
-            this.$emit('Modalfalse');
-        }
+  name: 'modal-new-post',
+  props: {
+    showModal: {
+      type: Boolean
     }
-    
+  },
+  data () {
+    return {
+      tag: '',
+      availableTags: [
+        'تکنولوژی',
+        'کامپیوتر',
+        'ادبیات',
+        'تاریخی',
+        'سیاست',
+        'سرگرمی',
+        'داستان',
+        'برنمه نویسی',
+        'هنر',
+        'بازاریابی',
+        'اقتصاد',
+        'روانشناسی',
+        'فلسفه'
+      ]
+    }
+  },
+  methods: {
+    onEnter () {
+      // eslint-disable-next-line vue/no-mutating-props
+      this.showModal = false
+      this.$emit('on_enter', [this.tag, false])
+      this.tag = ''
+    },
+    showModalfalse () {
+      this.$emit('Modalfalse')
+    }
+  }
+
 }
 </script>

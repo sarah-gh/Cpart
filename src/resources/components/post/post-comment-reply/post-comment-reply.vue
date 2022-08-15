@@ -8,7 +8,7 @@
                 <div class="details">
                     <div class="date-time">
                         <p class="date">{{ commentR.commentdate }}</p>
-                        <span class="circle"></span> 
+                        <span class="circle"></span>
                         <!-- <span class="time">{{ commentR.time }}</span> -->
                     </div>
                     <div class="like-forward">
@@ -37,25 +37,25 @@
 </style>
 <script>
 export default {
-    name: "comment-reply",
-    props: {
-        commentR : {
-            type: Object
-        }
-    },
-    data() {
-        return {
-            like_icon: ['far', 'thumbs-up'],
-        }
-    },
-    methods : {
-        clickLike(){
-            if(this.like_icon[0] == 'fas'){
-                this.like_icon[0] = 'far';
-            } else {
-                this.like_icon[0] = 'fas';
-            }
-        }
+  name: 'comment-reply',
+  props: {
+    commentR: {
+      type: Object
     }
+  },
+  data () {
+    return {
+      like_icon: ['far', 'thumbs-up']
+    }
+  },
+  methods: {
+    clickLike () {
+      if (this.like_icon[0] === 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
+    }
+  }
 }
 </script>

@@ -1,40 +1,40 @@
 export default {
-    name: 'post-this-author',
-    props: {
-        post: {
-            type: Object,
-            required: true
-        }
-    },
-    data(){
-        return {
-            title_route: '',
-            text : '',
-            save : false,
+  name: 'post-this-author',
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      title_route: '',
+      text: '',
+      save: false
 
-        }
-    },
-    mounted() {
+    }
+  },
+  mounted () {
 
-    },
-    methods: {
-        async testtt(data){
-            try {
-                let test = await this.$store.dispatch('user/requestPostBookmark', data);
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        saveItem(){
-            this.save = !this.save;
-            let status_save = this.save ? 1 : 0;
-            const data = {
-                operation: "save" ,
-                csrfToken: this.$store.state.user.csrfToken,
-                articleId: this.post.articleid,
-                status: status_save
-            }
-            this.testtt(JSON.stringify(data))
-        },
+  },
+  methods: {
+    async testtt (data) {
+      try {
+        await this.$store.dispatch('user/requestPostBookmark', data)
+      } catch (error) {
+        console.log(error)
       }
+    },
+    saveItem () {
+      this.save = !this.save
+      const statusSave = this.save ? 1 : 0
+      const data = {
+        operation: 'save',
+        csrfToken: this.$store.state.user.csrfToken,
+        articleId: this.post.articleid,
+        status: statusSave
+      }
+      this.testtt(JSON.stringify(data))
+    }
+  }
 }

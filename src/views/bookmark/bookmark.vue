@@ -19,7 +19,7 @@
                 <post-summary-bookmark :post="item"></post-summary-bookmark>
             </article>
         </section>
-    </main> 
+    </main>
 </template>
 
 <script src="./bookmark.js"></script>

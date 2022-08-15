@@ -1,3 +1,4 @@
+<!-- eslint-disable no-tabs -->
 <template>
     <div class="photo-upload">
 		<div class="file-upload-form">
@@ -25,45 +26,47 @@
 
 <script>
 export default {
-    name: "photo-upload",
-    props: {
-        imgData: {
-            type: String
+  name: 'photo-upload',
+  props: {
+    imgData: {
+      type: String
+    }
+  },
+  data () {
+    return {
+      imageData: '',
+      imgBase64: ''
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      // console.log('xhr')
+      this.imageData = this.imgData
+    }, 700)
+  },
+  methods: {
+    previewThumbnail: function getPreview (event) {
+      const input = event.target
+      if (input.files && input.files[0]) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          this.imageData = e.target.result
         }
-    },
-    data() {
-		return {
-			imageData: '',
-            imgBase64: '',
-		};
-	},
-	mounted(){
-		setTimeout(() => {
-            // console.log('xhr')
-            this.imageData = this.imgData;
-        }, 700);
-	},
-	methods: {
-		previewThumbnail: function getPreview(event) {
-			const input = event.target;
-			if (input.files && input.files[0]) {
-				const reader = new FileReader();
-				reader.onload = (e) => {
-					this.imageData = e.target.result;
-				};
-				reader.readAsDataURL(input.files[0]);
-                setTimeout(() => {
-                    let img = document.querySelector(".image-preview__img").src;
-                    this.imgBase64 = img;
-					this.$emit('emitImg', img);
-                }, 1000);
-			}
-		},
-	},
+        reader.readAsDataURL(input.files[0])
+        setTimeout(() => {
+          const img = document.querySelector('.image-preview__img').src
+          this.imgBase64 = img
+          this.$emit('emitImg', img)
+        }, 1000)
+      }
+    }
+  }
 }
 </script>
 
+<!-- eslint-disable no-tabs -->
 <style lang="scss" scoped>
+
 .photo-upload {
 	height: auto;
 	margin: 20px 0;
@@ -87,7 +90,7 @@ export default {
             content: url("../../../../assets/img/svg-profile-setting/bold/gallery.svg");
             position: absolute;
             top: 10%;
-        	left: 37%;
+			left: 37%;
             background-color: transparent;
             pointer-events: none;
 			z-index: 100;

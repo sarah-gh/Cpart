@@ -13,41 +13,40 @@
 
 <script>
 export default {
-    name: "profile-nav",
-    data() {
-        return {
-            navigator: [
-                {
-                    text: 'درباره',
-                    active: false
-                },
-                {
-                    text: 'مقالات',
-                    active: true
-                },
-                {
-                    text: 'دنبال کننده ها',
-                    active: false
-                }
-            ]
-        }
-    },
-    methods: {
-        navActive(x){
-            // console.log(x);
-            this.navigator.forEach((value, index) => {
-                if(index === x){
-                    value.active = true;
-                }
-                else {
-                    value.active = false;
-                }
-                //console.log(value.active);
-            })
-            //console.log(this.navigator);
-            this.$emit('clicked', x);
+  name: 'profile-nav',
+  data () {
+    return {
+      navigator: [
+        {
+          text: 'درباره',
+          active: false
         },
+        {
+          text: 'مقالات',
+          active: true
+        },
+        {
+          text: 'دنبال کننده ها',
+          active: false
+        }
+      ]
     }
+  },
+  methods: {
+    navActive (x) {
+      // console.log(x);
+      this.navigator.forEach((value, index) => {
+        if (index === x) {
+          value.active = true
+        } else {
+          value.active = false
+        }
+        // console.log(value.active);
+      })
+      // console.log(this.navigator);
+      this.$emit('clicked', x)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

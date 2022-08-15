@@ -122,26 +122,23 @@
 
 .fade-enter-active, .fade-leave-active {
   animation: animation_input .5s;
-  
+
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   animation: animation_input .5s reverse;
-  
+
 }
 
 .deleteTag-enter-active, .deleteTag-leave-active {
   animation: animation_tag .2s;
   display: block;
-  
+
 }
 .deleteTag-enter, .deleteTag-leave-to /* .fade-leave-active below version 2.1.8 */ {
   animation: animation_tag .2s reverse;
   display: none;
-  
+
 }
-
-
-
 
 @keyframes animation_input {
   0% {

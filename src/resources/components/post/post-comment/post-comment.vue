@@ -3,7 +3,7 @@
         <div class="details">
             <div class="date-time">
                 <p class="date">{{ comment.commentdate }}</p>
-                <span class="circle"></span> 
+                <span class="circle"></span>
                 <!-- <span class="time">{{ comment.time }}</span> -->
             </div>
             <div class="like-forward">
@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="text-comment">
-            <p>{{ comment.commenttext }}</p> 
+            <p>{{ comment.commenttext }}</p>
         </div>
-            <div class="comment-reply" v-for="(commentReply , i) in comment.replyComment" :key="i"> 
+            <div class="comment-reply" v-for="(commentReply , i) in comment.replyComment" :key="i">
                 <post-comment-reply :commentR="commentReply"></post-comment-reply>
             </div>
 
@@ -32,44 +32,44 @@
 import postCommentReply from '../post-comment-reply/post-comment-reply.vue'
 
 export default {
-    name: "comment",
-    props: {
-        comment : {
-            type: Object,
-            required: false
-        },
-        ccc: {
-            type: Object,
-            required: false
-        }
+  name: 'comment',
+  props: {
+    comment: {
+      type: Object,
+      required: false
     },
-    data() {
-        return {
-            commentsReply: [1],
-            like_icon: ['far', 'thumbs-up'],
-        }
-    },
-    // beforeMount(){
-    //     setTimeout(function(){
-    //         console.log(this.ccc)
-    //     }, 1000);
-    // },
-    
-    components : {
-        postCommentReply
-    },
-    methods: {
-        clickLike(){
-            if(this.like_icon[0] == 'fas'){
-                this.like_icon[0] = 'far';
-            } else {
-                this.like_icon[0] = 'fas';
-            }
-        },
-        reply_comment(){
-            console.log(this.comment)
-            this.$emit('replyComment' , this.comment)
-        }
+    ccc: {
+      type: Object,
+      required: false
     }
+  },
+  data () {
+    return {
+      commentsReply: [1],
+      like_icon: ['far', 'thumbs-up']
+    }
+  },
+  // beforeMount(){
+  //     setTimeout(function(){
+  //         console.log(this.ccc)
+  //     }, 1000);
+  // },
+
+  components: {
+    postCommentReply
+  },
+  methods: {
+    clickLike () {
+      if (this.like_icon[0] === 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
+    },
+    reply_comment () {
+      console.log(this.comment)
+      this.$emit('replyComment', this.comment)
+    }
+  }
 }
 </script>

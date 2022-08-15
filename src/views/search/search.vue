@@ -25,22 +25,21 @@
   </main>
 </template>
 
-
 <script>
-import searchNav from "../../resources/components/search/search-nav/search-nav.vue";
-import searchPeople from "../../resources/components/search/results/people.vue";
-import postSummery from "../../resources/components/post/post-summary/post-summary.vue";
-import searchTag from "../../resources/components/search/results/tags.vue";
+import searchNav from '../../resources/components/search/search-nav/search-nav.vue'
+import searchPeople from '../../resources/components/search/results/people.vue'
+import postSummery from '../../resources/components/post/post-summary/post-summary.vue'
+import searchTag from '../../resources/components/search/results/tags.vue'
 export default {
-  name: "search",
-  data() {
+  name: 'search',
+  data () {
     return {
       navigate: [true, false, false],
-      textSearch: "",
+      textSearch: '',
       posts: [],
       users: [],
       tags: []
-    };
+    }
   },
   components: {
     searchNav,
@@ -48,43 +47,43 @@ export default {
     postSummery,
     searchTag
   },
-  beforeMount() {
-    console.log('this.$route.query.search');
-    console.log(this.$route.query.search);
-    this.textSearch = this.$route.query.search;
+  beforeMount () {
+    console.log('this.$route.query.search')
+    console.log(this.$route.query.search)
+    this.textSearch = this.$route.query.search
     this.testtt(this.textSearch)
   },
   methods: {
-    clickedSearch() {},
-    onClickNav(data) {
+    clickedSearch () {},
+    onClickNav (data) {
       this.navigate.forEach((value, index) => {
-        if (index == data) {
-          this.navigate[index] = true;
+        if (index === data) {
+          this.navigate[index] = true
         } else {
-          this.navigate[index] = false;
+          this.navigate[index] = false
         }
-      });
+      })
     },
-    addItem() {
-        console.log("addItem")
-        this.$router.replace({ name: "search", query: { search: this.textSearch } })
-        this.testtt(this.textSearch)
+    addItem () {
+      console.log('addItem')
+      this.$router.replace({ name: 'search', query: { search: this.textSearch } })
+      this.testtt(this.textSearch)
     },
-    async testtt(data){
-      try{
-          let res = await this.$store.dispatch('user/requestSearch', data);
-          res = this.$store.state.user.searchItems;
-          this.posts = res.posts;
-          this.users = res.users;
-          this.tags = res.tags;
-          console.log("res")
-          console.log(res);
-      } catch(error) {
-          console.log(error);
+    async testtt (data) {
+      try {
+        let res = await this.$store.dispatch('user/requestSearch', data)
+        res = this.$store.state.user.searchItems
+        this.posts = res.posts
+        this.users = res.users
+        this.tags = res.tags
+        console.log('res')
+        console.log(res)
+      } catch (error) {
+        console.log(error)
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
