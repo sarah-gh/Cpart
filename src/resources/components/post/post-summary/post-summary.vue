@@ -1,6 +1,6 @@
 <template>
     <div class="card-img">
-        <!-- <img :src="post.headerphoto" alt="img post" @mouseover="hoverPost = true" @click="routeQuery(post)" /> -->
+        <img :src="post.headerphoto" alt="img post" @mouseover="hoverPost = true" @click="routeQuery(post)" />
     </div>
     <div class="card-post">
         <header class="post-header">
