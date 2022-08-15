@@ -13,7 +13,9 @@
                 <div class="line"></div>
             </div>
             <div class="part" v-if="!edit[0]">
-                <img class="avatar_img" src="@/assets/img/svg-profile-setting/340558.jpeg"/>
+                <!-- <img class="avatar_img" src="@/assets/img/svg-profile-setting/340558.jpeg"/> -->
+                <img class="avatar_img" id='base64image'
+                :src='imageData' />
                 <div class="content part_about">
                     <div class="fname texts">
                         <p class="lable">نام</p>
@@ -35,13 +37,14 @@
             <Form @submit="onSubmit" :validation-schema="schema" class="part" v-if="edit[0]" >
                 <div class="avatar upload">
                     <!-- <img class="avatar_img" src="@/assets/img/svg-profile-setting/340558.jpeg"/> -->
-                    <img :style="style" class="avatar_img" :src="imageUrl" v-if="imageUrl">
+                    <!-- <img :style="style" class="avatar_img" :src="imageUrl" v-if="imageUrl">
                     <div class="control-file-upload">
                         <label class="button is-danger">
                             <img src="@/assets/img/svg-profile-setting/bold/gallery.svg" />
                             <input type="file"  @click="onFileChange" accept="image/*">
                         </label>
-                    </div>
+                    </div> -->
+                    <profile-upload @emitImg="emitImg" :imgData="imageData"></profile-upload>
                 </div>
                 <div class="content part_about">
                     <div class="fname texts">

@@ -1,12 +1,50 @@
 @import "@/assets/sass/_variable";
 
+.load_btn {
+    display: flex;
+    width: 1.7em;
+    height: 1.7em;
+    border: 2px solid transparent;
+    border-top-color: #3cefff;
+    border-bottom-color: #3cefff;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+  
+.load_btn:before {
+    content: '';
+    display: block;
+    margin: auto;
+    width: 0.4em;
+    height: 0.4em;
+    border: 2px solid #3cefff;
+    border-radius: 50%;
+    animation: pulse 1s alternate ease-in-out infinite;
+}
+  
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+}
+  
+@keyframes pulse {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+}
+  
+
 main{
     width: 100%;
     margin: 50px auto;
     font-family: 'bahij-helvetica-roman';
     color: $dark-grey-blue;
     line-height: 1.6;
-    .post-container{
+    .new-post-container{
         display: flex;
         flex-direction: column;
     }
@@ -46,7 +84,7 @@ main{
     margin-right: 10px;
   }
   
-.post-container{
+.new-post-container{
     .post-img{
         margin-top: 40px;
         .post-img_upload{
@@ -59,6 +97,9 @@ main{
             border-radius: 5px;
             border: solid 2px rgba(0, 67, 105, 0.15);
             position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
             //background-color: #fafcfc;
             .post-img_btn{
                 position: absolute;
@@ -89,6 +130,14 @@ main{
         border-radius: 10px;
         margin-top: 70px;
         cursor: pointer;
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .add.notallowed {
+        opacity: 0.4 !important;
+        cursor: not-allowed !important;
     }
     .allowed{
         background-color: $tealish;
@@ -153,7 +202,7 @@ main{
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 10px;
+        margin: 0 5px;
         cursor: pointer;
     }
     input{

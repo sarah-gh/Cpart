@@ -9,23 +9,32 @@ export default {
     data(){
         return {
             title_route: '',
-            text : ''
+            text : '',
+            save : false,
+
         }
-    },
-    beforeMount(){
-        // console.log(this.post.text.length);
-        // this.text = this.post.text;
-        // if (this.post.text.length > 187) {
-        //     this.text = this.text.substring(0, 184) + "...";
-        // }
-        
     },
     mounted() {
 
     },
     methods: {
-        // routeQuery(item) {
-        //     this.$router.push({ path: `/single-post/${item.id}`})
-        // },
+        async testtt(data){
+            try {
+                let test = await this.$store.dispatch('user/requestPostBookmark', data);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        saveItem(){
+            this.save = !this.save;
+            let status_save = this.save ? 1 : 0;
+            const data = {
+                operation: "save" ,
+                csrfToken: this.$store.state.user.csrfToken,
+                articleId: this.post.articleid,
+                status: status_save
+            }
+            this.testtt(JSON.stringify(data))
+        },
       }
 }

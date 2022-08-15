@@ -1,19 +1,23 @@
 <template>
   <div class="register">
-    <div class="head">شما هنوز در هلیوم ثبت نام نکرده اید.</div>
+    <div class="entry-register">
+
+      <router-link to="/authentication/login"> ورود </router-link>
+      /
+      <router-link to="/authentication/signup"> ثبت نام </router-link>
+    </div>
     <div class="fill-form">لطفا اطلاعات زیر را برای ثبت نام تکمیل کنید.</div>
-    <Form  @submit="onSubmit" :validation-schema="sign_up">
+    <Form  @submit="onSubmit" :validation-schema="signUp">
       <div class="form">
         <div class="form-group">
           <p class="label">شماره تلفن همراه شما</p>
           <Field
             class="input-box"
             name="phoneNumber"
-            type="text"
+            type="phone"
             placeholder="your phone number"
-            value="09151232321"
           />
-          <ErrorMessage name="phoneNumber"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+          <!-- <ErrorMessage name="phoneNumber"><span class="span_error">این فیلد ضروری است</span></ErrorMessage> -->
         </div>
         <div class="form-group">
           <p class="label">لطفا نام خود را وارد کنید*</p>
@@ -57,93 +61,162 @@
             <!-- این نام کاربری قبلا انتخاب شده است  -->
             (حداقل ۳ حرف)</span></ErrorMessage>
         </div>
+        <div class="form-group">
+          <label class="label" for="password">رمز عبور*</label>
+          <Field
+            class="input-box dir_rtl"
+            name="password"
+            type="password"
+            placeholder="your first name"
+          />
+          <ErrorMessage name="password"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
+        </div>
       </div>
-      <button class="button" type="submit">تایید</button>
+      <div>
+        <button class="button button_sub" type="submit">تایید</button>
+        <span class="span_error_btn">{{ error_msg }}</span>
+      </div>
     </Form>
   </div>
 </template>
 
 <script>
-const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
+/// ^\+?(09)\)?[-. ]?([0-9]{9})$/;
+// const mobileReg = /(0|\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}/ig,
 
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import { signup } from '@/services/user.js'
+import { getCookieByName } from '@/resources/utilities.js'; const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+// const phoneNumberRegExp = /^(0)?09\d{9}$/g
+
 export default {
-  name: "signup",
+  name: 'signup',
   components: {
     Form,
     Field,
-    ErrorMessage,
+    ErrorMessage
   },
-  data() {
-    const sign_up = {
-      phoneNumber(value){
-        if(value){
-          if(phoneNumberRegExp.test(value)){
-            return "not valid fname";
-          }
+  data () {
+    const signUp = {
+      phoneNumber (value) {
+        // if(value){
+        //   if(phoneNumberRegExp.test(value)){
+        //     return "not valid";
+        //   }
+        // }
+        if (!value) {
+          return 'not valid'
         }
-        if(!value){
-          return "not valid fname";
-        }
-        return true;
+        return true
       },
-      fname(value) {
-        if(value){
-          if(value.length < 3){
-            return "not valid fname";
+      fname (value) {
+        if (value) {
+          if (value.length < 3) {
+            return 'not valid'
           }
         }
-        if(!value){
-          return "not valid fname";
+        if (!value) {
+          return 'not valid'
         }
-        return true;
+        return true
       },
-      lname(value) {
-        if(value){
-          if(value.length < 3){
-            return "not valid fname";
+      lname (value) {
+        if (value) {
+          if (value.length < 3) {
+            return 'not valid'
           }
         }
-        if(!value){
-          return "not valid fname";
+        if (!value) {
+          return 'not valid'
         }
-        return true;
+        return true
       },
-      email(value) {
-        if(value){
-          if(!emailRegExp.test(value)){
-            return "not valid fname";
+      email (value) {
+        if (value) {
+          if (!emailRegExp.test(value)) {
+            return 'not valid'
           }
         }
-        if(!value){
-          return "not valid fname";
+        if (!value) {
+          return 'not valid'
         }
-        return true;
+        return true
       },
-      username(value){
-        if(value){
-          if(value.length < 3){
-            return "not valid fname";
+      username (value) {
+        if (value) {
+          if (value.length < 3) {
+            return 'not valid'
           }
         }
-        if(!value){
-          return "not valid fname";
+        if (!value) {
+          return 'not valid'
         }
-        return true;
+        return true
+      },
+      password (value) {
+        if (value) {
+          if (value.length < 6) {
+            return 'not valid'
+          }
+        }
+        if (!value) {
+          return 'not valid'
+        }
+        return true
       }
     }
     return {
-      sign_up,
+      signUp,
+      error_msg: ''
     }
   },
-  methods:{
-    onSubmit(value){
-      console.log(value);
-      // code
+  methods: {
+    async onSubmit (value) {
+      console.log(value)
+      this.error_msg = ''
+      try {
+        const data = {
+          phoneNumber: value.phoneNumber,
+          fname: value.fname,
+          lname: value.lname,
+          email: value.email,
+          username: value.username,
+          password: value.password
+        }
+        const res = await this.requestSignup(JSON.stringify(data))
+        console.log('requestSignup error 1')
+        console.log(res)
+        if (res === 409) {
+          this.error_msg = 'نام کاربری تکراری است'
+          return
+        }
+        if (res === 400 || res === 401) {
+          this.error_msg = 'ورودی نامعتبر'
+          return
+        }
+        // await this.getCsrfToken();
+        await this.$store.dispatch('user/requestProfileUser')
+        this.$router.replace({ name: 'posts' })
+        this.$store.state.login = true
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async requestSignup (data) {
+      const res = await signup(data)
+      return res
+    },
+    getCsrfToken: async function () {
+      const accessToken = getCookieByName('token')
+      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
+        headers: {
+          token: accessToken
+        }
+      }).catch(err => console.log(err))
+      this.$store.state.user.csrfToken = response.data.csrfToken
     }
   }
-};
+}
 
 </script>
 

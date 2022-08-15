@@ -5,16 +5,8 @@
                 <img src="@/assets/img/svg-new-post/vuesax/linear/edit-2.svg" alt="">
                 <h2>ایجاد مطلب جدید</h2>
             </div>
-            <section class="post-container">
-                <div class="post-img">
-                    <div class="post-img_upload">
-                        <img src="" />
-                        <div class="post-img_btn">
-                            <img src="@/assets/img/svg-new-post/vuesax/linear/maximize-circle.svg" />
-                            <img src="@/assets/img/svg-new-post/vuesax/linear/gallery-add.svg" />
-                        </div>
-                    </div>
-                </div>
+            <section class="new-post-container">
+                <post-upload @addImage="add_image" v-if="publish" :location="'header'"></post-upload>
                 <div class="post-content">
 
                     <textarea 
@@ -36,14 +28,11 @@
                                 {{ item[0] }}
                             </span>
                         </transition>
-                        <!-- <transition  name="fadee">
-                            <input type="text" v-if="add_tag" v-model="tag" placeholder="تگ مورد نظر را با زدن اینتر انتخاب کنید " v-on:keyup.enter="onEnter">
-                        </transition> -->
                         <div class="tag plus">
                             <img src="@/assets/img/svg-new-post/vuesax/linear/tag-2.svg/" 
-                            @click="addTag() , showModal = true" >
+                            @click="showModal = true" >
                         </div>
-
+                        <span v-show="error_tag">بیشتر از ۳ تگ نمیتوانید اضافه کنید</span>
                         
                     </div>
 
@@ -52,33 +41,29 @@
                         role="textbox" 
                         id="span_id"
                         @blur="checkSpan" 
+                        @keydown="checkSpan"
                         contenteditable>
                     </span>
 
-                    <div class="tag">
+                    <div class="tag" @click="imgfooter = true" v-if="!imgfooter">
                         <img src="@/assets/img/svg-new-post/vuesax/linear/gallery-add.svg" />
                     </div>
+                    <!-- -------footer img-------- -->
+                    <post-upload v-if="imgfooter" @addImage="add_image" :location="'footer'"></post-upload>
                 </div>
-                <button class="add allowed" v-if="allowe" @click="PublishContent()">انتشار مطلب</button>
+                <button class="add allowed" :class="{notallowed : !allowe}" @click="PublishContent()">
+                    <span v-show="!published">
+                        انتشار مطلب
+                    </span>
+                    <div class="load_btn" v-show="published"></div>
+                </button>
             </section>
             <div class="overlay" v-if="showModal" @click="showModal = false"></div>
             <!-- modal -->
             <div class="modal" v-if="showModal">
-                <button class="close" @click="showModal = false">
-                    <img src="@/assets/img/svg-modal/linear/add.svg" />
-                </button>
-                <h3>لطفا دسته بندی موضوعی خود را انتخاب کنید</h3>
-                <div class="select">
-                    <select>
-                        <option value="1">Pure CSS Select</option>
-                        <option value="2">No JS</option>
-                        <option value="3">Nice!</option>
-                    </select>
-                </div>
-                <button class="confirmation" @click="showModal = false">تایید</button>
+                <modal-new-post @Modalfalse="showModal = false" @on_enter="onEnterModal" :showModal="showModal"></modal-new-post>
             </div>
         </div>
-        
     </main> 
     
 </template>
@@ -86,6 +71,11 @@
 <script src="./new-post.js"></script>
 <style src="./new-post.scss" lang="scss" scope></style>
 
+<style>
+
+
+</style>
+<!--///////////////////////////////////////////////////////////// -->
 <style lang="scss">
 @import "@/assets/sass/_variable";
 
@@ -142,6 +132,7 @@
             border: solid 1px $water-blue-30;
             background-color: $white-three;
             margin-bottom: 30px;
+            font-family: $font-roman;
         }
         &::after {
             content: url("../../assets/img/svg-modal/linear/arrow-down.svg");
@@ -162,6 +153,7 @@
         border-radius: 10px;
         background-color: $tealish;
         border: 0px;
+        opacity: 1;
         align-self: end;
         color: #fff;
         font-family: $font-bold;
@@ -179,4 +171,84 @@
     cursor: pointer;
 }
 
+
+input[type="file"] {
+  display: none;
+}
+
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cropper-area {
+  width: 100%;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  .crop{
+      background-color: #dfe9ec;
+      border-radius: 15px;
+      padding: 3px 10px;
+      opacity: 0.7;
+  }
+}
+
+.actions a {
+  display: inline-block;
+  background: transparent;
+  color: $tealish;
+  opacity: 0.6;
+  font-size:15px;
+  text-decoration: none;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  &:hover{
+      opacity: 1;
+  }
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+}
+
+.preview-area {
+  width: 307px;
+}
+
+.preview-area p {
+  font-size: 1.25rem;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.preview-area p:last-of-type {
+  margin-top: 1rem;
+}
+
+.preview {
+  width: 100%;
+  height: calc(372px * (9 / 16));
+  overflow: hidden;
+}
+
+.crop-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #ccc;
+}
+
+.cropped-image{
+    width: 100%;
+}
+.cropped-image img {
+  width: 100%;
+}
 </style>

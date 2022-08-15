@@ -3,7 +3,7 @@
         <img class="profile-header_img" src="@/assets/img/profile-background.png" alt="background">
         <div class="user-profile">
             <div class="user-info">
-                <img class="user-profile_img" :src="user.userphoto" alt="user-photo">
+                <img class="user-profile_img" :src="userphoto" alt="user-photo">
                 <div class="user-info-text">
                     <div class="user-name">
                         <h2 class="name">{{ user.name }}</h2>
@@ -16,12 +16,17 @@
             <div class="buttons">
                 <button class="visit-wbesite">
                     <p>مشاهده وبسایت</p>
-                    <img src="@/assets/img/export.svg" alt="">    
+                    <img src="@/assets/img/export.svg" alt="">
                 </button>
-                <button class="follow-user">
-                    دنبال کردن 
-                    <img src="@/assets/img/svg-profile/add.svg" alt=""> 
+                <!-- <button class="follow-user" v-show="not_user">
+                    دنبال کردن
+                    <img src="@/assets/img/svg-profile/add.svg" alt="">
+                </button> -->
+                <button class="follow-user" v-show="not_user" v-if="!follow" @click="followUser">
+                    دنبال کردن
+                    <img src="@/assets/img/svg-profile/add.svg" alt="">
                 </button>
+                <button class="follow-user followed" v-show="not_user" v-if="follow" @click="followUser">دنبال شده</button>
             </div>
         </div>
   </div>
@@ -67,7 +72,7 @@
         &:hover{
             background-color: #25918b;
         }
-        
+
     }
     .visit-wbesite{
         background-color: #fff;
@@ -119,6 +124,7 @@
     margin-top: -82px;
     height: 165px;
     border-radius: 30px;
+    margin-right: 28px;
 }
 
 </style>

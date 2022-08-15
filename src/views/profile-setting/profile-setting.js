@@ -2,6 +2,7 @@ import { Form, Field, ErrorMessage } from 'vee-validate';
 // import * as yup from 'yup';
 const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 // let phoneNumberRegExp = /^\+?(09)\)?[-. ]?([0-9]{9})$/;
+import profileUpload from '@/resources/components/profile/profile-upload/profile-upload.vue';
 
 const BORDER_SIZE = 10;
 const BORDER_COLOR = '#000000';
@@ -12,6 +13,7 @@ export default {
         Form,
         Field,
         ErrorMessage,
+        profileUpload
     },
     data(){
         let valid = [true, true, true];
@@ -106,10 +108,43 @@ export default {
             '#23d160',
             '#FF8600',
             '#ff3860'
-            ]
+            ],
+            imageData: ''
         }
     },
+    mounted() {
+        let img = 'http://localhost:8080/img/340558.eb35fb35.jpeg';
+        // console.log(img);
+        var xhr = new XMLHttpRequest();       
+        xhr.open("GET", img, true); 
+        xhr.responseType = "blob";
+        let res_img;
+        xhr.onload = function (e) {
+            // console.log('response')
+            // console.log(this.response);
+            var reader = new FileReader();
+            reader.onload = function(event) {
+            var res = event.target.result;
+            res_img = res;
+            // console.log(res_img);
+            }
+            var file = this.response;
+            reader.readAsDataURL(file)
+        };
+        xhr.send()
+        setTimeout(() => {
+            // console.log('xhr')
+            this.imageData = res_img;
+        }, 300);
+        
+    },
+    created() {
+        this.getDataSettings()
+    },
     methods: {
+        emitImg(img){
+            this.imageData = img;
+        },
         onSubmit(values) {
             this.edit.forEach((value, index) => {
                 if(value === true) {
@@ -121,6 +156,16 @@ export default {
                     this.subField(index);
                 }
             });
+        },
+        async getDataSettings(){
+            try{
+                await this.$store.dispatch('user/requestsettingUser');
+                // console.log('//////////////////');
+                let user = this.$store.state.user.setting;
+                // console.log(user);
+            } catch {
+                console.log('error');
+            }
         },
         onSubmitLink(values) {
             this.edit.forEach((value, index) => {

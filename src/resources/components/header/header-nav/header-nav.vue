@@ -1,5 +1,6 @@
 <template>
-    <div class="header-nav">
+    <div class="header-nav" v-show="show">
+        <div style="display : none"> {{ isLogin }} </div>
         <div class="select-tag">
             <h3>موضوع انتخابی</h3>
             <transition  name="enterTag" v-for="(item, index) in tags" :key="index">

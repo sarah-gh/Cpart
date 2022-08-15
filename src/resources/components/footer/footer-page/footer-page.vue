@@ -15,7 +15,7 @@
                 <div class="footer-link">
                     <ul>
                         <li>
-                            <router-link to="/new-post">
+                            <router-link to="/panel/new-post">
                             بنویسید
                             </router-link>
                         </li>
