@@ -23,3 +23,9 @@ export const writeCookie = (name, value) => {
 export const deleteCookie = (name) => {
   document.cookie = name + '=; Max-Age=0'
 }
+
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => {
+    console.log(i)
+  }, 100)
+}

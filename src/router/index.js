@@ -14,9 +14,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = getCookieByName('token')
-  console.log(token)
-  console.log('to.fullPath')
-  console.log(to.fullPath === ('/'))
 
   if (to.fullPath.startsWith('/panel') && !token) { return next({ name: 'login' }) }
 

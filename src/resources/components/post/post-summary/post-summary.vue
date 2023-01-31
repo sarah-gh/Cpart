@@ -36,8 +36,8 @@
                 <span class="tag" v-for="(item, index) in post.tag" :key="index">
                     {{ item }}
                 </span>
-                <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ></span>
-
+                <span class="save" @click="saveItem" ><img src="../../../../assets/img/svg-post/archive-add.svg" v-if="save" ><img src="../../../../assets/img/archive-add_3.svg" v-else ><p> {{ saveCount }} </p></span>
+                <span class="save time like" @click="likeItem" ><font-awesome-icon :icon="like_icon" /><p> {{ likeCount }} </p></span>
             </div>
         </footer>
     </div>
@@ -54,5 +54,19 @@
 .follow{
     flex-grow: 0;
     margin-right: 20px;
+}
+.save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    p {
+        margin: 0;
+        padding: 0;
+        margin-bottom: -6px;
+        font-size: 16px;
+        // color: #ccc
+        // line-height: 0;
+    }
 }
 </style>

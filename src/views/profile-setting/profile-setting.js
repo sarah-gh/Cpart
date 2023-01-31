@@ -126,16 +126,17 @@ export default {
       reader.onload = function (event) {
         var res = event.target.result
         resImg = res
+        this.imageData = resImg
         // console.log(res_img);
       }
       var file = this.response
       reader.readAsDataURL(file)
     }
     xhr.send()
-    setTimeout(() => {
-      // console.log('xhr')
-      this.imageData = resImg
-    }, 300)
+    // setTimeout(() => {
+    //   // console.log('xhr')
+    //   this.imageData = resImg
+    // }, 300)
   },
   created () {
     this.getDataSettings()

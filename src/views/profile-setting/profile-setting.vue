@@ -4,7 +4,7 @@
             <img src="@/assets/img/svg-profile-setting/linear/candle-2.svg" alt="">
             <h2>تنظیمات حساب کاربری</h2>
         </div>
-        
+
         <section class="container">
             <div class='about'>
                     <span>درباره شما</span>
@@ -100,12 +100,12 @@
                 <div class="content">
                     <div class="part_description">
                         <h3>شرح <span class="counter number">{{ user.description.length }} / 160</span></h3>
-                        <textarea 
-                            class="form-control" 
-                            name="textarea" 
-                            id="textarea" 
-                            required="" 
-                            v-model="user.description" 
+                        <textarea
+                            class="form-control"
+                            name="textarea"
+                            id="textarea"
+                            required=""
+                            v-model="user.description"
                             :maxlength="160">
                         </textarea>
                     </div>
@@ -277,7 +277,7 @@
                     </div>
                 </div>
         </section>
-    </main> 
+    </main>
 </template>
 
 <script src="./profile-setting.js"></script>

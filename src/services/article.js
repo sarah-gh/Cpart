@@ -8,7 +8,6 @@ export const getArticles = async () => {
     .catch((err) => {
       console.error(1, err)
     })
-
   return response.data
 }
 export const getArticlesUser = async () => {

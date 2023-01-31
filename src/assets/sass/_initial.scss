@@ -163,26 +163,41 @@ a:hover {
     }
 }
 @media only screen and (max-width: 500px) {
+    main {
+        min-height: 76vh
+    }
     .container{
     width: 100%;
   }
 }
 @media only screen and (min-width: 500px) {
+    main {
+        min-height: 76vh
+    }
     .container{
     width: 480px;
   }
 }
 @media only screen and (min-width: 798px) {
+    main {
+        min-height: 77vh
+    }
     .container{
         width: 690px;
     }
 }
 @media only screen and (min-width: 992px) {
+    main {
+        min-height: 70vh
+    }
     .container{
         width: 850px;
     }
 }
 @media only screen and (min-width: 1400px) {
+    main {
+        min-height: 64.1vh
+    }
     .container{
         width: 1140px;
     }

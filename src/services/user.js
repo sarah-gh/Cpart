@@ -83,9 +83,11 @@ export const login = async (data) => {
     }
     const res = await axios(config)
     writeCookie('token', res.data)
+    return res.status
   } catch (error) {
-    console.log('\n\n\n\n\nerror:')
-    console.error(error)
+    console.log('\n\n\n\n\nerror login:')
+    console.error(error.response.status)
+    return error.response.status
   }
 }
 

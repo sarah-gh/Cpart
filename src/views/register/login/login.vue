@@ -33,6 +33,7 @@
           <ErrorMessage name="password"><span class="span_error">این فیلد ضروری است</span></ErrorMessage>
         </div>
               <button type="submit" class="button">ادامه</button>
+              <span class="span_error" v-if="errSubmit">نام کاربری یا رمز عبور اشتباه است</span>
       </div>
     </Form>
   </div>
@@ -84,6 +85,7 @@ export default {
       }
     }
     return {
+      errSubmit: 0,
       phoneNumber,
       login
     }
@@ -95,11 +97,17 @@ export default {
     },
     async onSubmit (value) {
       try {
-        await this.requestLogin(JSON.stringify(value))
-        await this.$store.dispatch('user/requestProfileUser')
-        // this.getCsrfToken()
-        this.$router.replace({ name: 'posts' })
-        this.$store.state.login = true
+        const status = await this.requestLogin(JSON.stringify(value))
+        console.log('status ::::::', status)
+        if (status === 200) {
+          this.errSubmit = 0
+          await this.$store.dispatch('user/requestProfileUser')
+          // this.getCsrfToken()
+          this.$router.replace({ name: 'posts' })
+          this.$store.state.login = true
+        } else {
+          this.errSubmit = 1
+        }
       } catch (error) {
         console.log(error)
       }
@@ -116,7 +124,7 @@ export default {
 
     async requestLogin (data) {
       try {
-        await login(data)
+        return await login(data)
       } catch (error) {
         console.log(error)
       }

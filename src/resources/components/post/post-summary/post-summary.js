@@ -14,12 +14,19 @@ export default {
       text: '',
       save: false,
       follow: false,
-      not_user: true
+      not_user: true,
+      like: false,
+      like_icon: ['far', 'thumbs-up'],
+      likeCount: 0,
+      saveCount: 0
     }
   },
   created () {
     this.save = this.post.issaved !== '0'
     this.follow = this.post.isfollowing === '1'
+    this.like = this.post.isliked === '1'
+    this.likeCount = this.post.liked
+    this.saveCount = this.post.saved
   },
   beforeMount () {
     this.text = this.post.articletext
@@ -52,17 +59,51 @@ export default {
         console.log('error')
       }
     },
+    clickLike () {
+      if (this.like_icon[0] === 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
+    },
     saveItem () {
       this.save = !this.save
+      if (this.save) {
+        this.saveCount++
+      } else {
+        this.saveCount--
+      }
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
-        csrfToken: this.$store.state.user.csrfToken,
+        // csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
         status: statusSave
       }
       console.log(data)
       this.testtt(JSON.stringify(data))
+    },
+    likeItem () {
+      if (this.like_icon[0] === 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
+      this.like = !this.like
+      if (this.like) {
+        this.likeCount++
+      } else {
+        this.likeCount--
+      }
+      const statusSave = this.save ? 1 : 0
+      const data = {
+        operation: 'like',
+        // csrfToken: this.$store.state.user.csrfToken,
+        articleId: this.post.articleid,
+        status: statusSave
+      }
+      console.log(data)
+      // this.testtt(JSON.stringify(data))
     },
     followUser () {
       this.follow = !this.follow

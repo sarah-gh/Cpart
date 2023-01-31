@@ -30,8 +30,10 @@ export default {
       try {
         const token = getCookieByName('token')
         if (token) {
+          console.log('\n\n\n is login')
           await this.$store.dispatch('article/requestArticleUser')
         } else {
+          console.log("\n\n\n isn't login")
           await this.$store.dispatch('article/requestArticle')
         }
         const response = this.$store.state.article.article
