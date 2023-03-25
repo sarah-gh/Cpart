@@ -18,7 +18,11 @@
                         :maxlength="140"
                         placeholder="عنوان مطلب خود را وارد کنید">
                     </textarea>
-
+                    <label for="inputFilePDF">Choose a profile picture:</label>
+                    <input type="file"
+                        v-on:change="convertToBase64"
+                        id="inputFilePDF" name="inputFilePDF"
+                        >
                     <div class="select-tag modal-vue">
                         <transition  name="enterTag" v-for="(item, index) in tags" :key="index">
                             <span class="tags" v-on:mouseover="mouseover(index)" v-on:mouseleave="mouseleave(index)">
@@ -51,7 +55,7 @@
                     <!-- -------footer img-------- -->
                     <post-upload v-if="imgfooter" @addImage="add_image" :location="'footer'"></post-upload>
                 </div>
-                <button class="add allowed" :class="{notallowed : !allowe}" @click="PublishContent()">
+                <button class="add allowed" :class="{notallowed : !allowed}" @click="PublishContent()">
                     <span v-show="!published">
                         انتشار مطلب
                     </span>

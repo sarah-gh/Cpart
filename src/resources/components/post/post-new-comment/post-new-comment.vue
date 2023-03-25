@@ -129,7 +129,7 @@ export default {
         status: 1
       }
       data.date = date
-      this.testtt(JSON.stringify(data))
+      this.testtt(data)
     },
     cancel () {
       this.$emit('cancel')

@@ -23,11 +23,12 @@ export default {
       tags: [],
       add_tag: false,
       isActive: true,
-      allowe: false,
+      allowed: false,
       showModal: false,
       imgSrc: '',
       cropImg: '',
       data: null,
+      pdfFile: null,
       img_set: false,
       imgfooter: false,
       error_tag: false,
@@ -68,6 +69,29 @@ export default {
   },
   emits: ['addImage', 'on_enter', 'Modalfalse'],
   methods: {
+    async convertToBase64 () {
+      // Read File
+      var selectedFile = document.getElementById('inputFilePDF').files
+      // Check File is not Empty
+      if (selectedFile.length > 0) {
+        // Select the very first file from list
+        var fileToLoad = selectedFile[0]
+        // FileReader function for read the file.
+        var fileReader = new FileReader()
+        var base64
+        // Onload of file read the file content
+        fileReader.onload = function (fileLoadedEvent) {
+          base64 = fileLoadedEvent.target.result
+          // Print data in console
+          // console.log(base64)
+          this.pdfFile = base64
+          return base64
+        }.bind(this)
+        // Convert data to base64
+        fileReader.readAsDataURL(fileToLoad)
+        // console.log(b)
+      }
+    },
     PublishContent () {
       let now = new Date().toLocaleDateString('fa-IR')
       now = now.split('/')
@@ -84,6 +108,7 @@ export default {
       this.article.date = date
       this.article.readTime = this.readTime(this.article.text)
       this.article.text = this.removeTags(this.article.text)
+
       const data = {
         operation: 'newArticle',
         csrfToken: this.$store.state.user.csrfToken,
@@ -91,16 +116,18 @@ export default {
         title: this.article.header,
         articletext: this.article.text,
         footerPhoto: this.article.footer_img,
+        pdfFile: this.pdfFile,
         date: this.article.date,
         tag: this.article.tags,
         readTime: `${this.article.readTime}`
       }
-      this.testtt(JSON.stringify(data))
+      this.testtt(data)
     },
     async testtt (data) {
       try {
         this.published = true
-        await this.$store.dispatch('article/requestPostArticle', data)
+        const res = await this.$store.dispatch('article/requestPostArticle', data)
+        console.log('requestPostArticle: ', res)
         this.$router.replace({ path: '/panel/profile/0' })
       } catch (error) {
         console.log(error)
@@ -117,9 +144,9 @@ export default {
     checkSpan () {
       this.article.text = document.getElementById('span_id').innerHTML
       if (this.article.text.length > 0 && this.article.header.length > 0) {
-        this.allowe = true
+        this.allowed = true
       } else {
-        this.allowe = false
+        this.allowed = false
       }
     },
     getValue (item) {

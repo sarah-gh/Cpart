@@ -42,7 +42,7 @@
 <script>
 import { Field, Form, ErrorMessage } from 'vee-validate'
 import { login } from '@/services/user.js'
-import { getCookieByName } from '@/resources/utilities.js'
+// import { getCookieByName } from '@/resources/utilities.js'
 
 export default {
   components: {
@@ -102,7 +102,6 @@ export default {
         if (status === 200) {
           this.errSubmit = 0
           await this.$store.dispatch('user/requestProfileUser')
-          // this.getCsrfToken()
           this.$router.replace({ name: 'posts' })
           this.$store.state.login = true
         } else {
@@ -111,15 +110,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    },
-    getCsrfToken: async function () {
-      const accessToken = getCookieByName('token')
-      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
-        headers: {
-          token: accessToken
-        }
-      }).catch(err => console.log(err))
-      this.$store.state.user.csrfToken = response.data.csrfToken
     },
 
     async requestLogin (data) {

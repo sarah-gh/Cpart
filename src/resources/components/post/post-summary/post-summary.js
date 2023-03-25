@@ -81,7 +81,7 @@ export default {
         status: statusSave
       }
       console.log(data)
-      this.testtt(JSON.stringify(data))
+      this.testtt(data)
     },
     likeItem () {
       if (this.like_icon[0] === 'fas') {

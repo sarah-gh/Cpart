@@ -86,7 +86,8 @@
 
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { signup } from '@/services/user.js'
-import { getCookieByName } from '@/resources/utilities.js'; const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+// import { getCookieByName } from '@/resources/utilities.js'
+const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 // const phoneNumberRegExp = /^(0)?09\d{9}$/g
 
 export default {
@@ -194,7 +195,6 @@ export default {
           this.error_msg = 'ورودی نامعتبر'
           return
         }
-        // await this.getCsrfToken(); /////
         await this.$store.dispatch('user/requestProfileUser')
         this.$router.replace({ name: 'posts' })
         this.$store.state.login = true
@@ -205,15 +205,6 @@ export default {
     async requestSignup (data) {
       const res = await signup(data)
       return res
-    },
-    getCsrfToken: async function () {
-      const accessToken = getCookieByName('token')
-      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
-        headers: {
-          token: accessToken
-        }
-      }).catch(err => console.log(err))
-      this.$store.state.user.csrfToken = response.data.csrfToken
     }
   }
 }

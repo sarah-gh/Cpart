@@ -42,7 +42,7 @@ export default {
         articleId: this.post.articleid,
         status: statusSave
       }
-      this.testtt(JSON.stringify(data))
+      this.testtt(data)
     },
     async testtt (data) {
       try {

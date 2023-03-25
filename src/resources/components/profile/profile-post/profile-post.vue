@@ -85,7 +85,7 @@ export default {
         status: statusSave
       }
       // JSON.stringify(data)
-      this.testtt(JSON.stringify(data))
+      this.testtt(data)
       // this.$emit('save_item', 'donbalkonande')
     },
     async testtt (data) {

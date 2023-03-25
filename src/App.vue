@@ -26,24 +26,11 @@ export default {
       photo: ''
     }
   },
-  methods: {
-    getCsrfToken: async function () {
-      const accessToken = getCookieByName('token')
-      const response = await this.axios.get('http://localhost:8000/api/users/csrf', {
-        headers: {
-          token: accessToken
-        }
-      }).catch(err => console.log(err))
-
-      this.$store.state.user.csrfToken = response.data.csrfToken
-    }
-
-  },
   mounted: async function () {
     const c = getCookieByName('token')
+    console.log('getCookieByName', c)
     if (c) {
       this.$store.state.login = true
-      // await this.getCsrfToken()
     } else {
       this.$store.state.login = false
     }
