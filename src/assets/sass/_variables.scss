@@ -14,11 +14,18 @@ $aqua-blue : #00d2f2;
 $warm-grey-two : #808080;
 $blue-grey: #56838a;
 $cloudy-blue : #b8c1cd;
-// fonts
 
+// fonts
 $font-bold : 'bahij-helvetica-bold';
 $font-light : 'bahij-helvetica-light';
 $font-roman : 'bahij-helvetica-roman';
+$font-default: 14px 'iranyekan' !important;
+$font-default-b: 14px 'iranyekan_b' !important;
+$font-default-1: 65% 'iranyekan' !important;
+$font-default-2: 70% 'iranyekan' !important;
+$font-default-3: 85% 'iranyekan' !important;
+$font-default-4: 90% 'iranyekan' !important;
+$font-default-5: 100% 'iranyekan' !important;
 
 [font="bahij"]{
     $font-bold : 'bahij-helvetica-bold';

@@ -85,7 +85,7 @@
 
 <style lang="scss" scoped>
 
- @import "../../../../assets/sass/_variable";
+ @import "../../../../assets/sass/_variables";
 
 .profile_user{
   padding: 0 !important;

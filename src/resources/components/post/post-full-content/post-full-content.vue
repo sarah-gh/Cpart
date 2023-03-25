@@ -14,6 +14,7 @@
                 <h1 class="title">
                     {{ post.title }}
                 </h1>
+                <a :href="post.pdffile">دانلود مقاله</a>
             </div>
             <div class="post-details">
                 <div class="flex-footer">
@@ -41,7 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/sass/_variable";
+@import "@/assets/sass/_variables";
 
 .like{
     font-size: 23px;

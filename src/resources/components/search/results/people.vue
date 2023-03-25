@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable";
+@import "../../../../assets/sass/_variables";
 .component {
   display: flex;
   flex-direction: row-reverse;

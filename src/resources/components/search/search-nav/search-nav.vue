@@ -13,45 +13,44 @@
 
 <script>
 export default {
-    name: "search-nav",
-    data() {
-        return {
-            navigator: [
-                {
-                    text: 'مقالات',
-                    active: true,
-                },
-                {
-                    text: 'افراد',
-                    active: false
-                },
-                {
-                    text: 'موضوعات',
-                    active: false
-                }
-            ]
-        }
-    },
-    methods: {
-        navActive(x){
-            // console.log(x);
-            this.navigator.forEach((value, index) => {
-                if(index === x){
-                    value.active = true;
-                }
-                else {
-                    value.active = false;
-                }
-                //console.log(value.active);
-            })
-            //console.log(this.navigator);
-            this.$emit('clicked', x);
+  name: 'search-nav',
+  data () {
+    return {
+      navigator: [
+        {
+          text: 'مقالات',
+          active: true
         },
+        {
+          text: 'افراد',
+          active: false
+        },
+        {
+          text: 'موضوعات',
+          active: false
+        }
+      ]
     }
+  },
+  methods: {
+    navActive (x) {
+      // console.log(x);
+      this.navigator.forEach((value, index) => {
+        if (index === x) {
+          value.active = true
+        } else {
+          value.active = false
+        }
+        // console.log(value.active);
+      })
+      // console.log(this.navigator);
+      this.$emit('clicked', x)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable";
+@import "../../../../assets/sass/_variables";
 
 .router-nav{
         margin-top: 50px;

@@ -11,7 +11,7 @@ export default {}
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/sass/_variable";
+@import "@/assets/sass/_variables";
 .span_error{
   padding: 10px 0;
   text-align: center;

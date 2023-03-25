@@ -202,3 +202,39 @@ a:hover {
         width: 1140px;
     }
 }
+
+@import "./_variables";
+
+* {
+  font-family: $font-default;
+}
+@media only screen and (max-width: 1024px) {
+    html {
+      font: $font-default-1;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    html {
+      font: $font-default-1;
+    }
+  }
+  @media only screen and (min-width: 1224px) {
+    html {
+      font: $font-default-2;
+    }
+  }
+  @media only screen and (min-width: 1440.98px) {
+    html {
+      font: $font-default-3;
+    }
+  }
+  @media only screen and (min-width: 1624px) {
+    html {
+      font: $font-default-4;
+    }
+  }
+  @media only screen and (min-width: 1824px) {
+    html {
+      font: $font-default-5;
+    }
+  }

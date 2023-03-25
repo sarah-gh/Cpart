@@ -39,7 +39,7 @@
 <script src="./header-nav.js"></script>
 
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable";
+@import "../../../../assets/sass/_variables";
 
 .header-nav{
     margin: 30px auto;

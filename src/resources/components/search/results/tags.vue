@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable";
+@import "../../../../assets/sass/_variables";
 .tag {
   margin: 0 7px;
   border-radius: 17px;

@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/_variable";
+@import "../../assets/sass/_variables";
 
 .search-header {
   display: flex;

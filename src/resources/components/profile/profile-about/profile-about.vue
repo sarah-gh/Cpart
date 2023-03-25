@@ -21,7 +21,7 @@
 <script src="./profile-about.js"></script>
 
 <style lang="scss" scoped>
-@import "@/assets/sass/_variable";
+@import "@/assets/sass/_variables";
 
 h2{
     font-size: 16px;

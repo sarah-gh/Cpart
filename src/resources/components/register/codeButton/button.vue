@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/sass/_variable.scss";
+@import "@/assets/sass/_variables.scss";
 .input-number{
     width:40px;
     height: 50px;

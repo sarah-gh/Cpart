@@ -1,5 +1,6 @@
 <template>
     <section class="container" v-if="!isPublic">
+        <h1>هلیوم، سایتی برای به اشتراک گذاری کتب و مجلات معتبر علمی</h1>
         <header-nav @clicked="onClickNav"></header-nav>
     </section>
     <main>

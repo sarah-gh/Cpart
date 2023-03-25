@@ -35,7 +35,7 @@
 <script src="./profile-header.js"></script>
 
 <style lang="scss" scoped>
-@import "../../../../assets/sass/_variable";
+@import "../../../../assets/sass/_variables";
 
 .profile-header{
     &_img{

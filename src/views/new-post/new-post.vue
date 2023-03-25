@@ -80,7 +80,7 @@
 </style>
 <!--///////////////////////////////////////////////////////////// -->
 <style lang="scss">
-@import "@/assets/sass/_variable";
+@import "@/assets/sass/_variables";
 
 .modal-vue{
     position: relative;
