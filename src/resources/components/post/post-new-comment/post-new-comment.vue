@@ -106,6 +106,7 @@ export default {
   mounted () {
     console.log(this.postid)
   },
+  emits: ['cancel', 'add_comment'],
   methods: {
     newComment () {
       let now = new Date().toLocaleDateString('fa-IR')
@@ -113,22 +114,19 @@ export default {
       let month
       this.number.forEach((value, index) => {
         if (value === now[1]) {
-          month = index - 1
+          month = index
         }
       })
-      const date = `${now[2]}
-                        ${this.month[month]}
-                        ${now[0]}`
+      console.log('now:', now, month)
+      const date = `${now[2]} ${this.month[month]} ${now[0]}`
       const data = {
         operation: 'newComment',
-        csrfToken: this.$store.state.user.csrfToken,
         text: this.comment.text,
         articleId: this.postid,
         replyto: this.replyto?.commentid || null,
-        date: '',
+        date: date,
         status: 1
       }
-      data.date = date
       this.testtt(data)
     },
     cancel () {
@@ -139,6 +137,9 @@ export default {
       try {
         await this.$store.dispatch('article/requestPostComment', data)
         this.$emit('add_comment', data)
+        this.comment.text = ''
+        this.comment.replyto = null
+        this.$emit('cancel')
       } catch (error) {
         console.log(error)
       }

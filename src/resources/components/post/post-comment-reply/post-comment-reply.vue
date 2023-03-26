@@ -48,6 +48,7 @@ export default {
       like_icon: ['far', 'thumbs-up']
     }
   },
+  emits: ['replyComment'],
   methods: {
     clickLike () {
       if (this.like_icon[0] === 'fas') {
@@ -55,6 +56,7 @@ export default {
       } else {
         this.like_icon[0] = 'fas'
       }
+      this.$emit('replyComment')
     }
   }
 }

@@ -58,6 +58,7 @@ export default {
   components: {
     postCommentReply
   },
+  emits: ['replyComment'],
   methods: {
     clickLike () {
       if (this.like_icon[0] === 'fas') {

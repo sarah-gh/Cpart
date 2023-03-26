@@ -44,6 +44,7 @@ export default {
       this.imageData = this.imgData
     }, 700)
   },
+  emits: ['emitImg'],
   methods: {
     previewThumbnail: function getPreview (event) {
       const input = event.target

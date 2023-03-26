@@ -42,7 +42,8 @@ export default {
       }
     }
   },
-  mounted () {
+  updated () {
+    console.log('updated')
   },
   methods: {
     async testtt (data) {
@@ -110,7 +111,7 @@ export default {
       const statusFollow = this.follow ? 1 : 0
       const data = {
         operation: 'follow',
-        csrfToken: this.$store.state.user.csrfToken,
+        // csrfToken: this.$store.state.user.csrfToken,
         followingId: this.post.userid,
         status: statusFollow
       }

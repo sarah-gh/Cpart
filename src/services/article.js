@@ -63,7 +63,7 @@ export const getSingleArticle = async (id) => {
 export const getSingleArticleUser = async (id) => {
   const accessToken = getCookieByName('token')
   const response = await axios.get(
-      `${http}/posts?postId=${id}`, {
+      `${http}/post?postId=${id}`, {
         headers: {
           token: `${accessToken}`
         }

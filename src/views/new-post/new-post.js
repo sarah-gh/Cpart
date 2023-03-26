@@ -96,14 +96,13 @@ export default {
       let now = new Date().toLocaleDateString('fa-IR')
       now = now.split('/')
       let month
+      console.log('now:', now)
       this.number.forEach((value, index) => {
         if (value === now[1]) {
           month = index
         }
       })
-      const date = `${now[2]}
-                        ${this.month[month]}
-                        ${now[0]}`
+      const date = `${now[2]} ${this.month[month]} ${now[0]}`
       console.log(date)
       this.article.date = date
       this.article.readTime = this.readTime(this.article.text)
@@ -111,7 +110,7 @@ export default {
 
       const data = {
         operation: 'newArticle',
-        csrfToken: this.$store.state.user.csrfToken,
+        // csrfToken: this.$store.state.user.csrfToken,
         headerPhoto: this.article.header_img,
         title: this.article.header,
         articletext: this.article.text,

@@ -7,7 +7,7 @@ const user = {
     bookmark: [],
     profileUser: {},
     setting: {},
-    csrfToken: '',
+    // csrfToken: '',
     searchItems: {}
   }),
   actions: {

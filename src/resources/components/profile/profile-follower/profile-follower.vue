@@ -59,13 +59,14 @@ export default {
       const statusFollow = this.isfollow ? 1 : 0
       const data = {
         operation: 'follow',
-        csrfToken: this.$store.state.user.csrfToken,
+        // csrfToken: this.$store.state.user.csrfToken,
         followingId: this.follow.followerid,
         status: statusFollow
       }
       this.testtt2(JSON.stringify(data))
     }
   },
+  emits: ['click_profile'],
   watch: {
     $route (to, from) {
       console.log(to.path)

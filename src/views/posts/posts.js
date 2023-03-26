@@ -11,7 +11,7 @@ export default {
       isPublic: false,
       load: false,
       connection: true,
-      posts: [],
+      // posts: [],
       msg: ''
     }
   },
@@ -20,10 +20,15 @@ export default {
     headerNav
   },
   computed: {
-
+    posts () {
+      return this.$store.state.article.article
+    }
   },
   created () {
     this.getPostsProposed()
+  },
+  updated () {
+    console.log('updated')
   },
   methods: {
     async getPostsProposed () {
@@ -36,8 +41,8 @@ export default {
           console.log("\n\n\n isn't login")
           await this.$store.dispatch('article/requestArticle')
         }
-        const response = this.$store.state.article.article
-        this.posts = response
+        // const response = this.$store.state.article.article
+        // this.posts = response
         this.connection = true
         this.load = true
       } catch (error) {
@@ -50,8 +55,8 @@ export default {
       try {
         getCookieByName('token')
         await this.$store.dispatch('article/requestArticleUserfollow')
-        const response = this.$store.state.article.article
-        this.posts = response
+        // const response = this.$store.state.article.article
+        // this.posts = response
         this.connection = true
         this.load = true
       } catch (error) {
@@ -62,7 +67,7 @@ export default {
     },
     async onClickNav (data) {
       this.summary = !this.summary
-      console.log(data)
+      // console.log(data)
       if (this.summary) {
         await this.getPostsProposed()
         if (this.posts.length === 0) {
@@ -74,6 +79,7 @@ export default {
           this.msg = 'شما کسی را دنبال نکرده اید'
         } else this.msg = ''
       }
+      // this.$forceUpdate()
     }
   }
 }

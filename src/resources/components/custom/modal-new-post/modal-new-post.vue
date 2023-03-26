@@ -44,6 +44,7 @@ export default {
       ]
     }
   },
+  emits: ['on_enter', 'Modalfalse'],
   methods: {
     onEnter () {
       // eslint-disable-next-line vue/no-mutating-props

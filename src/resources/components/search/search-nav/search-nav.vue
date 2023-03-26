@@ -32,6 +32,7 @@ export default {
       ]
     }
   },
+  emits: ['clicked'],
   methods: {
     navActive (x) {
       // console.log(x);

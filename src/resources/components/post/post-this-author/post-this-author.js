@@ -30,7 +30,7 @@ export default {
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
-        csrfToken: this.$store.state.user.csrfToken,
+        // csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
         status: statusSave
       }
