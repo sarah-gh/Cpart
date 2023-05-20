@@ -18,13 +18,14 @@ export default {
     }
   },
   beforeMount () {
-    this.text = this.post.articleText
-    if (this.post.articletext.length > 180) {
+    console.log(this.post)
+    this.text = this.post.articletext
+    if (this.text.length > 180) {
       this.text = this.text.substring(0, 175) + '...'
     }
   },
   mounted () {
-
+    console.log(this.post)
   },
   methods: {
     routeName (item) {
