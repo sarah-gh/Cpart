@@ -16,8 +16,8 @@ const article = {
       const articleData = await getArticles()
       commit('setArticles', articleData)
     },
-    async requestArticleUser ({ commit }) {
-      const articleData = await getArticlesUser()
+    async requestArticleUser ({ commit }, query) {
+      const articleData = await getArticlesUser(query)
       commit('setArticles', articleData)
     },
     async requestArticleUserfollow ({ commit }) {

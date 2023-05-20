@@ -10,9 +10,9 @@ export const getArticles = async () => {
     })
   return response.data
 }
-export const getArticlesUser = async () => {
+export const getArticlesUser = async (query) => {
   const accessToken = getCookieByName('token')
-  const response = await axios.get(`${http}/posts`, {
+  const response = await axios.get(`${http}/posts` + query, {
     headers: {
       token: `${accessToken}`
     }
