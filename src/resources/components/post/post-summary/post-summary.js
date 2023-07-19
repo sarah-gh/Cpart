@@ -46,14 +46,14 @@ export default {
     console.log('updated')
   },
   methods: {
-    async testtt (data) {
+    async endAction (data) {
       try {
         await this.$store.dispatch('user/requestPostBookmark', data)
       } catch (error) {
         console.log(error)
       }
     },
-    async testtt2 (data) {
+    async endAction2 (data) {
       try {
         await this.$store.dispatch('user/requestfollow', data)
       } catch {
@@ -82,7 +82,7 @@ export default {
         status: statusSave
       }
       console.log(data)
-      this.testtt(data)
+      this.endAction(data)
     },
     likeItem () {
       if (this.like_icon[0] === 'fas') {
@@ -104,7 +104,7 @@ export default {
         status: statusSave
       }
       console.log(data)
-      // this.testtt(JSON.stringify(data))
+      // this.endAction(JSON.stringify(data))
     },
     followUser () {
       this.follow = !this.follow
@@ -115,7 +115,7 @@ export default {
         followingId: this.post.userid,
         status: statusFollow
       }
-      this.testtt2(JSON.stringify(data))
+      this.endAction2(JSON.stringify(data))
     },
     routeName (item) {
       return `/panel/profile/${item.userid}`

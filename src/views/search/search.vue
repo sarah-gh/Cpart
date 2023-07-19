@@ -51,7 +51,7 @@ export default {
     console.log('this.$route.query.search')
     console.log(this.$route.query.search)
     this.textSearch = this.$route.query.search
-    this.testtt(this.textSearch)
+    this.endAction(this.textSearch)
   },
   methods: {
     clickedSearch () {},
@@ -67,9 +67,9 @@ export default {
     addItem () {
       console.log('addItem')
       this.$router.replace({ name: 'search', query: { search: this.textSearch } })
-      this.testtt(this.textSearch)
+      this.endAction(this.textSearch)
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         let res = await this.$store.dispatch('user/requestSearch', data)
         res = this.$store.state.user.searchItems

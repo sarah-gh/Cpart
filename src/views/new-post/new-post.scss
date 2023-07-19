@@ -10,7 +10,56 @@
     border-radius: 50%;
     animation: spin 1.5s linear infinite;
 }
-  
+
+.upload-file {
+  padding: 3px 10px;
+  border: 1px solid #b8c1cd;
+  border-radius: 5px;
+  width: fit-content;
+  transition: 0.4s ease all;
+  margin-bottom: 20px;
+  label {
+    cursor: pointer;
+    font-family: $font-bold;
+    font-size: 18px;
+    color: #b8c1cd;
+  }
+  &:hover {
+    border: 1px solid #30bfb7;
+    background-color: #30bfb7;
+    label {
+      color: #fff;
+    }
+  }
+}
+
+.input-price {
+  label {
+    width: 100%;
+    display: block;
+    font-family: $font-default;
+    font-size: 18px;
+    color: $cloudy-blue;
+    margin-bottom: 5px;
+  }
+  input {
+    border-radius: 5px;
+    border: 2px solid transparent;
+    padding: 10px 15px;
+    outline: none;
+    font-family: $font-light;
+    font-size: 16px;
+    border: 1px solid #30bfb7;
+    border-radius: 5px;
+    background-color: transparent;
+    margin-bottom: 20px;
+    &::placeholder {
+      font-family: $font-light;
+      font-size: 16px;
+    }
+  }
+}
+
 .load_btn:before {
     content: '';
     display: block;
@@ -76,7 +125,7 @@ main{
   }
   
   .textarea[contenteditable]:empty::before {
-    content: "متن اصلی خود را وارد کنید...";
+    content: "متن اصلی خود را وارد کنید...* ";
     color: gray;
     font-family: $font-roman;
     font-size: 18px;
@@ -180,6 +229,15 @@ main{
             &:focus-visible {
                 outline: 0px;
             }
+        }
+        .textarea-header {
+          font-size: 22px;
+          font-family: $font-bold;
+          &::placeholder{
+            font-family: $font-bold;
+            font-size: 22px;
+            color: $cloudy-blue;
+        }
         }
     }
 }

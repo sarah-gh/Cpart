@@ -45,7 +45,6 @@ export default {
         }
       }
     },
-    emits: ['clicked'],
     navActive1 () {
       this.isActive = !this.isActive
       this.$emit('clicked', 'pishnehadi')

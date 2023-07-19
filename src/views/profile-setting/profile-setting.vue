@@ -27,7 +27,7 @@
                     </div>
                     <div class="short-description texts">
                         <p class="lable">شرح کوتاه</p>
-                        <p class="text">{{ user.shortdescreption }}</p>
+                        <p class="text">{{ user.shortdescription }}</p>
                     </div>
                 </div>
                 <button class="edit" @click="editField(0)" :class="{ notShow: !show }" >

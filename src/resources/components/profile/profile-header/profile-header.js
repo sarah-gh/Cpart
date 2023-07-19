@@ -42,9 +42,9 @@ export default {
         status: statusFollow
       }
       // JSON.stringify(data)
-      this.testtt2(JSON.stringify(data))
+      this.endAction2(JSON.stringify(data))
     },
-    async testtt2 (data) {
+    async endAction2 (data) {
       try {
         await this.$store.dispatch('user/requestfollow', data)
       } catch {

@@ -127,13 +127,13 @@ export default {
         date: date,
         status: 1
       }
-      this.testtt(data)
+      this.endAction(data)
     },
     cancel () {
       this.$emit('cancel')
       // this.replyto = null
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         await this.$store.dispatch('article/requestPostComment', data)
         this.$emit('add_comment', data)

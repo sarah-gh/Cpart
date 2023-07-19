@@ -41,16 +41,16 @@ export default {
         articleId: this.post.articleid,
         status: statusSave
       }
-      this.testtt(data)
+      this.endAction(data)
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         await this.$store.dispatch('user/requestPostBookmark', data)
       } catch (error) {
         console.log(error)
       }
     },
-    async testtt2 (data) {
+    async endAction2 (data) {
       try {
         await this.$store.dispatch('user/requestfollow', data)
       } catch {
@@ -67,7 +67,7 @@ export default {
         status: statusFollow
       }
       // JSON.stringify(data)
-      this.testtt2(JSON.stringify(data))
+      this.endAction2(JSON.stringify(data))
     },
     clickLike () {
       if (this.like_icon[0] === 'fas') {

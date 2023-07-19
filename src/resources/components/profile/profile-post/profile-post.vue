@@ -85,10 +85,10 @@ export default {
         status: statusSave
       }
       // JSON.stringify(data)
-      this.testtt(data)
+      this.endAction(data)
       // this.$emit('save_item', 'donbalkonande')
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         await this.$store.dispatch('user/requestPostBookmark', data)
         // console.log(test);

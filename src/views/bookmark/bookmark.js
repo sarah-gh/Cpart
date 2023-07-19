@@ -10,10 +10,10 @@ export default {
     }
   },
   created () {
-    this.testtt()
+    this.endAction()
   },
   methods: {
-    async testtt () {
+    async endAction () {
       try {
         await this.$store.dispatch('user/requestbookmark')
         const response = this.$store.state.user.bookmark

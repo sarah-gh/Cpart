@@ -80,8 +80,8 @@ export default {
       show: true,
       security: false,
       edit: [false, false, false],
-      fname: 'امیر حسین',
-      lname: 'مطلب زاده',
+      fname: '',
+      lname: '',
       user: {
         fname: 'امیر حسین',
         lname: 'مطلب زاده',
@@ -160,9 +160,9 @@ export default {
     async getDataSettings () {
       try {
         await this.$store.dispatch('user/requestsettingUser')
-        // console.log('//////////////////');
-        const user = this.$store.state.user.setting
-        console.log(user)
+        console.log('//////////////////')
+        this.user = this.$store.state.user.setting
+        console.log(this.user)
       } catch {
         console.log('error')
       }

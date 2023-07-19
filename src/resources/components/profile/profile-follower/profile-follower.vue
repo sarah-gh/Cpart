@@ -47,7 +47,7 @@ export default {
     reload () {
       console.log('reload page')
     },
-    async testtt2 (data) {
+    async endAction2 (data) {
       try {
         await this.$store.dispatch('user/requestfollow', data)
       } catch {
@@ -63,7 +63,7 @@ export default {
         followingId: this.follow.followerid,
         status: statusFollow
       }
-      this.testtt2(JSON.stringify(data))
+      this.endAction2(JSON.stringify(data))
     }
   },
   emits: ['click_profile'],

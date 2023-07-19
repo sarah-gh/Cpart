@@ -43,9 +43,9 @@ export default {
         articleId: this.post.articleid,
         status: statusSave
       }
-      this.testtt(data)
+      this.endAction(data)
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         await this.$store.dispatch('user/requestPostBookmark', data)
         // console.log(test);

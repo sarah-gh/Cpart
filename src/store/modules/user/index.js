@@ -37,7 +37,8 @@ const user = {
     },
     async requestsettingUser ({ commit }) {
       const setting = await getSetting()
-      commit('setSettingUser', setting)
+      console.log('setting', setting[0])
+      commit('setSettingUser', setting[0])
     },
     async requestPostBookmark ({ commit }, data) {
       await postBookmark(data)
@@ -52,6 +53,7 @@ const user = {
     },
     setSettingUser (state, setting) {
       state.setting = setting
+      // state.user = setting
     },
     setSearch (state, search) {
       state.searchItems = search

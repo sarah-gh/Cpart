@@ -10,19 +10,29 @@
                 <div class="post-content">
 
                     <textarea
-                        class="form-control"
+                        class="form-control textarea-header"
                         name="textarea"
                         id="textarea"
                         required=""
                         v-model="article.header"
                         :maxlength="140"
-                        placeholder="عنوان مطلب خود را وارد کنید">
+                        placeholder="عنوان مطلب خود را وارد کنید*">
                     </textarea>
-                    <label for="inputFilePDF">Choose a profile picture:</label>
-                    <input type="file"
-                        v-on:change="convertToBase64"
-                        id="inputFilePDF" name="inputFilePDF"
-                        >
+                    <div class="upload-file">
+                        <label for="inputFilePDF">
+                            {{ fileName || 'فایل مقاله خود را وارد کنید*' }}
+                        </label>
+                        <input type="file"
+                            v-on:change="convertToBase64" accept=".pdf"
+                            id="inputFilePDF" name="inputFilePDF"
+                            >
+                    </div>
+                    <div class="input-price">
+                        <label>
+                            مبلغ مورد نظر برای مقاله را وارد کنید (تومان)*
+                        </label>
+                        <input type="text" v-model="article.price" @keydown="checkSpan" @input="validatePrice" placeholder="لطفاً فقط از اعداد استفاده کنید">
+                    </div>
                     <div class="select-tag modal-vue">
                         <transition  name="enterTag" v-for="(item, index) in tags" :key="index">
                             <span class="tags" v-on:mouseover="mouseover(index)" v-on:mouseleave="mouseleave(index)">
@@ -75,9 +85,6 @@
 <script src="./new-post.js"></script>
 <style src="./new-post.scss" lang="scss" scope></style>
 
-<style>
-
-</style>
 <!--///////////////////////////////////////////////////////////// -->
 <style lang="scss">
 @import "@/assets/sass/_variables";
@@ -102,7 +109,7 @@
     margin: 0 auto;
     padding: 30px 30px 50px 30px ;
     background-color: #fff;
-    top: 40%;
+    top: 60%;
     left: 30%;
     border-radius: 5px;
     box-shadow: 0 4px 10px 0 rgba(40, 57, 79, 0.1);

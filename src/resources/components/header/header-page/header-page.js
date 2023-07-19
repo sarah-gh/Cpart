@@ -53,7 +53,7 @@ export default {
   computed: {
     isLogin () {
       if (this.$store.state.login) {
-        this.testtt()
+        this.endAction()
         return ''
       }
       return ''
@@ -68,7 +68,7 @@ export default {
       // this.$router.replace({ path: '/panel/profile/0' });
       this.$router.replace({ path: '/panel/profile/0' })
     },
-    async testtt () {
+    async endAction () {
       try {
         await this.$store.dispatch('user/requestProfileUser')
         this.userLogin = this.$store.state.user.profileUser.about['0']

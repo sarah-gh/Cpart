@@ -17,6 +17,7 @@ export default {
         footer_img: '',
         tags: [],
         date: '',
+        price: '',
         readTime: ''
       },
       text: '',
@@ -24,6 +25,7 @@ export default {
       add_tag: false,
       isActive: true,
       allowed: false,
+      fileName: '',
       showModal: false,
       imgSrc: '',
       cropImg: '',
@@ -70,26 +72,29 @@ export default {
   emits: ['addImage', 'on_enter', 'Modalfalse'],
   methods: {
     async convertToBase64 () {
-      // Read File
       var selectedFile = document.getElementById('inputFilePDF').files
-      // Check File is not Empty
+
       if (selectedFile.length > 0) {
-        // Select the very first file from list
         var fileToLoad = selectedFile[0]
-        // FileReader function for read the file.
+        this.fileName = fileToLoad.name
+
+        // بررسی پسوند فایل
+        if (!this.fileName.toLowerCase().endsWith('.pdf')) {
+          alert('لطفاً فقط فایل‌های PDF انتخاب کنید.')
+          this.fileName = ''
+          return
+        }
+
         var fileReader = new FileReader()
         var base64
-        // Onload of file read the file content
+
         fileReader.onload = function (fileLoadedEvent) {
           base64 = fileLoadedEvent.target.result
-          // Print data in console
-          // console.log(base64)
           this.pdfFile = base64
           return base64
         }.bind(this)
-        // Convert data to base64
+
         fileReader.readAsDataURL(fileToLoad)
-        // console.log(b)
       }
     },
     PublishContent () {
@@ -118,11 +123,12 @@ export default {
         pdfFile: this.pdfFile,
         date: this.article.date,
         tag: this.article.tags,
+        price: this.article.price,
         readTime: `${this.article.readTime}`
       }
-      this.testtt(data)
+      this.endAction(data)
     },
-    async testtt (data) {
+    async endAction (data) {
       try {
         this.published = true
         const res = await this.$store.dispatch('article/requestPostArticle', data)
@@ -140,9 +146,12 @@ export default {
       str = str.replaceAll(/&nbsp;/ig, ' ')
       return str
     },
+    validatePrice () {
+      this.article.price = this.article.price.replace(/[^0-9]/g, '')
+    },
     checkSpan () {
       this.article.text = document.getElementById('span_id').innerHTML
-      if (this.article.text.length > 0 && this.article.header.length > 0) {
+      if (this.article.text.length > 0 && this.article.header.length > 0 && this.article.price.length > 0) {
         this.allowed = true
       } else {
         this.allowed = false
