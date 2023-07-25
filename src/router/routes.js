@@ -2,6 +2,9 @@ export const routes = [
   {
     path: '/',
     name: 'posts',
+    meta: {
+      title: 'صفحه اصلی'
+    },
     component: () => import(/* webpackChunkName: "posts" */ '../views/posts/posts.vue')
   },
   {

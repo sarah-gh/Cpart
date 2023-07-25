@@ -30,8 +30,8 @@ export default {
   },
   beforeMount () {
     this.text = this.post.articletext
-    console.log(this.post)
     if (this.post.articletext.length > 180) {
+      this.text = this.removeTags(this.text)
       this.text = this.text.substring(0, 175) + '...'
     }
     if (this.$store.state.login) {
@@ -52,6 +52,12 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    removeTags (str) {
+      if ((str === null) || (str === '')) { return false } else { str = str.toString() }
+      str = str.replace(/(<([^>]+)>)/ig, '')
+      str = str.replaceAll(/&nbsp;/ig, ' ')
+      return str
     },
     async endAction2 (data) {
       try {

@@ -32,7 +32,9 @@
         </header>
         <div class='post-content'>
             <img :src="post.headerphoto" class="post-photo" alt="post-photo">
-            <p> {{ post.articletext}} </p>
+            <!-- <p> {{ post.articletext}} </p> -->
+            <div v-html="'<span>' + post.articletext + '</span>'"></div>
+
             <img :src="post.footerphoto" v-show="post.footerphoto" class="post-photo" alt="post-photo">
         </div>
     </div>

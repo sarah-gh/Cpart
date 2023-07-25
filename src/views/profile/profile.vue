@@ -13,7 +13,7 @@
         </p>
     </section>
     <section class="container" v-if="load && connection">
-        <profile-header :user="userProfile" ></profile-header>
+        <profile-header :user="userProfile" @ModalTrue="ModalTrue" ></profile-header>
         <profile-nav @clicked="onClickNav"></profile-nav>
     </section>
     <main v-if="load && connection">
@@ -33,6 +33,31 @@
             </article>
         </section>
     </main>
+    <div id="wrapper" class="main main-modal">
+        <div class="overlay" v-if="showModal" @click="showModal = false"></div>
+        <div class="modal" v-if="showModal">
+            <modal-dialog @Modalfalse="showModal = false">
+                <header>
+                    <slot name="modal-header">
+                        <h3>افزایش موجودی</h3>
+                    </slot>
+                </header>
+                <div class="main">
+                    <slot name="modal-main">
+                        <div class="input-form flex justify-center flex-col">
+                            <label>میزان افزایش موجودی مورد نظر را وارد کنید</label>
+                            <input type="text" v-model="credit"  placeholder="لطفاً فقط از اعداد استفاده کنید" @input="validatePrice">
+                        </div>
+                    </slot>
+                </div>
+                <footer>
+                    <slot name="modal-footer">
+                        <button class="confirmation" @click="showModal = false">افزایش</button>
+                    </slot>
+                </footer>
+            </modal-dialog>
+        </div>
+    </div>
 </template>
 
 <script src="./profile.js"></script>

@@ -4,6 +4,7 @@ import profilePost from '@/resources/components/profile/profile-post/profile-pos
 import profileFollower from '@/resources/components/profile/profile-follower/profile-follower.vue'
 import profileAbout from '@/resources/components/profile/profile-about/profile-about.vue'
 import { getCookieByName } from '@/resources/utilities.js'
+import ModalDialog from '@/resources/components/custom/modal-dialog/dialog.vue'
 
 export default {
   name: 'profile',
@@ -11,7 +12,9 @@ export default {
     return {
       navigate: [false, true, false],
       profile: {},
+      showModal: false,
       about: {},
+      credit: 0,
       userposts: [],
       userProfile: {},
       follows: [],
@@ -23,6 +26,7 @@ export default {
     profileHeader,
     profileNav,
     profilePost,
+    ModalDialog,
     profileFollower,
     profileAbout
   },
@@ -52,6 +56,13 @@ export default {
           this.navigate[index] = false
         }
       })
+    },
+    validatePrice () {
+      this.article.price = this.article.price.replace(/[^0-9]/g, '')
+    },
+    ModalTrue () {
+      console.log('emit modal')
+      this.showModal = true
     },
     async getUserProfile () {
       try {
@@ -110,10 +121,12 @@ export default {
         this.follows = [...this.profile.follows]
         this.userposts = this.profile.posts
         this.userProfile = {
+          credit: this.about.credit,
           userphoto: this.about.userphoto,
           shortdescription: this.about.shortdescription,
           name: this.about.fname + ' ' + this.about.lname,
           followers: this.about.followers,
+          isFollowing: this.about.isFollowing,
           username: this.about.username,
           userid: this.about.userid
         }
@@ -129,9 +142,13 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log(to.path)
-      console.log(from.path)
-      // location.reload();
+      if (to.path !== from.path) {
+        if (this.$route.params.id !== 0) {
+          this.getProfile()
+        } else {
+          this.getUserProfile()
+        }
+      }
     }
   }
 }

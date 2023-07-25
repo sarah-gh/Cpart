@@ -9,6 +9,8 @@
                         <h2 class="name">{{ user.name }}</h2>
                         <span class="circle"></span>
                         <p>{{ user.followers }} دنبال کننده</p>
+                        <span class="circle"></span>
+                        <p>موجودی: {{ user.credit }} تومان</p>
                     </div>
                     <p class="user-skill">{{ user.shortdescription }}</p>
                 </div>
@@ -18,15 +20,18 @@
                     <p>مشاهده وبسایت</p>
                     <img src="@/assets/img/export.svg" alt="">
                 </button>
+                <button class="visit-wbesite" @click="ModalTrue" v-show="!not_user">
+                    <p>افزایش موجودی</p>
+                </button>
                 <!-- <button class="follow-user" v-show="not_user">
                     دنبال کردن
                     <img src="@/assets/img/svg-profile/add.svg" alt="">
                 </button> -->
-                <button class="follow-user" v-show="not_user" v-if="!follow" @click="followUser">
+                <button class="follow-user" v-show="not_user && (!user.isFollowing)" @click="followUser">
                     دنبال کردن
                     <img src="@/assets/img/svg-profile/add.svg" alt="">
                 </button>
-                <button class="follow-user followed" v-show="not_user" v-if="follow" @click="followUser">دنبال شده</button>
+                <button class="follow-user followed" v-show="not_user && (user.isFollowing)" @click="followUser">دنبال شده</button>
             </div>
         </div>
   </div>

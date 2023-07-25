@@ -111,7 +111,7 @@ export default {
       console.log(date)
       this.article.date = date
       this.article.readTime = this.readTime(this.article.text)
-      this.article.text = this.removeTags(this.article.text)
+      // this.article.text = this.removeTags(this.article.text)
 
       const data = {
         operation: 'newArticle',

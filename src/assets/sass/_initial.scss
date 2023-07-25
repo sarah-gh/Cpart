@@ -208,6 +208,9 @@ a:hover {
 * {
   font-family: $font-default;
 }
+button {
+  font-family: $font-roman;
+}
 @media only screen and (max-width: 1024px) {
     html {
       font: $font-default-1;
@@ -237,4 +240,47 @@ a:hover {
     html {
       font: $font-default-5;
     }
+  }
+
+  .input-form {
+    label {
+      width: 100%;
+      display: block;
+      font-family: $font-default;
+      font-size: 18px;
+      color: $cloudy-blue;
+      margin-bottom: 5px;
+    }
+    input {
+      border-radius: 5px;
+      border: 2px solid transparent;
+      padding: 10px 15px;
+      outline: none;
+      font-family: $font-light;
+      font-size: 16px;
+      border: 1px solid #30bfb7;
+      border-radius: 5px;
+      background-color: transparent;
+      margin-bottom: 20px;
+      &::placeholder {
+        font-family: $font-light;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .align-center {
+    align-items: center;
   }

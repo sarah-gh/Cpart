@@ -15,23 +15,36 @@ export default {
       userphoto: ''
     }
   },
+  watch: {
+    user: {
+      deep: true,
+      handler () {
+        this.myMount()
+      }
+    }
+  },
   beforeMount () {
-    console.log(this.user)
-    if (this.$store.state.user.profileUser.about['0'].username == this.user.username) {
-      this.not_user = false
-    } else {
-      this.not_user = true
-    }
-    if (this.user.userphoto == null) {
-      this.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
-    } else {
-      this.userphoto = this.user.userphoto
-    }
+    this.myMount()
   },
   mounted () {
 
   },
   methods: {
+    ModalTrue () {
+      this.$emit('ModalTrue')
+    },
+    myMount () {
+      if (this.$store.state.user.profileUser.about['0'].username === this.user.username) {
+        this.not_user = false
+      } else {
+        this.not_user = true
+      }
+      if (this.user.userphoto == null) {
+        this.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
+      } else {
+        this.userphoto = this.user.userphoto
+      }
+    },
     followUser () {
       this.follow = !this.follow
       const statusFollow = this.follow ? 1 : 0
