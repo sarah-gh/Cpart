@@ -16,7 +16,8 @@ const user = {
       commit('setBookmark', bookmarkData)
     },
     async requestfollow ({ commit }, data) {
-      await userOperation(data)
+      console.log(data)
+      return await userOperation(data)
     },
     async requestLikeArticle ({ commit }, data) {
       console.log(data)

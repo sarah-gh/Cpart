@@ -5,6 +5,8 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import './assets/sass/style.scss'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -20,6 +22,7 @@ dom.watch()
 
 const app = createApp(App)
 
+app.use(VueSweetalert2)
 app.use(store).use(router).use(VueAxios, axios).component('font-awesome-icon', FontAwesomeIcon).use(VueCookies).mount('#app')
 
 // Or to set default config:

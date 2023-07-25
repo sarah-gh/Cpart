@@ -211,6 +211,24 @@ a:hover {
 button {
   font-family: $font-roman;
 }
+
+.btn-secondary {
+  cursor: pointer;
+  font-family: $font-bold;
+  font-size: 1.1rem;
+  color: #99a0a8;
+  padding: 3px 10px;
+  border: 1px solid #99a0a8;
+  border-radius: 5px;
+  width: fit-content;
+  transition: 0.4s ease all;
+  &:hover {
+    border: 1px solid #30bfb7;
+    background-color: #30bfb7;
+    color: #fff;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
     html {
       font: $font-default-1;

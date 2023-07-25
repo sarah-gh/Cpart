@@ -30,19 +30,25 @@ export const postBookmark = async (data) => {
       return false
     })
 }
+
 export const userOperation = async (data) => {
   const accessToken = getCookieByName('token')
-  console.log(data)
-  await axios.post(`${http}/users/operation`, data, {
-    headers: {
-      token: `${accessToken}`
-    }
-  })
-    .catch((error) => {
-      console.error(error)
-      return false
+  console.log('userOperation', data)
+  try {
+    const response = await axios.post(`${http}/users/operation`, data, {
+      headers: {
+        token: `${accessToken}`
+      }
     })
+
+    console.log('userOperation:::', response)
+    return response.status // بازگشت مقدار وضعیت (status) از پاسخ سرور
+  } catch (error) {
+    console.error(error)
+    return false
+  }
 }
+
 export const getProfileUser = async () => {
   const accessToken = getCookieByName('token')
   const response = await axios.get(`${http}/users/profile`, {

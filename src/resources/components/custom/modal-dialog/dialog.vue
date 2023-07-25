@@ -1,13 +1,13 @@
 <template>
     <div class="">
-        <button class="close" @click="showModalfalse()"> &#10006;
+        <button class="close" @click="showModalFalse()"> &#10006;
         </button>
         <header>
             <slot name="header"></slot>
         </header>
         <div>
             <slot></slot>
-		</div>
+        </div>
         <footer>
             <slot name="footer"></slot>
         </footer>
@@ -18,7 +18,7 @@
 export default {
   name: 'modal',
   methods: {
-    showModalfalse () {
+    showModalFalse () {
       this.$emit('Modalfalse')
     }
   }
@@ -31,7 +31,7 @@ export default {
   text-align: center;
 }
  .text h3 {
-	 font-size: 1.5rem;
+	font-size: 1.5rem;
 	 font-weight: bold;
 	 color: #5864ff;
 }
