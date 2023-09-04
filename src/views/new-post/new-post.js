@@ -115,8 +115,7 @@ export default {
 
       const data = {
         operation: 'newArticle',
-        // csrfToken: this.$store.state.user.csrfToken,
-        headerPhoto: this.article.header_img,
+         headerPhoto: this.article.header_img,
         title: this.article.header,
         articletext: this.article.text,
         footerPhoto: this.article.footer_img,

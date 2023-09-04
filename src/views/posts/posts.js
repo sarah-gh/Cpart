@@ -11,6 +11,8 @@ export default {
       isPublic: false,
       load: false,
       connection: true,
+      limit: 3,
+      offset: 0,
       // posts: [],
       msg: ''
     }
@@ -31,16 +33,37 @@ export default {
     console.log('updated')
   },
   methods: {
+    async getMorePosts () {
+      try {
+        this.limit = this.limit + 3
+        this.offset = this.offset + 3
+        const token = getCookieByName('token')
+        const query = `?limit=${this.limit}&offset=${this.offset}`
+        if (token) {
+          console.log('\n\n\n is login')
+          await this.$store.dispatch('article/requestMoreArticleUser', query)
+        } else {
+          console.log("\n\n\n isn't login")
+          await this.$store.dispatch('article/requestMoreArticle', query)
+        }
+        this.connection = true
+        this.load = true
+      } catch (error) {
+        this.connection = false
+        this.load = true
+        console.log(error)
+      }
+    },
     async getPostsProposed () {
       try {
         const token = getCookieByName('token')
+        const query = `?limit=${this.limit}&offset=${this.offset}`
         if (token) {
           console.log('\n\n\n is login')
-          const query = '?limit=5&offset=0'
           await this.$store.dispatch('article/requestArticleUser', query)
         } else {
           console.log("\n\n\n isn't login")
-          await this.$store.dispatch('article/requestArticle')
+          await this.$store.dispatch('article/requestArticle', query)
         }
         // const response = this.$store.state.article.article
         // this.posts = response
@@ -68,6 +91,8 @@ export default {
     },
     async onClickNav (data) {
       this.summary = !this.summary
+      this.limit = 3
+      this.offset = 0
       // console.log(data)
       if (this.summary) {
         await this.getPostsProposed()

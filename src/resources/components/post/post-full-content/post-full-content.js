@@ -42,7 +42,6 @@ export default {
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
-        // csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
         status: statusSave
       }
@@ -74,7 +73,6 @@ export default {
       const statusFollow = this.follow ? 1 : 0
       const data = {
         operation: 'follow',
-        // csrfToken: this.$store.state.user.csrfToken,
         followingId: this.post.userid,
         status: statusFollow
       }
@@ -83,16 +81,13 @@ export default {
     },
     ModalTrue () {
       console.log('emit modal')
+      if (!this.$store.state.login) {
+        this.$swal('لطفا ابتدا وارد شوید', '', 'error')
+        return
+      }
       // this.showModal = true
       this.$swal({
-        // toast: true,
-        // position: 'top-end',
-        // showConfirmButton: false,
-        // timer: 3000,
         icon: 'question',
-        // title: 'Hi from Sweetalert',
-        // text: 'Have a good day ahead!',
-        // showCancelButton: 'true'
         title: 'آیا از خرید مقاله مطمئن هستید؟',
         html:
           'مقاله: ' + this.post.title +
@@ -103,7 +98,6 @@ export default {
         confirmButtonText: 'خرید',
         denyButtonText: 'لغو'
       }).then(async (result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           const data = {
             operation: 'downloadArticle',

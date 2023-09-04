@@ -18,6 +18,8 @@
             <article class="card" v-for="(item, index) in posts" :key="index">
               <post-summary :post="item"></post-summary>
             </article>
+            <button @click="getMorePosts">مشاهده بیشتر</button>
+
             <!-- <div class="msg" v-if="!posts"> {{ msg }} </div> -->
         </section>
         <section class="post-container container" v-if="!summary && load && connection">
@@ -25,6 +27,7 @@
               <post-summary :post="item"></post-summary>
             </article>
             <div class="msg" v-if="!msg"> {{ msg }} </div>
+            <button @click="getMorePosts">مشاهده بیشتر</button>
         </section>
     </main>
 </template>

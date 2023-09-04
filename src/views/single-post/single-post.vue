@@ -17,17 +17,19 @@
         <div class="main-container"  v-if="load">
             <post-full-content @getPosts="getPosts" :post="post"></post-full-content>
 
-            <div class='this-author' v-if="otherPosts.length > 0">
+            <div class='this-author' v-if="otherPosts.length > 1">
                 <span>از همین نویسنده</span>
             </div>
-            <div class="headerLine">
+            <div class="headerLine" v-if="otherPosts.length > 1">
                 <div class="boldLine"></div>
                 <div class="line"></div>
             </div>
 
-            <div class="other-articles">
+            <div class="other-articles" v-if="otherPosts.length > 1">
                 <article class="article" v-for="(item, index) in otherPosts" :key="index">
-                    <post-this-author :post="item"></post-this-author>
+                    <template v-if="post.articleid != item.articleid">
+                        <post-this-author :post="item"></post-this-author>
+                    </template>
                 </article>
             </div>
 
@@ -43,8 +45,15 @@
                 <post-comment @replyComment="reply" :comment="com" ></post-comment>
                 <div class="commentLine"></div>
             </div>
-
-            <post-new-comment :replyto="replyto" @add_comment="addComment" @cancel="cancel" :postid="post.articleid"></post-new-comment>
+            <div v-if="comment.length == 0">
+                <p>نظری ثبت نشده است</p>
+            </div>
+            <template v-if="$store.state.login">
+                <post-new-comment :replyto="replyto" @add_comment="addComment" @cancel="cancel" :postid="post.articleid"></post-new-comment>
+            </template>
+            <template v-else>
+                <p>برای ثبت نظر ابتدا وارد شوید</p>
+            </template>
 
         </div>
     </main>

@@ -22,6 +22,10 @@
 
 .search-container{
     display: flex;
+    .search {
+        width: 25px;
+        margin-right: 10px;
+    }
 }
 .origin-center {
     transform-origin: center;

@@ -52,7 +52,7 @@
                 </div>
                 <footer>
                     <slot name="modal-footer">
-                        <button class="confirmation" @click="showModal = false">افزایش</button>
+                        <button class="confirmation" @click="increaseCredit">افزایش</button>
                     </slot>
                 </footer>
             </modal-dialog>

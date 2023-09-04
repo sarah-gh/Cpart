@@ -2,9 +2,9 @@ import axios from 'axios'
 import { getCookieByName } from '@/resources/utilities.js'
 const http = 'http://localhost:8000/api'
 
-export const getArticles = async () => {
+export const getArticles = async (query) => {
   console.log('Getting')
-  const response = await axios.get(`${http}/posts`)
+  const response = await axios.get(`${http}/posts` + query)
     .catch((err) => {
       console.error(1, err)
     })

@@ -38,15 +38,6 @@ export default {
       this.getUserProfile()
     }
   },
-  // computed: {
-  //     changedRoute() {
-  //         if(this.$route.params.id != 0 ){
-  //             this.getProfile();
-  //         } else {
-  //             this.getUserProfile()
-  //         }
-  //     }
-  // },
   methods: {
     onClickNav (data) {
       this.navigate.forEach((value, index) => {
@@ -58,7 +49,28 @@ export default {
       })
     },
     validatePrice () {
-      this.article.price = this.article.price.replace(/[^0-9]/g, '')
+      this.credit = this.credit.replace(/[^0-9]/g, '')
+    },
+    async increaseCredit () {
+      try {
+        this.showModal = false
+        const data = {
+          operation: 'increaseCredit',
+          creditAmount: +this.credit
+        }
+        await this.endAction(data)
+        await this.getUserProfile()
+        this.$swal.fire('انجام شد!', '', 'success')
+      } catch (error) {
+        this.$swal('error!', '', 'error')
+      }
+    },
+    async endAction (data) {
+      try {
+        await this.$store.dispatch('user/requestfollow', data)
+      } catch {
+        console.log('error')
+      }
     },
     ModalTrue () {
       console.log('emit modal')
@@ -87,7 +99,8 @@ export default {
           shortdescription: this.about.shortdescription,
           name: this.about.fname + ' ' + this.about.lname,
           followers: this.about.followers,
-          username: this.about.username
+          username: this.about.username,
+          credit: this.about.credit
         }
         // console.log(this.follows)
         this.load = true
@@ -105,21 +118,17 @@ export default {
     async getProfile () {
       try {
         const accessToken = getCookieByName('token')
-        const response = await this.axios.get(
-                    `http://localhost:8000/api/users/profile/${this.$route.params.id}`, {
-                      headers: {
-                        token: `${accessToken}`
-                      }
-                    }
-        ).then((res) => {
-          return res.data
-        }).catch((err) => {
-          console.error(err)
-        })
-        this.profile = response
-        this.about = this.profile.about['0']
+        const url = `http://localhost:8000/api/users/profile/${this.$route.params.id}`
+        const headers = { token: accessToken }
+
+        const response = await this.axios.get(url, { headers })
+        const data = response.data
+
+        this.profile = data
+        this.about = this.profile.about[0]
         this.follows = [...this.profile.follows]
         this.userposts = this.profile.posts
+
         this.userProfile = {
           credit: this.about.credit,
           userphoto: this.about.userphoto,
@@ -130,15 +139,53 @@ export default {
           username: this.about.username,
           userid: this.about.userid
         }
-        // console.log(this.follows)
+
         this.load = true
         this.connection = true
       } catch (error) {
-        console.log(error)
+        console.error(error)
         this.connection = false
         this.load = true
       }
     }
+
+    // async getProfile () {
+    //   try {
+    //     const accessToken = getCookieByName('token')
+    //     const response = await this.axios.get(
+    //                 `http://localhost:8000/api/users/profile/${this.$route.params.id}`, {
+    //                   headers: {
+    //                     token: `${accessToken}`
+    //                   }
+    //                 }
+    //     ).then((res) => {
+    //       return res.data
+    //     }).catch((err) => {
+    //       console.error(err)
+    //     })
+    //     this.profile = response
+    //     this.about = this.profile.about['0']
+    //     this.follows = [...this.profile.follows]
+    //     this.userposts = this.profile.posts
+    //     this.userProfile = {
+    //       credit: this.about.credit,
+    //       userphoto: this.about.userphoto,
+    //       shortdescription: this.about.shortdescription,
+    //       name: this.about.fname + ' ' + this.about.lname,
+    //       followers: this.about.followers,
+    //       isFollowing: this.about.isFollowing,
+    //       username: this.about.username,
+    //       userid: this.about.userid
+    //     }
+    //     // console.log(this.follows)
+    //     this.load = true
+    //     this.connection = true
+    //   } catch (error) {
+    //     console.log(error)
+    //     this.connection = false
+    //     this.load = true
+    //   }
+    // }
   },
   watch: {
     $route (to, from) {

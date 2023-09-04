@@ -50,8 +50,7 @@ export default {
       const statusFollow = this.follow ? 1 : 0
       const data = {
         operation: 'follow',
-        // csrfToken: this.$store.state.user.csrfToken,
-        followingId: this.user.userid,
+         followingId: this.user.userid,
         status: statusFollow
       }
       // JSON.stringify(data)

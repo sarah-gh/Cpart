@@ -83,7 +83,6 @@ export default {
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
-        // csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
         status: statusSave
       }
@@ -105,7 +104,6 @@ export default {
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'like',
-        // csrfToken: this.$store.state.user.csrfToken,
         articleId: this.post.articleid,
         status: statusSave
       }
@@ -117,7 +115,6 @@ export default {
       const statusFollow = this.follow ? 1 : 0
       const data = {
         operation: 'follow',
-        // csrfToken: this.$store.state.user.csrfToken,
         followingId: this.post.userid,
         status: statusFollow
       }

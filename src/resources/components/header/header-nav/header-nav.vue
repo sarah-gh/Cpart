@@ -1,7 +1,7 @@
 <template>
     <div class="header-nav" v-show="show">
         <div style="display : none"> {{ isLogin }} </div>
-        <div class="select-tag">
+        <!-- <div class="select-tag">
             <h3>موضوع انتخابی</h3>
             <transition  name="enterTag" v-for="(item, index) in tags" :key="index">
                 <span class="tags" v-on:mouseover="mouseover(index)" v-on:mouseleave="mouseleave(index)">
@@ -17,7 +17,7 @@
             <div class="plus">
                 <img src="@/assets/img/svg-header/add.svg" @click="addTag()" />
             </div>
-        </div>
+        </div> -->
         <div class="router-nav">
             <div class="link">
                 <a :class="{ active: !isActive }" @click="navActive2()">

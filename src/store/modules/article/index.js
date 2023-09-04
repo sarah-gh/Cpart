@@ -12,8 +12,8 @@ const article = {
     otherPosts: []
   }),
   actions: {
-    async requestArticle ({ commit }) {
-      const articleData = await getArticles()
+    async requestArticle ({ commit }, query) {
+      const articleData = await getArticles(query)
       commit('setArticles', articleData)
     },
     async requestArticleUser ({ commit }, query) {
@@ -23,6 +23,14 @@ const article = {
     async requestArticleUserfollow ({ commit }) {
       const articleData = await getArticlesUserfollow()
       commit('setArticles', articleData)
+    },
+    async requestMoreArticle ({ commit }, query) {
+      const articleData = await getArticles(query)
+      commit('setMoreArticles', articleData)
+    },
+    async requestMoreArticleUser ({ commit }, query) {
+      const articleData = await getArticlesUser(query)
+      commit('setMoreArticles', articleData)
     },
     async requestSingleArticle ({ commit }, data) {
       const singleArticleData = await getSingleArticle(data)
@@ -44,6 +52,11 @@ const article = {
       state.article = []
       setTimeout(() => {
         state.article = articleData
+      }, 100)
+    },
+    setMoreArticles (state, articleData) {
+      setTimeout(() => {
+        state.article.push(...articleData)
       }, 100)
     },
     setArticlesuser (state, articleData) {

@@ -32,7 +32,7 @@ export default {
       local_login: false,
       show_header: false,
       userLogin: {
-        userphoto: 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg',
+        userphoto: '',
         fname: '',
         lname: '',
         username: ''
@@ -72,16 +72,19 @@ export default {
       try {
         await this.$store.dispatch('user/requestProfileUser')
         this.userLogin = this.$store.state.user.profileUser.about['0']
-        if (this.userLogin.userphoto == null) {
-          this.userLogin.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
-        }
+        // if (this.userLogin.userphoto == null) {
+        //   this.userLogin.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
+        // }
       } catch (error) {
         console.log(error)
       }
     },
     async exit () {
+      this.$store.state.login = false
       await this.$cookies.remove('token')
-      location.reload()
+      setTimeout(() => {
+        location.reload()
+      }, 100)
     }
   },
   components: {
