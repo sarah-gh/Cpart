@@ -18,7 +18,9 @@
             <article class="card" v-for="(item, index) in posts" :key="index">
               <post-summary :post="item"></post-summary>
             </article>
-            <button @click="getMorePosts">مشاهده بیشتر</button>
+            <div class="w-100 flex d-flex">
+                <button class="btn btn-primary" @click="getMorePosts">مشاهده بیشتر</button>
+            </div>
 
             <!-- <div class="msg" v-if="!posts"> {{ msg }} </div> -->
         </section>
@@ -27,7 +29,9 @@
               <post-summary :post="item"></post-summary>
             </article>
             <div class="msg" v-if="!msg"> {{ msg }} </div>
-            <button @click="getMorePosts">مشاهده بیشتر</button>
+            <div class="w-100 flex d-flex">
+                <button class="btn btn-primary" @click="getMorePosts">مشاهده بیشتر</button>
+            </div>
         </section>
     </main>
 </template>

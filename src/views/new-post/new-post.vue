@@ -75,7 +75,7 @@
             <div class="overlay" v-if="showModal" @click="showModal = false"></div>
             <!-- modal -->
             <div class="modal" v-if="showModal">
-                <modal-new-post @Modalfalse="showModal = false" @on_enter="onEnterModal" :showModal="showModal"></modal-new-post>
+                <modal-new-post @Modalfalse="showModal = false" @onEnter="onEnterModal" :showModal="showModal"></modal-new-post>
             </div>
         </div>
     </main>

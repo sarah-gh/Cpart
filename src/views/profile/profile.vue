@@ -24,7 +24,7 @@
         </section>
         <section class="post-container container" v-if="navigate[1]">
             <article class="card" v-for="(item,index) in userposts" :key="index">
-              <profile-post :post="item"></profile-post>
+              <profile-post @deleteArticle="deleteArticle" :post="item"></profile-post>
             </article>
         </section>
         <section class="follow-container container" v-if="navigate[2]">

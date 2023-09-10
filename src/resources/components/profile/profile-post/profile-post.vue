@@ -27,6 +27,9 @@
                 <span class="icon save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
                 <!-- <span class="number">12</span> -->
                 <span class="icon save comment"><font-awesome-icon :icon="['far', 'comment-alt']" /></span>
+                <span class="delete" v-if="post.userid == $store.state.user.profileUser.about[0].userid" @click="deleteArticle(post.articleid)">
+                  حذف
+                </span>
             </div>
         </footer>
     </div>
@@ -80,12 +83,29 @@ export default {
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
-         articleId: this.post.articleid,
+        articleId: this.post.articleid,
         status: statusSave
       }
       // JSON.stringify(data)
       this.endAction(data)
       // this.$emit('save_item', 'donbalkonande')
+    },
+    deleteArticle (id) {
+      this.$swal({
+        icon: 'question',
+        title: 'آیا از حذف مقاله مطمئن هستید؟',
+        html:
+          'مقاله: ' + this.post.title +
+          ' ',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'حذف',
+        denyButtonText: 'لغو'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          this.$emit('deleteArticle', id)
+        }
+      })
     },
     async endAction (data) {
       try {
@@ -102,6 +122,13 @@ export default {
 }
 </script>
 <style scoped>
+
+.delete {
+  cursor: pointer;
+  color: #6e0000;
+  font-weight: bold;
+  font-size: 18px;
+}
 .h2hover{
     color: #139eca;
 }

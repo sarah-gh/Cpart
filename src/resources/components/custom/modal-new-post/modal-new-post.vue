@@ -44,12 +44,12 @@ export default {
       ]
     }
   },
-  emits: ['on_enter', 'Modalfalse'],
+  // emits: ['onEnter', 'Modalfalse'],
   methods: {
     onEnter () {
       // eslint-disable-next-line vue/no-mutating-props
-      this.showModal = false
-      this.$emit('on_enter', [this.tag, false])
+      // this.showModal = false
+      this.$emit('onEnter', [this.tag, false])
       this.tag = ''
     },
     showModalfalse () {

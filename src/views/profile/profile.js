@@ -115,6 +115,24 @@ export default {
       console.log('emit')
       this.$forceUpdate()
     },
+    async deleteArticle (id) {
+      try {
+        const data = {
+          operation: 'deleteArticle',
+          id: id
+        }
+        const res = await this.$store.dispatch('article/requestPostArticle', data)
+        console.log('requestPostArticle: ', res)
+        console.log(this.$route.params.id)
+        if (this.$route.params.id !== 0) {
+          this.getProfile()
+        } else {
+          this.getUserProfile()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async getProfile () {
       try {
         const accessToken = getCookieByName('token')

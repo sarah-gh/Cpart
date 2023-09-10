@@ -112,16 +112,16 @@ export default {
       this.article.date = date
       this.article.readTime = this.readTime(this.article.text)
       // this.article.text = this.removeTags(this.article.text)
-
+      this.article.tags = this.tags.map(tag => tag[0])
       const data = {
         operation: 'newArticle',
-         headerPhoto: this.article.header_img,
+        headerPhoto: this.article.header_img,
         title: this.article.header,
         articletext: this.article.text,
         footerPhoto: this.article.footer_img,
         pdfFile: this.pdfFile,
         date: this.article.date,
-        tag: this.article.tags,
+        tag: this.article.tags || [],
         price: this.article.price,
         readTime: `${this.article.readTime}`
       }
@@ -172,6 +172,7 @@ export default {
       return result
     },
     onEnterModal (value) {
+      this.showModal = false
       if (this.tags.length === 3) {
         this.error_tag = true
       } else {

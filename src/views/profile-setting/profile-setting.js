@@ -127,7 +127,7 @@ export default {
         var res = event.target.result
         resImg = res
         this.imageData = resImg
-        // console.log(res_img);
+        console.log('resImg', resImg)
       }
       var file = this.response
       reader.readAsDataURL(file)
@@ -162,7 +162,8 @@ export default {
         await this.$store.dispatch('user/requestsettingUser')
         console.log('//////////////////')
         this.user = this.$store.state.user.setting
-        console.log(this.user)
+        this.imageData = this.user.userphoto
+        console.log('user', this.user)
       } catch {
         console.log('error')
       }

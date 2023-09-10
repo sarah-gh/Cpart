@@ -26,7 +26,9 @@
                             <a>معرفی به دوستان</a>
                         </li>
                         <li>
-                            <a>قوانین</a>
+                            <router-link to="/rules">
+                                قوانین
+                            </router-link>
                         </li>
                     </ul>
                 </div>
