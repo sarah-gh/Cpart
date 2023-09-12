@@ -27,7 +27,8 @@
                 <span class="icon save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
                 <!-- <span class="number">12</span> -->
                 <span class="icon save comment"><font-awesome-icon :icon="['far', 'comment-alt']" /></span>
-                <span class="delete" v-if="post.userid == $store.state.user.profileUser.about[0].userid" @click="deleteArticle(post.articleid)">
+                <span class="delete" v-if="post.userid == $store.state.user.profileUser.about[0].userid || $store.state.user.profileUser.about[0].role == 'admin'"
+                @click="deleteArticle(post.articleid)">
                   حذف
                 </span>
             </div>

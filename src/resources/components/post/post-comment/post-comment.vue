@@ -8,14 +8,17 @@
             </div>
             <div class="like-forward">
                 <img src="../../../../assets/img/forward-square.svg" class="forward" @click="reply_comment">
-                <span class="like save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
+                <!-- <span class="like save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span> -->
+                <img v-if="this.$store.state.user.profileUser.about['0'].role == 'admin'"
+                  src="@/assets/img/trash-bin.png"
+                  @click="deleteComment(comment.commentid)" class="trash" />
             </div>
         </div>
         <div class="text-comment">
             <p>{{ comment.commenttext }}</p>
         </div>
             <div class="comment-reply" v-for="(commentReply , i) in comment.replyComment" :key="i">
-                <post-comment-reply :commentR="commentReply"></post-comment-reply>
+                <post-comment-reply @getComments="getCommentsR" :commentR="commentReply"></post-comment-reply>
             </div>
 
 </template>
@@ -27,9 +30,15 @@
     cursor: pointer;
     font-size: 23px;
 }
+.trash {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+}
 </style>
 <script>
 import postCommentReply from '../post-comment-reply/post-comment-reply.vue'
+import { deleteComment } from '@/services/admin.js'
 
 export default {
   name: 'comment',
@@ -49,22 +58,30 @@ export default {
       like_icon: ['far', 'thumbs-up']
     }
   },
-  // beforeMount(){
-  //     setTimeout(function(){
-  //         console.log(this.ccc)
-  //     }, 1000);
-  // },
-
   components: {
     postCommentReply
   },
-  emits: ['replyComment'],
+  emits: ['replyComment', 'getComments'],
   methods: {
     clickLike () {
       if (this.like_icon[0] === 'fas') {
         this.like_icon[0] = 'far'
       } else {
         this.like_icon[0] = 'fas'
+      }
+    },
+    getCommentsR () {
+      this.$emit('getComments')
+    },
+    async deleteComment (id) {
+      const data = {
+        commentId: id
+      }
+      try {
+        await deleteComment(data)
+        this.$emit('getComments')
+      } catch (error) {
+        console.log(error)
       }
     },
     reply_comment () {

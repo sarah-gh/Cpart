@@ -8,18 +8,19 @@
       <search-nav @clicked="onClickNav"></search-nav>
     </div>
     <section class="post-container container" v-if="navigate[0]">
-      <article class="card" v-for="(item, index) in posts" :key="index">
+      <article class="card" v-for="(item, index) in posts" :key="index+'-post'">
         <post-summery :post="item"></post-summery>
       </article>
     </section>
     <section class="follow-container container" v-if="navigate[1]">
-      <article class="people" v-for="(item, index) in users" :key="index">
+      <article class="people" v-for="(item, index) in users" :key="index+'-follow'">
         <search-people :user="item" />
       </article>
     </section>
-    <section class="tag-container container" v-if="navigate[2]">
-      <article class="tags" v-for="(item, index) in tags" :key="index">
-          <search-tag :tag="item" />
+    <section class="post-container container" v-if="navigate[2]">
+      <article class="card" v-for="(item, index) in tags" :key="index+'-tag'">
+          <!-- <search-tag :tag="item" /> -->
+          <post-summery :post="item"></post-summery>
       </article>
     </section>
   </main>
@@ -29,7 +30,7 @@
 import searchNav from '../../resources/components/search/search-nav/search-nav.vue'
 import searchPeople from '../../resources/components/search/results/people.vue'
 import postSummery from '../../resources/components/post/post-summary/post-summary.vue'
-import searchTag from '../../resources/components/search/results/tags.vue'
+// import searchTag from '../../resources/components/search/results/tags.vue'
 export default {
   name: 'search',
   data () {
@@ -44,8 +45,8 @@ export default {
   components: {
     searchNav,
     searchPeople,
-    postSummery,
-    searchTag
+    postSummery
+    // searchTag
   },
   beforeMount () {
     console.log('this.$route.query.search')

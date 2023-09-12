@@ -18,6 +18,7 @@
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "register-service-worker": "^1.7.1",
+    "sweetalert2": "^11.7.27",
     "vee-validate": "^4.4.11",
     "vue": "^3.0.0",
     "vue-axios": "^3.2.5",

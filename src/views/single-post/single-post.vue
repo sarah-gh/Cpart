@@ -42,7 +42,7 @@
             </div>
 
             <div class='comments' v-for="(com, index) in comment" :key="index">
-                <post-comment @replyComment="reply" :comment="com" ></post-comment>
+                <post-comment @getComments="getComments" @replyComment="reply" :comment="com" ></post-comment>
                 <div class="commentLine"></div>
             </div>
             <div v-if="comment.length == 0">

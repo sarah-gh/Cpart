@@ -100,7 +100,8 @@ export default {
           name: this.about.fname + ' ' + this.about.lname,
           followers: this.about.followers,
           username: this.about.username,
-          credit: this.about.credit
+          credit: this.about.credit,
+          blocked: this.about.blocked
         }
         // console.log(this.follows)
         this.load = true
@@ -155,6 +156,7 @@ export default {
           followers: this.about.followers,
           isFollowing: this.about.isFollowing,
           username: this.about.username,
+          blocked: this.about.blocked,
           userid: this.about.userid
         }
 

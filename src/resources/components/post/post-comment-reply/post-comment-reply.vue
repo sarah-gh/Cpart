@@ -13,8 +13,10 @@
                     </div>
                     <div class="like-forward">
                         <!-- <img src="../../../../assets/img/forward-square.svg" class="forward"> -->
-                        <span class="like save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span>
-
+                        <!-- <span class="like save" @click="clickLike"><font-awesome-icon :icon="like_icon" /></span> -->
+                        <img v-if="this.$store.state.user.profileUser.about['0'].role == 'admin'"
+                          src="@/assets/img/trash-bin.png" class="trash"
+                          @click="deleteComment(commentR.commentid)" />
                     </div>
                 </div>
                 <div class="text-comment">
@@ -31,11 +33,20 @@
     cursor: pointer;
     font-size: 23px;
 }
+
+.trash {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+}
 .comments{
     width: 100% !important;
 }
 </style>
+
 <script>
+import { deleteComment } from '@/services/admin.js'
+
 export default {
   name: 'comment-reply',
   props: {
@@ -48,7 +59,7 @@ export default {
       like_icon: ['far', 'thumbs-up']
     }
   },
-  emits: ['replyComment'],
+  emits: ['replyComment', 'getComments'],
   methods: {
     clickLike () {
       if (this.like_icon[0] === 'fas') {
@@ -57,6 +68,17 @@ export default {
         this.like_icon[0] = 'fas'
       }
       this.$emit('replyComment')
+    },
+    async deleteComment (id) {
+      const data = {
+        commentId: id
+      }
+      try {
+        await deleteComment(data)
+        this.$emit('getComments')
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }

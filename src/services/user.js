@@ -1,6 +1,7 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { getCookieByName, writeCookie } from '@/resources/utilities.js'
 // import store from '@/store'
+import axios from '@/plugins/axios.plugin.js'
 
 const http = 'http://localhost:8000/api'
 
@@ -78,6 +79,26 @@ export const getSetting = async () => {
 }
 
 export const login = async (data) => {
+  try {
+    const config = {
+      method: 'post',
+      url: `${http}/login`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+    const res = await axios(config)
+    writeCookie('token', res.data)
+    return res.status
+  } catch (error) {
+    console.log('\n\n\n\n\nerror login:')
+    console.error(error.response.status)
+    return error.response.status
+  }
+}
+
+export const adminLogin = async (data) => {
   try {
     const config = {
       method: 'post',

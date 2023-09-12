@@ -48,7 +48,9 @@ export default {
         console.log(error)
       }
     },
-
+    getComments () {
+      this.getPosts()
+    },
     reply (data) {
       this.replyto = data
     },

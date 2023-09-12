@@ -17,6 +17,9 @@ export default {
       like_icon: ['far', 'thumbs-up'],
       save: false,
       showModal: false,
+      likeCount: 0,
+      like: 0,
+      saveCount: 0,
       follow: false
     }
   },
@@ -29,6 +32,14 @@ export default {
     console.log(this.post)
     this.save = this.post.issaved !== '0'
     this.follow = this.post.isfollowing !== '0'
+    this.like = this.post.isliked === '1'
+    this.likeCount = this.post.liked
+    this.saveCount = this.post.saved
+    if (!this.like) {
+      this.like_icon[0] = 'far'
+    } else {
+      this.like_icon[0] = 'fas'
+    }
   },
   computed: {
     is_save () {
@@ -37,14 +48,30 @@ export default {
     }
   },
   methods: {
+    // saveItem () {
+    //   this.save = !this.save
+    //   const statusSave = this.save ? 1 : 0
+    //   const data = {
+    //     operation: 'save',
+    //     articleId: this.post.articleid,
+    //     status: statusSave
+    //   }
+    //   this.endAction(data)
+    // },
     saveItem () {
       this.save = !this.save
+      if (this.save) {
+        this.saveCount++
+      } else {
+        this.saveCount--
+      }
       const statusSave = this.save ? 1 : 0
       const data = {
         operation: 'save',
         articleId: this.post.articleid,
         status: statusSave
       }
+      console.log(data)
       this.endAction(data)
     },
     async endAction (data) {
@@ -78,6 +105,26 @@ export default {
       }
       // JSON.stringify(data)
       this.endAction2(JSON.stringify(data))
+    },
+    likeItem () {
+      if (this.like_icon[0] === 'fas') {
+        this.like_icon[0] = 'far'
+      } else {
+        this.like_icon[0] = 'fas'
+      }
+      this.like = !this.like
+      if (this.like) {
+        this.likeCount++
+      } else {
+        this.likeCount--
+      }
+      const data = {
+        operation: 'like_article',
+        articleId: this.post.articleid,
+        status: this.like
+      }
+      console.log(data)
+      this.endAction(data)
     },
     ModalTrue () {
       console.log('emit modal')

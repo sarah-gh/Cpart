@@ -1,4 +1,5 @@
 // import user from '../../../../services/user'
+import { blockUser, unblockUser } from '@/services/admin.js'
 
 export default {
   name: 'profile-header',
@@ -12,7 +13,8 @@ export default {
     return {
       not_user: true,
       follow: false,
-      userphoto: ''
+      userphoto: '',
+      userBlocked: false
     }
   },
   watch: {
@@ -44,13 +46,36 @@ export default {
       } else {
         this.userphoto = this.user.userphoto
       }
+      this.userBlocked = this.user.blocked
+    },
+    async blockUser (id) {
+      const data = {
+        userId: id
+      }
+      try {
+        await blockUser(data)
+        this.userBlocked = true
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async unblockUser (id) {
+      const data = {
+        userId: id
+      }
+      try {
+        await unblockUser(data)
+        this.userBlocked = false
+      } catch (error) {
+        console.log(error)
+      }
     },
     followUser () {
       this.follow = !this.follow
       const statusFollow = this.follow ? 1 : 0
       const data = {
         operation: 'follow',
-         followingId: this.user.userid,
+        followingId: this.user.userid,
         status: statusFollow
       }
       // JSON.stringify(data)

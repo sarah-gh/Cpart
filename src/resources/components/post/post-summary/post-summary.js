@@ -27,12 +27,19 @@ export default {
     this.like = this.post.isliked === '1'
     this.likeCount = this.post.liked
     this.saveCount = this.post.saved
+    if (!this.like) {
+      this.like_icon[0] = 'far'
+    } else {
+      this.like_icon[0] = 'fas'
+    }
   },
   beforeMount () {
     this.text = this.post.articletext
-    if (this.post.articletext.length > 180) {
+    if (this.text.length > 180) {
       this.text = this.removeTags(this.text)
       this.text = this.text.substring(0, 175) + '...'
+    } else {
+      this.text = this.removeTags(this.text)
     }
     if (this.$store.state.login) {
       if (this.$store.state.user.profileUser.about['0'].userid === this.post.userid) {
@@ -101,14 +108,13 @@ export default {
       } else {
         this.likeCount--
       }
-      const statusSave = this.save ? 1 : 0
       const data = {
-        operation: 'like',
+        operation: 'like_article',
         articleId: this.post.articleid,
-        status: statusSave
+        status: this.like
       }
       console.log(data)
-      // this.endAction(JSON.stringify(data))
+      this.endAction(data)
     },
     followUser () {
       this.follow = !this.follow
