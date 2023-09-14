@@ -18,15 +18,18 @@ export default {
       save: false,
       showModal: false,
       likeCount: 0,
+      userphoto: 'http://localhost:8000/api/images/authors/default-profile-pic.jpg',
       like: 0,
       saveCount: 0,
       follow: false
     }
   },
   mounted () {
-    setTimeout(() => {
-      // console.log(this.post);
-    }, 3000)
+    if (this.post.userphoto == null) {
+      this.userphoto = 'http://localhost:8000/api/images/authors/default-profile-pic.jpg'
+    } else {
+      this.userphoto = this.post.userphoto
+    }
   },
   created () {
     console.log(this.post)

@@ -42,7 +42,7 @@ export default {
         this.not_user = true
       }
       if (this.user.userphoto == null) {
-        this.userphoto = 'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg'
+        this.userphoto = 'http://localhost:8000/api/images/authors/default-profile-pic.jpg'
       } else {
         this.userphoto = this.user.userphoto
       }

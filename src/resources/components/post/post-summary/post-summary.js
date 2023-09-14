@@ -15,6 +15,7 @@ export default {
       save: false,
       follow: false,
       not_user: true,
+      userphoto: 'http://localhost:8000/api/images/authors/default-profile-pic.jpg',
       like: false,
       like_icon: ['far', 'thumbs-up'],
       likeCount: 0,
@@ -47,6 +48,11 @@ export default {
       } else {
         this.not_user = true
       }
+    }
+    if (this.post.userphoto == null) {
+      this.userphoto = 'http://localhost:8000/api/images/authors/default-profile-pic.jpg'
+    } else {
+      this.userphoto = this.post.userphoto
     }
   },
   updated () {

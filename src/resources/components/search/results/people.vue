@@ -1,8 +1,8 @@
 <template>
-  <div class="component">
+    <router-link tag="div" class="component" :to="routeName(user)">
     <img
       class="user-photo"
-      :src="user.userphoto"
+      :src="userphoto"
       alt=""
     />
     <div class="introduction">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <button class="follow-button">دنبال کردن</button>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -22,6 +22,23 @@ export default {
     user: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      userphoto: 'http://localhost:8000/api/images/authors/default-profile-pic.jpg'
+    }
+  },
+  methods: {
+    routeName (item) {
+      return `/panel/profile/${item.userid}`
+    }
+  },
+  mounted () {
+    if (this.user.userphoto == null) {
+      this.userphoto = 'http://localhost:8000/api/images/authors/default-profile-pic.jpg'
+    } else {
+      this.userphoto = this.user.userphoto
     }
   }
 }

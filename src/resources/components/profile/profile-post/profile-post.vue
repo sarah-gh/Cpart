@@ -53,19 +53,42 @@ export default {
       like_icon: ['far', 'thumbs-up']
     }
   },
+  // beforeMount () {
+  //   this.save = this.post.issaved !== '0'
+  //   this.text = this.post.articletext
+  //   if (this.post.articletext.length > 180) {
+  //     this.text = this.text.substring(0, 175) + '...'
+  //   }
+  //   this.text = this.removeTagshtml(this.text)
+  // },
   beforeMount () {
     this.save = this.post.issaved !== '0'
     this.text = this.post.articletext
-    if (this.post.articletext.length > 180) {
+    if (this.text.length > 180) {
+      this.text = this.removeTags(this.text)
       this.text = this.text.substring(0, 175) + '...'
+    } else {
+      this.text = this.removeTags(this.text)
     }
-    this.text = this.removeTagshtml(this.text)
+    if (this.$store.state.login) {
+      if (this.$store.state.user.profileUser.about['0'].userid === this.post.userid) {
+        this.not_user = false
+      } else {
+        this.not_user = true
+      }
+    }
   },
   methods: {
     removeTagshtml (str) {
       if ((str === null) || (str === '')) { return false } else { str = str.toString() }
 
       return str.replace(/(<([^>]+)>)/ig, '')
+    },
+    removeTags (str) {
+      if ((str === null) || (str === '')) { return false } else { str = str.toString() }
+      str = str.replace(/(<([^>]+)>)/ig, '')
+      str = str.replaceAll(/&nbsp;/ig, ' ')
+      return str
     },
     clickLike () {
       if (this.like_icon[0] === 'fas') {

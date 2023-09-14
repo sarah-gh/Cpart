@@ -7,7 +7,7 @@
             <div class="post-author">
 
                 <router-link :to="routeName(post)">
-                    <img class="avatar" :src="post.userphoto" alt="avatar" />
+                    <img class="avatar" :src="userphoto" alt="avatar" />
                 </router-link>
                 <router-link :to="routeName(post)" class="author-name">{{ post.fname }} {{ post.lname }}</router-link>
             </div>

@@ -5,7 +5,7 @@
             <div class="post-header-top">
                 <div class="post-author">
                     <router-link :to="'/panel/profile/' + post.userid">
-                        <img class="avatar" :src="post.userphoto" alt="avatar" />
+                        <img class="avatar" :src="userphoto" alt="avatar" />
                     </router-link>
                     <router-link :to="'/panel/profile/' + post.userid" class="author-name">{{ post.fname }} {{ post.lname
                     }}</router-link>
